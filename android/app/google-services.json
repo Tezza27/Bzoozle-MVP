@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015062107359",
+    "project_id": "bzoozle-f6a97",
+    "storage_bucket": "bzoozle-f6a97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015062107359:android:7924b1fec767b25622856a",
+        "android_client_info": {
+          "package_name": "com.example.bzoozle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015062107359-ut0cc25v5b8hotvk1pul9s31s40kt5n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJFLeAQpE7bOU_INTmBquVg6UbswQPYps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015062107359-ut0cc25v5b8hotvk1pul9s31s40kt5n2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
