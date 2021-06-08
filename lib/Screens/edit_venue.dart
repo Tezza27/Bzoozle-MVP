@@ -86,6 +86,7 @@ class _EditVenueScreenState extends State<EditVenueScreen> {
                         if (_formKey.currentState!.validate()) {
                           venueProvider.saveVenue();
                           Navigator.of(context).pop();
+                          _formKey.currentState?.reset();
                         }
                       },
                       child: const Text('Submit'),

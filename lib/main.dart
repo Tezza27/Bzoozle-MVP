@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(
       create: (context) => VenueProvider(),
       child: MaterialApp(
-          title: 'Experimenting With Firestore',
+          title: 'Bzoozle',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
@@ -32,20 +32,22 @@ class _MyAppState extends State<MyApp> {
             ListingScreen.routeName: (context) => ListingScreen(),
             EditVenueScreen.routeName: (context) => EditVenueScreen(),
           },
-          home: FutureBuilder(
-            future: _fbApp,
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                print("Snapshot error: ${snapshot.error.toString()}");
-                return Text("Something went wrong");
-              } else if (snapshot.hasData) {
-                return ListingScreen();
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
+          home: Container(
+            child: FutureBuilder(
+              future: _fbApp,
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  print("Snapshot error: ${snapshot.error.toString()}");
+                  return Text("Something went wrong");
+                } else if (snapshot.hasData) {
+                  return ListingScreen();
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
           )),
     );
   }
