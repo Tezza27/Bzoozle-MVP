@@ -19,7 +19,7 @@ class _ListingScreenState extends State<ListingScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Center(child: Text(widget.title)),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add, size: 30.0),
