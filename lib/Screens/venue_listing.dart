@@ -1,6 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/edit_venue.dart';
+import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Widgets/listCard.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +24,7 @@ class _ListingScreenState extends State<ListingScreen> {
           IconButton(
             icon: Icon(Icons.add, size: 30.0),
             onPressed: () {
-              Navigator.pushNamed(context, EditVenueScreen.routeName);
+              Navigator.pushNamed(context, VenueDetailScreen.routeName);
             },
           )
         ],
@@ -73,7 +73,7 @@ class _ListingScreenState extends State<ListingScreen> {
                       ? ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            return listCard(snapshot.data![index]);
+                            return listCard(context, snapshot.data![index]);
                           })
                       : Center(child: Text('No data available'));
               }
@@ -91,7 +91,7 @@ class _ListingScreenState extends State<ListingScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, EditVenueScreen.routeName);
+          Navigator.pushNamed(context, VenueDetailScreen.routeName);
         },
         child: const Icon(Icons.add),
         backgroundColor: Colors.amber,

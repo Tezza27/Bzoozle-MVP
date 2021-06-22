@@ -1,5 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/edit_venue.dart';
+import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:bzoozle/Screens/venue_listing.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           ),
           routes: {
             ListingScreen.routeName: (context) => ListingScreen(),
-            EditVenueScreen.routeName: (context) => EditVenueScreen(),
+            VenueDetailScreen.routeName: (context) => VenueDetailScreen(),
           },
           home: Container(
             child: FutureBuilder(
