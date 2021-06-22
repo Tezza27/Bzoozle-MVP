@@ -17,33 +17,85 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text(
-          "${venueProvider.venueName}",
-        ),
-      ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 200,
-            width: double.infinity,
-            child: Center(
-                child: Text("${venueProvider.venueName}",
-                    style: TextStyle(color: Colors.white))),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.orange[800],
+            pinned: false,
+            floating: true,
+            snap: true,
+            expandedHeight: 200.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                "${venueProvider.venueName}",
+              ),
+              centerTitle: true,
+              background: DecoratedBox(
+                position: DecorationPosition.foreground,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: <Color>[
+                        Colors.orange[800]!,
+                        Colors.transparent,
+                      ]),
+                ),
+                child: Image.asset(
+                  'assets/images/piano_bar_harrahs.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
-          Container(
-            height: 30,
-            child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: detailPageList.length,
-                itemBuilder: (context, index) {
-                  return detailScrollButton(
-                      index: index, buttonText: detailPageList[index]);
-                }),
-          ),
+          ScrollButtonList(),
+          VenueDetailList(),
         ],
       ),
     );
+  }
+}
+
+class ScrollButtonList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: 30,
+        child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: detailPageList.length,
+            itemBuilder: (context, index) {
+              return detailScrollButton(
+                  index: index, buttonText: detailPageList[index]);
+            }),
+      ),
+    );
+  }
+}
+
+class VenueDetailList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        // shrinkWrap: true,
+        (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("${randomList[index]}"),
+              ),
+            ),
+          );
+        },
+        childCount: randomList.length,
+      ),
+    );
+    //   ],
+    // );
   }
 }

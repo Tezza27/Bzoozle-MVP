@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
+          scrollBehavior: const ScrollBehavior(),
           routes: {
             ListingScreen.routeName: (context) => ListingScreen(),
             VenueDetailScreen.routeName: (context) => VenueDetailScreen(),
