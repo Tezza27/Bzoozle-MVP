@@ -28,6 +28,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 "${venue.venueName}",
+                style: TextStyle(color: Colors.black),
               ),
               centerTitle: true,
               background: DecoratedBox(

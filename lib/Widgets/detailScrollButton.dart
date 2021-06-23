@@ -8,7 +8,10 @@ Widget detailScrollButton({int index = 0, String buttonText = "Error"}) {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.orange),
       ),
-      child: Text("$buttonText"),
+      child: Text(
+        "$buttonText",
+        style: TextStyle(color: Colors.black),
+      ),
       onPressed: () {},
     ),
   );
