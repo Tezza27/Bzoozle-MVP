@@ -1,8 +1,8 @@
 import 'package:bzoozle/Lists/detail_pages_list.dart';
-import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Widgets/detailScrollButton.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:sliver_tools/sliver_tools.dart';
 
 class VenueDetailScreen extends StatefulWidget {
   static const String routeName = '/detail';
@@ -14,20 +14,20 @@ class VenueDetailScreen extends StatefulWidget {
 class _VenueDetailScreenState extends State<VenueDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final venueProvider = Provider.of<VenueProvider>(context);
+    final venue = ModalRoute.of(context)!.settings.arguments as Venue;
     return Scaffold(
       backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.orange[800],
-            pinned: false,
+            pinned: true,
             floating: true,
             snap: true,
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                "${venueProvider.venueName}",
+                "${venue.venueName}",
               ),
               centerTitle: true,
               background: DecoratedBox(
@@ -59,7 +59,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
 class ScrollButtonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
+    return SliverPinnedHeader(
       child: Container(
         height: 30,
         child: ListView.builder(
