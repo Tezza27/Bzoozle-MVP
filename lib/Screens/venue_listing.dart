@@ -1,5 +1,5 @@
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Widgets/listCard.dart';
@@ -52,14 +52,6 @@ class _ListingScreenState extends State<ListingScreen> {
                       Text("No Connection - ${snapshot.connectionState}"),
                     ],
                   ));
-                // case ConnectionState.active:
-                //   return Center(
-                //       child: Column(
-                //     children: [
-                //       CircularProgressIndicator(),
-                //       Text("No Connection - ${snapshot.connectionState}"),
-                //     ],
-                //   ));
                 case ConnectionState.done:
                   return Center(
                       child: Column(

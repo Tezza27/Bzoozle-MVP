@@ -1,4 +1,5 @@
 import 'package:bzoozle/Lists/detail_pages_list.dart';
+import 'package:bzoozle/Providers/detailPageProvider.dart';
 import 'package:bzoozle/Widgets/detailDescription.dart';
 import 'package:bzoozle/Widgets/detailHappyHours.dart';
 import 'package:bzoozle/Widgets/detailLocation.dart';
@@ -7,6 +8,7 @@ import 'package:bzoozle/Widgets/detailRants.dart';
 import 'package:bzoozle/Widgets/detailRaves.dart';
 import 'package:bzoozle/Widgets/detailScrollButton.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class DetailScrollButtonList extends StatelessWidget {
@@ -21,7 +23,9 @@ class DetailScrollButtonList extends StatelessWidget {
             itemCount: detailPageList.length,
             itemBuilder: (context, index) {
               return detailScrollButton(
-                  index: index, buttonText: detailPageList[index]);
+                  context: context,
+                  index: index,
+                  buttonText: detailPageList[index]);
             }),
       ),
     );
@@ -31,9 +35,9 @@ class DetailScrollButtonList extends StatelessWidget {
 class DetailContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int _pageController = 4;
+    final pageNumberProvider = Provider.of<DetailPageProvider>(context);
     return SliverToBoxAdapter(
-      child: selectPage(_pageController),
+      child: selectPage(pageNumberProvider.pageNumber),
     );
   }
 }

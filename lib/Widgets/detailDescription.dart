@@ -1,4 +1,3 @@
-import 'package:bzoozle/Lists/detail_pages_list.dart';
 import 'package:flutter/material.dart';
 
 class DetailDescription extends StatelessWidget {

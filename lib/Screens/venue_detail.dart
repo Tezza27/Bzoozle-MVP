@@ -1,8 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Widgets/detailScrollButtonList.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class VenueDetailScreen extends StatefulWidget {
   static const String routeName = '/detail';
@@ -15,7 +13,8 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
-    final venueProvider = Provider.of<VenueProvider>(context);
+    // final venueProvider = Provider.of<VenueProvider>(context);
+    // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
       backgroundColor: Colors.black,
