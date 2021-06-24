@@ -1,7 +1,7 @@
 List<String> detailPageList = [
   "Description",
   "Location",
-  "Open",
+  "Open Hours",
   "Happy Hours",
   "Rants",
   "Raves",

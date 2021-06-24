@@ -1,8 +1,8 @@
-import 'package:bzoozle/Lists/detail_pages_list.dart';
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Widgets/detailScrollButton.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Widgets/detailScrollButtonList.dart';
 import 'package:flutter/material.dart';
-import 'package:sliver_tools/sliver_tools.dart';
+import 'package:provider/provider.dart';
 
 class VenueDetailScreen extends StatefulWidget {
   static const String routeName = '/detail';
@@ -14,7 +14,9 @@ class VenueDetailScreen extends StatefulWidget {
 class _VenueDetailScreenState extends State<VenueDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final venue = ModalRoute.of(context)!.settings.arguments as Venue;
+    final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
+    final venueProvider = Provider.of<VenueProvider>(context);
+    // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
       backgroundColor: Colors.black,
       body: CustomScrollView(
@@ -27,7 +29,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                "${venue.venueName}",
+                "${selectedVenue.venueName}",
                 style: TextStyle(color: Colors.black),
               ),
               centerTitle: true,
@@ -49,54 +51,10 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
               ),
             ),
           ),
-          ScrollButtonList(),
-          VenueDetailList(),
+          DetailScrollButtonList(),
+          DetailContent(),
         ],
       ),
     );
-  }
-}
-
-class ScrollButtonList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SliverPinnedHeader(
-      child: Container(
-        height: 30,
-        child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: detailPageList.length,
-            itemBuilder: (context, index) {
-              return detailScrollButton(
-                  index: index, buttonText: detailPageList[index]);
-            }),
-      ),
-    );
-  }
-}
-
-class VenueDetailList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        // shrinkWrap: true,
-        (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 8.0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("${randomList[index]}"),
-              ),
-            ),
-          );
-        },
-        childCount: randomList.length,
-      ),
-    );
-    //   ],
-    // );
   }
 }

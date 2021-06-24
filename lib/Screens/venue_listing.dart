@@ -31,7 +31,7 @@ class _ListingScreenState extends State<ListingScreen> {
       ),
       body: Container(
         child: StreamBuilder<List<Venue>>(
-          stream: venueProvider.venues,
+          stream: venueProvider.streamVenuesList,
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {

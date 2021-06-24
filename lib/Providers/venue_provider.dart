@@ -16,24 +16,25 @@ class VenueProvider with ChangeNotifier {
   String get venueName => _venueName;
   String? get venueHostBuilding => _venueHostBuilding;
   String? get venueDescription => _venueDescription;
-  Stream<List<Venue>> get venues => firestoreService.getVenues();
+  Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
 
   //Setters
-  changeName(String value) {
+  set changeName(String value) {
     _venueName = value;
     notifyListeners();
   }
 
-  changeHostBuilding(String value) {
+  set changeHostBuilding(String value) {
     _venueHostBuilding = value;
     notifyListeners();
   }
 
-  changeDescription(String value) {
+  set changeDescription(String value) {
     _venueDescription = value;
     notifyListeners();
   }
 
+  //Methods
   saveVenue() {
     if (_venueId == '000') {
       var newVenue = Venue(
@@ -47,7 +48,7 @@ class VenueProvider with ChangeNotifier {
           venueName: venueName,
           venueDescription: venueDescription,
           venueHostBuilding: venueHostBuilding,
-          venueId: _venueId);
+          venueId: venueId);
       firestoreService.saveVenue(updateVenue);
     }
   }
@@ -55,4 +56,8 @@ class VenueProvider with ChangeNotifier {
   removeVenue(String venueId) {
     firestoreService.removeVenue(venueId);
   }
+
+  // findVenueById(String id) {
+  //   return streamVenuesList.snapshot.firstWhere((ven) => ven.venueId == id);
+  // }
 }
