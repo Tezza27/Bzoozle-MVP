@@ -21,7 +21,7 @@ class _ListingScreenState extends State<ListingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.orange[800],
         title: Text(widget.title),
-        centerTitle: true,
+        centerTitle: true
       ),
       body: Container(
         child: StreamBuilder<List<Venue>>(
