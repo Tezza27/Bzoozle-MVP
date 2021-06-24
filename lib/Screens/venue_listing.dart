@@ -6,7 +6,7 @@ import 'package:bzoozle/Widgets/listCard.dart';
 import 'package:provider/provider.dart';
 
 class ListingScreen extends StatefulWidget {
-  final String title = "Firestore Experiments";
+  final String title = "BZOOZLE";
   static const String routeName = '/listing';
 
   @override
@@ -19,15 +19,9 @@ class _ListingScreenState extends State<ListingScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orange[800],
         title: Text(widget.title),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add, size: 30.0),
-            onPressed: () {
-              Navigator.pushNamed(context, VenueDetailScreen.routeName);
-            },
-          )
-        ],
+        centerTitle: true,
       ),
       body: Container(
         child: StreamBuilder<List<Venue>>(
@@ -80,13 +74,6 @@ class _ListingScreenState extends State<ListingScreen> {
             }
           },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, VenueDetailScreen.routeName);
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.amber,
       ),
     );
   }
