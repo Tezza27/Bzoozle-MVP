@@ -1,12 +1,12 @@
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/edit_venue.dart';
+import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Widgets/listCard.dart';
 import 'package:provider/provider.dart';
 
 class ListingScreen extends StatefulWidget {
-  final String title = "Firestore Experiments";
+  final String title = "BZOOZLE";
   static const String routeName = '/listing';
 
   @override
@@ -19,19 +19,13 @@ class _ListingScreenState extends State<ListingScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text(widget.title)),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add, size: 30.0),
-            onPressed: () {
-              Navigator.pushNamed(context, EditVenueScreen.routeName);
-            },
-          )
-        ],
+        backgroundColor: Colors.orange[800],
+        title: Text(widget.title),
+        centerTitle: true
       ),
       body: Container(
         child: StreamBuilder<List<Venue>>(
-          stream: venueProvider.venues,
+          stream: venueProvider.streamVenuesList,
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
@@ -52,14 +46,6 @@ class _ListingScreenState extends State<ListingScreen> {
                       Text("No Connection - ${snapshot.connectionState}"),
                     ],
                   ));
-                // case ConnectionState.active:
-                //   return Center(
-                //       child: Column(
-                //     children: [
-                //       CircularProgressIndicator(),
-                //       Text("No Connection - ${snapshot.connectionState}"),
-                //     ],
-                //   ));
                 case ConnectionState.done:
                   return Center(
                       child: Column(
@@ -73,7 +59,7 @@ class _ListingScreenState extends State<ListingScreen> {
                       ? ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            return listCard(snapshot.data![index]);
+                            return listCard(context, snapshot.data![index]);
                           })
                       : Center(child: Text('No data available'));
               }
@@ -88,13 +74,6 @@ class _ListingScreenState extends State<ListingScreen> {
             }
           },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, EditVenueScreen.routeName);
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.amber,
       ),
     );
   }
