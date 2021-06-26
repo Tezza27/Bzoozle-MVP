@@ -29,7 +29,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 "${selectedVenue.venueName}",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.orange[800]!),
               ),
               centerTitle: true,
               background: DecoratedBox(
@@ -39,7 +39,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: <Color>[
-                        Colors.orange[800]!,
+                        Colors.black,
                         Colors.transparent,
                       ]),
                 ),
