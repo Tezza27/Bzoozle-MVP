@@ -1,12 +1,11 @@
 import 'package:bzoozle/Lists/detail_pages_list.dart';
 import 'package:bzoozle/Providers/detailPageProvider.dart';
-import 'package:bzoozle/Widgets/detailDescription.dart';
-import 'package:bzoozle/Widgets/detailHappyHours.dart';
-import 'package:bzoozle/Widgets/detailLocation.dart';
-import 'package:bzoozle/Widgets/detailOpenHours.dart';
-import 'package:bzoozle/Widgets/detailRants.dart';
-import 'package:bzoozle/Widgets/detailRaves.dart';
-import 'package:bzoozle/Widgets/detailScrollButton.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailDescription.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailHappyHours.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailLocation.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailOpenHours.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailRants.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detailRaves.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -30,6 +29,39 @@ class DetailScrollButtonList extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget detailScrollButton(
+    {required BuildContext context,
+    int index = 0,
+    String buttonText = "Error"}) {
+  final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+  return ConstrainedBox(
+    constraints: BoxConstraints.tightFor(width: 120, height: 20),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: pageNumberProvider.pageNumber == index
+            ? Colors.black
+            : Colors.orange[800],
+        side: BorderSide(width: 1, color: Colors.black),
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+        ),
+      ),
+      child: Text(
+        "$buttonText",
+        style: TextStyle(
+          color: pageNumberProvider.pageNumber == index
+              ? Colors.orange[800]
+              : Colors.black,
+        ),
+      ),
+      onPressed: () {
+        pageNumberProvider.changePageNumber(index);
+      },
+    ),
+  );
 }
 
 class DetailContent extends StatelessWidget {
