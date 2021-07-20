@@ -17,6 +17,7 @@ class _ListingScreenState extends State<ListingScreen> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
           backgroundColor: Colors.orange[800],
           title: Text(widget.title),

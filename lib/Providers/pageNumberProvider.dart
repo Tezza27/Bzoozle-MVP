@@ -1,7 +1,7 @@
 import 'package:bzoozle/Lists/detail_pages_list.dart';
 import 'package:flutter/material.dart';
 
-class DetailPageProvider with ChangeNotifier {
+class PageNumberProvider with ChangeNotifier {
   int _pageNumber = 0;
 
 //getters
