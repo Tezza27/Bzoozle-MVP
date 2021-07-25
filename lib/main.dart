@@ -35,6 +35,8 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
           title: 'Bzoozle',
           theme: ThemeData(
+            primaryColor: Colors.black,
+            accentColor: Colors.orange[800],
             elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.orange[800],
