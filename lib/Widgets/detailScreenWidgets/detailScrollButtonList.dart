@@ -1,5 +1,5 @@
-import 'package:bzoozle/Lists/detail_pages_list.dart';
-import 'package:bzoozle/Providers/detailPageProvider.dart';
+import 'package:bzoozle/Lists/pagesList.dart';
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Widgets/detailScreenWidgets/detailDescription.dart';
 import 'package:bzoozle/Widgets/detailScreenWidgets/detailHappyHours.dart';
 import 'package:bzoozle/Widgets/detailScreenWidgets/detailLocation.dart';
@@ -35,7 +35,7 @@ Widget detailScrollButton(
     {required BuildContext context,
     int index = 0,
     String buttonText = "Error"}) {
-  final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+  final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   return ConstrainedBox(
     constraints: BoxConstraints.tightFor(width: 120, height: 20),
     child: ElevatedButton(
@@ -67,7 +67,7 @@ Widget detailScrollButton(
 class DetailContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SliverToBoxAdapter(
       child: selectPage(pageNumberProvider.pageNumber),
     );

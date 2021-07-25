@@ -1,11 +1,11 @@
-import 'package:bzoozle/Providers/detailPageProvider.dart';
-import 'package:bzoozle/Screens/venue_detail.dart';
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
+import 'package:bzoozle/Screens/venueDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:provider/provider.dart';
 
 Widget listCard(BuildContext context, Venue venue) {
-  final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+  final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Card(

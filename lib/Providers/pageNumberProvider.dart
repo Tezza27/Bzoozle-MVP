@@ -1,4 +1,4 @@
-import 'package:bzoozle/Lists/detail_pages_list.dart';
+import 'package:bzoozle/Lists/pagesList.dart';
 import 'package:flutter/material.dart';
 
 class PageNumberProvider with ChangeNotifier {

@@ -1,4 +1,4 @@
-import 'package:bzoozle/Widgets/DetailScreenWidgets/detailScrollButtonList.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newScrollButtonList.dart';
 import 'package:flutter/material.dart';
 
 class NewVenueScreen extends StatefulWidget {
@@ -15,11 +15,11 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
     // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).accentColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.orange[800],
+            backgroundColor: Theme.of(context).primaryColor,
             pinned: true,
             floating: true,
             snap: true,
@@ -27,7 +27,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 "Add New Venue",
-                style: TextStyle(color: Colors.orange[800]!),
+                style: TextStyle(color: Theme.of(context).accentColor),
               ),
               centerTitle: true,
               background: DecoratedBox(
@@ -37,7 +37,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: <Color>[
-                        Colors.black,
+                        Theme.of(context).primaryColor,
                         Colors.transparent,
                       ]),
                 ),
@@ -48,8 +48,8 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
               ),
             ),
           ),
-          DetailScrollButtonList(),
-          DetailContent(),
+          NewScrollButtonList(),
+          NewContent(),
         ],
       ),
     );
