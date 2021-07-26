@@ -1,20 +1,20 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:uuid/uuid.dart';
 
 class VenueProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
-  String _venueId = "000";
   String _venueName = "Unknown";
   String? _venueHostBuilding;
+  String? _venueType;
+  String? _venueTheme;
   String? _venueDescription;
-  var uuid = Uuid();
 
   //Getters
-  String get venueId => _venueId;
   String get venueName => _venueName;
   String? get venueHostBuilding => _venueHostBuilding;
+  String? get venueType => _venueType;
+  String? get venueTheme => _venueTheme;
   String? get venueDescription => _venueDescription;
   Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
 
@@ -29,28 +29,42 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  set changeType(String value) {
+    _venueType = value;
+    notifyListeners();
+  }
+
+  set changeTheme(String value) {
+    _venueHostBuilding = value;
+    notifyListeners();
+  }
+
   set changeDescription(String value) {
     _venueDescription = value;
     notifyListeners();
   }
 
   //Methods
-  saveVenue() {
-    if (_venueId == '000') {
-      var newVenue = Venue(
-          venueName: venueName,
-          venueDescription: venueDescription,
-          venueHostBuilding: venueHostBuilding,
-          venueId: uuid.v4());
-      firestoreService.saveVenue(newVenue);
-    } else {
-      var updateVenue = Venue(
-          venueName: venueName,
-          venueDescription: venueDescription,
-          venueHostBuilding: venueHostBuilding,
-          venueId: venueId);
-      firestoreService.saveVenue(updateVenue);
-    }
+  addVenue() {
+    var newVenue = Venue(
+      venueName: venueName,
+      venueDescription: venueDescription,
+      venueType: venueType,
+      venueTheme: venueTheme,
+      venueHostBuilding: venueHostBuilding,
+    );
+    firestoreService.addVenue(newVenue);
+  }
+
+  updateVenue() {
+    var currentVenue = Venue(
+      venueName: venueName,
+      venueDescription: venueDescription,
+      venueType: venueType,
+      venueTheme: venueTheme,
+      venueHostBuilding: venueHostBuilding,
+    );
+    firestoreService.updateVenue(currentVenue);
   }
 
   removeVenue(String venueId) {

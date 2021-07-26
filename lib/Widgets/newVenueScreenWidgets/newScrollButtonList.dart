@@ -76,7 +76,7 @@ Widget selectPage(int pageNumber) {
   Widget selectedPage;
   switch (pageNumber) {
     case 0:
-      selectedPage = newDescription();
+      selectedPage = NewDescription();
       break;
     case 1:
       selectedPage = newLocation();

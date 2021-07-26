@@ -1,0 +1,37 @@
+List<String> venueTypeList = [
+  "Pub",
+  "Bar",
+  "Lounge",
+  "Club",
+  "Takeaway Bar",
+  "Other",
+];
+
+List<String> venueThemeList = [
+  "American",
+  "Bistro",
+  "British",
+  "Casino",
+  "Casual",
+  "Cigar",
+  "Cocktail",
+  "Country",
+  "Craft Beer",
+  "Disco",
+  "Dive",
+  "Irish",
+  "Latino",
+  "Live Music",
+  "LGBTQ+",
+  "Karaoke"
+      "Piano",
+  "Pool",
+  "Reggae",
+  "Retro",
+  "RnB",
+  "Rock",
+  "Sports",
+  "Tiki",
+  "Wine",
+  "Other",
+];

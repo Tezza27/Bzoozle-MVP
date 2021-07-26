@@ -19,7 +19,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).accentColor,
             pinned: true,
             floating: true,
             snap: true,
@@ -50,6 +50,28 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
           ),
           NewScrollButtonList(),
           NewContent(),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: Theme.of(context).primaryColor,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Cancel"),
+                      ),
+                      ElevatedButton(onPressed: () {}, child: Text("Save")),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
