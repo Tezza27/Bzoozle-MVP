@@ -1,5 +1,7 @@
+import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newScrollButtonList.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NewVenueScreen extends StatefulWidget {
   static const String routeName = '/newVenue';
@@ -11,7 +13,7 @@ class NewVenueScreen extends StatefulWidget {
 class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
-    // final venueProvider = Provider.of<VenueProvider>(context);
+    final venueProvider = Provider.of<VenueProvider>(context);
     // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
@@ -89,7 +91,12 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                       onPressed: () {},
                       child: Text("Cancel"),
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text("Save")),
+                    ElevatedButton(
+                        onPressed: () {
+                          venueProvider.addVenue();
+                          venueProvider.unloadVenue();
+                        },
+                        child: Text("Save")),
                   ],
                 ),
               ),

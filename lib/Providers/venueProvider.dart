@@ -25,7 +25,9 @@ class VenueProvider with ChangeNotifier {
   }
 
   set changeHostBuilding(String value) {
-    _venueHostBuilding = value;
+    if (value != "N/A") {
+      _venueHostBuilding = value;
+    }
     notifyListeners();
   }
 
@@ -35,7 +37,7 @@ class VenueProvider with ChangeNotifier {
   }
 
   set changeTheme(String value) {
-    _venueHostBuilding = value;
+    _venueTheme = value;
     notifyListeners();
   }
 
@@ -45,13 +47,38 @@ class VenueProvider with ChangeNotifier {
   }
 
   //Methods
+
+  loadVenue(Venue? venue) {
+    if (venue != null) {
+      _venueName = venue.venueName;
+      _venueHostBuilding = venue.venueHostBuilding;
+      _venueType = venue.venueType;
+      _venueTheme = venue.venueTheme;
+      _venueDescription = venue.venueDescription;
+    } else {
+      _venueName = "New Venue";
+      _venueHostBuilding = null;
+      _venueType = null;
+      _venueTheme = null;
+      _venueDescription = null;
+    }
+  }
+
+  unloadVenue() {
+    _venueName = "";
+    _venueHostBuilding = null;
+    _venueType = null;
+    _venueTheme = null;
+    _venueDescription = null;
+  }
+
   addVenue() {
     var newVenue = Venue(
       venueName: venueName,
       venueDescription: venueDescription,
       venueType: venueType,
       venueTheme: venueTheme,
-      venueHostBuilding: venueHostBuilding,
+      venueHostBuilding: venueHostBuilding != "N/A" ? venueHostBuilding : null,
     );
     firestoreService.addVenue(newVenue);
   }
@@ -62,7 +89,7 @@ class VenueProvider with ChangeNotifier {
       venueDescription: venueDescription,
       venueType: venueType,
       venueTheme: venueTheme,
-      venueHostBuilding: venueHostBuilding,
+      venueHostBuilding: venueHostBuilding != "N/A" ? venueHostBuilding : null,
     );
     firestoreService.updateVenue(currentVenue);
   }
@@ -70,8 +97,4 @@ class VenueProvider with ChangeNotifier {
   removeVenue(String venueId) {
     firestoreService.removeVenue(venueId);
   }
-
-  // findVenueById(String id) {
-  //   return streamVenuesList.snapshot.firstWhere((ven) => ven.venueId == id);
-  // }
 }

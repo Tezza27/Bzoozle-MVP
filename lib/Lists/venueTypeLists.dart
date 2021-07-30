@@ -23,8 +23,8 @@ List<String> venueThemeList = [
   "Latino",
   "Live Music",
   "LGBTQ+",
-  "Karaoke"
-      "Piano",
+  "Karaoke",
+  "Piano",
   "Pool",
   "Reggae",
   "Retro",
