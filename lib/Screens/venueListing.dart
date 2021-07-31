@@ -1,8 +1,7 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
-import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:bzoozle/Widgets/listCard.dart';
+import 'package:bzoozle/Widgets/listingScreenWidgets/listCard.dart';
 import 'package:provider/provider.dart';
 
 class ListingScreen extends StatefulWidget {
@@ -18,11 +17,11 @@ class _ListingScreenState extends State<ListingScreen> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.orange[800],
-        title: Text(widget.title),
-        centerTitle: true
-      ),
+          backgroundColor: Colors.orange[800],
+          title: Text(widget.title),
+          centerTitle: true),
       body: Container(
         child: StreamBuilder<List<Venue>>(
           stream: venueProvider.streamVenuesList,

@@ -1,11 +1,16 @@
-List<String> detailPageList = [
+List<String> newPageList = [
   "Description",
   "Location",
   "Open Hours",
   "Happy Hours",
+];
+
+List<String> extraPageList = [
   "Rants",
   "Raves",
 ];
+
+List<String> detailPageList = [...newPageList, ...extraPageList];
 
 List<String> randomList = [
   "Description",

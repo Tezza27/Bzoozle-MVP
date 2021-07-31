@@ -1,16 +1,14 @@
 import 'package:bzoozle/Lists/pagesList.dart';
 import 'package:bzoozle/Providers/pageNumberProvider.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailDescription.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailHappyHours.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailLocation.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailOpenHours.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailRants.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailRaves.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newDescription.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newLocation.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHours.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
-class DetailScrollButtonList extends StatelessWidget {
+class NewScrollButtonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPinnedHeader(
@@ -19,19 +17,19 @@ class DetailScrollButtonList extends StatelessWidget {
         child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: detailPageList.length,
+            itemCount: newPageList.length,
             itemBuilder: (context, index) {
-              return detailScrollButton(
+              return newScrollButton(
                   context: context,
                   index: index,
-                  buttonText: detailPageList[index]);
+                  buttonText: newPageList[index]);
             }),
       ),
     );
   }
 }
 
-Widget detailScrollButton(
+Widget newScrollButton(
     {required BuildContext context,
     int index = 0,
     String buttonText = "Error"}) {
@@ -41,9 +39,9 @@ Widget detailScrollButton(
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: pageNumberProvider.pageNumber == index
-            ? Colors.black
-            : Colors.orange[800],
-        side: BorderSide(width: 1, color: Colors.black),
+            ? Colors.orange[800]
+            : Colors.black,
+        side: BorderSide(width: 1, color: Colors.orange[800]!),
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
@@ -53,8 +51,8 @@ Widget detailScrollButton(
         "$buttonText",
         style: TextStyle(
           color: pageNumberProvider.pageNumber == index
-              ? Colors.orange[800]
-              : Colors.black,
+              ? Colors.black
+              : Colors.orange[800],
         ),
       ),
       onPressed: () {
@@ -64,7 +62,7 @@ Widget detailScrollButton(
   );
 }
 
-class DetailContent extends StatelessWidget {
+class NewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
@@ -78,26 +76,20 @@ Widget selectPage(int pageNumber) {
   Widget selectedPage;
   switch (pageNumber) {
     case 0:
-      selectedPage = DetailDescription();
+      selectedPage = NewDescription();
       break;
     case 1:
-      selectedPage = DetailLocation();
+      selectedPage = newLocation();
       break;
     case 2:
-      selectedPage = DetailOpenHours();
+      selectedPage = newOpenHours();
       break;
     case 3:
-      selectedPage = DetailHappyHours();
-      break;
-    case 4:
-      selectedPage = DetailRants();
-      break;
-    case 5:
-      selectedPage = DetailRaves();
+      selectedPage = newHappyHours();
       break;
 
     default:
-      selectedPage = DetailDescription();
+      selectedPage = newHappyHours();
   }
   return selectedPage;
 }
