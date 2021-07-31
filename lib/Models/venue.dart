@@ -1,9 +1,12 @@
+import 'package:bzoozle/Models/openHours.dart';
+
 class Venue {
   final String venueName;
   final String? venueHostBuilding;
   final String? venueType;
   final String? venueTheme;
   final String? venueDescription;
+  final List<OpenHours>? venueOpenHours;
 
   Venue(
       {required this.venueName,
@@ -11,7 +14,8 @@ class Venue {
       this.venueType,
       this.venueTheme,
       this.venueDescription =
-          "Bzoozle has never been here.  Can help by sharing a description?"});
+          "Bzoozle has never been here.  Can help by sharing a description?",
+      this.venueOpenHours});
 
 //Deconstructs a Json map to a venue object
   factory Venue.fromJson(Map<String, dynamic> json) {
