@@ -79,7 +79,7 @@ Widget selectPage(int pageNumber) {
       selectedPage = NewDescription();
       break;
     case 1:
-      selectedPage = newLocation();
+      selectedPage = NewLocation();
       break;
     case 2:
       selectedPage = newOpenHours();

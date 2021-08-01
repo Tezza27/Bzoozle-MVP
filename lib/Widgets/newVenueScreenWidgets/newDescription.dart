@@ -20,17 +20,17 @@ class _NewDescriptionState extends State<NewDescription> {
   String? dropdownThemeValue;
   String? dropdownHostValue;
 
-  @override
-  void initState() {
-    final venueProvider = Provider.of<VenueProvider>(context, listen: false);
-    if (widget.newVenue != null) {
-      venueProvider.loadVenue(widget.newVenue);
-    } else {
-      venueProvider.loadVenue(null);
-    }
+  // @override
+  // void initState() {
+  //   final venueProvider = Provider.of<VenueProvider>(context, listen: false);
+  //   if (widget.newVenue != null) {
+  //     venueProvider.loadVenue(widget.newVenue);
+  //   } else {
+  //     venueProvider.loadVenue(null);
+  //   }
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -94,25 +94,6 @@ class _NewDescriptionState extends State<NewDescription> {
                             dropdownThemeValue = venueProvider.venueTheme;
                           },
                           value: dropdownThemeValue,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, bottom: 16.0, left: 28.0, right: 28.0),
-                      child: Container(
-                        child: DropdownButton<String>(
-                          isExpanded: true,
-                          hint: Text("Select Host Building"),
-                          items: hostBuildingList.map((hostBuilding) {
-                            return DropdownMenuItem(
-                                value: hostBuilding, child: Text(hostBuilding));
-                          }).toList(),
-                          onChanged: (String? value) {
-                            venueProvider.changeHostBuilding = value!;
-                            dropdownHostValue = venueProvider.venueHostBuilding;
-                          },
-                          value: dropdownHostValue,
                         ),
                       ),
                     ),

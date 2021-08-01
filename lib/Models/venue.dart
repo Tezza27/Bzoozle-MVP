@@ -2,29 +2,47 @@ import 'package:bzoozle/Models/openHours.dart';
 
 class Venue {
   final String venueName;
-  final String? venueHostBuilding;
   final String? venueType;
   final String? venueTheme;
   final String? venueDescription;
+  final String? venueDoorNumber;
+  final String? venueStreet;
+  final String? venueHostBuilding;
+  final String? venueArea;
+  final String? venueCity;
+  final String? venuePostcode;
+  final String? venueDirections;
   final List<OpenHours>? venueOpenHours;
 
   Venue(
       {required this.venueName,
-      this.venueHostBuilding = "",
       this.venueType,
       this.venueTheme,
       this.venueDescription =
           "Bzoozle has never been here.  Can help by sharing a description?",
+      this.venueDoorNumber,
+      this.venueStreet,
+      this.venueHostBuilding = "",
+      this.venueArea,
+      this.venueCity,
+      this.venuePostcode,
+      this.venueDirections,
       this.venueOpenHours});
 
 //Deconstructs a Json map to a venue object
   factory Venue.fromJson(Map<String, dynamic> json) {
     return Venue(
       venueName: json['venueName'],
-      venueHostBuilding: json['venueHostBuilding'],
       venueType: json['venueType'],
       venueTheme: json['venueTheme'],
       venueDescription: json['venueDescription'],
+      venueDoorNumber: json['venueDoorNumber'],
+      venueStreet: json['venueStreet'],
+      venueHostBuilding: json['venueHostBuilding'],
+      venueArea: json['venueArea'],
+      venueCity: json['venueCity'],
+      venuePostcode: json['venuePostcode'],
+      venueDirections: json['venueDirections'],
     );
   }
 
@@ -32,10 +50,16 @@ class Venue {
   Map<String, dynamic> toMap() {
     return {
       'venueName': venueName,
-      'venueHostBuilding': venueHostBuilding,
       'venueType': venueType,
       'venueTheme': venueTheme,
-      'venueDescription': venueDescription
+      'venueDescription': venueDescription,
+      'venueDoornumber': venueDoorNumber,
+      'venueStreet': venueStreet,
+      'venueHostBuilding': venueHostBuilding,
+      'venueArea': venueArea,
+      'venueCity': venueCity,
+      'venuePostcode': venuePostcode,
+      'venueDirections': venueDirections,
     };
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newScrollButtonList.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,8 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+    // pageNumberProvider.changePageNumber(0);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
       backgroundColor: Theme.of(context).accentColor,
@@ -54,28 +56,6 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
               ),
               NewScrollButtonList(),
               NewContent(),
-              // SliverFillRemaining(
-              //   hasScrollBody: false,
-              //   child: Align(
-              //     alignment: Alignment.bottomCenter,
-              //     child: Container(
-              //       color: Theme.of(context).primaryColor,
-              //       child: Padding(
-              //         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //           children: <Widget>[
-              //             ElevatedButton(
-              //               onPressed: () {},
-              //               child: Text("Cancel"),
-              //             ),
-              //             ElevatedButton(onPressed: () {}, child: Text("Save")),
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
           Align(
@@ -95,6 +75,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                         onPressed: () {
                           venueProvider.addVenue();
                           venueProvider.unloadVenue();
+                          pageNumberProvider.changePageNumber(0);
                         },
                         child: Text("Save")),
                   ],
