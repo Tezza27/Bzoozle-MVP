@@ -1,6 +1,7 @@
 import 'package:bzoozle/Lists/areas.dart';
 import 'package:bzoozle/Lists/hostBuildings.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,7 @@ class _NewLocationState extends State<NewLocation> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -153,10 +155,45 @@ class _NewLocationState extends State<NewLocation> {
                           border: OutlineInputBorder(),
                           labelText: 'Directions'),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  pageNumberProvider.changePageNumber(1);
+                                },
+                                child: Text("< Prev")),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Container(
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Text("Cancel"),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  pageNumberProvider.changePageNumber(1);
+                                },
+                                child: Text("Next >")),
+                          ),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: 300.0,
                       width: double.infinity,
-                    )
+                    ),
                   ],
                 ),
               ),

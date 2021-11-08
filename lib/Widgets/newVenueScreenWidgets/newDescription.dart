@@ -1,6 +1,6 @@
-import 'package:bzoozle/Lists/hostbuildings.dart';
 import 'package:bzoozle/Lists/venueTypeLists.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +35,7 @@ class _NewDescriptionState extends State<NewDescription> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -108,6 +109,29 @@ class _NewDescriptionState extends State<NewDescription> {
                             border: OutlineInputBorder(),
                             labelText: 'Venue Description'),
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Expanded(child: Container()),
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text("Cancel"),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  pageNumberProvider.changePageNumber(1);
+                                },
+                                child: Text("Locaction >")),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 300.0,

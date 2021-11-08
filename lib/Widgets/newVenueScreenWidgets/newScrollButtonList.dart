@@ -3,7 +3,7 @@ import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newDescription.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHours.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newLocation.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/newOpenHours.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -67,12 +67,12 @@ class NewContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SliverToBoxAdapter(
-      child: selectPage(pageNumberProvider.pageNumber),
+      child: selectPage(pageNumberProvider.pageNumber, context),
     );
   }
 }
 
-Widget selectPage(int pageNumber) {
+Widget selectPage(int pageNumber, BuildContext context) {
   Widget selectedPage;
   switch (pageNumber) {
     case 0:
@@ -82,7 +82,7 @@ Widget selectPage(int pageNumber) {
       selectedPage = NewLocation();
       break;
     case 2:
-      selectedPage = newOpenHours();
+      selectedPage = NewOpenHours();
       break;
     case 3:
       selectedPage = newHappyHours();

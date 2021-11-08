@@ -19,13 +19,13 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
     // pageNumberProvider.changePageNumber(0);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Stack(
         children: <Widget>[
           CustomScrollView(
             slivers: [
               SliverAppBar(
-                backgroundColor: Theme.of(context).accentColor,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 pinned: true,
                 floating: true,
                 snap: true,
@@ -33,7 +33,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     "Add New Venue",
-                    style: TextStyle(color: Theme.of(context).accentColor),
+                    style: TextStyle(color: Theme.of(context).colorScheme.secondary),
                   ),
                   centerTitle: true,
                   background: DecoratedBox(
