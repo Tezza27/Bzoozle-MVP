@@ -1,3 +1,6 @@
+// ignore_for_file: unnecessary_getters_setters
+
+import 'package:bzoozle/Models/openHours.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:flutter/widgets.dart';
@@ -15,14 +18,9 @@ class VenueProvider with ChangeNotifier {
   String? _venueCity;
   String? _venuePostcode;
   String? _venueDirections;
-
-  // final String? venueDoorNumber;
-  // final String? venueStreet;
-  // final String? venueHostBuilding;
-  // final String? venueArea;
-  // final String? venueCity;
-  // final String? venuePostcode;
-  // final String? venueDirections;
+  List<OpenHours>? _venueOpenHours = List<OpenHours> [
+    OpenHours(o)
+  ];
 
   //Getters
   String get venueName => _venueName;
@@ -36,6 +34,7 @@ class VenueProvider with ChangeNotifier {
   String? get venueCity => _venueCity;
   String? get venuePostcode => _venuePostcode;
   String? get venueDirections => _venueDirections;
+  List<OpenHours>? get venueOpenHours => _venueOpenHours;
   Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
 
   //Setters
@@ -96,6 +95,10 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  set venueOpenHours(List<OpenHours>? value) {
+    _venueOpenHours = value;
+  }
+
   //Methods
 
   loadVenue(Venue? venue) {
@@ -111,6 +114,7 @@ class VenueProvider with ChangeNotifier {
       _venueCity = venue.venueCity;
       _venuePostcode = venue.venuePostcode;
       _venueDirections = venue.venueDirections;
+      _venueOpenHours = venueOpenHours;
     } else {
       _venueName = "New Venue";
       _venueType = null;
@@ -123,10 +127,11 @@ class VenueProvider with ChangeNotifier {
       _venueCity = null;
       _venuePostcode = null;
       _venueDirections = null;
+      _venueOpenHours = null;
     }
   }
 
-  unloadVenue() {
+   unloadVenue() {
     _venueName = "";
     _venueType = null;
     _venueTheme = null;
@@ -138,6 +143,7 @@ class VenueProvider with ChangeNotifier {
     _venueCity = null;
     _venuePostcode = null;
     _venueDirections = null;
+    _venueOpenHours = null;
   }
 
   addVenue() {
@@ -153,6 +159,7 @@ class VenueProvider with ChangeNotifier {
       venueCity: venueCity,
       venuePostcode: venuePostcode,
       venueDirections: venueDirections,
+      venueOpenHours: venueOpenHours,
     );
     firestoreService.addVenue(newVenue);
   }
@@ -170,6 +177,7 @@ class VenueProvider with ChangeNotifier {
       venueCity: venueCity,
       venuePostcode: venuePostcode,
       venueDirections: venueDirections,
+      venueOpenHours: venueOpenHours,
     );
     firestoreService.updateVenue(currentVenue);
   }

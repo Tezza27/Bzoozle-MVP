@@ -1,4 +1,6 @@
+import 'package:bzoozle/Providers/setOpeningTimesProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NewOpenHours extends StatefulWidget {
   const NewOpenHours({Key? key}) : super(key: key);
@@ -8,15 +10,10 @@ class NewOpenHours extends StatefulWidget {
 }
 
 class _NewOpenHoursState extends State<NewOpenHours> {
-  bool? chBoxMonday = false;
-  bool? chBoxTuesday = false;
-  bool? chBoxWednesday = false;
-  bool? chBoxThursday = false;
-  bool? chBoxFriday = false;
-  bool? chBoxSaturday = false;
-  bool? chBoxSunday = false;
   @override
   Widget build(BuildContext context) {
+    final setOpeningTimesProvider =
+        Provider.of<SetOpeningTimesProvider>(context);
     return SingleChildScrollView(
       child: Container(
         child: Center(
@@ -38,53 +35,52 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                           padding:
                               const EdgeInsets.only(left: 16.0, right: 16.0),
                           child: Checkbox(
-                              value: chBoxMonday,
+                              value: setOpeningTimesProvider.chBoxMonday,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
-                              onChanged: (bool? chBoxMondayNewVal) {
-                                setState(() {
-                                  chBoxMonday = chBoxMondayNewVal;
-                                });
+                              onChanged: (bool? newValue) {
+                                setOpeningTimesProvider.changeMonday(newValue!);
                               }),
                         ),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "MONDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "MONDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.mondayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.mondayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -101,52 +97,51 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxTuesday,
+                            value: setOpeningTimesProvider.chBoxTuesday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxTuesdayNewVal) {
-                              setState(() {
-                                chBoxTuesday = chBoxTuesdayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider.changeTuesday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "TUESDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "TUESDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.tuesdayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.tuesdayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -163,52 +158,52 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxWednesday,
+                            value: setOpeningTimesProvider.chBoxWednesday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxWednesdayNewVal) {
-                              setState(() {
-                                chBoxWednesday = chBoxWednesdayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider
+                                  .changeWednesday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "WEDNESDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "WEDNESDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.wednesdayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.wednesdayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -225,52 +220,51 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxThursday,
+                            value: setOpeningTimesProvider.chBoxThursday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxThursdayNewVal) {
-                              setState(() {
-                                chBoxThursday = chBoxThursdayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider.changeThursday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "THURSDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "THURSDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.thursdayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.thursdayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -287,52 +281,51 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxFriday,
+                            value: setOpeningTimesProvider.chBoxFriday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxFridayNewVal) {
-                              setState(() {
-                                chBoxFriday = chBoxFridayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider.changeFriday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "FRIDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "FRIDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.fridayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.fridayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -349,52 +342,51 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxSaturday,
+                            value: setOpeningTimesProvider.chBoxSaturday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxSaturdayNewVal) {
-                              setState(() {
-                                chBoxSaturday = chBoxSaturdayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider.changeSaturday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "SATURDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "SATURDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.saturdayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.saturdayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -411,52 +403,51 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: chBoxSunday,
+                            value: setOpeningTimesProvider.chBoxSunday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
-                            onChanged: (bool? chBoxSundayNewVal) {
-                              setState(() {
-                                chBoxSunday = chBoxSundayNewVal;
-                              });
+                            onChanged: (bool? newValue) {
+                              setOpeningTimesProvider.changeSunday(newValue!);
                             }),
                       ),
                       Expanded(
-                          flex: 4,
-                          child: Container(
-                            child: Text(
-                              "SUNDAY",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 6,
+                        child: Text(
+                          "SUNDAY",
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                        ),
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
                       Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "10:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.sundayOpenTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 1),
+                      Text(
+                        " - ",
+                        style: TextStyle(color: Theme.of(context).splashColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Spacer(flex: 1),
                       Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              " - ",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
-                      Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              "02:00",
-                              style: TextStyle(
-                                  color: Theme.of(context).splashColor),
-                            ),
-                          )),
+                        flex: 4,
+                        child: Text(
+                          setOpeningTimesProvider.sundayCloseTime,
+                          style:
+                              TextStyle(color: Theme.of(context).splashColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Spacer(flex: 2),
                     ],
                   ),
                 ),

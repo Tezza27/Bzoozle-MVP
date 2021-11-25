@@ -17,13 +17,13 @@ class FirestoreService {
 
 //Update Venue
   Future<void>? updateVenue(Venue venue) {
-    //   var options = SetOptions(
-    //       merge:
-    //           true); //ensures that any existing fields are kept in the database
-    //   return _db
-    //       .collection('venues')
-    //       .doc(venue.venueId)
-    //       .set(venue.toMap(), options);
+      var options = SetOptions(
+          merge:
+              true); //ensures that any existing fields are kept in the database
+      return _db
+          .collection('venues')
+          .doc('id')
+          .set(venue.toMap(), options);
   }
 
 // Delete venue

@@ -1,6 +1,7 @@
 import 'package:bzoozle/Models/openHours.dart';
 
 class Venue {
+  final String? id;
   final String venueName;
   final String? venueType;
   final String? venueTheme;
@@ -15,7 +16,8 @@ class Venue {
   final List<OpenHours>? venueOpenHours;
 
   Venue(
-      {required this.venueName,
+      {this.id,
+      required this.venueName,
       this.venueType,
       this.venueTheme,
       this.venueDescription =
@@ -32,23 +34,25 @@ class Venue {
 //Deconstructs a Json map to a venue object
   factory Venue.fromJson(Map<String, dynamic> json) {
     return Venue(
-      venueName: json['venueName'],
-      venueType: json['venueType'],
-      venueTheme: json['venueTheme'],
-      venueDescription: json['venueDescription'],
-      venueDoorNumber: json['venueDoorNumber'],
-      venueStreet: json['venueStreet'],
-      venueHostBuilding: json['venueHostBuilding'],
-      venueArea: json['venueArea'],
-      venueCity: json['venueCity'],
-      venuePostcode: json['venuePostcode'],
-      venueDirections: json['venueDirections'],
-    );
+        id: json['id'],
+        venueName: json['venueName'],
+        venueType: json['venueType'],
+        venueTheme: json['venueTheme'],
+        venueDescription: json['venueDescription'],
+        venueDoorNumber: json['venueDoorNumber'],
+        venueStreet: json['venueStreet'],
+        venueHostBuilding: json['venueHostBuilding'],
+        venueArea: json['venueArea'],
+        venueCity: json['venueCity'],
+        venuePostcode: json['venuePostcode'],
+        venueDirections: json['venueDirections'],
+        venueOpenHours: json['venueOpenhours']);
   }
 
 //Constructs a Json map from a venue object
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'venueName': venueName,
       'venueType': venueType,
       'venueTheme': venueTheme,
@@ -60,6 +64,7 @@ class Venue {
       'venueCity': venueCity,
       'venuePostcode': venuePostcode,
       'venueDirections': venueDirections,
+      'venueOpenHours': venueOpenHours,
     };
   }
 }
