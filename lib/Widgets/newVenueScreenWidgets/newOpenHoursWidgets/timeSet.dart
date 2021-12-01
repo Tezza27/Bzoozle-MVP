@@ -1,4 +1,4 @@
-import 'package:bzoozle/Providers/setOpeningTimesProvider.dart';
+import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +13,7 @@ class TimeSetScreen extends StatefulWidget {
 class _TimeSetScreenState extends State<TimeSetScreen> {
   @override
   Widget build(BuildContext context) {
-    final setOpeningTimesProvider =
-        Provider.of<SetOpeningTimesProvider>(context);
+    final venueProvider = Provider.of<VenueProvider>(context);
     // bool _chBox24Open = setOpeningTimesProvider.chBox24Open;
     // bool _chBox24Closed = setOpeningTimesProvider.chBox24Closed;
     // bool? _chBoxNoOpen = setOpeningTimesProvider.chBoxNoOpen;
@@ -59,12 +58,12 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Checkbox(
-                              value: setOpeningTimesProvider.chBox24Open,
+                              value: venueProvider.chBox24Open,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
                               onChanged: (bool? newValue) {
-                                setOpeningTimesProvider.change24Open(newValue!);
+                                venueProvider.change24Open(newValue!);
                               }),
                           Text("Open all day",
                               style: TextStyle(color: Colors.black))
@@ -89,21 +88,19 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.white)),
                                 onPressed: () async {
-                                  if (setOpeningTimesProvider
-                                              .selectedOpenTime !=
+                                  if (venueProvider.selectedOpenTime !=
                                           "Open" &&
-                                      setOpeningTimesProvider
-                                              .selectedOpenTime !=
+                                      venueProvider.selectedOpenTime !=
                                           "Closed") {
-                                    setOpeningTimesProvider
-                                        .changeSelectedOpenTime(await _show(
-                                            startTime: setOpeningTimesProvider
+                                    venueProvider.changeSelectedOpenTime(
+                                        await _show(
+                                            startTime: venueProvider
                                                 .selectedOpenTime));
                                   }
                                 },
                                 child: Center(
                                     child: Text(
-                                  setOpeningTimesProvider.selectedOpenTime,
+                                  venueProvider.selectedOpenTime,
                                   style: TextStyle(
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.bold),
@@ -117,12 +114,12 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Checkbox(
-                              value: setOpeningTimesProvider.chBoxNoOpen,
+                              value: venueProvider.chBoxNoOpen,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
                               onChanged: (bool? newValue) {
-                                setOpeningTimesProvider.changeNoOpen(newValue!);
+                                venueProvider.changeNoOpen(newValue!);
                               }),
                           Text("No Opening Time",
                               style: TextStyle(color: Colors.black))
@@ -136,13 +133,12 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Checkbox(
-                              value: setOpeningTimesProvider.chBox24Closed,
+                              value: venueProvider.chBox24Closed,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
                               onChanged: (bool? newValue) {
-                                setOpeningTimesProvider
-                                    .change24Closed(newValue!);
+                                venueProvider.change24Closed(newValue!);
                               }),
                           Text("Closed all day",
                               style: TextStyle(color: Colors.black))
@@ -167,21 +163,19 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                                     backgroundColor: MaterialStateProperty.all(
                                         Colors.white)),
                                 onPressed: () async {
-                                  if (setOpeningTimesProvider
-                                              .selectedCloseTime !=
+                                  if (venueProvider.selectedCloseTime !=
                                           "Open" &&
-                                      setOpeningTimesProvider
-                                              .selectedCloseTime !=
+                                      venueProvider.selectedCloseTime !=
                                           "Closed") {
-                                    setOpeningTimesProvider
-                                        .changeSelectedCloseTime(await _show(
-                                            startTime: setOpeningTimesProvider
+                                    venueProvider.changeSelectedCloseTime(
+                                        await _show(
+                                            startTime: venueProvider
                                                 .selectedCloseTime));
                                   }
                                 },
                                 child: Center(
                                     child: Text(
-                                  setOpeningTimesProvider.selectedCloseTime,
+                                  venueProvider.selectedCloseTime,
                                   //setOpeningTimesProvider.selectedCloseTime!,
                                   style: TextStyle(
                                       fontSize: 24.0,
@@ -196,13 +190,12 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Checkbox(
-                              value: setOpeningTimesProvider.chBoxNoClose,
+                              value: venueProvider.chBoxNoClose,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
                               onChanged: (bool? newValue) {
-                                setOpeningTimesProvider
-                                    .changeNoClose(newValue!);
+                                venueProvider.changeNoClose(newValue!);
                               }),
                           Text("No Closing Time",
                               style: TextStyle(color: Colors.black))
@@ -239,7 +232,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                       width: 100.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          setOpeningTimesProvider.finishTimeSetting();
+                          venueProvider.finishTimeSetting();
                           Navigator.pop(context);
                         },
                         child: Text(
@@ -263,7 +256,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
   }
 
   Future<String> _show({String? startTime}) async {
-    TimeOfDay? result = startTime == null
+    TimeOfDay? result = startTime == null || startTime == "?"
         ? TimeOfDay.now()
         : TimeOfDay(
             hour: int.parse(startTime.split(":")[0]),

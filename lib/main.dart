@@ -1,4 +1,3 @@
-import 'package:bzoozle/Providers/setOpeningTimesProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:bzoozle/Screens/mainMenu.dart';
 import 'package:bzoozle/Screens/newVenue.dart';
@@ -33,8 +32,6 @@ class _MyAppState extends State<MyApp> {
             create: (context) => VenueProvider()),
         ChangeNotifierProvider<PageNumberProvider>(
             create: (context) => PageNumberProvider()),
-        ChangeNotifierProvider<SetOpeningTimesProvider>(
-            create: (context) => SetOpeningTimesProvider()),
       ],
       child: MaterialApp(
           title: 'Bzoozle',

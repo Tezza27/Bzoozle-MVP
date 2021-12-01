@@ -1,4 +1,4 @@
-import 'package:bzoozle/Providers/setOpeningTimesProvider.dart';
+import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +12,10 @@ class NewOpenHours extends StatefulWidget {
 class _NewOpenHoursState extends State<NewOpenHours> {
   @override
   Widget build(BuildContext context) {
-    final setOpeningTimesProvider =
-        Provider.of<SetOpeningTimesProvider>(context);
+    final venueProvider = Provider.of<VenueProvider>(context);
     return SingleChildScrollView(
       child: Container(
+        width: MediaQuery.of(context).size.width,
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,12 +35,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                           padding:
                               const EdgeInsets.only(left: 16.0, right: 16.0),
                           child: Checkbox(
-                              value: setOpeningTimesProvider.chBoxMonday,
+                              value: venueProvider.chBoxMonday,
                               checkColor: Colors.black,
                               // checkColor: Theme.of(context).splashColor,
                               // fillColor: Colors.white,
                               onChanged: (bool? newValue) {
-                                setOpeningTimesProvider.changeMonday(newValue!);
+                                venueProvider.changeMonday(newValue!);
                               }),
                         ),
                       ),
@@ -58,7 +58,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.mondayOpenTime,
+                          venueProvider.openTime0,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -74,7 +74,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.mondayCloseTime,
+                          venueProvider.closeTime0,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -97,12 +97,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxTuesday,
+                            value: venueProvider.chBoxTuesday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider.changeTuesday(newValue!);
+                              venueProvider.changeTuesday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -119,7 +119,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.tuesdayOpenTime,
+                          venueProvider.openTime1,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -135,7 +135,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.tuesdayCloseTime,
+                          venueProvider.closeTime1,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -158,13 +158,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxWednesday,
+                            value: venueProvider.chBoxWednesday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider
-                                  .changeWednesday(newValue!);
+                              venueProvider.changeWednesday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -181,7 +180,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.wednesdayOpenTime,
+                          venueProvider.openTime2,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -197,7 +196,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.wednesdayCloseTime,
+                          venueProvider.closeTime2,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -220,12 +219,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxThursday,
+                            value: venueProvider.chBoxThursday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider.changeThursday(newValue!);
+                              venueProvider.changeThursday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -242,7 +241,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.thursdayOpenTime,
+                          venueProvider.openTime3,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -258,7 +257,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.thursdayCloseTime,
+                          venueProvider.closeTime3,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -281,12 +280,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxFriday,
+                            value: venueProvider.chBoxFriday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider.changeFriday(newValue!);
+                              venueProvider.changeFriday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -303,7 +302,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.fridayOpenTime,
+                          venueProvider.openTime4,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -319,7 +318,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.fridayCloseTime,
+                          venueProvider.closeTime4,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -342,12 +341,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxSaturday,
+                            value: venueProvider.chBoxSaturday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider.changeSaturday(newValue!);
+                              venueProvider.changeSaturday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -364,7 +363,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.saturdayOpenTime,
+                          venueProvider.openTime5,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -380,7 +379,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.saturdayCloseTime,
+                          venueProvider.closeTime5,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -403,12 +402,12 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         height: 40.0,
                         width: 40.0,
                         child: Checkbox(
-                            value: setOpeningTimesProvider.chBoxSunday,
+                            value: venueProvider.chBoxSunday,
                             checkColor: Colors.black,
                             // checkColor: Theme.of(context).splashColor,
                             // fillColor: Colors.white,
                             onChanged: (bool? newValue) {
-                              setOpeningTimesProvider.changeSunday(newValue!);
+                              venueProvider.changeSunday(newValue!);
                             }),
                       ),
                       Expanded(
@@ -425,7 +424,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.sundayOpenTime,
+                          venueProvider.openTime6,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
@@ -441,7 +440,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          setOpeningTimesProvider.sundayCloseTime,
+                          venueProvider.closeTime6,
                           style:
                               TextStyle(color: Theme.of(context).splashColor),
                           textAlign: TextAlign.center,
