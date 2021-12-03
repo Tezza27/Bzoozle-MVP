@@ -1,6 +1,6 @@
-import 'package:bzoozle/Lists/hostbuildings.dart';
 import 'package:bzoozle/Lists/venueTypeLists.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,21 +20,22 @@ class _NewDescriptionState extends State<NewDescription> {
   String? dropdownThemeValue;
   String? dropdownHostValue;
 
-  @override
-  void initState() {
-    final venueProvider = Provider.of<VenueProvider>(context, listen: false);
-    if (widget.newVenue != null) {
-      venueProvider.loadVenue(widget.newVenue);
-    } else {
-      venueProvider.loadVenue(null);
-    }
+  // @override
+  // void initState() {
+  //   final venueProvider = Provider.of<VenueProvider>(context, listen: false);
+  //   if (widget.newVenue != null) {
+  //     venueProvider.loadVenue(widget.newVenue);
+  //   } else {
+  //     venueProvider.loadVenue(null);
+  //   }
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -97,25 +98,6 @@ class _NewDescriptionState extends State<NewDescription> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, bottom: 16.0, left: 28.0, right: 28.0),
-                      child: Container(
-                        child: DropdownButton<String>(
-                          isExpanded: true,
-                          hint: Text("Select Host Building"),
-                          items: hostBuildingList.map((hostBuilding) {
-                            return DropdownMenuItem(
-                                value: hostBuilding, child: Text(hostBuilding));
-                          }).toList(),
-                          onChanged: (String? value) {
-                            venueProvider.changeHostBuilding = value!;
-                            dropdownHostValue = venueProvider.venueHostBuilding;
-                          },
-                          value: dropdownHostValue,
-                        ),
-                      ),
-                    ),
                     Container(
                       child: TextFormField(
                         controller: venueDescriptionController,
@@ -127,6 +109,29 @@ class _NewDescriptionState extends State<NewDescription> {
                             border: OutlineInputBorder(),
                             labelText: 'Venue Description'),
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Expanded(child: Container()),
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text("Cancel"),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  pageNumberProvider.changePageNumber(1);
+                                },
+                                child: Text("Locaction >")),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 300.0,

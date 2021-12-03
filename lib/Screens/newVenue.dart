@@ -1,4 +1,6 @@
+import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Screens/mainMenu.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newScrollButtonList.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,16 +16,15 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
-    // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Stack(
         children: <Widget>[
           CustomScrollView(
             slivers: [
               SliverAppBar(
-                backgroundColor: Theme.of(context).accentColor,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 pinned: true,
                 floating: true,
                 snap: true,
@@ -31,7 +32,8 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     "Add New Venue",
-                    style: TextStyle(color: Theme.of(context).accentColor),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary),
                   ),
                   centerTitle: true,
                   background: DecoratedBox(
@@ -54,28 +56,6 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
               ),
               NewScrollButtonList(),
               NewContent(),
-              // SliverFillRemaining(
-              //   hasScrollBody: false,
-              //   child: Align(
-              //     alignment: Alignment.bottomCenter,
-              //     child: Container(
-              //       color: Theme.of(context).primaryColor,
-              //       child: Padding(
-              //         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-              //         child: Row(
-              //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //           children: <Widget>[
-              //             ElevatedButton(
-              //               onPressed: () {},
-              //               child: Text("Cancel"),
-              //             ),
-              //             ElevatedButton(onPressed: () {}, child: Text("Save")),
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
           Align(
@@ -88,13 +68,19 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        venueProvider.unloadVenue();
+                        pageNumberProvider.changePageNumber(0);
+                      },
                       child: Text("Cancel"),
                     ),
                     ElevatedButton(
                         onPressed: () {
                           venueProvider.addVenue();
                           venueProvider.unloadVenue();
+                          pageNumberProvider.changePageNumber(0);
+                          Navigator.pushNamed(
+                              context, MainMenuScreen.routeName);
                         },
                         child: Text("Save")),
                   ],

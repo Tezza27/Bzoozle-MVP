@@ -61,13 +61,13 @@ Widget listCard(BuildContext context, Venue venue) {
                               fontSize: 24,
                               fontWeight: FontWeight.bold),
                         ),
-                        venue.venueHostBuilding != null
-                            ? Text(
-                                "${venue.venueHostBuilding}",
-                                style: TextStyle(
-                                    color: Colors.orange[800]!, fontSize: 18),
-                              )
-                            : Container(),
+                        // venue.venueHostBuilding != null
+                        //     ? Text(
+                        //         "${venue.venueHostBuilding}",
+                        //         style: TextStyle(
+                        //             color: Colors.orange[800]!, fontSize: 18),
+                        // )
+                        //: Container(),
                       ],
                     ),
                   ),

@@ -9,7 +9,7 @@ class MainMenuScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-          backgroundColor: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           title: Text("BZOOZLE"),
           centerTitle: true),
       body: Container(
