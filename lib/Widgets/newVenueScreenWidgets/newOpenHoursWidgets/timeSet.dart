@@ -33,22 +33,14 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
           title: Text("Set Opening Time"),
           centerTitle: true),
       body: Container(
+        width: MediaQuery.of(context).size.width,
         color: Colors.orange[800],
         child: Padding(
           padding: const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "Set the opening and closing times for:",
-                style: TextStyle(color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday & Sunday",
-                style: TextStyle(color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
+              Text(venueProvider.timeSetMessage),
               Row(
                 //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

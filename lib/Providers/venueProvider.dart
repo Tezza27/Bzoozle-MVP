@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_getters_setters
-
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:flutter/widgets.dart';
@@ -28,6 +26,9 @@ class VenueProvider with ChangeNotifier {
   bool _chBox24Closed = false;
   bool _chBoxNoOpen = false;
   bool _chBoxNoClose = false;
+  String _timeSetMessage = "Set the opening and closing times for ";
+  int _countOpenTimeSetTrue = 0;
+  int _messageCount = 0;
   String _originalOpenTime = "?";
   String _originalCloseTime = "?";
   String _selectedOpenTime = "00:00";
@@ -70,6 +71,9 @@ class VenueProvider with ChangeNotifier {
   bool get chBox24Closed => _chBox24Closed;
   bool get chBoxNoOpen => _chBoxNoOpen;
   bool get chBoxNoClose => _chBoxNoClose;
+  String get timeSetMessage => _timeSetMessage;
+  int get countOpenTimeSetTrue => _countOpenTimeSetTrue;
+  int get messageCount => _messageCount;
   String get originalOpenTime => _originalOpenTime;
   String get originalCloseTime => _originalCloseTime;
   String get selectedOpenTime => _selectedOpenTime;
@@ -257,6 +261,21 @@ class VenueProvider with ChangeNotifier {
 
   set chBoxSunday(bool value) {
     _chBoxSunday = value;
+    notifyListeners();
+  }
+
+  set timeSetMessage(String value) {
+    _timeSetMessage = value;
+    notifyListeners();
+  }
+
+  set countOpenTimeSetTrue(int value) {
+    _countOpenTimeSetTrue = value;
+    notifyListeners();
+  }
+
+  set messageCount(int value) {
+    _messageCount = value;
     notifyListeners();
   }
 
@@ -575,5 +594,60 @@ class VenueProvider with ChangeNotifier {
       chBoxSunday = false;
     }
     notifyListeners();
+  }
+
+  countOpenTimesTrue() {
+    countOpenTimeSetTrue = 0;
+    if (chBoxMonday) countOpenTimeSetTrue++;
+    if (chBoxTuesday) countOpenTimeSetTrue++;
+    if (chBoxWednesday) countOpenTimeSetTrue++;
+    if (chBoxThursday) countOpenTimeSetTrue++;
+    if (chBoxFriday) countOpenTimeSetTrue++;
+    if (chBoxSaturday) countOpenTimeSetTrue++;
+    if (chBoxSunday) countOpenTimeSetTrue++;
+    notifyListeners();
+  }
+
+  generateTimeSetText() {
+    timeSetMessage = "Set the opening and closing times for ";
+    countOpenTimesTrue();
+    if (countOpenTimeSetTrue != 0) {
+      messageCount = 0;
+      if (chBoxMonday) {
+        alterMessage("Monday");
+      }
+      if (chBoxTuesday) {
+        alterMessage("Tuesday");
+      }
+      if (chBoxWednesday) {
+        alterMessage("Wednesday");
+      }
+      if (chBoxThursday) {
+        alterMessage("Thursday");
+      }
+      if (chBoxFriday) {
+        alterMessage("Friday");
+      }
+      if (chBoxSaturday) {
+        alterMessage("Saturday");
+      }
+      if (chBoxSunday) {
+        alterMessage("Sunday");
+      }
+    }
+    notifyListeners();
+  }
+
+  alterMessage(String dayToAdd) {
+    messageCount++;
+    if (messageCount == 1) {
+      timeSetMessage = "$timeSetMessage $dayToAdd";
+    } else {
+      if (messageCount == countOpenTimeSetTrue) {
+        timeSetMessage = "$timeSetMessage & $dayToAdd";
+      } else {
+        timeSetMessage = "$timeSetMessage, $dayToAdd";
+      }
+    }
   }
 }
