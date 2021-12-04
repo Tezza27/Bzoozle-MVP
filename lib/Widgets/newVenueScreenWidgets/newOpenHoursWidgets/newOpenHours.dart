@@ -1,6 +1,7 @@
 import 'package:bzoozle/Providers/venueProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class NewOpenHours extends StatefulWidget {
   const NewOpenHours({Key? key}) : super(key: key);
@@ -462,15 +463,15 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                         venueProvider.generateTimeSetText();
                         if (venueProvider.countOpenTimeSetTrue > 0) {
                           Navigator.pushNamed(context, '/timeset');
-                          // } else {
-                          //   Fluttertoast.showToast(
-                          //       msg:
-                          //           "Please indicate the days that you want to set the opening and closing times for by clicking on the appropriate check boxes.",
-                          //       toastLength: Toast.LENGTH_SHORT,
-                          //       gravity: ToastGravity.BOTTOM,
-                          //       backgroundColor: Colors.orange[800],
-                          //       textColor: Colors.black,
-                          //       fontSize: 16.0);
+                        } else {
+                          Fluttertoast.showToast(
+                              msg:
+                                  "Please check the boxes of the days that you want to set the business hours for.",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.CENTER,
+                              backgroundColor: Colors.white,
+                              textColor: Colors.black,
+                              fontSize: 16.0);
                         }
                       },
                       child: Text(
