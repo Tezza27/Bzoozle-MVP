@@ -459,7 +459,19 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                     width: 100.0,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/timeset');
+                        venueProvider.generateTimeSetText();
+                        if (venueProvider.countOpenTimeSetTrue > 0) {
+                          Navigator.pushNamed(context, '/timeset');
+                          // } else {
+                          //   Fluttertoast.showToast(
+                          //       msg:
+                          //           "Please indicate the days that you want to set the opening and closing times for by clicking on the appropriate check boxes.",
+                          //       toastLength: Toast.LENGTH_SHORT,
+                          //       gravity: ToastGravity.BOTTOM,
+                          //       backgroundColor: Colors.orange[800],
+                          //       textColor: Colors.black,
+                          //       fontSize: 16.0);
+                        }
                       },
                       child: Text(
                         "Set Times",
