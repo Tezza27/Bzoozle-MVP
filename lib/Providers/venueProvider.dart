@@ -1,10 +1,11 @@
+import 'package:bzoozle/Models/happyHourSession.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:flutter/widgets.dart';
 
 class VenueProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
-  String _venueName = "Venue Name";
+  String _venueName = "";
   String? _venueType;
   String? _venueTheme;
   String? _venueDescription;
@@ -47,6 +48,7 @@ class VenueProvider with ChangeNotifier {
   String _closeTime5 = "?";
   String _openTime6 = "?";
   String _closeTime6 = "?";
+  List<HappyHourSession> _happyHours = [];
 
   //Getters
   String get venueName => _venueName;
@@ -92,6 +94,7 @@ class VenueProvider with ChangeNotifier {
   String get closeTime5 => _closeTime5;
   String get openTime6 => _openTime6;
   String get closeTime6 => _closeTime6;
+  List<HappyHourSession> get happyHours => _happyHours;
   Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
 
   //Setters
@@ -314,6 +317,10 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  set happyHours(List<HappyHourSession> value) {
+    _happyHours = value;
+  }
+
   //Methods
 
   loadVenue(Venue? venue) {
@@ -462,6 +469,7 @@ class VenueProvider with ChangeNotifier {
     firestoreService.updateVenue(currentVenue);
   }
 
+//Opening Times Methods
   removeVenue(String venueId) {
     firestoreService.removeVenue(venueId);
   }
@@ -649,5 +657,18 @@ class VenueProvider with ChangeNotifier {
         timeSetMessage = "$timeSetMessage, $dayToAdd";
       }
     }
+  }
+
+  //Happy Hour Sessions Methods
+
+  addHHSession(HappyHourSession session) {
+    happyHours.add(HappyHourSession(
+        day: session.day,
+        startTime: session.startTime,
+        duration: session.duration,
+        offerSet: session.offerSet));
+    happyHours.sort();
+    //happyHours.sort((a,b)=>a.day.compareTo(b.day));
+    notifyListeners();
   }
 }
