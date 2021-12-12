@@ -1,7 +1,7 @@
 import 'package:bzoozle/Lists/pagesList.dart';
 import 'package:bzoozle/Providers/pageNumberProvider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newDescription.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/newHappyHours.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newLocation.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/newOpenHours.dart';
 import 'package:flutter/material.dart';
@@ -85,11 +85,11 @@ Widget selectPage(int pageNumber, BuildContext context) {
       selectedPage = NewOpenHours();
       break;
     case 3:
-      selectedPage = newHappyHours();
+      selectedPage = NewHappyHours();
       break;
 
     default:
-      selectedPage = newHappyHours();
+      selectedPage = NewHappyHours();
   }
   return selectedPage;
 }
