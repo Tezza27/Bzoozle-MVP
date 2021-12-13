@@ -82,14 +82,14 @@ Widget selectPage(int pageNumber, BuildContext context) {
       selectedPage = NewLocation();
       break;
     case 2:
-      selectedPage = NewOpenHours();
+      selectedPage = NewOpenHoursScreen();
       break;
     case 3:
-      selectedPage = NewHappyHours();
+      selectedPage = NewHappyHoursScreen();
       break;
 
     default:
-      selectedPage = NewHappyHours();
+      selectedPage = NewHappyHoursScreen();
   }
   return selectedPage;
 }
