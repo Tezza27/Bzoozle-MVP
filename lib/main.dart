@@ -3,6 +3,9 @@ import 'package:bzoozle/Screens/mainMenu.dart';
 import 'package:bzoozle/Screens/newVenue.dart';
 import 'package:bzoozle/Screens/venueDetail.dart';
 import 'package:bzoozle/Screens/venueListing.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/addHHSession.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/newHappyHours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/newOpenHours.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -68,6 +71,9 @@ class _MyAppState extends State<MyApp> {
             ListingScreen.routeName: (context) => ListingScreen(),
             VenueDetailScreen.routeName: (context) => VenueDetailScreen(),
             TimeSetScreen.routeName: (context) => TimeSetScreen(),
+            NewOpenHoursScreen.routeName: (context) => NewOpenHoursScreen(),
+            NewHappyHoursScreen.routeName: (context) => NewHappyHoursScreen(),
+            AddHHSessionScreen.routeName: (context) => AddHHSessionScreen(),
           },
           home: Container(
             child: FutureBuilder(

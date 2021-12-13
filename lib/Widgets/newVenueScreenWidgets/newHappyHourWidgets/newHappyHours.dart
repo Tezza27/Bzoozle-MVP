@@ -1,16 +1,18 @@
 import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/addHHSession.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/happyHourCard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class NewHappyHours extends StatefulWidget {
-  const NewHappyHours({Key? key}) : super(key: key);
+class NewHappyHoursScreen extends StatefulWidget {
+  const NewHappyHoursScreen({Key? key}) : super(key: key);
+  static const String routeName = '/happyhours';
 
   @override
-  _NewHappyHoursState createState() => _NewHappyHoursState();
+  _NewHappyHoursScreenState createState() => _NewHappyHoursScreenState();
 }
 
-class _NewHappyHoursState extends State<NewHappyHours> {
+class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
@@ -55,7 +57,10 @@ class _NewHappyHoursState extends State<NewHappyHours> {
                     height: 40.0,
                     width: 100.0,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, AddHHSessionScreen.routeName);
+                      },
                       child: Text(
                         "Add Session",
                         style: TextStyle(color: Colors.orange),

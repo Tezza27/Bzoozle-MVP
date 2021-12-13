@@ -1,16 +1,18 @@
 import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/timeSet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class NewOpenHours extends StatefulWidget {
-  const NewOpenHours({Key? key}) : super(key: key);
+class NewOpenHoursScreen extends StatefulWidget {
+  const NewOpenHoursScreen({Key? key}) : super(key: key);
+  static const String routeName = '/openhours';
 
   @override
-  _NewOpenHoursState createState() => _NewOpenHoursState();
+  _NewOpenHoursScreenState createState() => _NewOpenHoursScreenState();
 }
 
-class _NewOpenHoursState extends State<NewOpenHours> {
+class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
@@ -462,7 +464,7 @@ class _NewOpenHoursState extends State<NewOpenHours> {
                       onPressed: () {
                         venueProvider.generateTimeSetText();
                         if (venueProvider.countOpenTimeSetTrue > 0) {
-                          Navigator.pushNamed(context, '/timeset');
+                          Navigator.pushNamed(context, TimeSetScreen.routeName);
                         } else {
                           Fluttertoast.showToast(
                               msg:
