@@ -9,11 +9,11 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
       now.year,
       now.month,
       now.day,
-      int.parse(happyHour.startTime.substring(0, 2)),
-      int.parse(happyHour.startTime.substring(3, 2)));
+      int.parse(happyHour.startTime.split(":")[0]),
+      int.parse(happyHour.startTime.split(":")[1]));
   DateTime _endTime = _startTime.add(Duration(minutes: happyHour.duration));
-  String startTimeHH = DateFormat('kk:mm').format(_startTime);
-  String endTimeHH = DateFormat('kk:mm').format(_endTime);
+  String startTimeHH = DateFormat('HH:mm').format(_startTime);
+  String endTimeHH = DateFormat('HH:mm').format(_endTime);
   String dayHH = weekDays[int.parse(happyHour.day)];
   return Padding(
     padding:

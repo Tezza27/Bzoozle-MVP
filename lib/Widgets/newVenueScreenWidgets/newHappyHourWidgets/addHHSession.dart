@@ -222,6 +222,13 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                       width: 100.0,
                       child: ElevatedButton(
                         onPressed: () {
+                          venueProvider.changeHHMonday(false);
+                          venueProvider.changeHHTuesday(false);
+                          venueProvider.changeHHWednesday(false);
+                          venueProvider.changeHHThursday(false);
+                          venueProvider.changeHHFriday(false);
+                          venueProvider.changeHHSaturday(false);
+                          venueProvider.changeHHSunday(false);
                           Navigator.pop(context);
                         },
                         child: Text(

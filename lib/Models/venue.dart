@@ -1,3 +1,5 @@
+import 'package:bzoozle/Models/happyHourSession.dart';
+
 class OpenHours {
   final String openDay;
   final String openTime;
@@ -36,6 +38,7 @@ class Venue {
   final String? closeTime5;
   final String? openTime6;
   final String? closeTime6;
+  final List<HappyHourSession>? happyHours;
 
   Venue({
     required this.venueName,
@@ -64,6 +67,7 @@ class Venue {
     this.closeTime5,
     this.openTime6,
     this.closeTime6,
+    this.happyHours,
   });
 
   Map<String, dynamic> toMap() => {
@@ -92,6 +96,7 @@ class Venue {
         'closeTime5': this.closeTime5,
         'openTime6': this.openTime6,
         'closeTime6': this.closeTime6,
+        'happyHours': this.happyHours,
       };
 
 //Deconstructs a Json map to a venue object
@@ -122,6 +127,7 @@ class Venue {
       closeTime5: json['closeTime5'],
       openTime6: json['openTime6'],
       closeTime6: json['closeTime6'],
+      happyHours: json['happyHours'],
     );
   }
 
