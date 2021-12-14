@@ -1,6 +1,7 @@
 import 'package:bzoozle/Models/happyHourSession.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class VenueProvider with ChangeNotifier {
@@ -49,6 +50,13 @@ class VenueProvider with ChangeNotifier {
   String _openTime6 = "?";
   String _closeTime6 = "?";
   List<HappyHourSession> _happyHours = [];
+  bool _chBoxHHMonday = false;
+  bool _chBoxHHTuesday = false;
+  bool _chBoxHHWednesday = false;
+  bool _chBoxHHThursday = false;
+  bool _chBoxHHFriday = false;
+  bool _chBoxHHSaturday = false;
+  bool _chBoxHHSunday = false;
 
   //Getters
   String get venueName => _venueName;
@@ -95,6 +103,13 @@ class VenueProvider with ChangeNotifier {
   String get openTime6 => _openTime6;
   String get closeTime6 => _closeTime6;
   List<HappyHourSession> get happyHours => _happyHours;
+  bool get chBoxHHMonday => _chBoxHHMonday;
+  bool get chBoxHHTuesday => _chBoxHHTuesday;
+  bool get chBoxHHWednesday => _chBoxHHWednesday;
+  bool get chBoxHHThursday => _chBoxHHThursday;
+  bool get chBoxHHFriday => _chBoxHHFriday;
+  bool get chBoxHHSaturday => _chBoxHHSaturday;
+  bool get chBoxHHSunday => _chBoxHHSunday;
   Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
 
   //Setters
@@ -321,6 +336,41 @@ class VenueProvider with ChangeNotifier {
     _happyHours = value;
   }
 
+  set chBoxHHMonday(bool value) {
+    _chBoxHHMonday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHTuesday(bool value) {
+    _chBoxHHTuesday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHWednesday(bool value) {
+    _chBoxHHWednesday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHThursday(bool value) {
+    _chBoxHHThursday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHFriday(bool value) {
+    _chBoxHHFriday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHSaturday(bool value) {
+    _chBoxHHSaturday = value;
+    notifyListeners();
+  }
+
+  set chBoxHHSunday(bool value) {
+    _chBoxHHSunday = value;
+    notifyListeners();
+  }
+
   //Methods
 
   loadVenue(Venue? venue) {
@@ -350,8 +400,9 @@ class VenueProvider with ChangeNotifier {
       _closeTime5 = closeTime5;
       _openTime6 = openTime6;
       _closeTime6 = closeTime6;
+      _happyHours = happyHours;
     } else {
-      _venueName = "New Venue";
+      _venueName = "";
       _venueType = null;
       _venueTheme = null;
       _venueDescription = null;
@@ -376,6 +427,7 @@ class VenueProvider with ChangeNotifier {
       _closeTime5 = "?";
       _openTime6 = "?";
       _closeTime6 = "?";
+      _happyHours = [];
     }
   }
 
@@ -405,6 +457,7 @@ class VenueProvider with ChangeNotifier {
     _closeTime5 = "?";
     _openTime6 = "?";
     _closeTime6 = "?";
+    _happyHours = [];
   }
 
   addVenue() {
@@ -434,6 +487,7 @@ class VenueProvider with ChangeNotifier {
       closeTime5: closeTime5,
       openTime6: openTime6,
       closeTime6: closeTime6,
+      happyHours: happyHours,
     );
     firestoreService.addVenue(newVenue);
   }
@@ -465,6 +519,7 @@ class VenueProvider with ChangeNotifier {
       closeTime5: closeTime5,
       openTime6: openTime6,
       closeTime6: closeTime6,
+      happyHours: happyHours,
     );
     firestoreService.updateVenue(currentVenue);
   }
@@ -660,6 +715,121 @@ class VenueProvider with ChangeNotifier {
   }
 
   //Happy Hour Sessions Methods
+  changeHHMonday(bool value) {
+    chBoxHHMonday = value;
+    notifyListeners();
+  }
+
+  changeHHTuesday(bool value) {
+    chBoxHHTuesday = value;
+    notifyListeners();
+  }
+
+  changeHHWednesday(bool value) {
+    chBoxHHWednesday = value;
+    notifyListeners();
+  }
+
+  changeHHThursday(bool value) {
+    chBoxHHThursday = value;
+    notifyListeners();
+  }
+
+  changeHHFriday(bool value) {
+    chBoxHHFriday = value;
+    notifyListeners();
+  }
+
+  changeHHSaturday(bool value) {
+    chBoxHHSaturday = value;
+    notifyListeners();
+  }
+
+  changeHHSunday(bool value) {
+    chBoxHHSunday = value;
+    notifyListeners();
+  }
+
+  saveHHSession() {
+    DateTime now = DateTime.now();
+    int _dayAdjust = (int.parse(selectedOpenTime.split(":")[0]) <
+            int.parse(selectedCloseTime.split(":")[0]))
+        ? 0
+        : 1;
+    DateTime _calculatedStartTime = DateTime(
+        now.year,
+        now.month,
+        now.day,
+        int.parse(selectedOpenTime.split(":")[0]),
+        int.parse(selectedOpenTime.split(":")[1]));
+    DateTime _calculatedEndTime = DateTime(
+        now.year,
+        now.month,
+        now.day + _dayAdjust,
+        int.parse(selectedCloseTime.split(":")[0]),
+        int.parse(selectedCloseTime.split(":")[1]));
+    if (chBoxHHMonday) {
+      addHHSession(HappyHourSession(
+          day: "0",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHMonday(false);
+    }
+    if (chBoxHHTuesday) {
+      addHHSession(HappyHourSession(
+          day: "1",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHTuesday(false);
+    }
+    if (chBoxHHWednesday) {
+      addHHSession(HappyHourSession(
+          day: "2",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHWednesday(false);
+    }
+    if (chBoxHHThursday) {
+      addHHSession(HappyHourSession(
+          day: "3",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHThursday(false);
+    }
+    if (chBoxHHFriday) {
+      addHHSession(HappyHourSession(
+          day: "4",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHFriday(false);
+    }
+    if (chBoxHHSaturday) {
+      addHHSession(HappyHourSession(
+          day: "5",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHSaturday(false);
+    }
+    if (chBoxHHSunday) {
+      addHHSession(HappyHourSession(
+          day: "6",
+          startTime: selectedOpenTime,
+          duration:
+              (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
+      changeHHSunday(false);
+    }
+    selectedOpenTime = "00:00";
+    selectedCloseTime = "00:00";
+    happyHours.sort();
+    //happyHours.sort((a,b)=>a.day.compareTo(b.day));
+    notifyListeners();
+  }
 
   addHHSession(HappyHourSession session) {
     happyHours.add(HappyHourSession(
@@ -667,8 +837,5 @@ class VenueProvider with ChangeNotifier {
         startTime: session.startTime,
         duration: session.duration,
         offerSet: session.offerSet));
-    happyHours.sort();
-    //happyHours.sort((a,b)=>a.day.compareTo(b.day));
-    notifyListeners();
   }
 }
