@@ -28,6 +28,8 @@ class _ListingScreenState extends State<ListingScreen> {
           stream: venueProvider.streamVenuesList,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              var venueRawData = snapshot.data;
+
               switch (snapshot.connectionState) {
                 case ConnectionState.none:
                   return Center(
@@ -54,11 +56,14 @@ class _ListingScreenState extends State<ListingScreen> {
                     ],
                   ));
                 default:
-                  return venueProvider.streamVenuesList.isEmpty
+                  return venueRawData!.size > 0
                       ? ListView.builder(
-                          itemCount: snapshot.data!.length,
+                          itemCount: venueRawData.size,
                           itemBuilder: (context, index) {
-                            return listCard(context, snapshot.data![index]);
+                            Venue venueObject =
+                                Venue.fromSnapshot(venueRawData.docs[index]);
+
+                            return listCard(context, venueObject);
                           })
                       : Center(child: Text('No data available'));
               }

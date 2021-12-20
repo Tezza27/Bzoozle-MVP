@@ -166,32 +166,33 @@ class Venue {
 // A funtion to convert a map of key/value pairs into a venue
 Venue _venueFromJson(Map<String, dynamic> json) {
   return Venue(
-      venueName: json['venueName'] as String,
-      venueType: json['venueType'] as String,
-      venueTheme: json['venueTheme'] as String,
-      venueDescription: json['venueDescription'] as String,
-      venueDoorNumber: json['venueDoorNumber'] as String,
-      venueStreet: json['venueStreet'] as String,
-      venueHostBuilding: json['venueHostBuilding'] as String,
-      venueArea: json['venueArea'] as String,
-      venueCity: json['venueCity'] as String,
-      venuePostcode: json['venuePostcode'] as String,
-      venueDirections: json['venueDirections'] as String,
-      openTime0: json['openTime0'] as String,
-      closeTime0: json['closeTime0'] as String,
-      openTime1: json['openTime1'] as String,
-      closeTime1: json['closeTime1'] as String,
-      openTime2: json['openTime2'] as String,
-      closeTime2: json['closeTime2'] as String,
-      openTime3: json['openTime3'] as String,
-      closeTime3: json['closeTime3'] as String,
-      openTime4: json['openTime4'] as String,
-      closeTime4: json['closeTime4'] as String,
-      openTime5: json['openTime5'] as String,
-      closeTime5: json['closeTime5'] as String,
-      openTime6: json['openTime6'] as String,
-      closeTime6: json['closeTime6'] as String,
-      happyHours: _convertHappyHourSessions(json['happyHours'] as List));
+      venueName: json['venueName'],
+      venueType: json['venueType'],
+      venueTheme: json['venueTheme'],
+      venueDescription: json['venueDescription'],
+      venueDoorNumber: json['venueDoorNumber'],
+      venueStreet: json['venueStreet'],
+      venueHostBuilding: json['venueHostBuilding'],
+      venueArea: json['venueArea'],
+      venueCity: json['venueCity'],
+      venuePostcode: json['venuePostcode'],
+      venueDirections: json['venueDirections'],
+      openTime0: json['openTime0'],
+      closeTime0: json['closeTime0'],
+      openTime1: json['openTime1'],
+      closeTime1: json['closeTime1'],
+      openTime2: json['openTime2'],
+      closeTime2: json['closeTime2'],
+      openTime3: json['openTime3'],
+      closeTime3: json['closeTime3'],
+      openTime4: json['openTime4'],
+      closeTime4: json['closeTime4'],
+      openTime5: json['openTime5'],
+      closeTime5: json['closeTime5'],
+      openTime6: json['openTime6'],
+      closeTime6: json['closeTime6'],
+      happyHours: _convertHappyHourSessions(
+          json['happyHours'] as List<HappyHourSession>?));
 }
 
 //A function to convert a list of HappyHourSession objects into a list of happy hour sessions
@@ -199,10 +200,17 @@ List<HappyHourSession>? _convertHappyHourSessions(List? happyHourMap) {
   if (happyHourMap == null) {
     return null;
   }
-  List<HappyHourSession> happyHours = <HappyHourSession>[];
+
+  List<HappyHourSession> happyHours =
+      happyHourMap.map((value) => HappyHourSession.fromJson(value)).toList();
+
+  /*
+   List<HappyHourSession> happyHours = <HappyHourSession>[];
   happyHourMap.forEach((value) {
     happyHours.add(HappyHourSession.fromJson(value));
   });
+   */
+
   return happyHours;
 }
 
