@@ -1,4 +1,4 @@
-import 'package:bzoozle/Models/happyHourSession.dart';
+import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

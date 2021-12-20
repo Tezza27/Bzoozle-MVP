@@ -1,4 +1,4 @@
-import 'package:bzoozle/Models/happyHourSession.dart';
+import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 //The OpenHours Class with its fields
@@ -191,8 +191,7 @@ Venue _venueFromJson(Map<String, dynamic> json) {
       closeTime5: json['closeTime5'],
       openTime6: json['openTime6'],
       closeTime6: json['closeTime6'],
-      happyHours: _convertHappyHourSessions(
-          json['happyHours'] as List<HappyHourSession>?));
+      happyHours: _convertHappyHourSessions(json['happyHours']));
 }
 
 //A function to convert a list of HappyHourSession objects into a list of happy hour sessions
@@ -250,8 +249,8 @@ List<Map<String, dynamic>>? _happyHourList(List<HappyHourSession>? happyHours) {
     return null;
   }
   List<Map<String, dynamic>> happyHourMap = <Map<String, dynamic>>[];
-  happyHours.forEach((happyHour) {
+  for (var happyHour in happyHours) {
     happyHourMap.add(happyHour.toJson());
-  });
+  }
   return happyHourMap;
 }

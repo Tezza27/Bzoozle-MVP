@@ -1,4 +1,4 @@
-import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("Add Happy Hour Sessions"),
+          title: const Text("Add Happy Hour Sessions"),
           centerTitle: true),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -28,7 +28,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Center(
+              const Center(
                   child: Text(
                       "Set the start and end times for the happy hour sessions")),
               Padding(
@@ -39,7 +39,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                     Column(
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Start Time",
                           style: TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
@@ -62,7 +62,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                               child: Center(
                                   child: Text(
                                 venueProvider.selectedOpenTime,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold),
                               )),
@@ -71,11 +71,11 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 16.0),
+                    const SizedBox(width: 16.0),
                     Column(
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "End Time",
                           style: TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
@@ -98,7 +98,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                               child: Center(
                                   child: Text(
                                 venueProvider.selectedCloseTime,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold),
                               )),
@@ -123,7 +123,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHMonday(newValue!);
                           }),
-                      Text("Monday", style: TextStyle(color: Colors.black))
+                      const Text("Monday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -137,7 +138,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHTuesday(newValue!);
                           }),
-                      Text("Tuesday", style: TextStyle(color: Colors.black))
+                      const Text("Tuesday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -151,7 +153,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHWednesday(newValue!);
                           }),
-                      Text("Wednesday", style: TextStyle(color: Colors.black))
+                      const Text("Wednesday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -165,7 +168,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHThursday(newValue!);
                           }),
-                      Text("Thursday", style: TextStyle(color: Colors.black))
+                      const Text("Thursday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -179,7 +183,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHFriday(newValue!);
                           }),
-                      Text("Friday", style: TextStyle(color: Colors.black))
+                      const Text("Friday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -193,7 +198,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHSaturday(newValue!);
                           }),
-                      Text("Saturday", style: TextStyle(color: Colors.black))
+                      const Text("Saturday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                   Row(
@@ -207,7 +213,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           onChanged: (bool? newValue) {
                             venueProvider.changeHHSunday(newValue!);
                           }),
-                      Text("Sunday", style: TextStyle(color: Colors.black))
+                      const Text("Sunday",
+                          style: TextStyle(color: Colors.black))
                     ],
                   ),
                 ],
@@ -231,7 +238,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           venueProvider.changeHHSunday(false);
                           Navigator.pop(context);
                         },
-                        child: Text(
+                        child: const Text(
                           "Cancel",
                           style: TextStyle(color: Colors.orange),
                         ),
@@ -249,7 +256,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           venueProvider.saveHHSession();
                           Navigator.pop(context);
                         },
-                        child: Text(
+                        child: const Text(
                           "Save Sessions",
                           style: TextStyle(color: Colors.orange),
                         ),

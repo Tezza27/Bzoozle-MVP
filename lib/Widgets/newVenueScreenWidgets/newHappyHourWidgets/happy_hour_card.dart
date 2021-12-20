@@ -1,5 +1,5 @@
 import 'package:bzoozle/Lists/week_days.dart';
-import 'package:bzoozle/Models/happyHourSession.dart';
+import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -34,7 +34,7 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                   style: TextStyle(color: Theme.of(context).splashColor),
                 ),
               ),
-              Spacer(
+              const Spacer(
                 flex: 2,
               ),
               Expanded(
@@ -45,13 +45,13 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
               Text(
                 " - ",
                 style: TextStyle(color: Theme.of(context).splashColor),
                 textAlign: TextAlign.center,
               ),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
               Expanded(
                 flex: 4,
                 child: Text(
@@ -60,7 +60,7 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
             ],
           ),
         ),
