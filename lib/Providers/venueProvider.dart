@@ -1,6 +1,7 @@
 import 'package:bzoozle/Models/happyHourSession.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -110,7 +111,8 @@ class VenueProvider with ChangeNotifier {
   bool get chBoxHHFriday => _chBoxHHFriday;
   bool get chBoxHHSaturday => _chBoxHHSaturday;
   bool get chBoxHHSunday => _chBoxHHSunday;
-  Stream<List<Venue>> get streamVenuesList => firestoreService.getVenues();
+  Stream<QuerySnapshot<Object?>> get streamVenuesList =>
+      firestoreService.getVenues();
 
   //Setters
   set changeName(String value) {
@@ -525,9 +527,9 @@ class VenueProvider with ChangeNotifier {
   }
 
 //Opening Times Methods
-  removeVenue(String venueId) {
-    firestoreService.removeVenue(venueId);
-  }
+  // removeVenue(String venueId) {
+  //   firestoreService.removeVenue(venueId);
+  // }
 
   changeMonday(bool value) {
     chBoxMonday = value;
@@ -826,16 +828,20 @@ class VenueProvider with ChangeNotifier {
     }
     selectedOpenTime = "00:00";
     selectedCloseTime = "00:00";
-    happyHours.sort();
-    //happyHours.sort((a,b)=>a.day.compareTo(b.day));
+    happyHours.sort((a, b) => ("${a.day}${a.startTime}")
+        .toString()
+        .compareTo(("${b.day}${b.startTime}").toString()));
     notifyListeners();
   }
 
   addHHSession(HappyHourSession session) {
-    happyHours.add(HappyHourSession(
+    happyHours.add(
+      HappyHourSession(
         day: session.day,
         startTime: session.startTime,
         duration: session.duration,
-        offerSet: session.offerSet));
+        //offerSet: session.offerSet,
+      ),
+    );
   }
 }

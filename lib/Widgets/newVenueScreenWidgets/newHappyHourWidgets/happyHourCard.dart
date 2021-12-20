@@ -17,47 +17,53 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
   String dayHH = weekDays[int.parse(happyHour.day)];
   return Padding(
     padding:
-        const EdgeInsets.only(top: 16.0, bottom: 2.0, left: 8.0, right: 8.0),
+        const EdgeInsets.only(top: 2.0, bottom: 2.0, left: 8.0, right: 8.0),
     child: Card(
       color: Theme.of(context).primaryColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            flex: 6,
-            child: Text(
-              dayHH,
-              style: TextStyle(color: Theme.of(context).splashColor),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        child: SizedBox(
+          height: 40.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(
+                flex: 6,
+                child: Text(
+                  dayHH,
+                  style: TextStyle(color: Theme.of(context).splashColor),
+                ),
+              ),
+              Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                flex: 4,
+                child: Text(
+                  startTimeHH,
+                  style: TextStyle(color: Theme.of(context).splashColor),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Spacer(flex: 1),
+              Text(
+                " - ",
+                style: TextStyle(color: Theme.of(context).splashColor),
+                textAlign: TextAlign.center,
+              ),
+              Spacer(flex: 1),
+              Expanded(
+                flex: 4,
+                child: Text(
+                  endTimeHH,
+                  style: TextStyle(color: Theme.of(context).splashColor),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Spacer(flex: 2),
+            ],
           ),
-          Spacer(
-            flex: 2,
-          ),
-          Expanded(
-            flex: 4,
-            child: Text(
-              startTimeHH,
-              style: TextStyle(color: Theme.of(context).splashColor),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Spacer(flex: 1),
-          Text(
-            " - ",
-            style: TextStyle(color: Theme.of(context).splashColor),
-            textAlign: TextAlign.center,
-          ),
-          Spacer(flex: 1),
-          Expanded(
-            flex: 4,
-            child: Text(
-              endTimeHH,
-              style: TextStyle(color: Theme.of(context).splashColor),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Spacer(flex: 2),
-        ],
+        ),
       ),
     ),
   );

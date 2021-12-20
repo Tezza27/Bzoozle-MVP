@@ -24,57 +24,60 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
         : "ordinarily holds these happy hours weekly:";
 
     return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      scrollDirection: Axis.vertical,
       child: Container(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 8.0, bottom: 16.0, left: 16.0, right: 16.0),
-                child: SizedBox(
-                  height: 100,
-                  child: Text(
-                    "$openMessage1 $openMessage2",
-                    style: TextStyle(color: Colors.black),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 8.0, bottom: 16.0, left: 16.0, right: 16.0),
+              child: SizedBox(
+                height: 30,
+                child: Text(
+                  "$openMessage1 $openMessage2",
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
-              venueProvider.happyHours.isEmpty
-                  ? SizedBox(
-                      height: 100.0,
-                    )
-                  : ListView.builder(
-                      itemCount: venueProvider.happyHours.length,
-                      itemBuilder: (context, index) {
-                        return happyHourCard(
-                            context, venueProvider.happyHours[index]);
-                      }),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Center(
-                  child: SizedBox(
-                    height: 40.0,
-                    width: 100.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, AddHHSessionScreen.routeName);
-                      },
-                      child: Text(
-                        "Add Session",
-                        style: TextStyle(color: Colors.orange),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).primaryColor,
-                        padding: const EdgeInsets.all(8.0),
-                      ),
+            ),
+            venueProvider.happyHours.isEmpty
+                ? SizedBox(
+                    height: 100.0,
+                  )
+                : SizedBox(
+                    height: 350.0,
+                    child: ListView.builder(
+                        itemCount: venueProvider.happyHours.length,
+                        itemBuilder: (context, index) {
+                          return happyHourCard(
+                              context, venueProvider.happyHours[index]);
+                        }),
+                  ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Center(
+                child: SizedBox(
+                  height: 40.0,
+                  width: 100.0,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, AddHHSessionScreen.routeName);
+                    },
+                    child: Text(
+                      "Add Session",
+                      style: TextStyle(color: Colors.orange),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                      padding: const EdgeInsets.all(8.0),
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
