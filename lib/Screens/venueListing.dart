@@ -1,5 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Widgets/listingScreenWidgets/listCard.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +24,8 @@ class _ListingScreenState extends State<ListingScreen> {
           title: Text(widget.title),
           centerTitle: true),
       body: Container(
-        child: StreamBuilder<List<Venue>>(
+        child: StreamBuilder<QuerySnapshot>(
           stream: venueProvider.streamVenuesList,
-          initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               switch (snapshot.connectionState) {
@@ -54,7 +54,7 @@ class _ListingScreenState extends State<ListingScreen> {
                     ],
                   ));
                 default:
-                  return snapshot.data!.length > 0
+                  return venueProvider.streamVenuesList.isEmpty
                       ? ListView.builder(
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
