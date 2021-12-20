@@ -1,5 +1,5 @@
-import 'package:bzoozle/Providers/venueProvider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/timeSet.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,7 +17,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Center(
           child: Column(
@@ -55,7 +55,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -67,13 +67,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -83,7 +83,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -116,7 +116,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -128,13 +128,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -144,7 +144,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -177,7 +177,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -189,13 +189,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -205,7 +205,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -238,7 +238,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -250,13 +250,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -266,7 +266,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -299,7 +299,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -311,13 +311,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -327,7 +327,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -360,7 +360,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -372,13 +372,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -388,7 +388,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -421,7 +421,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               TextStyle(color: Theme.of(context).splashColor),
                         ),
                       ),
-                      Spacer(
+                      const Spacer(
                         flex: 2,
                       ),
                       Expanded(
@@ -433,13 +433,13 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Text(
                         " - ",
                         style: TextStyle(color: Theme.of(context).splashColor),
                         textAlign: TextAlign.center,
                       ),
-                      Spacer(flex: 1),
+                      const Spacer(flex: 1),
                       Expanded(
                         flex: 4,
                         child: Text(
@@ -449,7 +449,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ),
                 ),
@@ -476,7 +476,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               fontSize: 16.0);
                         }
                       },
-                      child: Text(
+                      child: const Text(
                         "Set Times",
                         style: TextStyle(color: Colors.orange),
                       ),

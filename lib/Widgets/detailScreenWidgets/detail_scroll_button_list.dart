@@ -1,20 +1,22 @@
-import 'package:bzoozle/Lists/pagesList.dart';
-import 'package:bzoozle/Providers/pageNumberProvider.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailDescription.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailHappyHours.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailLocation.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailOpenHours.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailRants.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detailRaves.dart';
+import 'package:bzoozle/Lists/pages_list.dart';
+import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_description.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_happy_hours.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_location.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_open_hours.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_rants.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_raves.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class DetailScrollButtonList extends StatelessWidget {
+  const DetailScrollButtonList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SliverPinnedHeader(
-      child: Container(
+      child: SizedBox(
         height: 30,
         child: ListView.builder(
             shrinkWrap: true,
@@ -37,20 +39,20 @@ Widget detailScrollButton(
     String buttonText = "Error"}) {
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   return ConstrainedBox(
-    constraints: BoxConstraints.tightFor(width: 120, height: 20),
+    constraints: const BoxConstraints.tightFor(width: 120, height: 20),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: pageNumberProvider.pageNumber == index
             ? Colors.black
             : Colors.orange[800],
-        side: BorderSide(width: 1, color: Colors.black),
+        side: const BorderSide(width: 1, color: Colors.black),
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         ),
       ),
       child: Text(
-        "$buttonText",
+        buttonText,
         style: TextStyle(
           color: pageNumberProvider.pageNumber == index
               ? Colors.orange[800]
@@ -65,6 +67,8 @@ Widget detailScrollButton(
 }
 
 class DetailContent extends StatelessWidget {
+  const DetailContent({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
@@ -78,26 +82,26 @@ Widget selectPage(int pageNumber) {
   Widget selectedPage;
   switch (pageNumber) {
     case 0:
-      selectedPage = DetailDescription();
+      selectedPage = const DetailDescription();
       break;
     case 1:
-      selectedPage = DetailLocation();
+      selectedPage = const DetailLocation();
       break;
     case 2:
-      selectedPage = DetailOpenHours();
+      selectedPage = const DetailOpenHours();
       break;
     case 3:
-      selectedPage = DetailHappyHours();
+      selectedPage = const DetailHappyHours();
       break;
     case 4:
-      selectedPage = DetailRants();
+      selectedPage = const DetailRants();
       break;
     case 5:
-      selectedPage = DetailRaves();
+      selectedPage = const DetailRaves();
       break;
 
     default:
-      selectedPage = DetailDescription();
+      selectedPage = const DetailDescription();
   }
   return selectedPage;
 }

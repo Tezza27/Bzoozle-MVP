@@ -3,6 +3,7 @@ import 'package:bzoozle/Widgets/DetailScreenWidgets/detailScrollButtonList.dart'
 import 'package:flutter/material.dart';
 
 class VenueDetailScreen extends StatefulWidget {
+  const VenueDetailScreen({Key? key}) : super(key: key);
   static const String routeName = '/detail';
 
   @override
@@ -28,13 +29,13 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                "${selectedVenue.venueName}",
+                selectedVenue.venueName,
                 style: TextStyle(color: Colors.orange[800]!),
               ),
               centerTitle: true,
               background: DecoratedBox(
                 position: DecorationPosition.foreground,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,

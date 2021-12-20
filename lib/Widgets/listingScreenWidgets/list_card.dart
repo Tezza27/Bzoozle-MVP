@@ -1,5 +1,5 @@
-import 'package:bzoozle/Providers/pageNumberProvider.dart';
-import 'package:bzoozle/Screens/venueDetail.dart';
+import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +11,7 @@ Widget listCard(BuildContext context, Venue venue) {
     child: Card(
         color: Colors.yellow[50],
         shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.orange, width: 2),
+            side: const BorderSide(color: Colors.orange, width: 2),
             borderRadius: BorderRadius.circular(10.0)),
         child: InkWell(
           splashColor: Colors.orange,
@@ -26,7 +26,7 @@ Widget listCard(BuildContext context, Venue venue) {
                 children: <Widget>[
                   DecoratedBox(
                     position: DecorationPosition.foreground,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
@@ -55,7 +55,7 @@ Widget listCard(BuildContext context, Venue venue) {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "${venue.venueName}",
+                          venue.venueName,
                           style: TextStyle(
                               color: Colors.orange[800]!,
                               fontSize: 24,

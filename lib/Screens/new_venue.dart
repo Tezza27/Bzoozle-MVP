@@ -1,11 +1,14 @@
-import 'package:bzoozle/Providers/pageNumberProvider.dart';
-import 'package:bzoozle/Providers/venueProvider.dart';
-import 'package:bzoozle/Screens/mainMenu.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newScrollButtonList.dart';
+// ignore_for_file: prefer_const_constructors
+
+import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/main_menu.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class NewVenueScreen extends StatefulWidget {
+  const NewVenueScreen({Key? key}) : super(key: key);
   static const String routeName = '/newVenue';
 
   @override
@@ -55,7 +58,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 ),
               ),
               NewScrollButtonList(),
-              NewContent(),
+              const NewContent(),
             ],
           ),
           Align(
@@ -72,7 +75,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                         venueProvider.unloadVenue();
                         pageNumberProvider.changePageNumber(0);
                       },
-                      child: Text("Cancel"),
+                      child: const Text("Cancel"),
                     ),
                     ElevatedButton(
                         onPressed: () {
@@ -82,7 +85,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                           Navigator.pushNamed(
                               context, MainMenuScreen.routeName);
                         },
-                        child: Text("Save")),
+                        child: const Text("Save")),
                   ],
                 ),
               ),

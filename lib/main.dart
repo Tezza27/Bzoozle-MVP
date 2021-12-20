@@ -1,26 +1,28 @@
-import 'package:bzoozle/Providers/venueProvider.dart';
-import 'package:bzoozle/Screens/mainMenu.dart';
-import 'package:bzoozle/Screens/newVenue.dart';
-import 'package:bzoozle/Screens/venueDetail.dart';
-import 'package:bzoozle/Screens/venueListing.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/addHHSession.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/newHappyHours.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/newOpenHours.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/main_menu.dart';
+import 'package:bzoozle/Screens/new_venue.dart';
+import 'package:bzoozle/Screens/venue_detail.dart';
+import 'package:bzoozle/Screens/venue_listing.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/new_open_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import 'Providers/pageNumberProvider.dart';
-import 'Widgets/newVenueScreenWidgets/newOpenHoursWidgets/timeSet.dart';
+import 'Providers/page_number_provider.dart';
+import 'Widgets/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -66,31 +68,31 @@ class _MyAppState extends State<MyApp> {
           ),
           scrollBehavior: const ScrollBehavior(),
           routes: {
-            MainMenuScreen.routeName: (context) => MainMenuScreen(),
-            NewVenueScreen.routeName: (context) => NewVenueScreen(),
-            ListingScreen.routeName: (context) => ListingScreen(),
-            VenueDetailScreen.routeName: (context) => VenueDetailScreen(),
-            TimeSetScreen.routeName: (context) => TimeSetScreen(),
-            NewOpenHoursScreen.routeName: (context) => NewOpenHoursScreen(),
-            NewHappyHoursScreen.routeName: (context) => NewHappyHoursScreen(),
-            AddHHSessionScreen.routeName: (context) => AddHHSessionScreen(),
+            MainMenuScreen.routeName: (context) => const MainMenuScreen(),
+            NewVenueScreen.routeName: (context) => const NewVenueScreen(),
+            ListingScreen.routeName: (context) => const ListingScreen(),
+            VenueDetailScreen.routeName: (context) => const VenueDetailScreen(),
+            TimeSetScreen.routeName: (context) => const TimeSetScreen(),
+            NewOpenHoursScreen.routeName: (context) =>
+                const NewOpenHoursScreen(),
+            NewHappyHoursScreen.routeName: (context) =>
+                const NewHappyHoursScreen(),
+            AddHHSessionScreen.routeName: (context) =>
+                const AddHHSessionScreen(),
           },
-          home: Container(
-            child: FutureBuilder(
-              future: _fbApp,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  print("Snapshot error: ${snapshot.error.toString()}");
-                  return Text("Something went wrong");
-                } else if (snapshot.hasData) {
-                  return MainMenuScreen();
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
+          home: FutureBuilder(
+            future: _fbApp,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Text("Something went wrong");
+              } else if (snapshot.hasData) {
+                return const MainMenuScreen();
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           )),
     );
   }

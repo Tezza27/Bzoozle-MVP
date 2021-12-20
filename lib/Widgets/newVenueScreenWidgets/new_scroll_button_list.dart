@@ -1,18 +1,20 @@
-import 'package:bzoozle/Lists/pagesList.dart';
-import 'package:bzoozle/Providers/pageNumberProvider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newDescription.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/newHappyHours.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newLocation.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/newOpenHours.dart';
+import 'package:bzoozle/Lists/pages_list.dart';
+import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_description.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_location.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/new_open_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class NewScrollButtonList extends StatelessWidget {
+  const NewScrollButtonList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SliverPinnedHeader(
-      child: Container(
+      child: SizedBox(
         height: 30,
         child: ListView.builder(
             shrinkWrap: true,
@@ -35,7 +37,7 @@ Widget newScrollButton(
     String buttonText = "Error"}) {
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   return ConstrainedBox(
-    constraints: BoxConstraints.tightFor(width: 120, height: 20),
+    constraints: const BoxConstraints.tightFor(width: 120, height: 20),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: pageNumberProvider.pageNumber == index
@@ -48,7 +50,7 @@ Widget newScrollButton(
         ),
       ),
       child: Text(
-        "$buttonText",
+        buttonText,
         style: TextStyle(
           color: pageNumberProvider.pageNumber == index
               ? Colors.black
@@ -63,6 +65,8 @@ Widget newScrollButton(
 }
 
 class NewContent extends StatelessWidget {
+  const NewContent({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
@@ -76,20 +80,20 @@ Widget selectPage(int pageNumber, BuildContext context) {
   Widget selectedPage;
   switch (pageNumber) {
     case 0:
-      selectedPage = NewDescription();
+      selectedPage = const NewDescription();
       break;
     case 1:
-      selectedPage = NewLocation();
+      selectedPage = const NewLocation();
       break;
     case 2:
-      selectedPage = NewOpenHoursScreen();
+      selectedPage = const NewOpenHoursScreen();
       break;
     case 3:
-      selectedPage = NewHappyHoursScreen();
+      selectedPage = const NewHappyHoursScreen();
       break;
 
     default:
-      selectedPage = NewHappyHoursScreen();
+      selectedPage = const NewHappyHoursScreen();
   }
   return selectedPage;
 }

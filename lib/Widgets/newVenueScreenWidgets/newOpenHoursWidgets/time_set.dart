@@ -1,4 +1,4 @@
-import 'package:bzoozle/Providers/venueProvider.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +30,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text("Set Opening Time"),
+          title: const Text("Set Opening Time"),
           centerTitle: true),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -57,14 +57,14 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                               onChanged: (bool? newValue) {
                                 venueProvider.change24Open(newValue!);
                               }),
-                          Text("Open all day",
+                          const Text("Open all day",
                               style: TextStyle(color: Colors.black))
                         ],
                       ),
                       Column(
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Opening Time",
                             style: TextStyle(color: Colors.black),
                             textAlign: TextAlign.center,
@@ -93,7 +93,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                                 child: Center(
                                     child: Text(
                                   venueProvider.selectedOpenTime,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.bold),
                                 )),
@@ -113,7 +113,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                               onChanged: (bool? newValue) {
                                 venueProvider.changeNoOpen(newValue!);
                               }),
-                          Text("No Opening Time",
+                          const Text("No Opening Time",
                               style: TextStyle(color: Colors.black))
                         ],
                       ),
@@ -132,14 +132,14 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                               onChanged: (bool? newValue) {
                                 venueProvider.change24Closed(newValue!);
                               }),
-                          Text("Closed all day",
+                          const Text("Closed all day",
                               style: TextStyle(color: Colors.black))
                         ],
                       ),
                       Column(
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Closing Time",
                             style: TextStyle(color: Colors.black),
                             textAlign: TextAlign.center,
@@ -169,7 +169,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                                     child: Text(
                                   venueProvider.selectedCloseTime,
                                   //setOpeningTimesProvider.selectedCloseTime!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.bold),
                                 )),
@@ -189,7 +189,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                               onChanged: (bool? newValue) {
                                 venueProvider.changeNoClose(newValue!);
                               }),
-                          Text("No Closing Time",
+                          const Text("No Closing Time",
                               style: TextStyle(color: Colors.black))
                         ],
                       ),
@@ -209,7 +209,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text(
+                        child: const Text(
                           "Cancel",
                           style: TextStyle(color: Colors.orange),
                         ),
@@ -227,7 +227,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                           venueProvider.finishTimeSetting();
                           Navigator.pop(context);
                         },
-                        child: Text(
+                        child: const Text(
                           "Finish",
                           style: TextStyle(color: Colors.orange),
                         ),
