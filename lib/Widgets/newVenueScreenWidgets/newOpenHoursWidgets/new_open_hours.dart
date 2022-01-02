@@ -31,28 +31,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Padding(
-                          padding:
-                              const EdgeInsets.only(left: 16.0, right: 16.0),
-                          child: Checkbox(
-                              value: venueProvider.chBoxMonday,
-                              checkColor: Colors.black,
-                              // checkColor: Theme.of(context).splashColor,
-                              // fillColor: Colors.white,
-                              onChanged: (bool? newValue) {
-                                venueProvider.changeMonday(newValue!);
-                              }),
-                        ),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "MONDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -62,15 +48,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime0,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
-                      Text(
+                      const Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -78,8 +63,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime0,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -96,24 +80,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxTuesday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeTuesday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "TUESDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -123,15 +97,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime1,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
                       Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -139,8 +112,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime1,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -157,24 +129,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxWednesday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeWednesday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "WEDNESDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -184,15 +146,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime2,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
                       Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -200,8 +161,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime2,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -218,24 +178,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxThursday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeThursday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "THURSDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -245,15 +195,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime3,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
                       Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -261,8 +210,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime3,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -279,24 +227,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxFriday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeFriday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "FRIDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -306,15 +244,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime4,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
                       Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -322,8 +259,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime4,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -340,24 +276,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxSaturday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeSaturday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "SATURDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -367,15 +293,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime5,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
-                      Text(
+                      const Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -383,8 +308,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime5,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -401,24 +325,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 40.0,
-                        width: 40.0,
-                        child: Checkbox(
-                            value: venueProvider.chBoxSunday,
-                            checkColor: Colors.black,
-                            // checkColor: Theme.of(context).splashColor,
-                            // fillColor: Colors.white,
-                            onChanged: (bool? newValue) {
-                              venueProvider.changeSunday(newValue!);
-                            }),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 6,
                         child: Text(
                           "SUNDAY",
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       const Spacer(
@@ -428,15 +342,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.openTime6,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       const Spacer(flex: 1),
-                      Text(
+                      const Text(
                         " - ",
-                        style: TextStyle(color: Theme.of(context).splashColor),
+                        style: TextStyle(color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                       const Spacer(flex: 1),
@@ -444,8 +357,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                         flex: 4,
                         child: Text(
                           venueProvider.closeTime6,
-                          style:
-                              TextStyle(color: Theme.of(context).splashColor),
+                          style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
                       ),

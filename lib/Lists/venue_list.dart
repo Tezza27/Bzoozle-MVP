@@ -34,7 +34,7 @@ List<Venue> venueList = [
       venueName: "Ghost Donkey",
       venueHostBuilding: "The Cosmopolitan",
       venueDescription:
-          " Agave spirits are the specialty of this \'secret\' speakeasy. Identifiable only by a single understated door with a picture of a donkey."),
+          " Agave spirits are the specialty of this 'secret' speakeasy. Identifiable only by a single understated door with a picture of a donkey."),
   Venue(
     venueName: "Yardbird Southern Kitchen & Bar",
     venueHostBuilding: "The Venetian",

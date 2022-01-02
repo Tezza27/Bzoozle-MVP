@@ -1,10 +1,12 @@
 import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:provider/provider.dart';
 
 Widget listCard(BuildContext context, Venue venue) {
+  final venueProvider = Provider.of<VenueProvider>(context);
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -16,6 +18,7 @@ Widget listCard(BuildContext context, Venue venue) {
         child: InkWell(
           splashColor: Colors.orange,
           onTap: () {
+            venueProvider.loadVenue(venue);
             pageNumberProvider.changePageNumber(0);
             Navigator.pushNamed(context, VenueDetailScreen.routeName,
                 arguments: venue);

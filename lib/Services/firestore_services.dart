@@ -20,6 +20,11 @@ class FirestoreService {
   updateVenue(Venue venue) async {
     await collection.doc(venue.reference!.id).update(venue.toJson());
   }
+
+  // // Delete venue
+//   Future<void> removeVenue(String venueId) {
+//     return _db.collection('venues').doc(venueId).delete();
+//   }
 }
 //   FirebaseFirestore _db = FirebaseFirestore.instance;
 
