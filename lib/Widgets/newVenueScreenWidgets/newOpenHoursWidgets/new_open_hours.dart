@@ -47,7 +47,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime0,
+                          venueProvider.openTime0!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -62,7 +62,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime0,
+                          venueProvider.closeTime0!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -96,7 +96,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime1,
+                          venueProvider.openTime1!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -111,7 +111,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime1,
+                          venueProvider.closeTime1!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -145,7 +145,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime2,
+                          venueProvider.openTime2!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -160,7 +160,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime2,
+                          venueProvider.closeTime2!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -194,7 +194,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime3,
+                          venueProvider.openTime3!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -209,7 +209,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime3,
+                          venueProvider.closeTime3!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -243,7 +243,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime4,
+                          venueProvider.openTime4!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -258,7 +258,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime4,
+                          venueProvider.closeTime4!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -292,7 +292,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime5,
+                          venueProvider.openTime5!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -307,7 +307,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime5,
+                          venueProvider.closeTime5!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -341,7 +341,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.openTime6,
+                          venueProvider.openTime6!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
@@ -356,7 +356,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                       Expanded(
                         flex: 4,
                         child: Text(
-                          venueProvider.closeTime6,
+                          venueProvider.closeTime6!,
                           style: const TextStyle(color: Colors.black),
                           textAlign: TextAlign.center,
                         ),
