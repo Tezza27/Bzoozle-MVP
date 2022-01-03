@@ -1,5 +1,4 @@
 import 'package:bzoozle/Lists/venue_type_lists.dart';
-import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:provider/provider.dart';
 
 class NewDescription extends StatefulWidget {
   const NewDescription({Key? key}) : super(key: key);
-  final Venue? newVenue = null;
 
   @override
   _NewDescriptionState createState() => _NewDescriptionState();
@@ -19,18 +17,6 @@ class _NewDescriptionState extends State<NewDescription> {
   String? dropdownTypeValue;
   String? dropdownThemeValue;
   String? dropdownHostValue;
-
-  // @override
-  // void initState() {
-  //   final venueProvider = Provider.of<VenueProvider>(context, listen: false);
-  //   if (widget.newVenue != null) {
-  //     venueProvider.loadVenue(widget.newVenue);
-  //   } else {
-  //     venueProvider.loadVenue(null);
-  //   }
-
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +32,7 @@ class _NewDescriptionState extends State<NewDescription> {
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+              children: <Widget>[
                 TextField(
                   textInputAction: TextInputAction.go,
                   controller: venueNameController,

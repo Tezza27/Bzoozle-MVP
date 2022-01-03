@@ -1,6 +1,6 @@
-import 'package:bzoozle/Models/mainMenuButton.dart';
-import 'package:bzoozle/Screens/newVenue.dart';
-import 'package:bzoozle/Screens/venueListing.dart';
+import 'package:bzoozle/Models/main_menu_button.dart';
+import 'package:bzoozle/Screens/new_venue.dart';
+import 'package:bzoozle/Screens/venue_listing.dart';
 
 List<MainMenuButton> mainMenuButtonList = [
   MainMenuButton(

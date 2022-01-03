@@ -1,5 +1,5 @@
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Widgets/DetailScreenWidgets/detailScrollButtonList.dart';
+import 'package:bzoozle/Widgets/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 
 class VenueDetailScreen extends StatefulWidget {
@@ -51,8 +51,8 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
               ),
             ),
           ),
-          DetailScrollButtonList(),
-          DetailContent(),
+          const DetailScrollButtonList(),
+          const DetailContent(),
         ],
       ),
     );

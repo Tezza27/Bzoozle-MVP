@@ -1,91 +1,35 @@
+import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailDescription extends StatelessWidget {
   const DetailDescription({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final venueProvider = Provider.of<VenueProvider>(context);
+
+    //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
+          children: <Widget>[
+            Text(
+              "Venue Type:",
+              style: TextStyle(color: Theme.of(context).splashColor),
             ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
+            Text(
+              venueProvider.venueTheme! + " " + venueProvider.venueType!,
+              style: TextStyle(color: Theme.of(context).splashColor),
             ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
+            Text(
+              "Description:",
+              style: TextStyle(color: Theme.of(context).splashColor),
             ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 100,
-              child: Text(
-                "DESCRIPTION WIDGET HERE",
-                style: TextStyle(color: Colors.white),
-              ),
+            Text(
+              venueProvider.venueDescription!,
+              style: TextStyle(color: Theme.of(context).splashColor),
             ),
           ],
         ),
