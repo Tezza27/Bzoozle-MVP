@@ -18,10 +18,10 @@ Widget listCard(BuildContext context, Venue venue) {
         child: InkWell(
           splashColor: Colors.orange,
           onTap: () {
-            venueProvider.loadVenue(venue);
             pageNumberProvider.changePageNumber(0);
             Navigator.pushNamed(context, VenueDetailScreen.routeName,
                 arguments: venue);
+            venueProvider.loadVenue(venue);
           },
           child: Column(
             children: <Widget>[

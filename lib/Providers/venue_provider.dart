@@ -36,20 +36,20 @@ class VenueProvider with ChangeNotifier {
   String _originalCloseTime = "?";
   String _selectedOpenTime = "00:00";
   String _selectedCloseTime = "00:00";
-  String _openTime0 = "?";
-  String _closeTime0 = "?";
-  String _openTime1 = "?";
-  String _closeTime1 = "?";
-  String _openTime2 = "?";
-  String _closeTime2 = "?";
-  String _openTime3 = "?";
-  String _closeTime3 = "?";
-  String _openTime4 = "?";
-  String _closeTime4 = "?";
-  String _openTime5 = "?";
-  String _closeTime5 = "?";
-  String _openTime6 = "?";
-  String _closeTime6 = "?";
+  String? _openTime0 = "?";
+  String? _closeTime0 = "?";
+  String? _openTime1 = "?";
+  String? _closeTime1 = "?";
+  String? _openTime2 = "?";
+  String? _closeTime2 = "?";
+  String? _openTime3 = "?";
+  String? _closeTime3 = "?";
+  String? _openTime4 = "?";
+  String? _closeTime4 = "?";
+  String? _openTime5 = "?";
+  String? _closeTime5 = "?";
+  String? _openTime6 = "?";
+  String? _closeTime6 = "?";
   List<HappyHourSession> _happyHours = [];
   bool _chBoxHHMonday = false;
   bool _chBoxHHTuesday = false;
@@ -89,20 +89,20 @@ class VenueProvider with ChangeNotifier {
   String get originalCloseTime => _originalCloseTime;
   String get selectedOpenTime => _selectedOpenTime;
   String get selectedCloseTime => _selectedCloseTime;
-  String get openTime0 => _openTime0;
-  String get closeTime0 => _closeTime0;
-  String get openTime1 => _openTime1;
-  String get closeTime1 => _closeTime1;
-  String get openTime2 => _openTime2;
-  String get closeTime2 => _closeTime2;
-  String get openTime3 => _openTime3;
-  String get closeTime3 => _closeTime3;
-  String get openTime4 => _openTime4;
-  String get closeTime4 => _closeTime4;
-  String get openTime5 => _openTime5;
-  String get closeTime5 => _closeTime5;
-  String get openTime6 => _openTime6;
-  String get closeTime6 => _closeTime6;
+  String? get openTime0 => _openTime0;
+  String? get closeTime0 => _closeTime0;
+  String? get openTime1 => _openTime1;
+  String? get closeTime1 => _closeTime1;
+  String? get openTime2 => _openTime2;
+  String? get closeTime2 => _closeTime2;
+  String? get openTime3 => _openTime3;
+  String? get closeTime3 => _closeTime3;
+  String? get openTime4 => _openTime4;
+  String? get closeTime4 => _closeTime4;
+  String? get openTime5 => _openTime5;
+  String? get closeTime5 => _closeTime5;
+  String? get openTime6 => _openTime6;
+  String? get closeTime6 => _closeTime6;
   List<HappyHourSession> get happyHours => _happyHours;
   bool get chBoxHHMonday => _chBoxHHMonday;
   bool get chBoxHHTuesday => _chBoxHHTuesday;
@@ -174,72 +174,72 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set openTime0(String value) {
+  set openTime0(String? value) {
     _openTime0 = value;
     notifyListeners();
   }
 
-  set closeTime0(String value) {
+  set closeTime0(String? value) {
     _closeTime0 = value;
     notifyListeners();
   }
 
-  set openTime1(String value) {
+  set openTime1(String? value) {
     _openTime1 = value;
     notifyListeners();
   }
 
-  set closeTime1(String value) {
+  set closeTime1(String? value) {
     _closeTime1 = value;
     notifyListeners();
   }
 
-  set openTime2(String value) {
+  set openTime2(String? value) {
     _openTime2 = value;
     notifyListeners();
   }
 
-  set closeTime2(String value) {
+  set closeTime2(String? value) {
     _closeTime2 = value;
     notifyListeners();
   }
 
-  set openTime3(String value) {
+  set openTime3(String? value) {
     _openTime3 = value;
     notifyListeners();
   }
 
-  set closeTime3(String value) {
+  set closeTime3(String? value) {
     _closeTime3 = value;
     notifyListeners();
   }
 
-  set openTime4(String value) {
+  set openTime4(String? value) {
     _openTime4 = value;
     notifyListeners();
   }
 
-  set closeTime4(String value) {
+  set closeTime4(String? value) {
     _closeTime4 = value;
     notifyListeners();
   }
 
-  set openTime5(String value) {
+  set openTime5(String? value) {
     _openTime5 = value;
     notifyListeners();
   }
 
-  set closeTime5(String value) {
+  set closeTime5(String? value) {
     _closeTime5 = value;
     notifyListeners();
   }
 
-  set openTime6(String value) {
+  set openTime6(String? value) {
     _openTime6 = value;
     notifyListeners();
   }
 
-  set closeTime6(String value) {
+  set closeTime6(String? value) {
     _closeTime6 = value;
     notifyListeners();
   }
@@ -388,21 +388,21 @@ class VenueProvider with ChangeNotifier {
       _venueCity = venue.venueCity;
       _venuePostcode = venue.venuePostcode;
       _venueDirections = venue.venueDirections;
-      _openTime0 = openTime0;
-      _closeTime0 = closeTime0;
-      _openTime1 = openTime1;
-      _closeTime1 = closeTime1;
-      _openTime2 = openTime2;
-      _closeTime2 = closeTime2;
-      _openTime3 = openTime3;
-      _closeTime3 = closeTime3;
-      _openTime4 = openTime4;
-      _closeTime4 = closeTime4;
-      _openTime5 = openTime5;
-      _closeTime5 = closeTime5;
-      _openTime6 = openTime6;
-      _closeTime6 = closeTime6;
-      _happyHours = happyHours;
+      _openTime0 = venue.openTime0;
+      _closeTime0 = venue.closeTime0;
+      _openTime1 = venue.openTime1;
+      _closeTime1 = venue.closeTime1;
+      _openTime2 = venue.openTime2;
+      _closeTime2 = venue.closeTime2;
+      _openTime3 = venue.openTime3;
+      _closeTime3 = venue.closeTime3;
+      _openTime4 = venue.openTime4;
+      _closeTime4 = venue.closeTime4;
+      _openTime5 = venue.openTime5;
+      _closeTime5 = venue.closeTime5;
+      _openTime6 = venue.openTime6;
+      _closeTime6 = venue.closeTime6;
+      _happyHours = venue.happyHours!;
     } else {
       _venueName = "";
       _venueType = null;
@@ -431,6 +431,7 @@ class VenueProvider with ChangeNotifier {
       _closeTime6 = "?";
       _happyHours = [];
     }
+    notifyListeners();
   }
 
   unloadVenue() {

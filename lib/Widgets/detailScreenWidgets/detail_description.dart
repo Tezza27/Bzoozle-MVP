@@ -8,6 +8,7 @@ class DetailDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
       child: Center(
@@ -19,7 +20,7 @@ class DetailDescription extends StatelessWidget {
               style: TextStyle(color: Theme.of(context).splashColor),
             ),
             Text(
-              "$venueProvider.venueTheme $venueProvider.venueType",
+              venueProvider.venueTheme! + " " + venueProvider.venueType!,
               style: TextStyle(color: Theme.of(context).splashColor),
             ),
             Text(
@@ -27,7 +28,7 @@ class DetailDescription extends StatelessWidget {
               style: TextStyle(color: Theme.of(context).splashColor),
             ),
             Text(
-              "$venueProvider.venueDescription",
+              venueProvider.venueDescription!,
               style: TextStyle(color: Theme.of(context).splashColor),
             ),
           ],
