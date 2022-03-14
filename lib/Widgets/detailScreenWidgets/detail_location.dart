@@ -16,18 +16,36 @@ class DetailLocation extends StatelessWidget {
           children: <Widget>[
             venueProvider.venueHostBuilding == null
                 ? Container()
-                : Text("$venueProvider.venueHostBuilding"),
-            Text("$venueProvider.venueDoorNumber $venueProvider.venueStreet"),
-            Text("$venueProvider.venueCity"),
-            Text("$venueProvider.venuePostcode"),
+                : Text(
+                    venueProvider.venueHostBuilding!,
+                    style: TextStyle(color: Theme.of(context).splashColor),
+                  ),
+            Text(
+              venueProvider.venueDoorNumber! + " " + venueProvider.venueStreet!,
+              style: TextStyle(color: Theme.of(context).splashColor),
+            ),
+            Text(
+              venueProvider.venueCity!,
+              style: TextStyle(color: Theme.of(context).splashColor),
+            ),
+            Text(
+              venueProvider.venuePostcode!,
+              style: TextStyle(color: Theme.of(context).splashColor),
+            ),
             const SizedBox(
               height: 30.0,
             ),
             venueProvider.venueDirections != null
-                ? const Text("Directions")
+                ? Text(
+                    "Directions",
+                    style: TextStyle(color: Theme.of(context).splashColor),
+                  )
                 : Container(),
             venueProvider.venueDirections != null
-                ? Text("$venueProvider.venueDirections")
+                ? Text(
+                    venueProvider.venueDirections!,
+                    style: TextStyle(color: Theme.of(context).splashColor),
+                  )
                 : Container(),
           ],
         ),
