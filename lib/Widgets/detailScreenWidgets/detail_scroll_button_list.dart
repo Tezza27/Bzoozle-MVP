@@ -72,9 +72,9 @@ class DetailContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
-    return pageNumberProvider.pageNumber != 3
-        ? SliverToBoxAdapter(child: selectPage(pageNumberProvider.pageNumber))
-        : const DetailHappyHours();
+    return SliverToBoxAdapter(child: selectPage(pageNumberProvider.pageNumber));
+    //: const DetailHappyHours();
+    // pageNumberProvider.pageNumber != 3
   }
 }
 

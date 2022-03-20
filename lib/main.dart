@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
           title: 'Bzoozle',
           theme: ThemeData(
             primaryColor: Colors.black,
-            splashColor: Colors.orange,
+            splashColor: Colors.orange[800],
             elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(
                     primary: Colors.orange[800],

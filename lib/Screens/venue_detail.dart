@@ -33,7 +33,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
               title: Text(
                 selectedVenue.venueName,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               centerTitle: true,
