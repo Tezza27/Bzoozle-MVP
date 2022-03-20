@@ -21,7 +21,9 @@ class DetailLocation extends StatelessWidget {
                     style: TextStyle(color: Theme.of(context).splashColor),
                   ),
             Text(
-              venueProvider.venueDoorNumber! + " " + venueProvider.venueStreet!,
+              addressBuilder(
+                  unitNumber: venueProvider.venueDoorNumber,
+                  streetName: venueProvider.venueStreet),
               style: TextStyle(color: Theme.of(context).splashColor),
             ),
             Text(
@@ -51,5 +53,11 @@ class DetailLocation extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String addressBuilder({String? unitNumber, String? streetName}) {
+    unitNumber == null ? unitNumber = "" : unitNumber = unitNumber;
+    streetName == null ? streetName = "" : streetName = streetName;
+    return unitNumber + " " + streetName;
   }
 }

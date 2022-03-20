@@ -1,6 +1,8 @@
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Widgets/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class VenueDetailScreen extends StatefulWidget {
   const VenueDetailScreen({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
   Widget build(BuildContext context) {
     final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
     // final venueProvider = Provider.of<VenueProvider>(context);
-    // final pageNumberProvider = Provider.of<DetailPageProvider>(context);
+    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
       backgroundColor: Colors.black,
@@ -30,7 +32,9 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 selectedVenue.venueName,
-                style: TextStyle(color: Colors.orange[800]!),
+                style: const TextStyle(
+                  color: Colors.black,
+                ),
               ),
               centerTitle: true,
               background: DecoratedBox(
@@ -40,7 +44,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: <Color>[
-                        Colors.black,
+                        Colors.deepOrange,
                         Colors.transparent,
                       ]),
                 ),

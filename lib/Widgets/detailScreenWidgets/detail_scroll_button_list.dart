@@ -105,3 +105,31 @@ Widget selectPage(int pageNumber) {
   }
   return selectedPage;
 }
+
+// Widget selectPage(int pageNumber) {
+//   Widget selectedPage;
+//   switch (pageNumber) {
+//     case 0:
+//       selectedPage = const DetailDescription();
+//       break;
+//     case 1:
+//       selectedPage = const DetailLocation();
+//       break;
+//     case 2:
+//       selectedPage = const DetailOpenHours();
+//       break;
+//     case 3:
+//       selectedPage = const DetailHappyHours();
+//       break;
+//     case 4:
+//       selectedPage = const DetailRants();
+//       break;
+//     case 5:
+//       selectedPage = const DetailRaves();
+//       break;
+
+//     default:
+//       selectedPage = const DetailDescription();
+//   }
+//   return selectedPage;
+// }
