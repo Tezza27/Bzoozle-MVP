@@ -32,7 +32,7 @@ Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 40.0,
+              height: 60.0,
             ),
             Expanded(
               flex: 6,

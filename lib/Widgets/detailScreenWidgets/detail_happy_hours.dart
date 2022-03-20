@@ -25,7 +25,7 @@ class DetailHappyHours extends StatelessWidget {
             ],
           )
         : SliverFixedExtentList(
-            itemExtent: 100,
+            itemExtent: 60,
             delegate: SliverChildBuilderDelegate(
                 // scrollDirection: Axis.vertical,
                 // shrinkWrap: true,
