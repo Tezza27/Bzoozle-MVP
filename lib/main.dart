@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'Providers/page_number_provider.dart';
+import 'Settings/color_experiments.dart';
 import 'Widgets/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 
 Future<void> main() async {
@@ -79,6 +80,8 @@ class _MyAppState extends State<MyApp> {
                 const NewHappyHoursScreen(),
             AddHHSessionScreen.routeName: (context) =>
                 const AddHHSessionScreen(),
+            ColorExperimentScreen.routeName: (context) =>
+                const ColorExperimentScreen(),
           },
           home: FutureBuilder(
             future: _fbApp,

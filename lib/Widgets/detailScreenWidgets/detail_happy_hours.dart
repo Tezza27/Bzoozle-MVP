@@ -1,6 +1,6 @@
-import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:neon/neon.dart';
 import 'package:provider/provider.dart';
 
 import '../times_card_widgets/hh_times_card.dart';
@@ -14,12 +14,20 @@ class DetailHappyHours extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          const SizedBox(
-            height: 100.0,
-            child: Text(
-              "Placeholder text for test purposes",
-              style: TextStyle(color: Colors.orange),
-              textAlign: TextAlign.center,
+          SizedBox(
+            height: 80.0,
+            width: double.infinity,
+            child: Neon(
+              text: "HAPPY HOURS",
+              color: Colors.lightBlue,
+              fontSize: 30, //mySize,
+              font: NeonFont.Monoton,
+              flickeringText: true,
+              flickeringLetters: null,
+              blurRadius: 8000.0,
+              glowing: true,
+              //glowingDuration: const Duration(seconds: 2),
+              //textStyle: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
           venueProvider.happyHours.isEmpty

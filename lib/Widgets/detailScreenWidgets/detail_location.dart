@@ -1,5 +1,6 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:neon/neon.dart';
 import 'package:provider/provider.dart';
 
 class DetailLocation extends StatelessWidget {
@@ -14,6 +15,22 @@ class DetailLocation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(
+              height: 80.0,
+              width: double.infinity,
+              child: Neon(
+                text: "LOCATION",
+                color: Colors.lightBlue,
+                fontSize: 30, //mySize,
+                font: NeonFont.Monoton,
+                flickeringText: true,
+                flickeringLetters: null,
+                blurRadius: 8000.0,
+                glowing: true,
+                //glowingDuration: const Duration(seconds: 2),
+                //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
             venueProvider.venueHostBuilding == null
                 ? Container()
                 : Text(
