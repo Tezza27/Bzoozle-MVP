@@ -36,73 +36,19 @@ class DetailPolicies extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("COVER CHARGE",
+                        child: Text("DRESS CODE",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Indoor",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Outdoor",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Rooftop",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("Anything Goes",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the indoor/outdoor situation",
+                          "This is a comments box to expand upon the the dress code situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -123,90 +69,19 @@ class DetailPolicies extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("DRESS CODE",
+                        child: Text("COVER CHARGE",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Breakfast",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Lunch",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Dinner",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Late",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("Sometimes",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the food service situation",
+                          "This is a comments box to expand upon the cover charge situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -232,19 +107,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Free",
-                            style: themeProvider.getTheme.textTheme.bodyText1),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Password: " "thisisthepassword",
+                        child: Text("Smoking Allowed",
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the wifi service situation",
+                          "This is a comments box to expand upon the smoking situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -269,69 +139,15 @@ class DetailPolicies extends StatelessWidget {
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Live",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Recorded",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Karaoke",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("No Under 21s",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the enertainment situation",
+                          "This is a comments box to expand upon the child situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -356,69 +172,15 @@ class DetailPolicies extends StatelessWidget {
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Gambling",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Board Games",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "No",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Pub Games",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText1,
-                                  ),
-                                  Text(
-                                    "Yes",
-                                    style: themeProvider
-                                        .getTheme.textTheme.bodyText2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("Dogs Allowed",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the games situation",
+                          "This is a comments box to expand upon the dog situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
