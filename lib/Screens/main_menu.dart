@@ -12,7 +12,7 @@ class MainMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
-      //backgroundColor: themeProvider.getTheme.splashColor,
+      //backgroundColor: themeProvider.getTheme.primaryColor,
       appBar: AppBar(
           backgroundColor: themeProvider.getTheme.primaryColor,
           title: const Text("BZOOZLE"),
