@@ -1,5 +1,4 @@
 List<String> categoryRantsRavesWriterList = [
-  "All Catgories",
   "Crowd",
   "Dangers & Annoyances",
   "Drinks",
@@ -11,17 +10,17 @@ List<String> categoryRantsRavesWriterList = [
   "Everything Else",
 ];
 
-List<String> allCategories = [
-  "All Catgories",
+List<String> allRRCategories = [
+  "All",
 ];
 
 List<String> categoryRantsRavesReaderList = [
-  ...allCategories,
+  ...allRRCategories,
   ...categoryRantsRavesWriterList,
 ];
 
 List<String> rantsOrRavesList = [
   "Rants",
   "Raves",
-  "Rants & Raves",
+  "Both",
 ];

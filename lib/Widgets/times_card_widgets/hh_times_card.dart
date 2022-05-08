@@ -1,8 +1,11 @@
 import 'package:bzoozle/Lists/week_days.dart';
 import 'package:bzoozle/Models/happy_hour_session.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
+  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
   // Today's weekday
   DateTime today = DateTime.now();
   //Convert start time string to dateTime
@@ -23,11 +26,11 @@ Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
   String endTime = endTimeHour + ":" + endTimeMinute;
 
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+    padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16.0),
     child: Card(
-      color: Theme.of(context).splashColor,
+      color: Theme.of(context).primaryColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -35,9 +38,11 @@ Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
               height: 40.0,
             ),
             Expanded(
-              flex: 6,
-              child: Text(weekDays[int.parse(happyHour.day)],
-                  style: TextStyle(color: Theme.of(context).primaryColor)),
+              flex: 10,
+              child: Text(
+                weekDays[int.parse(happyHour.day)].toUpperCase(),
+                style: themeProvider.getTheme.textTheme.headline4,
+              ),
             ),
             const Spacer(
               flex: 2,
@@ -46,26 +51,22 @@ Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
               flex: 4,
               child: Text(
                 happyHour.startTime,
-                style: TextStyle(color: Theme.of(context).primaryColor),
-                textAlign: TextAlign.center,
+                style: themeProvider.getTheme.textTheme.headline4,
               ),
             ),
             const Spacer(flex: 1),
             Text(
               " - ",
-              style: TextStyle(color: Theme.of(context).primaryColor),
-              textAlign: TextAlign.center,
+              style: themeProvider.getTheme.textTheme.headline4,
             ),
             const Spacer(flex: 1),
             Expanded(
               flex: 4,
               child: Text(
                 endTime,
-                style: TextStyle(color: Theme.of(context).primaryColor),
-                textAlign: TextAlign.center,
+                style: themeProvider.getTheme.textTheme.headline4,
               ),
             ),
-            const Spacer(flex: 2),
           ],
         ),
       ),

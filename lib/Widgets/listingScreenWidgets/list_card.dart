@@ -1,5 +1,6 @@
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Models/venue.dart';
@@ -8,15 +9,16 @@ import 'package:provider/provider.dart';
 Widget listCard(BuildContext context, Venue venue) {
   final venueProvider = Provider.of<VenueProvider>(context);
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Card(
-        color: Colors.yellow[50],
+        color: themeProvider.getTheme.cardColor,
         shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.orange, width: 2),
+            // side: const BorderSide(color: Colors.orange, width: 2),
             borderRadius: BorderRadius.circular(10.0)),
         child: InkWell(
-          splashColor: Colors.orange,
+          splashColor: themeProvider.getTheme.splashColor,
           onTap: () {
             pageNumberProvider.changePageNumber(0);
             Navigator.pushNamed(context, VenueDetailScreen.routeName,
@@ -29,8 +31,8 @@ Widget listCard(BuildContext context, Venue venue) {
                 children: <Widget>[
                   DecoratedBox(
                     position: DecorationPosition.foreground,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         topRight: Radius.circular(10),
                       ),
@@ -38,7 +40,7 @@ Widget listCard(BuildContext context, Venue venue) {
                           begin: Alignment.bottomCenter,
                           end: Alignment.center,
                           colors: <Color>[
-                            Colors.black,
+                            themeProvider.getTheme.primaryColor,
                             Colors.transparent,
                           ]),
                     ),
@@ -59,10 +61,7 @@ Widget listCard(BuildContext context, Venue venue) {
                       children: <Widget>[
                         Text(
                           venue.venueName,
-                          style: TextStyle(
-                              color: Colors.orange[800]!,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
+                          style: themeProvider.getTheme.textTheme.headline3,
                         ),
                         // venue.venueHostBuilding != null
                         //     ? Text(
@@ -76,10 +75,74 @@ Widget listCard(BuildContext context, Venue venue) {
                   ),
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "OPEN TODAY",
+                          style: themeProvider.getTheme.textTheme.headline5,
+                        ),
+                        Text(
+                          "10:00-23:00",
+                          style: themeProvider.getTheme.textTheme.headline6,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "NEXT HH",
+                          style: themeProvider.getTheme.textTheme.headline5,
+                        ),
+                        Text(
+                          "10:00-23:00",
+                          style: themeProvider.getTheme.textTheme.headline6,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "PRICE",
+                          style: themeProvider.getTheme.textTheme.headline5,
+                        ),
+                        Text(
+                          '\$\$\$\$\$',
+                          style: themeProvider.getTheme.textTheme.headline6,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "DISTANCE",
+                          style: themeProvider.getTheme.textTheme.headline5,
+                        ),
+                        Text(
+                          "200m",
+                          style: themeProvider.getTheme.textTheme.headline6,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 28.0, bottom: 28.0, left: 8.0, right: 28.0),
-                child: Text(venue.venueDescription ?? ''),
+                    top: 8.0, bottom: 8.0, left: 8.0, right: 28.0),
+                child: Text(
+                  venue.venueDescription ?? '',
+                  style: themeProvider.getTheme.textTheme.bodyText1,
+                ),
               ),
             ],
           ),
