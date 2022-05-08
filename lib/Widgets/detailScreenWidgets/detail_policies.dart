@@ -26,18 +26,409 @@ class DetailPolicies extends StatelessWidget {
                       style: themeProvider.getTheme.textTheme.headline1),
                 ),
               ),
-              // Neon(
-              //   text: "DESCRIPTION",
-              //   color: Colors.lightBlue,
-              //   fontSize: 30, //mySize,
-              //   font: NeonFont.Monoton,
-              //   flickeringText: true,
-              //   flickeringLetters: null,
-              //   blurRadius: 8000.0,
-              //   glowing: true,
-              //   //glowingDuration: const Duration(seconds: 2),
-              //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: themeProvider.getTheme.cardColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("COVER CHARGE",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Indoor",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Outdoor",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Rooftop",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Text(
+                          "This is a comments box to expand upon the indoor/outdoor situation",
+                          maxLines: 10,
+                          softWrap: true,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: themeProvider.getTheme.cardColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("DRESS CODE",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Breakfast",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Lunch",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Dinner",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Late",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Text(
+                          "This is a comments box to expand upon the food service situation",
+                          maxLines: 10,
+                          softWrap: true,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: themeProvider.getTheme.cardColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("SMOKING",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("Free",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Text("Password: " "thisisthepassword",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Text(
+                          "This is a comments box to expand upon the wifi service situation",
+                          maxLines: 10,
+                          softWrap: true,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: themeProvider.getTheme.cardColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("CHILD FRIENDLY",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Live",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Recorded",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Karaoke",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Text(
+                          "This is a comments box to expand upon the enertainment situation",
+                          maxLines: 10,
+                          softWrap: true,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: themeProvider.getTheme.cardColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("DOG FRIENDLY",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Gambling",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Board Games",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Pub Games",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "Yes",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 8.0),
+                        child: Text(
+                          "This is a comments box to expand upon the games situation",
+                          maxLines: 10,
+                          softWrap: true,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
