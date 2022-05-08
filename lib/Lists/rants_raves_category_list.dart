@@ -1,11 +1,26 @@
-List<String> categoryRantsRavesList = [
-  "All Catgories",
-  "Drinks",
-  "Food",
-  "Dangers & Annoyances",
-  "Service",
-  "Policies",
-  "Atmosphere",
+List<String> categoryRantsRavesWriterList = [
   "Crowd",
-  "Anything Else",
+  "Dangers & Annoyances",
+  "Drinks",
+  "Entertainment",
+  "Facilities",
+  "Food",
+  "Policies",
+  "Service",
+  "Everything Else",
+];
+
+List<String> allRRCategories = [
+  "All",
+];
+
+List<String> categoryRantsRavesReaderList = [
+  ...allRRCategories,
+  ...categoryRantsRavesWriterList,
+];
+
+List<String> rantsOrRavesList = [
+  "Rants",
+  "Raves",
+  "Both",
 ];

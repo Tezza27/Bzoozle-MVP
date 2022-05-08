@@ -1,13 +1,16 @@
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Widget openTimeCard(
     BuildContext context, String weekDay, String openTime, String closeTime) {
+  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 2.0),
     child: Card(
-      color: Theme.of(context).splashColor,
+      color: Theme.of(context).primaryColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -15,9 +18,9 @@ Widget openTimeCard(
               height: 40.0,
             ),
             Expanded(
-              flex: 6,
+              flex: 10,
               child: Text(weekDay,
-                  style: TextStyle(color: Theme.of(context).primaryColor)),
+                  style: themeProvider.getTheme.textTheme.headline4),
             ),
             const Spacer(
               flex: 2,
@@ -26,14 +29,14 @@ Widget openTimeCard(
               flex: 4,
               child: Text(
                 openTime,
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: themeProvider.getTheme.textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
             ),
             const Spacer(flex: 1),
             Text(
               " - ",
-              style: TextStyle(color: Theme.of(context).primaryColor),
+              style: themeProvider.getTheme.textTheme.headline4,
               textAlign: TextAlign.center,
             ),
             const Spacer(flex: 1),
@@ -41,11 +44,10 @@ Widget openTimeCard(
               flex: 4,
               child: Text(
                 closeTime,
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: themeProvider.getTheme.textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
             ),
-            const Spacer(flex: 2),
           ],
         ),
       ),

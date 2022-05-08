@@ -1,5 +1,5 @@
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Widgets/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +17,14 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
   Widget build(BuildContext context) {
     final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
     // final venueProvider = Provider.of<VenueProvider>(context);
-    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
-      backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.orange[800],
+            // backgroundColor: Colors.orange[800],
             pinned: true,
             floating: true,
             snap: true,
@@ -32,19 +32,17 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 selectedVenue.venueName,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
+                style: themeProvider.getTheme.textTheme.headline3,
               ),
               centerTitle: true,
               background: DecoratedBox(
                 position: DecorationPosition.foreground,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
                       colors: <Color>[
-                        Colors.deepOrange,
+                        themeProvider.getTheme.primaryColor,
                         Colors.transparent,
                       ]),
                 ),

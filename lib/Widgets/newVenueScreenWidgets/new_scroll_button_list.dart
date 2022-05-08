@@ -1,5 +1,6 @@
 import 'package:bzoozle/Lists/pages_list.dart';
 import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_description.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_location.dart';
@@ -36,14 +37,15 @@ Widget newScrollButton(
     int index = 0,
     String buttonText = "Error"}) {
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
   return ConstrainedBox(
     constraints: const BoxConstraints.tightFor(width: 120, height: 20),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: pageNumberProvider.pageNumber == index
-            ? Colors.orange[800]
-            : Colors.black,
-        side: BorderSide(width: 1, color: Colors.orange[800]!),
+            ? themeProvider.getTheme.primaryColor
+            : themeProvider.getTheme.splashColor,
+        side: BorderSide(width: 1, color: themeProvider.getTheme.primaryColor),
         elevation: 5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
@@ -53,8 +55,8 @@ Widget newScrollButton(
         buttonText,
         style: TextStyle(
           color: pageNumberProvider.pageNumber == index
-              ? Colors.black
-              : Colors.orange[800],
+              ? themeProvider.getTheme.splashColor
+              : themeProvider.getTheme.primaryColor,
         ),
       ),
       onPressed: () {

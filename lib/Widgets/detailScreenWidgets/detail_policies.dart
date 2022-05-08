@@ -3,8 +3,8 @@ import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DetailDescription extends StatelessWidget {
-  const DetailDescription({Key? key}) : super(key: key);
+class DetailPolicies extends StatelessWidget {
+  const DetailPolicies({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DetailDescription extends StatelessWidget {
                 height: 40.0,
                 width: double.infinity,
                 child: Center(
-                  child: Text("DESCRIPTION",
+                  child: Text("POLICIES",
                       style: themeProvider.getTheme.textTheme.headline1),
                 ),
               ),
@@ -38,40 +38,6 @@ class DetailDescription extends StatelessWidget {
               //   //glowingDuration: const Duration(seconds: 2),
               //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
               // ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Venue Type:",
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                  ),
-                  Text(
-                    venueProvider.venueTheme! + " " + venueProvider.venueType!,
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                  ),
-                ],
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 24.0, bottom: 0.0),
-                child: Center(
-                  child: Text(
-                    "What To Expect",
-                    style: themeProvider.getTheme.textTheme.headline2,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Center(
-                  child: Text(
-                    venueProvider.venueDescription!,
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
             ],
           ),
         ),

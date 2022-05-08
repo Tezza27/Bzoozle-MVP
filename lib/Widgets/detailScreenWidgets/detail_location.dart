@@ -1,4 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,48 +9,78 @@ class DetailLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            venueProvider.venueHostBuilding == null
-                ? Container()
-                : Text(
-                    venueProvider.venueHostBuilding!,
-                    style: TextStyle(color: Theme.of(context).splashColor),
-                  ),
-            Text(
-              addressBuilder(
-                  unitNumber: venueProvider.venueDoorNumber,
-                  streetName: venueProvider.venueStreet),
-              style: TextStyle(color: Theme.of(context).splashColor),
-            ),
-            Text(
-              venueProvider.venueCity!,
-              style: TextStyle(color: Theme.of(context).splashColor),
-            ),
-            Text(
-              venueProvider.venuePostcode!,
-              style: TextStyle(color: Theme.of(context).splashColor),
-            ),
-            const SizedBox(
-              height: 30.0,
-            ),
-            venueProvider.venueDirections != null
-                ? Text(
-                    "Directions",
-                    style: TextStyle(color: Theme.of(context).splashColor),
-                  )
-                : Container(),
-            venueProvider.venueDirections != null
-                ? Text(
-                    venueProvider.venueDirections!,
-                    style: TextStyle(color: Theme.of(context).splashColor),
-                  )
-                : Container(),
-          ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 40.0,
+                width: double.infinity,
+                child: Center(
+                  child: Text("LOCATION",
+                      style: themeProvider.getTheme.textTheme.headline1),
+                ),
+              ),
+              // child: Neon(
+              //   text: "LOCATION",
+              //   color: Colors.lightBlue,
+              //   fontSize: 30, //mySize,
+              //   font: NeonFont.Monoton,
+              //   flickeringText: true,
+              //   flickeringLetters: null,
+              //   blurRadius: 8000.0,
+              //   glowing: true,
+              //   //glowingDuration: const Duration(seconds: 2),
+              //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+              // ),
+
+              venueProvider.venueHostBuilding == null
+                  ? Container()
+                  : Text(
+                      venueProvider.venueHostBuilding!,
+                      style: themeProvider.getTheme.textTheme.bodyText1,
+                    ),
+              Text(
+                addressBuilder(
+                    unitNumber: venueProvider.venueDoorNumber,
+                    streetName: venueProvider.venueStreet),
+                style: themeProvider.getTheme.textTheme.bodyText1,
+              ),
+              Text(
+                venueProvider.venueCity!,
+                style: themeProvider.getTheme.textTheme.bodyText1,
+              ),
+              Text(
+                venueProvider.venuePostcode!,
+                style: themeProvider.getTheme.textTheme.bodyText1,
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              venueProvider.venueDirections != null
+                  ? Text(
+                      "Directions",
+                      style: themeProvider.getTheme.textTheme.headline2,
+                    )
+                  : Container(),
+              venueProvider.venueDirections != null
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Center(
+                        child: Text(
+                          venueProvider.venueDirections!,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                      ),
+                    )
+                  : Container(),
+            ],
+          ),
         ),
       ),
     );
