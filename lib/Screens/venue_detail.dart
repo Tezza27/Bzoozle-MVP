@@ -24,7 +24,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            // backgroundColor: Colors.orange[800],
+            backgroundColor: themeProvider.getTheme.primaryColor,
             pinned: true,
             floating: true,
             snap: true,

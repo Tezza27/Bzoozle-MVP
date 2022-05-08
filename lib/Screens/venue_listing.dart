@@ -1,5 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Widgets/listingScreenWidgets/list_card.dart';
@@ -18,8 +19,12 @@ class _ListingScreenState extends State<ListingScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title), centerTitle: true),
+      appBar: AppBar(
+          backgroundColor: themeProvider.getTheme.primaryColor,
+          title: Text(widget.title),
+          centerTitle: true),
       body: StreamBuilder<QuerySnapshot>(
         stream: venueProvider.streamVenuesList,
         builder: (context, snapshot) {
