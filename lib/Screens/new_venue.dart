@@ -2,7 +2,7 @@
 
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/main_menu.dart';
+import 'package:bzoozle/Screens/venue_listing.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_scroll_button_list.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                         venueProvider.addVenue();
                         venueProvider.unloadVenue();
                         pageNumberProvider.changePageNumber(0);
-                        Navigator.pushNamed(context, MainMenuScreen.routeName);
+                        Navigator.pushNamed(context, ListingScreen.routeName);
                       },
                       child: Text("Save"),
                     ),

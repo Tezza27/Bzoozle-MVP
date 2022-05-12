@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ColorPallet extends StatefulWidget {
-  const ColorPallet({Key? key}) : super(key: key);
+class ColorPalletScreen extends StatefulWidget {
+  const ColorPalletScreen({Key? key}) : super(key: key);
   static const String routeName = '/pallet';
 
   @override
-  State<ColorPallet> createState() => _ColorPalletState();
+  State<ColorPalletScreen> createState() => _ColorPalletScreenState();
 }
 
-class _ColorPalletState extends State<ColorPallet> {
+class _ColorPalletScreenState extends State<ColorPalletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

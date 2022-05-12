@@ -1,5 +1,4 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/main_menu.dart';
 import 'package:bzoozle/Screens/new_venue.dart';
 import 'package:bzoozle/Screens/venue_detail.dart';
 import 'package:bzoozle/Screens/venue_listing.dart';
@@ -51,7 +50,6 @@ class _MyAppState extends State<MyApp> {
             theme: themeProvider.getTheme,
             scrollBehavior: const ScrollBehavior(),
             routes: {
-              MainMenuScreen.routeName: (context) => const MainMenuScreen(),
               NewVenueScreen.routeName: (context) => const NewVenueScreen(),
               ListingScreen.routeName: (context) => const ListingScreen(),
               VenueDetailScreen.routeName: (context) =>
@@ -65,7 +63,8 @@ class _MyAppState extends State<MyApp> {
                   const AddHHSessionScreen(),
               ColorExperimentScreen.routeName: (context) =>
                   const ColorExperimentScreen(),
-              ColorPallet.routeName: (context) => const ColorPallet(),
+              ColorPalletScreen.routeName: (context) =>
+                  const ColorPalletScreen(),
               ContactScreen.routeName: (context) => const ContactScreen(),
             },
             home: FutureBuilder(
@@ -74,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                 if (snapshot.hasError) {
                   return const Text("Something went wrong");
                 } else if (snapshot.hasData) {
-                  return const MainMenuScreen();
+                  return const ListingScreen();
                 } else {
                   return const Center(
                     child: CircularProgressIndicator(),
