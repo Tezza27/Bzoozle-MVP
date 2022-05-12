@@ -3,8 +3,11 @@ import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_description.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_facilities.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_location.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/new_open_hours.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_policies.dart';
+import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_pricing.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -91,7 +94,16 @@ Widget selectPage(int pageNumber, BuildContext context) {
       selectedPage = const NewOpenHoursScreen();
       break;
     case 3:
+      selectedPage = const NewFacilitiesScreen();
+      break;
+    case 4:
+      selectedPage = const NewPoliciesScreen();
+      break;
+    case 5:
       selectedPage = const NewHappyHoursScreen();
+      break;
+    case 6:
+      selectedPage = const NewPricingScreen();
       break;
 
     default:

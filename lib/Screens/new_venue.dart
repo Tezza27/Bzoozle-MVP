@@ -3,6 +3,7 @@
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/main_menu.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,14 +21,15 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      //backgroundColor: themeProvider.getTheme.primaryColor,
       body: Stack(
         children: <Widget>[
           CustomScrollView(
             slivers: [
               SliverAppBar(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
+                backgroundColor: themeProvider.getTheme.primaryColor,
                 pinned: true,
                 floating: true,
                 snap: true,
@@ -35,8 +37,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     "Add New Venue",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary),
+                    style: themeProvider.getTheme.textTheme.headline3,
                   ),
                   centerTitle: true,
                   background: DecoratedBox(
@@ -46,7 +47,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                           begin: Alignment.bottomCenter,
                           end: Alignment.center,
                           colors: <Color>[
-                            Theme.of(context).primaryColor,
+                            themeProvider.getTheme.primaryColor,
                             Colors.transparent,
                           ]),
                     ),
@@ -64,7 +65,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              color: Theme.of(context).primaryColor,
+              color: themeProvider.getTheme.primaryColor,
               child: Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: Row(
@@ -75,17 +76,17 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                         venueProvider.unloadVenue();
                         pageNumberProvider.changePageNumber(0);
                       },
-                      child: const Text("Cancel"),
+                      child: Text("Cancel"),
                     ),
                     ElevatedButton(
-                        onPressed: () {
-                          venueProvider.addVenue();
-                          venueProvider.unloadVenue();
-                          pageNumberProvider.changePageNumber(0);
-                          Navigator.pushNamed(
-                              context, MainMenuScreen.routeName);
-                        },
-                        child: const Text("Save")),
+                      onPressed: () {
+                        venueProvider.addVenue();
+                        venueProvider.unloadVenue();
+                        pageNumberProvider.changePageNumber(0);
+                        Navigator.pushNamed(context, MainMenuScreen.routeName);
+                      },
+                      child: Text("Save"),
+                    ),
                   ],
                 ),
               ),

@@ -443,12 +443,12 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("PARKING",
+                        child: Text("ONSITE PARKING",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Onsite" " " "Free",
+                        child: Text("Free",
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(

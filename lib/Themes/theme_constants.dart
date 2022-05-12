@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Color black1 = const Color.fromARGB(255, 12, 12, 12);
 Color black2 = const Color.fromARGB(255, 20, 20, 20);
 Color black3 = const Color.fromARGB(255, 40, 40, 40);
-Color orangewhite = const Color.fromARGB(255, 250, 217, 169);
+Color orangeWhite = const Color.fromARGB(255, 250, 217, 169);
 Color white2 = const Color.fromARGB(255, 255, 255, 255);
 Color white3 = const Color.fromARGB(255, 255, 255, 255);
 Color orange1 = const Color.fromARGB(255, 255, 127, 0);
@@ -17,15 +17,15 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   //   primary: orange1,
   //   onPrimary: black1,
   // )),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     //Used for headers on the details pages
-    headline1: TextStyle(
+    headline1: const TextStyle(
         color: Colors.black,
         fontSize: 28.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
-    headline2: TextStyle(
+    headline2: const TextStyle(
         color: Colors.black,
         fontSize: 24.0,
         fontFamily: 'Roboto',
@@ -33,27 +33,27 @@ ThemeData lightTheme = ThemeData.light().copyWith(
         fontStyle: FontStyle.normal),
     //Used for Text overlaid on images
     headline3: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 26.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     //Used for opening times and happy times cards
-    headline4: TextStyle(
+    headline4: const TextStyle(
         color: Colors.black,
         fontSize: 18.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     // Used for headers on the lising cards
-    headline5: TextStyle(
+    headline5: const TextStyle(
         color: Colors.black,
         fontSize: 13.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     // Used for the times on the listings cards
-    headline6: TextStyle(
+    headline6: const TextStyle(
         color: Colors.black,
         fontSize: 12.0,
         fontFamily: 'Roboto',
@@ -69,18 +69,60 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     //       fontFamily: 'Roboto',
     //       fontWeight: FontWeight.normal,
     //       fontStyle: FontStyle.normal),
-    bodyText1: TextStyle(
+    bodyText1: const TextStyle(
         color: Colors.black,
         fontSize: 16.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
-    bodyText2: TextStyle(
+    bodyText2: const TextStyle(
         color: Colors.black,
         fontSize: 14.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: black1,
+      onPrimary: orange1,
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    fillColor: white2,
+    filled: true,
+    floatingLabelStyle: TextStyle(color: orange1),
+    //Borders
+    //Enabled and not showing an error
+    enabledBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orange1, width: 1),
+    ),
+    //Has Error but no focus
+    errorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.red, width: 1),
+    ),
+    //Has Error and focus
+    focusedErrorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.red, width: 2),
+    ),
+    //Default value if borders are null
+    border: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orange1, width: 1),
+    ),
+    //Enabled and has focus
+    focusedBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orange1, width: 2),
+    ),
+    //Disabled
+    disabledBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.grey, width: 1),
+    ),
   ),
 );
 
@@ -89,48 +131,43 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   primaryColor: black1,
   splashColor: orange1,
   cardColor: black1,
-  // elevatedButtonTheme: ElevatedButtonThemeData(
-  //     style: ElevatedButton.styleFrom(
-  //   primary: black1,
-  //   onPrimary: orange1,
-  // )),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     //Used for headers on the details pages
     headline1: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 28.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     headline2: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 24.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     headline3: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 26.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     //Used for opening times and happy times cards
     headline4: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 18.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     // Used for headers on the lising cards
     headline5: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 13.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
     // Used for the times on the listings cards
     headline6: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 12.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
@@ -146,16 +183,58 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     //       fontWeight: FontWeight.normal,
     //       fontStyle: FontStyle.normal),
     bodyText1: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 16.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
     bodyText2: TextStyle(
-        color: Color.fromARGB(255, 250, 217, 169),
+        color: orangeWhite,
         fontSize: 14.0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: orange1,
+      onPrimary: black1,
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    fillColor: white2,
+    filled: true,
+    floatingLabelStyle: TextStyle(color: orangeWhite),
+    //Borders
+    //Enabled and not showing an error
+    enabledBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orangeWhite, width: 1),
+    ),
+    //Has Error but no focus
+    errorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.red, width: 1),
+    ),
+    //Has Error and focus
+    focusedErrorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.red, width: 2),
+    ),
+    //Default value if borders are null
+    border: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orangeWhite, width: 1),
+    ),
+    //Enabled and has focus
+    focusedBorder: OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: orangeWhite, width: 2),
+    ),
+    //Disabled
+    disabledBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderSide: BorderSide(color: Colors.grey, width: 1),
+    ),
   ),
 );
