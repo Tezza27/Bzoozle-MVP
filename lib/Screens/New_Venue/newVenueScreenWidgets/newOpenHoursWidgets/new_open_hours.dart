@@ -1,5 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';

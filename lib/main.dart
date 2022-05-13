@@ -1,20 +1,20 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/new_venue.dart';
-import 'package:bzoozle/Screens/venue_detail.dart';
-import 'package:bzoozle/Screens/venue_listing.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newOpenHoursWidgets/new_open_hours.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
+import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
+import 'package:bzoozle/Screens/Venue_Detail/venue_detail_screen.dart';
+import 'package:bzoozle/Screens/Venue_Listing/venue_listing_screen.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newOpenHoursWidgets/new_open_hours.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'Providers/page_number_provider.dart';
-import 'Screens/contact_screen.dart';
+import 'Screens/Contact/contact_screen.dart';
 import 'Settings/color_experiments.dart';
 import 'Settings/color_pallet.dart';
-import 'Widgets/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

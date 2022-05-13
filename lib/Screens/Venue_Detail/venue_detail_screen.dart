@@ -1,6 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
-import 'package:bzoozle/Widgets/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

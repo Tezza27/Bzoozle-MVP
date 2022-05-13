@@ -1,9 +1,8 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/times_card_widgets/hh_times_card.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../times_card_widgets/hh_times_card.dart';
 
 class DetailHappyHours extends StatelessWidget {
   const DetailHappyHours({Key? key}) : super(key: key);

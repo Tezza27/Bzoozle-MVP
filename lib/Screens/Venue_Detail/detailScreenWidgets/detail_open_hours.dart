@@ -1,6 +1,6 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/times_card_widgets/open_times_card.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
-import 'package:bzoozle/Widgets/times_card_widgets/open_times_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,20 +30,6 @@ class DetailOpenHours extends StatelessWidget {
                   ),
                 ),
               ),
-
-              // Neon(
-              //   text: "OPENING HOURS",
-              //   color: Colors.lightBlue,
-              //   fontSize: 30, //mySize,
-              //   font: NeonFont.Monoton,
-              //   flickeringText: true,
-              //   flickeringLetters: null,
-              //   blurRadius: 8000.0,
-              //   glowing: true,
-              //   //glowingDuration: const Duration(seconds: 2),
-              //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              // ),
-
               openTimeCard(context, "MONDAY", venueProvider.openTime0!,
                   venueProvider.closeTime0!),
               openTimeCard(context, "TUESDAY", venueProvider.openTime1!,

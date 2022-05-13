@@ -1,13 +1,13 @@
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/contact_screen.dart';
-import 'package:bzoozle/Screens/new_venue.dart';
+import 'package:bzoozle/Screens/Contact/contact_screen.dart';
+import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/list_card.dart';
 import 'package:bzoozle/Settings/color_experiments.dart';
 import 'package:bzoozle/Settings/color_pallet.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:bzoozle/Widgets/listingScreenWidgets/list_card.dart';
 import 'package:provider/provider.dart';
 
 class ListingScreen extends StatefulWidget {
@@ -138,7 +138,7 @@ class _ListingScreenState extends State<ListingScreen> {
               height: 80.0,
             ),
             ListTile(
-              title: Text('Close Drawer',
+              title: Text('Close',
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {

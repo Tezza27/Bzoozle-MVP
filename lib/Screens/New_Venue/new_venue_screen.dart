@@ -2,9 +2,9 @@
 
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/venue_listing.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/new_scroll_button_list.dart';
+import 'package:bzoozle/Screens/Venue_Listing/venue_listing_screen.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/new_scroll_button_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

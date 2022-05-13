@@ -1,6 +1,7 @@
 import 'package:bzoozle/Lists/contact_categories.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:neon/neon.dart';
+import 'package:provider/provider.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -14,8 +15,26 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
-      //backgroundColor: Theme.of(context).colorScheme.secondary,
+      appBar: AppBar(
+        backgroundColor: themeProvider.getTheme.primaryColor,
+        title: Text("CONTACT BZOOZLE",
+            style: themeProvider.getTheme.textTheme.headline2),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.filter_alt_rounded,
+              size: 36.0,
+              color: themeProvider.getTheme.splashColor,
+            ),
+            onPressed: () {
+              //TODO add sort & filter function
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -23,23 +42,14 @@ class _ContactScreenState extends State<ContactScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 80.0,
-                width: double.infinity,
-                child: Neon(
-                  text: "CONTACT",
-                  color: Colors.blue,
-                  fontSize: 30, //mySize,
-                  font: NeonFont.Monoton,
-                  flickeringText: true,
-                  flickeringLetters: null,
-                  blurRadius: 8000.0,
-                  glowing: true,
-                  //glowingDuration: const Duration(seconds: 2),
-                  //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
+                child: Text(
+                  "Instructions Text",
+                  style: themeProvider.getTheme.textTheme.bodyText1,
                 ),
               ),
-              const Text("Instructions Text"),
               Padding(
                 padding: const EdgeInsets.only(
                     top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
@@ -52,12 +62,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       iconSize: 30, //this inicrease the size
                       elevation: 16,
                       style: const TextStyle(color: Colors.black),
-                      // this is for underline
-                      // to give an underline us this in your underline inspite of Container
-                      //       Container(
-                      //         height: 2,
-                      //         color: Colors.grey,
-                      //       )
+
                       underline: Container(),
                       onChanged: (String? newValue) {
                         setState(() {
@@ -126,9 +131,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       ),
                       child: Text(
                         "Cancel",
-                        style: TextStyle(
-                          color: Colors.orange[800],
-                        ),
+                        style: themeProvider.getTheme.textTheme.bodyText1,
                       ),
                       onPressed: () {},
                     ),
@@ -143,9 +146,7 @@ class _ContactScreenState extends State<ContactScreen> {
                       ),
                       child: Text(
                         "Send",
-                        style: TextStyle(
-                          color: Colors.orange[800],
-                        ),
+                        style: themeProvider.getTheme.textTheme.bodyText1,
                       ),
                       onPressed: () {},
                     ),

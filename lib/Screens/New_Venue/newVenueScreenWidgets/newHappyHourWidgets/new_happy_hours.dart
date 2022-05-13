@@ -1,6 +1,6 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
-import 'package:bzoozle/Widgets/newVenueScreenWidgets/newHappyHourWidgets/happy_hour_card.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
+import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/happy_hour_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,7 @@
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
-import 'package:bzoozle/Screens/venue_detail.dart';
+import 'package:bzoozle/Screens/Venue_Detail/venue_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:provider/provider.dart';
@@ -63,16 +63,17 @@ Widget listCard(BuildContext context, Venue venue) {
                           venue.venueName,
                           style: themeProvider.getTheme.textTheme.headline3,
                         ),
-                        // venue.venueHostBuilding != null
-                        //     ? Text(
-                        //         "${venue.venueHostBuilding}",
-                        //         style: TextStyle(
-                        //             color: Colors.orange[800]!, fontSize: 18),
-                        // )
-                        //: Container(),
+                        Text(
+                          venue.venueHostBuilding != null
+                              ? "${venue.venueHostBuilding}"
+                              : "${venue.venueStreet}",
+                          style: themeProvider.getTheme.textTheme.headline3!
+                              .copyWith(fontSize: 18.0),
+                        )
                       ],
                     ),
                   ),
+                  // Insert heart icon
                 ],
               ),
               Row(
