@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Bzoozle',
             theme: themeProvider.getTheme,
             scrollBehavior: const ScrollBehavior(),

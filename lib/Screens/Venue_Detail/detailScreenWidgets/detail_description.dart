@@ -18,13 +18,30 @@ class DetailDescription extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
-                height: 40.0,
-                width: double.infinity,
-                child: Center(
-                  child: Text("DESCRIPTION",
-                      style: themeProvider.getTheme.textTheme.headline1),
-                ),
+              Stack(
+                children: [
+                  SizedBox(
+                    height: 40.0,
+                    width: double.infinity,
+                    child: Center(
+                      child: Text("DESCRIPTION",
+                          style: themeProvider.getTheme.textTheme.headline1),
+                    ),
+                  ),
+                  Positioned(
+                    top: 4.0,
+                    right: 0.0,
+                    child: CircleAvatar(
+                      radius: 12,
+                      backgroundColor: themeProvider.getTheme.primaryColor,
+                      child: const CircleAvatar(
+                        radius: 10,
+                        backgroundImage: AssetImage(
+                            'assets/images/portrait_placeholder.png'),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               // Neon(
               //   text: "DESCRIPTION",

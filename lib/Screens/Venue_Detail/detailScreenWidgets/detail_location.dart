@@ -26,19 +26,6 @@ class DetailLocation extends StatelessWidget {
                       style: themeProvider.getTheme.textTheme.headline1),
                 ),
               ),
-              // child: Neon(
-              //   text: "LOCATION",
-              //   color: Colors.lightBlue,
-              //   fontSize: 30, //mySize,
-              //   font: NeonFont.Monoton,
-              //   flickeringText: true,
-              //   flickeringLetters: null,
-              //   blurRadius: 8000.0,
-              //   glowing: true,
-              //   //glowingDuration: const Duration(seconds: 2),
-              //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              // ),
-
               venueProvider.venueHostBuilding == null
                   ? Container()
                   : Text(
@@ -79,6 +66,28 @@ class DetailLocation extends StatelessWidget {
                       ),
                     )
                   : Container(),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 36.0),
+                child: Card(
+                  elevation: 12.0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(
+                          width: 2.0,
+                          color: themeProvider.getTheme.primaryColor)),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.asset(
+                      'assets/images/blondies_map.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 80.0,
+              )
             ],
           ),
         ),

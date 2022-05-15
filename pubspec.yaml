@@ -30,6 +30,7 @@ dependencies:
   firebase_storage: ^10.2.9
   flutter:
     sdk: flutter
+  flutter_glow: ^0.2.0
   fluttertoast: ^8.0.8
   image_picker: ^0.8.1+1
   instant: ^0.4.1
