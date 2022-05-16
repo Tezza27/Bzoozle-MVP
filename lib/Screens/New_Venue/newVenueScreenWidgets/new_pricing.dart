@@ -133,14 +133,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0),
-                        child: Text("PRICE POINT",
+                        child: Text("PRICE GUIDE",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 2.0),
                         child: Text(
-                          "Which of these categories best describes the general pricing (excluding happy hour pricing) at ${venueProvider.venueName} compared to other ${venueProvider.venueCity} venues?",
+                          "Which of these categories best describes the general pricing (excluding happy hour pricing) at ${venueProvider.venueName.isEmpty ? "this venue" : venueProvider.venueName} compared to other ${venueProvider.venueCity} venues?",
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                       ),
