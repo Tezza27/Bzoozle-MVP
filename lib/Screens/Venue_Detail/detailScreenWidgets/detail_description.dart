@@ -1,4 +1,6 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/verify_panel.dart';
+import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,13 +33,25 @@ class DetailDescription extends StatelessWidget {
                   Positioned(
                     top: 4.0,
                     right: 0.0,
-                    child: CircleAvatar(
-                      radius: 12,
-                      backgroundColor: themeProvider.getTheme.primaryColor,
-                      child: const CircleAvatar(
-                        radius: 10,
-                        backgroundImage: AssetImage(
-                            'assets/images/portrait_placeholder.png'),
+                    child: InkWell(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return verifyPanel(context, "Description",
+                                venueProvider.venueName);
+                          },
+                        );
+                      },
+                      splashColor: orange1,
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: themeProvider.getTheme.primaryColor,
+                        child: const CircleAvatar(
+                          radius: 10,
+                          backgroundImage: AssetImage(
+                              'assets/images/portrait_placeholder.png'),
+                        ),
                       ),
                     ),
                   ),

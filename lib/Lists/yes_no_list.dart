@@ -7,3 +7,10 @@ List<String> coverChargeList = ["Always", "Sometimes", "Never"];
 List<String> smokingList = ["Permitted", "Restricted", "Smoke-free"];
 List<String> childList = ["Permitted", "Restricted", "No"];
 List<String> dogList = ["Permitted", "Restricted", "No"];
+List<String> priceList = [
+  "Bargain",
+  "Budget-friendly",
+  "Average",
+  "Pricey",
+  "Megabucks"
+];

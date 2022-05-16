@@ -76,19 +76,14 @@ class DetailPricing extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Click on the chart to vote:",
-                            style: themeProvider.getTheme.textTheme.bodyText1),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("A bar chart will sit here",
+                        child: Text("\$\$\$\$\$" " " "Megabucks",
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the bar chart",
+                          "This is a comments box to expand upon the price situation",
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,

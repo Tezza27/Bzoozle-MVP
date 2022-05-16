@@ -1,5 +1,6 @@
 import 'package:bzoozle/Lists/yes_no_list.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,6 +44,7 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
     TextEditingController? dinnerEntreePriceController;
     TextEditingController? lateEntreeController;
     TextEditingController? lateEntreePriceController;
+    int pricePoint = 0;
 
     return SingleChildScrollView(
       child: Center(
@@ -131,13 +133,164 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0),
+                        child: Text("PRICE POINT",
+                            style: themeProvider.getTheme.textTheme.headline2),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 2.0),
+                        child: Text(
+                          "Which of these categories best describes the general pricing (excluding happy hour pricing) at ${venueProvider.venueName} compared to other ${venueProvider.venueCity} venues?",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 40.0,
+                              child: RadioListTile(
+                                dense: true,
+                                value: 0,
+                                groupValue: pricePoint,
+                                activeColor: orange1,
+                                onChanged: (value) =>
+                                    setState(() => pricePoint = 0),
+                                title: Text(
+                                  "\$",
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                                secondary: Text(
+                                  priceList[0],
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 40.0,
+                              child: RadioListTile(
+                                dense: true,
+                                value: 1,
+                                groupValue: pricePoint,
+                                activeColor: orange1,
+                                onChanged: (value) =>
+                                    setState(() => pricePoint = 1),
+                                title: Text(
+                                  "\$\$",
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                                secondary: Text(
+                                  priceList[1],
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 40.0,
+                              child: RadioListTile(
+                                dense: true,
+                                value: 2,
+                                groupValue: pricePoint,
+                                activeColor: orange1,
+                                onChanged: (value) =>
+                                    setState(() => pricePoint = 2),
+                                title: Text(
+                                  "\$\$\$",
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                                secondary: Text(
+                                  priceList[2],
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 40.0,
+                              child: RadioListTile(
+                                dense: true,
+                                value: 3,
+                                groupValue: pricePoint,
+                                activeColor: orange1,
+                                onChanged: (value) =>
+                                    setState(() => pricePoint = 3),
+                                title: Text(
+                                  "\$\$\$\$",
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                                secondary: Text(
+                                  priceList[3],
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 40.0,
+                              child: RadioListTile(
+                                dense: true,
+                                value: 4,
+                                groupValue: pricePoint,
+                                activeColor: orange1,
+                                onChanged: (value) =>
+                                    setState(() => pricePoint = 4),
+                                title: Text(
+                                  "\$\$\$\$\$",
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                                secondary: Text(
+                                  priceList[4],
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
+                        child: TextField(
+                          textInputAction: TextInputAction.go,
+                          controller: feesController,
+                          minLines: 1,
+                          maxLines: 10,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                          textAlignVertical: TextAlignVertical.top,
+                          //onChanged: (String value) => venueProvider.changeName = value,
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Comments'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                child: Card(
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
                         child: Text("PRICES FROM",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
-                            "Please enter the prices, including tax but excluding tips or other fees or charges, for the lowest priced item available at this venue for each of the categories below",
+                            "Please enter the prices, including tax but excluding tips or other fees or charges, for the lowest priced item available outside of happy hour at this venue for each of the categories below",
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
