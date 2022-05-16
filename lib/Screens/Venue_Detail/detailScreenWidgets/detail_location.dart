@@ -1,4 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,13 +19,25 @@ class DetailLocation extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 40.0,
-                width: double.infinity,
-                child: Center(
-                  child: Text("LOCATION",
-                      style: themeProvider.getTheme.textTheme.headline1),
-                ),
+              Stack(
+                children: [
+                  SizedBox(
+                    height: 40.0,
+                    width: double.infinity,
+                    child: Center(
+                      child: Text("LOCATION",
+                          style: themeProvider.getTheme.textTheme.headline1),
+                    ),
+                  ),
+                  Positioned(
+                    top: 7.0,
+                    right: 0.0,
+                    child: circularAvatarInk(
+                        context: context,
+                        titleText: "Location",
+                        venueName: venueProvider.venueName),
+                  ),
+                ],
               ),
               venueProvider.venueHostBuilding == null
                   ? Container()

@@ -1,3 +1,5 @@
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +14,7 @@ class DetailFacilities extends StatefulWidget {
 class _DetailFacilitiesState extends State<DetailFacilities> {
   @override
   Widget build(BuildContext context) {
-    //final venueProvider = Provider.of<VenueProvider>(context);
+    final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
@@ -38,10 +40,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("INDOOR/OUTDOOR",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("INDOOR/OUTDOOR",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Indoor/Outdoor",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
@@ -125,10 +145,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("FOOD",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("FOOD",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Food",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
@@ -229,10 +267,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("WIFI",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("WIFI",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Wifi",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -267,10 +323,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("ENTERTAINMENT",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("ENTERTAINMENT",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Entertainment",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
@@ -354,10 +428,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("GAMES",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("GAMES",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Games",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
@@ -441,10 +533,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("ONSITE PARKING",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("ONSITE PARKING",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Onsite Parking",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -474,10 +584,28 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("ACCESSIBILITY",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("ACCESSIBILITY",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Accessibility",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),

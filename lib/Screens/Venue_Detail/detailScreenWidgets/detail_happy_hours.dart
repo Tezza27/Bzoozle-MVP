@@ -1,4 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/times_card_widgets/hh_times_card.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -14,30 +15,29 @@ class DetailHappyHours extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 0.0),
-            child: SizedBox(
-              height: 40.0,
-              width: double.infinity,
-              child: Center(
-                child: Text("HAPPY HOURS",
-                    style: themeProvider.getTheme.textTheme.headline1),
+          Stack(
+            children: [
+              SizedBox(
+                height: 40.0,
+                width: double.infinity,
+                child: Center(
+                  child: Text("HAPPY HOURS",
+                      style: themeProvider.getTheme.textTheme.headline1),
+                ),
               ),
-            ),
+              Positioned(
+                top: 7.0,
+                right: 8.0,
+                child: circularAvatarInk(
+                    context: context,
+                    titleText: "Happy Hours",
+                    venueName: venueProvider.venueName),
+              ),
+            ],
           ),
-          //  Neon(
-          //   text: "HAPPY HOURS",
-          //   color: Colors.lightBlue,
-          //   fontSize: 30, //mySize,
-          //   font: NeonFont.Monoton,
-          //   flickeringText: true,
-          //   flickeringLetters: null,
-          //   blurRadius: 8000.0,
-          //   glowing: true,
-          //   //glowingDuration: const Duration(seconds: 2),
-          //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-          // ),
-
+          const SizedBox(
+            height: 16.0,
+          ),
           venueProvider.happyHours.isEmpty
               ? const SizedBox(
                   height: 100.0,

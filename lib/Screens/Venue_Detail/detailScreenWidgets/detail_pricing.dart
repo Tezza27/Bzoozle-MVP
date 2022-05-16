@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,10 +37,28 @@ class DetailPricing extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("ADDITIONAL FEES",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("ADDITIONAL FEES",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Additional Fees",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -69,10 +88,28 @@ class DetailPricing extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("PRICE INDICATOR",
-                            style: themeProvider.getTheme.textTheme.headline2),
+                      Stack(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Center(
+                                child: Text("PRICE GUIDE",
+                                    style: themeProvider
+                                        .getTheme.textTheme.headline2),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4.0,
+                            right: 4.0,
+                            child: circularAvatarInk(
+                                context: context,
+                                titleText: "Price Guide",
+                                venueName: venueProvider.venueName),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -109,9 +146,12 @@ class DetailPricing extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(
-                            "These are the current lowest prices available within each product type (higher priced products will also be available):",
-                            style: themeProvider.getTheme.textTheme.bodyText1),
+                        child: Center(
+                          child: Text(
+                              "These are the current lowest prices available, outside of happy hours, within each product type (including tax but excluding tips and any other fees):",
+                              style:
+                                  themeProvider.getTheme.textTheme.bodyText1),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -154,10 +194,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Beer - Domestic Bottle",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -200,10 +254,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Beer - Import Bottle",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -246,10 +314,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Beer - Draft",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -292,10 +374,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Well drink with mixer",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -338,10 +434,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Call drink with mixer",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -384,10 +494,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Cocktail",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -430,10 +554,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Wine (small glass)",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -476,10 +614,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Bottle Service (1 ltr)",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -508,7 +660,7 @@ class DetailPricing extends StatelessWidget {
                                   children: <Widget>[
                                     Flexible(
                                       flex: 7,
-                                      child: Text("Breakfast",
+                                      child: Text("Breakfast Entree",
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -527,10 +679,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Breakfast Entree",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -554,7 +720,7 @@ class DetailPricing extends StatelessWidget {
                                   children: <Widget>[
                                     Flexible(
                                       flex: 7,
-                                      child: Text("Lunch",
+                                      child: Text("Lunch Entree",
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -573,10 +739,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Lunch Entree",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -600,7 +780,7 @@ class DetailPricing extends StatelessWidget {
                                   children: <Widget>[
                                     Flexible(
                                       flex: 7,
-                                      child: Text("Dinner",
+                                      child: Text("Dinner Entree",
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -619,10 +799,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Dinner Entree",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -646,7 +840,7 @@ class DetailPricing extends StatelessWidget {
                                   children: <Widget>[
                                     Flexible(
                                       flex: 7,
-                                      child: Text("Late Bites",
+                                      child: Text("Late Entree",
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -665,10 +859,24 @@ class DetailPricing extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 8.0, bottom: 8.0),
-                                  child: Text(
-                                      "Free text to give brands available at that price",
-                                      style: themeProvider
-                                          .getTheme.textTheme.bodyText2),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                            "Free text to give brands available at that price",
+                                            style: themeProvider
+                                                .getTheme.textTheme.bodyText2),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 4.0),
+                                        child: circularAvatarInk(
+                                            context: context,
+                                            titleText: "Late Entree",
+                                            venueName: venueProvider.venueName),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
