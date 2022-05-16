@@ -1,6 +1,5 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/verify_panel.dart';
-import 'package:bzoozle/Themes/theme_constants.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,45 +30,15 @@ class DetailDescription extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 4.0,
+                    top: 7.0,
                     right: 0.0,
-                    child: InkWell(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return verifyPanel(context, "Description",
-                                venueProvider.venueName);
-                          },
-                        );
-                      },
-                      splashColor: orange1,
-                      child: CircleAvatar(
-                        radius: 12,
-                        backgroundColor: themeProvider.getTheme.primaryColor,
-                        child: const CircleAvatar(
-                          radius: 10,
-                          backgroundImage: AssetImage(
-                              'assets/images/portrait_placeholder.png'),
-                        ),
-                      ),
-                    ),
+                    child: circularAvatarInk(
+                        context: context,
+                        titleText: "Description",
+                        venueName: venueProvider.venueName),
                   ),
                 ],
               ),
-              // Neon(
-              //   text: "DESCRIPTION",
-              //   color: Colors.lightBlue,
-              //   fontSize: 30, //mySize,
-              //   font: NeonFont.Monoton,
-              //   flickeringText: true,
-              //   flickeringLetters: null,
-              //   blurRadius: 8000.0,
-              //   glowing: true,
-              //   //glowingDuration: const Duration(seconds: 2),
-              //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              // ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -83,7 +52,6 @@ class DetailDescription extends StatelessWidget {
                   ),
                 ],
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 24.0, bottom: 0.0),
                 child: Center(
