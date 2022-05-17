@@ -1,10 +1,7 @@
 List<String> venueTypeList = [
-  "Pub",
   "Bar",
   "Lounge",
   "Club",
-  "Takeaway Bar",
-  "Other",
 ];
 
 List<String> venueThemeList = [
@@ -20,11 +17,12 @@ List<String> venueThemeList = [
   "Disco",
   "Dive",
   "Irish",
+  "Karaoke",
   "Latino",
   "Live Music",
   "LGBTQ+",
-  "Karaoke",
-  "Piano",
+  "Microbrewery"
+      "Piano",
   "Pool",
   "Reggae",
   "Retro",
@@ -32,6 +30,6 @@ List<String> venueThemeList = [
   "Rock",
   "Sports",
   "Tiki",
+  "To-Go",
   "Wine",
-  "Other",
 ];

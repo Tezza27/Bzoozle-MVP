@@ -26,6 +26,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
     String lateValue = "No";
     String wifiValue = "Free";
     String liveEntValue = "No";
+    String djEntValue = "No";
     String recordedEntValue = "No";
     String karaokeValue = "No";
     String gamblingGamesValue = "No";
@@ -466,6 +467,40 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   liveEntValue = newValue!;
+                                });
+                              },
+                              items: yesNoList.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 2.0),
+                        child: Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "DJ",
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            ),
+                            const Spacer(),
+                            DropdownButton<String>(
+                              value: djEntValue,
+                              icon: const Icon(Icons.arrow_drop_down),
+                              iconSize: 30, //this inicrease the size
+                              elevation: 16,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              underline: Container(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  djEntValue = newValue!;
                                 });
                               },
                               items: yesNoList.map<DropdownMenuItem<String>>(

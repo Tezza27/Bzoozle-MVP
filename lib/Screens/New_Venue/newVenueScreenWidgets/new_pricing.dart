@@ -94,8 +94,9 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                   feesValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: yesNoSometimesList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),

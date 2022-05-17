@@ -3,6 +3,7 @@ import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Contact/contact_screen.dart';
 import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/list_card.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/sort_filter_form.dart';
 import 'package:bzoozle/Settings/color_experiments.dart';
 import 'package:bzoozle/Settings/color_pallet.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -163,7 +164,7 @@ class _ListingScreenState extends State<ListingScreen> {
               color: themeProvider.getTheme.splashColor,
             ),
             onPressed: () {
-              //TODO add sort & filter function
+              Navigator.pushNamed(context, SortFilterScreen.routeName);
             },
           ),
         ],

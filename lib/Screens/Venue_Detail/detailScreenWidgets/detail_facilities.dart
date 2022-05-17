@@ -373,6 +373,23 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
+                                    "DJ",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
                                     "Recorded",
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText1,

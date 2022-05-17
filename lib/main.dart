@@ -5,6 +5,7 @@ import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newOpenHoursWidg
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newOpenHoursWidgets/time_set.dart';
 import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
 import 'package:bzoozle/Screens/Venue_Detail/venue_detail_screen.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/sort_filter_form.dart';
 import 'package:bzoozle/Screens/Venue_Listing/venue_listing_screen.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,7 @@ class _MyAppState extends State<MyApp> {
               ColorPalletScreen.routeName: (context) =>
                   const ColorPalletScreen(),
               ContactScreen.routeName: (context) => const ContactScreen(),
+              SortFilterScreen.routeName: (context) => const SortFilterScreen(),
             },
             home: FutureBuilder(
               future: _fbApp,

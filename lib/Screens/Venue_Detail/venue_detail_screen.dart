@@ -16,10 +16,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
-    // final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
-    // final selectedVenue = Provider.of<VenueProvider>(context).findVenueById(selectedVenueId);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
