@@ -31,6 +31,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
     String karaokeValue = "No";
     String gamblingGamesValue = "No";
     String boardGamesValue = "No";
+    String videoGamesValue = "No";
     String pubGamesValue = "No";
     String parkingValue = "Free";
     String accessibilityValue = "Good";
@@ -66,7 +67,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top: 4.0),
-                      child: Text("INDOOR/OUTDOOR",
+                      child: Text("SETTING",
                           style: themeProvider.getTheme.textTheme.headline2),
                     ),
                     Padding(
@@ -92,7 +93,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 indoorValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -126,7 +127,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 outdoorValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -160,7 +161,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 rooftopValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -224,7 +225,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 breakfastValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -258,7 +259,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 lunchValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -292,7 +293,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 dinnerValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -326,7 +327,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 lateValue = newValue!;
                               });
                             },
-                            items: yesNoList
+                            items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -469,8 +470,9 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   liveEntValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: entertainmentList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -503,8 +505,9 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   djEntValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: entertainmentList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -537,8 +540,9 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   recordedEntValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: entertainmentList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -571,8 +575,9 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   karaokeValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: entertainmentList
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -636,7 +641,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   gamblingGamesValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
+                              items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -670,7 +675,41 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   boardGamesValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
+                              items: gamesList.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 2.0),
+                        child: Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Video Games",
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            ),
+                            const Spacer(),
+                            DropdownButton<String>(
+                              value: videoGamesValue,
+                              icon: const Icon(Icons.arrow_drop_down),
+                              iconSize: 30, //this inicrease the size
+                              elevation: 16,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              underline: Container(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  videoGamesValue = newValue!;
+                                });
+                              },
+                              items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -704,7 +743,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                   pubGamesValue = newValue!;
                                 });
                               },
-                              items: yesNoList.map<DropdownMenuItem<String>>(
+                              items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,

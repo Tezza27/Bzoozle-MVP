@@ -31,6 +31,7 @@ List<String> venueThemeList = [
   "RnB",
   "Rock",
   "Sports",
+  "Tapas",
   "Tiki",
   "To-Go",
   "Wine",

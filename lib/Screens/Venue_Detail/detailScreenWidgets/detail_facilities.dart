@@ -495,7 +495,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Board Games",
+                                    "Board",
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText1,
                                   ),
@@ -512,7 +512,24 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Pub Games",
+                                    "Video",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                  ),
+                                  Text(
+                                    "No",
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText2,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Pub",
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText1,
                                   ),
