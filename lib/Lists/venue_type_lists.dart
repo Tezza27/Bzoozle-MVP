@@ -16,7 +16,7 @@ List<String> venueThemeList = [
   "Craft Beer",
   "Disco",
   "Dive",
-  "Duelling Piano",
+  "Dueling Pianos",
   "EDM",
   "Irish",
   "Karaoke",
