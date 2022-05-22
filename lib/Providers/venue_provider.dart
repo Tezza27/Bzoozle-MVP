@@ -18,6 +18,7 @@ class VenueProvider with ChangeNotifier {
   String? _venueCity;
   String? _venuePostcode;
   String? _venueDirections;
+  //Opening Hours Attributes
   bool _chBoxMonday = false;
   bool _chBoxTuesday = false;
   bool _chBoxWednesday = false;
@@ -50,6 +51,72 @@ class VenueProvider with ChangeNotifier {
   String? _closeTime5 = "?";
   String? _openTime6 = "?";
   String? _closeTime6 = "?";
+//Facilities attributes
+  String _indoor = "No";
+  String _outdoor = "No";
+  String _rooftop = "No";
+  String _settingCom = "";
+  String _breakfast = "No";
+  String _lunch = "No";
+  String _dinner = "No";
+  String _late = "No";
+  String _foodCom = "";
+  String _wifi = "None";
+  String _password = "";
+  String _wifiCom = "";
+  String _live = "No";
+  String _dj = "No";
+  String _recorded = "No";
+  String _karaoke = "No";
+  String _entertainmentCom = "";
+  String _gambling = "No";
+  String _board = "No";
+  String _video = "No";
+  String _pub = "No";
+  String _gamesCom = "";
+  String _parking = "No";
+  String _parkingCom = "";
+  String _access = "No";
+  String _accessCom = "";
+//Policy attributes
+  String _dressCode = "Strict";
+  String _dressCodeCom = "";
+  String _coverCharge = "Never";
+  String _coverChargeCom = "";
+  String _smoking = "Permitted";
+  String _smokingCom = "";
+  String _child = "No";
+  String _childCom = "";
+//Pricing attributes
+  String _fees = "No";
+  String _feesCom = "";
+  int _priceGuide = 3;
+  String _priceCom = "";
+  String _beerDom = "00.00";
+  String _beerImp = "00.00";
+  String _beerDraft = "00.00";
+  String _well = "00.00";
+  String _call = "00.00";
+  String _cocktail = "00.00";
+  String _wine = "00.00";
+  String _bottle = "00.00";
+  String _bEntree = "00.00";
+  String _lEntree = "00.00";
+  String _dEntree = "00.00";
+  String _lateEntree = "00.00";
+  String _beerDomCom = "";
+  String _beerImpCom = "";
+  String _beerDraftCom = "";
+  String _wellCom = "";
+  String _callCom = "";
+  String _cocktailCom = "";
+  String _wineCom = "";
+  String _bottleCom = "";
+  String _bEntreeCom = "";
+  String _lEntreeCom = "";
+  String _dEntreeCom = "";
+  String _lateEntreeCom = "";
+  //Happy hour attributes
   List<HappyHourSession> _happyHours = [];
   bool _chBoxHHMonday = false;
   bool _chBoxHHTuesday = false;
@@ -71,6 +138,7 @@ class VenueProvider with ChangeNotifier {
   String? get venueCity => _venueCity;
   String? get venuePostcode => _venuePostcode;
   String? get venueDirections => _venueDirections;
+  //Opening TImes Getters
   bool get chBoxMonday => _chBoxMonday;
   bool get chBoxTuesday => _chBoxTuesday;
   bool get chBoxWednesday => _chBoxWednesday;
@@ -103,6 +171,72 @@ class VenueProvider with ChangeNotifier {
   String? get closeTime5 => _closeTime5;
   String? get openTime6 => _openTime6;
   String? get closeTime6 => _closeTime6;
+//Facilities Getters
+  String get indoor => _indoor;
+  String get outdoor => _outdoor;
+  String get rooftop => _rooftop;
+  String get settingCom => _settingCom;
+  String get breakfast => _breakfast;
+  String get lunch => _lunch;
+  String get dinner => _dinner;
+  String get late => _late;
+  String get foodCom => _foodCom;
+  String get wifi => _wifi;
+  String get password => _password;
+  String get wifiCom => _wifiCom;
+  String get live => _live;
+  String get dj => _dj;
+  String get recorded => _recorded;
+  String get karaoke => _karaoke;
+  String get entertainmentCom => _entertainmentCom;
+  String get gambling => _gambling;
+  String get board => _board;
+  String get video => _video;
+  String get pub => _pub;
+  String get gamesCom => _gamesCom;
+  String get parking => _parking;
+  String get parkingCom => _parkingCom;
+  String get access => _access;
+  String get accessCom => _accessCom;
+//Policy att =>ibutes
+  String get dressCode => _dressCode;
+  String get dressCodeCom => _dressCodeCom;
+  String get coverCharge => _coverCharge;
+  String get coverChargeCom => _coverChargeCom;
+  String get smoking => _smoking;
+  String get smokingCom => _smokingCom;
+  String get child => _child;
+  String get childCom => _childCom;
+//Pricing at =>ributes
+  String get fees => _fees;
+  String get feesCom => _feesCom;
+  int get priceGuide => _priceGuide;
+  String get priceCom => _priceCom;
+  String get beerDom => _beerDom;
+  String get beerImp => _beerImp;
+  String get beerDraft => _beerDraft;
+  String get well => _well;
+  String get call => _call;
+  String get cocktail => _cocktail;
+  String get wine => _wine;
+  String get bottle => _bottle;
+  String get bEntree => _bEntree;
+  String get lEntree => _lEntree;
+  String get dEntree => _dEntree;
+  String get lateEntree => _lateEntree;
+  String get beerDomCom => _beerDomCom;
+  String get beerImpCom => _beerImpCom;
+  String get beerDraftCom => _beerDraftCom;
+  String get wellCom => _wellCom;
+  String get callCom => _callCom;
+  String get cocktailCom => _cocktailCom;
+  String get wineCom => _wineCom;
+  String get bottleCom => _bottleCom;
+  String get bEntreeCom => _bEntreeCom;
+  String get lEntreeCom => _lEntreeCom;
+  String get dEntreeCom => _dEntreeCom;
+  String get lateEntreeCom => _lateEntreeCom;
+  //Happy Hours Getters
   List<HappyHourSession> get happyHours => _happyHours;
   bool get chBoxHHMonday => _chBoxHHMonday;
   bool get chBoxHHTuesday => _chBoxHHTuesday;
@@ -147,7 +281,7 @@ class VenueProvider with ChangeNotifier {
 
   set changeHostBuilding(String value) {
     if (value == "N/A") {
-      _venueHostBuilding = "";
+      _venueHostBuilding;
     } else {
       _venueHostBuilding = value;
     }
@@ -174,6 +308,7 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+//Opening Times Setters
   set openTime0(String? value) {
     _openTime0 = value;
     notifyListeners();
@@ -334,6 +469,320 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+//Facilities Setters
+  set changeSettingCom(String value) {
+    _settingCom = value;
+    notifyListeners();
+  }
+
+  set selectedIndoor(String value) {
+    _indoor = value;
+    notifyListeners();
+  }
+
+  set selectedOutoor(String value) {
+    _outdoor = value;
+    notifyListeners();
+  }
+
+  set selectedRooftop(String value) {
+    _rooftop = value;
+    notifyListeners();
+  }
+
+  set selectedBreakfast(String value) {
+    _breakfast = value;
+    notifyListeners();
+  }
+
+  set selectedLunch(String value) {
+    _lunch = value;
+    notifyListeners();
+  }
+
+  set selectedDinner(String value) {
+    _dinner = value;
+    notifyListeners();
+  }
+
+  set selectedLate(String value) {
+    _late = value;
+    notifyListeners();
+  }
+
+  set changeFoodCom(String value) {
+    _foodCom = value;
+    notifyListeners();
+  }
+
+  set selectedWifi(String value) {
+    _wifi = value;
+    notifyListeners();
+  }
+
+  set changePassword(String value) {
+    _password = value;
+    notifyListeners();
+  }
+
+  set changeWifiCom(String value) {
+    _wifiCom = value;
+    notifyListeners();
+  }
+
+  set selectedLive(String value) {
+    _live = value;
+    notifyListeners();
+  }
+
+  set selectedDj(String value) {
+    _dj = value;
+    notifyListeners();
+  }
+
+  set selectedRecorded(String value) {
+    _recorded = value;
+    notifyListeners();
+  }
+
+  set selectedKaraoke(String value) {
+    _karaoke = value;
+    notifyListeners();
+  }
+
+  set changeEntertainmentCom(String value) {
+    _entertainmentCom = value;
+    notifyListeners();
+  }
+
+  set selectedGambling(String value) {
+    _gambling = value;
+    notifyListeners();
+  }
+
+  set selectedBoard(String value) {
+    _board = value;
+    notifyListeners();
+  }
+
+  set selectedVideo(String value) {
+    _video = value;
+    notifyListeners();
+  }
+
+  set selectedPub(String value) {
+    _pub = value;
+    notifyListeners();
+  }
+
+  set changeGamesCom(String value) {
+    _gamesCom = value;
+    notifyListeners();
+  }
+
+  set selectedParking(String value) {
+    _parking = value;
+    notifyListeners();
+  }
+
+  set changeParkingCom(String value) {
+    _parkingCom = value;
+    notifyListeners();
+  }
+
+  set selectedAccess(String value) {
+    _access = value;
+    notifyListeners();
+  }
+
+  set changeAccessCom(String value) {
+    _accessCom = value;
+    notifyListeners();
+  }
+
+//Policy attributes
+  set selectedDressCode(String value) {
+    _dressCode = value;
+    notifyListeners();
+  }
+
+  set changeDressCodeCom(String value) {
+    _dressCodeCom = value;
+    notifyListeners();
+  }
+
+  set selectedCoverCharge(String value) {
+    _coverCharge = value;
+    notifyListeners();
+  }
+
+  set changeCoverChargeCom(String value) {
+    _coverChargeCom = value;
+    notifyListeners();
+  }
+
+  set selectedSmoking(String value) {
+    _smoking = value;
+    notifyListeners();
+  }
+
+  set changeSmokingCom(String value) {
+    _smokingCom = value;
+    notifyListeners();
+  }
+
+  set selectedChild(String value) {
+    _child = value;
+    notifyListeners();
+  }
+
+  set changeChildCom(String value) {
+    _childCom = value;
+    notifyListeners();
+  }
+
+//Pricing attributes
+  set selectedFees(String value) {
+    _fees = value;
+    notifyListeners();
+  }
+
+  set changeFeesCom(String value) {
+    _feesCom = value;
+    notifyListeners();
+  }
+
+  set selectedPrice(int value) {
+    _priceGuide = value;
+    notifyListeners();
+  }
+
+  set changePriceCom(String value) {
+    _priceCom = value;
+    notifyListeners();
+  }
+
+  set changeBeerDom(String value) {
+    _beerDom = value;
+    notifyListeners();
+  }
+
+  set changeBeerImp(String value) {
+    _beerImp = value;
+    notifyListeners();
+  }
+
+  set changeBeerDraft(String value) {
+    _beerDraft = value;
+    notifyListeners();
+  }
+
+  set changeWell(String value) {
+    _well = value;
+    notifyListeners();
+  }
+
+  set changeCall(String value) {
+    _call = value;
+    notifyListeners();
+  }
+
+  set changeCocktail(String value) {
+    _cocktail = value;
+    notifyListeners();
+  }
+
+  set changeWine(String value) {
+    _wine = value;
+    notifyListeners();
+  }
+
+  set changeBottle(String value) {
+    _bottle = value;
+    notifyListeners();
+  }
+
+  set changeBEntree(String value) {
+    _bEntree = value;
+    notifyListeners();
+  }
+
+  set changeLEntree(String value) {
+    _lEntree = value;
+    notifyListeners();
+  }
+
+  set changeDEntree(String value) {
+    _dEntree = value;
+    notifyListeners();
+  }
+
+  set changeLateEntree(String value) {
+    _lateEntree = value;
+    notifyListeners();
+  }
+
+  set changeBeerDomCom(String value) {
+    _beerDomCom = value;
+    notifyListeners();
+  }
+
+  set changeBeerImpCom(String value) {
+    _beerImpCom = value;
+    notifyListeners();
+  }
+
+  set changeBeerDraftCom(String value) {
+    _beerDraftCom = value;
+    notifyListeners();
+  }
+
+  set changeWellCom(String value) {
+    _wellCom = value;
+    notifyListeners();
+  }
+
+  set changeCallCom(String value) {
+    _callCom = value;
+    notifyListeners();
+  }
+
+  set changeCocktailCom(String value) {
+    _cocktailCom = value;
+    notifyListeners();
+  }
+
+  set changeWineCom(String value) {
+    _wineCom = value;
+    notifyListeners();
+  }
+
+  set changeBottleCom(String value) {
+    _bottleCom = value;
+    notifyListeners();
+  }
+
+  set changeBEntreeCom(String value) {
+    _bEntreeCom = value;
+    notifyListeners();
+  }
+
+  set changeLEntreeCom(String value) {
+    _lEntreeCom = value;
+    notifyListeners();
+  }
+
+  set changeDEntreeCom(String value) {
+    _dEntreeCom = value;
+    notifyListeners();
+  }
+
+  set changeLateEntreeCom(String value) {
+    _lateEntreeCom = value;
+    notifyListeners();
+  }
+
+//Happy Hours Setters
   set happyHours(List<HappyHourSession> value) {
     _happyHours = value;
   }
@@ -404,7 +853,7 @@ class VenueProvider with ChangeNotifier {
       _closeTime6 = venue.closeTime6;
       _happyHours = venue.happyHours!;
     } else {
-      _venueName = "";
+      _venueName;
       _venueType = null;
       _venueTheme = null;
       _venueDescription = null;
@@ -435,7 +884,7 @@ class VenueProvider with ChangeNotifier {
   }
 
   unloadVenue() {
-    _venueName = "";
+    _venueName;
     _venueType = null;
     _venueTheme = null;
     _venueDescription = null;
