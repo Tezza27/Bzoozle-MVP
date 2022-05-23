@@ -17,16 +17,14 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
-    String dressCodeValue = "Restrictions";
-    String coverChargeValue = "Never";
-    String smokingValue = "Restricted";
-    String childValue = "No";
-    String dogValue = "No";
     TextEditingController? dressCodeController;
+    dressCodeController?.text = venueProvider.dressCodeCom.toString();
     TextEditingController? coverChargeController;
+    coverChargeController?.text = venueProvider.coverChargeCom.toString();
     TextEditingController? smokingController;
+    smokingController?.text = venueProvider.smokingCom.toString();
     TextEditingController? childController;
-    TextEditingController? dogController;
+    childController?.text = venueProvider.childCom.toString();
 
     return SingleChildScrollView(
       child: Center(
@@ -65,22 +63,20 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                               style: themeProvider.getTheme.textTheme.bodyText1,
                             ),
                             DropdownButton<String>(
-                              value: dressCodeValue,
+                              value: venueProvider.dressCode,
                               icon: const Icon(Icons.arrow_drop_down),
                               iconSize: 30, //this inicrease the size
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  dressCodeValue = newValue!;
-                                });
+                                venueProvider.selectedDressCode = newValue!;
                               },
                               items: dressCodeList
                                   .map<DropdownMenuItem<String>>(
                                       (String value) {
                                 return DropdownMenuItem<String>(
-                                  value: value,
+                                  value: venueProvider.dressCode,
                                   child: Text(value),
                                 );
                               }).toList(),
@@ -98,7 +94,8 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeDressCodeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -130,16 +127,14 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                               style: themeProvider.getTheme.textTheme.bodyText1,
                             ),
                             DropdownButton<String>(
-                              value: coverChargeValue,
+                              value: venueProvider.coverCharge,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  coverChargeValue = newValue!;
-                                });
+                                venueProvider.selectedCoverCharge = newValue!;
                               },
                               items: coverChargeList
                                   .map<DropdownMenuItem<String>>(
@@ -163,7 +158,8 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeCoverChargeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -195,21 +191,19 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                               style: themeProvider.getTheme.textTheme.bodyText1,
                             ),
                             DropdownButton<String>(
-                              value: smokingValue,
+                              value: venueProvider.smoking,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  smokingValue = newValue!;
-                                });
+                                venueProvider.selectedSmoking = newValue!;
                               },
                               items: smokingList.map<DropdownMenuItem<String>>(
                                   (String value) {
                                 return DropdownMenuItem<String>(
-                                  value: value,
+                                  value: venueProvider.smoking,
                                   child: Text(value),
                                 );
                               }).toList(),
@@ -227,7 +221,8 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeSmokingCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -259,16 +254,14 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                               style: themeProvider.getTheme.textTheme.bodyText1,
                             ),
                             DropdownButton<String>(
-                              value: childValue,
+                              value: venueProvider.child,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  childValue = newValue!;
-                                });
+                                venueProvider.selectedChild = newValue!;
                               },
                               items: childList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -291,7 +284,8 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeChildCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),

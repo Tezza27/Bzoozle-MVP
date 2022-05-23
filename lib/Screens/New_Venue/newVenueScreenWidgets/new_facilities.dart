@@ -17,32 +17,23 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
-    String indoorValue = "Yes";
-    String outdoorValue = "No";
-    String rooftopValue = "No";
-    String breakfastValue = "No";
-    String lunchValue = "No";
-    String dinnerValue = "No";
-    String lateValue = "No";
-    String wifiValue = "Free";
-    String liveEntValue = "No";
-    String djEntValue = "No";
-    String recordedEntValue = "No";
-    String karaokeValue = "No";
-    String gamblingGamesValue = "No";
-    String boardGamesValue = "No";
-    String videoGamesValue = "No";
-    String pubGamesValue = "No";
-    String parkingValue = "Free";
-    String accessibilityValue = "Good";
-    TextEditingController? indoorOutdoorController;
+
+    TextEditingController? settingController;
+    settingController?.text = venueProvider.settingCom.toString();
     TextEditingController? foodController;
+    foodController?.text = venueProvider.foodCom.toString();
     TextEditingController? passwordController;
+    passwordController?.text = venueProvider.password.toString();
     TextEditingController? wifiController;
+    wifiController?.text = venueProvider.wifiCom.toString();
     TextEditingController? entertainmentController;
+    entertainmentController?.text = venueProvider.entertainmentCom.toString();
     TextEditingController? gamesController;
+    gamesController?.text = venueProvider.gamesCom.toString();
     TextEditingController? parkingController;
+    parkingController?.text = venueProvider.parkingCom.toString();
     TextEditingController? accessibilityController;
+    accessibilityController?.text = venueProvider.accessCom.toString();
 
     return SingleChildScrollView(
       child: Center(
@@ -82,16 +73,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: indoorValue,
+                            value: venueProvider.indoor,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30, //this increase the size
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                indoorValue = newValue!;
-                              });
+                              venueProvider.selectedIndoor = newValue!;
                             },
                             items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -116,16 +105,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: outdoorValue,
+                            value: venueProvider.outdoor,
                             icon: const Icon(Icons.arrow_drop_down),
                             iconSize: 30, //this inicrease the size
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                outdoorValue = newValue!;
-                              });
+                              venueProvider.selectedOutdoor = newValue!;
                             },
                             items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -150,16 +137,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: rooftopValue,
+                            value: venueProvider.rooftop,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30,
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                rooftopValue = newValue!;
-                              });
+                              venueProvider.selectedRooftop = newValue!;
                             },
                             items: settingList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -177,12 +162,13 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
                       child: TextField(
                         textInputAction: TextInputAction.go,
-                        controller: indoorOutdoorController,
+                        controller: settingController,
                         minLines: 1,
                         maxLines: 10,
                         style: themeProvider.getTheme.textTheme.bodyText1,
                         textAlignVertical: TextAlignVertical.top,
-                        //onChanged: (String value) => venueProvider.changeName = value,
+                        onSubmitted: (String value) =>
+                            venueProvider.changeSettingCom = value,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Comments'),
@@ -214,16 +200,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: breakfastValue,
+                            value: venueProvider.breakfast,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30,
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                breakfastValue = newValue!;
-                              });
+                              venueProvider.selectedBreakfast = newValue!;
                             },
                             items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -248,16 +232,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: lunchValue,
+                            value: venueProvider.lunch,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30,
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                lunchValue = newValue!;
-                              });
+                              venueProvider.selectedLunch = newValue!;
                             },
                             items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -282,16 +264,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: dinnerValue,
+                            value: venueProvider.dinner,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30,
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                dinnerValue = newValue!;
-                              });
+                              venueProvider.selectedDinner = newValue!;
                             },
                             items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -316,16 +296,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           ),
                           const Spacer(),
                           DropdownButton<String>(
-                            value: lateValue,
+                            value: venueProvider.late,
                             icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 30, //this inicrease the size
+                            iconSize: 30,
                             elevation: 16,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             underline: Container(),
                             onChanged: (String? newValue) {
-                              setState(() {
-                                lateValue = newValue!;
-                              });
+                              venueProvider.selectedLate = newValue!;
                             },
                             items: foodList
                                 .map<DropdownMenuItem<String>>((String value) {
@@ -348,7 +326,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                         maxLines: 10,
                         style: themeProvider.getTheme.textTheme.bodyText1,
                         textAlignVertical: TextAlignVertical.top,
-                        //onChanged: (String value) => venueProvider.changeName = value,
+                        onSubmitted: (String value) =>
+                            venueProvider.changeFoodCom = value,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: 'Comments'),
@@ -380,16 +359,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: wifiValue,
+                              value: venueProvider.wifi,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  wifiValue = newValue!;
-                                });
+                                venueProvider.selectedWifi = newValue!;
                               },
                               items: wifiList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -410,7 +387,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           controller: passwordController,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           maxLines: 1,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changePassword = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Password'),
@@ -426,7 +404,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeWifiCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -459,16 +438,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: liveEntValue,
+                              value: venueProvider.live,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  liveEntValue = newValue!;
-                                });
+                                venueProvider.selectedLive = newValue!;
                               },
                               items: entertainmentList
                                   .map<DropdownMenuItem<String>>(
@@ -494,16 +471,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: djEntValue,
+                              value: venueProvider.dj,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  djEntValue = newValue!;
-                                });
+                                venueProvider.selectedDj = newValue!;
                               },
                               items: entertainmentList
                                   .map<DropdownMenuItem<String>>(
@@ -529,16 +504,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: recordedEntValue,
+                              value: venueProvider.recorded,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  recordedEntValue = newValue!;
-                                });
+                                venueProvider.selectedRecorded = newValue!;
                               },
                               items: entertainmentList
                                   .map<DropdownMenuItem<String>>(
@@ -564,16 +537,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: karaokeValue,
+                              value: venueProvider.karaoke,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  karaokeValue = newValue!;
-                                });
+                                venueProvider.selectedKaraoke = newValue!;
                               },
                               items: entertainmentList
                                   .map<DropdownMenuItem<String>>(
@@ -597,7 +568,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeEntertainmentCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -630,16 +602,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: gamblingGamesValue,
+                              value: venueProvider.gambling,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  gamblingGamesValue = newValue!;
-                                });
+                                venueProvider.selectedGambling = newValue!;
                               },
                               items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -664,16 +634,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: boardGamesValue,
+                              value: venueProvider.board,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  boardGamesValue = newValue!;
-                                });
+                                venueProvider.selectedBoard = newValue!;
                               },
                               items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -698,16 +666,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: videoGamesValue,
+                              value: venueProvider.video,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  videoGamesValue = newValue!;
-                                });
+                                venueProvider.selectedVideo = newValue!;
                               },
                               items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -732,16 +698,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: pubGamesValue,
+                              value: venueProvider.pub,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  pubGamesValue = newValue!;
-                                });
+                                venueProvider.selectedPub = newValue!;
                               },
                               items: gamesList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -764,7 +728,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeGamesCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -797,16 +762,14 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: parkingValue,
+                              value: venueProvider.parking,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  parkingValue = newValue!;
-                                });
+                                venueProvider.selectedParking = newValue!;
                               },
                               items: parkingList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -829,7 +792,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeParkingCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -847,7 +811,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0),
-                        child: Text("Accessibility",
+                        child: Text("ACCESSIBILITY",
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
@@ -857,21 +821,21 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Disability facilities?",
+                              "disabled facilities?",
                               style: themeProvider.getTheme.textTheme.bodyText1,
+                              maxLines: 2,
+                              softWrap: true,
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: accessibilityValue,
+                              value: venueProvider.access,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  accessibilityValue = newValue!;
-                                });
+                                venueProvider.selectedAccess = newValue!;
                               },
                               items: accessibilityList
                                   .map<DropdownMenuItem<String>>(
@@ -895,7 +859,8 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeParkingCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),

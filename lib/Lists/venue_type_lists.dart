@@ -18,6 +18,7 @@ List<String> venueThemeList = [
   "Dive",
   "Dueling Pianos",
   "EDM",
+  "Hookah",
   "Irish",
   "Karaoke",
   "Latino",

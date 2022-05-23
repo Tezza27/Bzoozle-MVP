@@ -18,32 +18,57 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
-    String feesValue = "No";
+
     TextEditingController? feesController;
+    feesController?.text = venueProvider.feesCom.toString();
     TextEditingController? beerDomesticController;
+    beerDomesticController?.text = venueProvider.beerDomCom.toString();
     TextEditingController? beerDomesticPriceController;
+    beerDomesticPriceController?.text = venueProvider.beerDom.toString();
     TextEditingController? beerImportController;
+    beerImportController?.text = venueProvider.beerImpCom.toString();
     TextEditingController? beerImportPriceController;
+    beerImportPriceController?.text = venueProvider.beerImpCom.toString();
     TextEditingController? beerDraftController;
+    beerDraftController?.text = venueProvider.beerDraftCom.toString();
     TextEditingController? beerDraftPriceController;
+    beerDraftPriceController?.text = venueProvider.beerDraft.toString();
     TextEditingController? wellDrinkController;
+    wellDrinkController?.text = venueProvider.wellCom.toString();
     TextEditingController? wellDrinkPriceController;
+    wellDrinkPriceController?.text = venueProvider.wellCom.toString();
     TextEditingController? callDrinkController;
+    callDrinkController?.text = venueProvider.callCom.toString();
     TextEditingController? callDrinkPriceController;
+    callDrinkPriceController?.text = venueProvider.callCom.toString();
     TextEditingController? cocktailController;
+    cocktailController?.text = venueProvider.cocktailCom.toString();
     TextEditingController? cocktailPriceController;
+    cocktailPriceController?.text = venueProvider.cocktail.toString();
     TextEditingController? wineController;
+    wineController?.text = venueProvider.wineCom.toString();
     TextEditingController? winePriceController;
+    winePriceController?.text = venueProvider.wine.toString();
     TextEditingController? bottleServiceController;
+    bottleServiceController?.text = venueProvider.bottleCom.toString();
     TextEditingController? bottleServicePriceController;
+    bottleServicePriceController?.text = venueProvider.bottle.toString();
     TextEditingController? breakfastEntreeController;
+    breakfastEntreeController?.text = venueProvider.bEntreeCom.toString();
     TextEditingController? breakfastEntreePriceController;
+    breakfastEntreePriceController?.text = venueProvider.bEntree.toString();
     TextEditingController? lunchEntreeController;
+    lunchEntreeController?.text = venueProvider.lEntreeCom.toString();
     TextEditingController? lunchEntreePriceController;
+    lunchEntreePriceController?.text = venueProvider.lEntree.toString();
     TextEditingController? dinnerEntreeController;
+    dinnerEntreeController?.text = venueProvider.lEntreeCom.toString();
     TextEditingController? dinnerEntreePriceController;
+    dinnerEntreePriceController?.text = venueProvider.dEntree.toString();
     TextEditingController? lateEntreeController;
+    lateEntreeController?.text = venueProvider.lEntreeCom.toString();
     TextEditingController? lateEntreePriceController;
+    lateEntreePriceController?.text = venueProvider.lEntree.toString();
     int pricePoint = 0;
 
     return SingleChildScrollView(
@@ -79,20 +104,18 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Do they charge additional fees?",
+                              "Are additional fees charged?",
                               style: themeProvider.getTheme.textTheme.bodyText1,
                             ),
                             DropdownButton<String>(
-                              value: feesValue,
+                              value: venueProvider.fees,
                               icon: const Icon(Icons.arrow_drop_down),
                               iconSize: 30, //this inicrease the size
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
                               onChanged: (String? newValue) {
-                                setState(() {
-                                  feesValue = newValue!;
-                                });
+                                venueProvider.selectedFees = newValue!;
                               },
                               items: feesList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -115,7 +138,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeFeesCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -153,7 +177,7 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 0,
-                                groupValue: pricePoint,
+                                groupValue: venueProvider,
                                 activeColor: orange1,
                                 onChanged: (value) =>
                                     setState(() => pricePoint = 0),
@@ -266,7 +290,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changePriceCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -326,7 +351,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeBeerDom = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -347,7 +373,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeBeerDomCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -381,7 +408,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeBeerImp = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -402,7 +430,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeBeerImpCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -436,7 +465,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeBeerDraft = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -457,7 +487,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeBeerDraftCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -491,7 +522,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeWell = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -512,7 +544,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeWellCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -546,7 +579,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeCall = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -567,7 +601,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeCallCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -601,7 +636,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeCocktail = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -622,7 +658,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeCocktailCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -656,7 +693,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeWine = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -677,7 +715,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeWineCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -711,7 +750,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeBottle = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -732,7 +772,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeBottleCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Brands at that price'),
@@ -774,7 +815,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeBEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -795,7 +837,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeBEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Example options at that price'),
@@ -829,7 +872,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeLEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -850,7 +894,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeLEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Example options at that price'),
@@ -884,7 +929,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeDEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -905,7 +951,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeDEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Example options at that price'),
@@ -939,7 +986,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                //onChanged: (String value) => venueProvider.changeName = value,
+                                onSubmitted: (String value) =>
+                                    venueProvider.changeLateEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
                                     contentPadding: EdgeInsets.symmetric(
@@ -960,7 +1008,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           maxLines: 10,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          //onChanged: (String value) => venueProvider.changeName = value,
+                          onSubmitted: (String value) =>
+                              venueProvider.changeLateEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Example options at that price'),

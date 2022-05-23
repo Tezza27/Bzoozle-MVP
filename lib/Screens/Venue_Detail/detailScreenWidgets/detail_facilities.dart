@@ -47,7 +47,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             child: SizedBox(
                               width: double.infinity,
                               child: Center(
-                                child: Text("INDOOR/OUTDOOR",
+                                child: Text("SETTING",
                                     style: themeProvider
                                         .getTheme.textTheme.headline2),
                               ),
@@ -58,7 +58,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             right: 4.0,
                             child: circularAvatarInk(
                                 context: context,
-                                titleText: "Indoor/Outdoor",
+                                titleText: "Setting",
                                 venueName: venueProvider.venueName),
                           ),
                         ],
@@ -78,7 +78,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.indoor!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -95,7 +95,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.outdoor!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -112,7 +112,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.rooftop!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -126,7 +126,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the indoor/outdoor situation",
+                          venueProvider.settingCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -183,7 +183,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.breakfast!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -200,7 +200,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.lunch!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -217,7 +217,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.dinner!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -234,7 +234,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.late!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -248,7 +248,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the food service situation",
+                          venueProvider.feesCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -292,19 +292,19 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Free",
+                        child: Text(venueProvider.wifi!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Password: " "thisisthepassword",
+                        child: Text("Password: $venueProvider.password!",
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the wifi service situation",
+                          venueProvider.wifiCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -361,7 +361,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.live!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -378,7 +378,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.dj!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -395,7 +395,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.recorded!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -412,7 +412,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.karaoke!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -426,7 +426,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the enertainment situation",
+                          venueProvider.entertainmentCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -483,7 +483,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.gambling!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -500,7 +500,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.board!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -517,7 +517,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "No",
+                                    venueProvider.video!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -534,7 +534,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    "Yes",
+                                    venueProvider.pub!,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -548,7 +548,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the games situation",
+                          venueProvider.gamesCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -592,14 +592,14 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Free",
+                        child: Text(venueProvider.parking!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the parking situation",
+                          venueProvider.parkingCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -643,14 +643,14 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Good",
+                        child: Text(venueProvider.access!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the wifi service situation",
+                          venueProvider.accessCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,

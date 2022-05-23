@@ -60,14 +60,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Anything Goes",
+                        child: Text(venueProvider.dressCode!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the the dress code situation",
+                          venueProvider.dressCodeCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -111,14 +111,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Sometimes",
+                        child: Text(venueProvider.coverCharge!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the cover charge situation",
+                          venueProvider.coverChargeCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -162,14 +162,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Smoking Allowed",
+                        child: Text(venueProvider.smoking!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the smoking situation",
+                          venueProvider.smokingCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -213,14 +213,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("No Under 21s",
+                        child: Text(venueProvider.child!,
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the child situation",
+                          venueProvider.childCom!,
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,

@@ -17,6 +17,8 @@ class VenueProvider with ChangeNotifier {
   String? _venueArea;
   String? _venueCity;
   String? _venuePostcode;
+  String? _lat;
+  String? _lon;
   String? _venueDirections;
   //Opening Hours Attributes
   bool _chBoxMonday = false;
@@ -52,70 +54,70 @@ class VenueProvider with ChangeNotifier {
   String? _openTime6 = "?";
   String? _closeTime6 = "?";
 //Facilities attributes
-  String _indoor = "No";
-  String _outdoor = "No";
-  String _rooftop = "No";
-  String _settingCom = "";
-  String _breakfast = "No";
-  String _lunch = "No";
-  String _dinner = "No";
-  String _late = "No";
-  String _foodCom = "";
-  String _wifi = "None";
-  String _password = "";
-  String _wifiCom = "";
-  String _live = "No";
-  String _dj = "No";
-  String _recorded = "No";
-  String _karaoke = "No";
-  String _entertainmentCom = "";
-  String _gambling = "No";
-  String _board = "No";
-  String _video = "No";
-  String _pub = "No";
-  String _gamesCom = "";
-  String _parking = "No";
-  String _parkingCom = "";
-  String _access = "No";
-  String _accessCom = "";
+  String? _indoor = "No";
+  String? _outdoor = "No";
+  String? _rooftop = "No";
+  String? _settingCom = "";
+  String? _breakfast = "No";
+  String? _lunch = "No";
+  String? _dinner = "No";
+  String? _late = "No";
+  String? _foodCom = "";
+  String? _wifi = "None";
+  String? _password = "";
+  String? _wifiCom = "";
+  String? _live = "No";
+  String? _dj = "No";
+  String? _recorded = "No";
+  String? _karaoke = "No";
+  String? _entertainmentCom = "";
+  String? _gambling = "No";
+  String? _board = "No";
+  String? _video = "No";
+  String? _pub = "No";
+  String? _gamesCom = "";
+  String? _parking = "None";
+  String? _parkingCom = "";
+  String? _access = "Average";
+  String? _accessCom = "";
 //Policy attributes
-  String _dressCode = "Strict";
-  String _dressCodeCom = "";
-  String _coverCharge = "Never";
-  String _coverChargeCom = "";
-  String _smoking = "Permitted";
-  String _smokingCom = "";
-  String _child = "No";
-  String _childCom = "";
+  String? _dressCode = "None";
+  String? _dressCodeCom = "";
+  String? _coverCharge = "Never";
+  String? _coverChargeCom = "";
+  String? _smoking = "Permitted";
+  String? _smokingCom = "";
+  String? _child = "No";
+  String? _childCom = "";
 //Pricing attributes
-  String _fees = "No";
-  String _feesCom = "";
-  int _priceGuide = 3;
-  String _priceCom = "";
-  String _beerDom = "00.00";
-  String _beerImp = "00.00";
-  String _beerDraft = "00.00";
-  String _well = "00.00";
-  String _call = "00.00";
-  String _cocktail = "00.00";
-  String _wine = "00.00";
-  String _bottle = "00.00";
-  String _bEntree = "00.00";
-  String _lEntree = "00.00";
-  String _dEntree = "00.00";
-  String _lateEntree = "00.00";
-  String _beerDomCom = "";
-  String _beerImpCom = "";
-  String _beerDraftCom = "";
-  String _wellCom = "";
-  String _callCom = "";
-  String _cocktailCom = "";
-  String _wineCom = "";
-  String _bottleCom = "";
-  String _bEntreeCom = "";
-  String _lEntreeCom = "";
-  String _dEntreeCom = "";
-  String _lateEntreeCom = "";
+  String? _fees = "No";
+  String? _feesCom = "";
+  String? _priceGuide = "Average";
+  String? _priceCom = "";
+  String? _beerDom = "";
+  String? _beerImp = "";
+  String? _beerDraft = "";
+  String? _well = "";
+  String? _call = "";
+  String? _cocktail = "";
+  String? _wine = "";
+  String? _bottle = "";
+  String? _bEntree = "";
+  String? _lEntree = "";
+  String? _dEntree = "";
+  String? _lateEntree = "";
+  String? _beerDomCom = "";
+  String? _beerImpCom = "";
+  String? _beerDraftCom = "";
+  String? _wellCom = "";
+  String? _callCom = "";
+  String? _cocktailCom = "";
+  String? _wineCom = "";
+  String? _bottleCom = "";
+  String? _bEntreeCom = "";
+  String? _lEntreeCom = "";
+  String? _dEntreeCom = "";
+  String? _lateEntreeCom = "";
   //Happy hour attributes
   List<HappyHourSession> _happyHours = [];
   bool _chBoxHHMonday = false;
@@ -137,6 +139,8 @@ class VenueProvider with ChangeNotifier {
   String? get venueArea => _venueArea;
   String? get venueCity => _venueCity;
   String? get venuePostcode => _venuePostcode;
+  String? get lat => _lat;
+  String? get lon => _lon;
   String? get venueDirections => _venueDirections;
   //Opening TImes Getters
   bool get chBoxMonday => _chBoxMonday;
@@ -172,70 +176,70 @@ class VenueProvider with ChangeNotifier {
   String? get openTime6 => _openTime6;
   String? get closeTime6 => _closeTime6;
 //Facilities Getters
-  String get indoor => _indoor;
-  String get outdoor => _outdoor;
-  String get rooftop => _rooftop;
-  String get settingCom => _settingCom;
-  String get breakfast => _breakfast;
-  String get lunch => _lunch;
-  String get dinner => _dinner;
-  String get late => _late;
-  String get foodCom => _foodCom;
-  String get wifi => _wifi;
-  String get password => _password;
-  String get wifiCom => _wifiCom;
-  String get live => _live;
-  String get dj => _dj;
-  String get recorded => _recorded;
-  String get karaoke => _karaoke;
-  String get entertainmentCom => _entertainmentCom;
-  String get gambling => _gambling;
-  String get board => _board;
-  String get video => _video;
-  String get pub => _pub;
-  String get gamesCom => _gamesCom;
-  String get parking => _parking;
-  String get parkingCom => _parkingCom;
-  String get access => _access;
-  String get accessCom => _accessCom;
+  String? get indoor => _indoor;
+  String? get outdoor => _outdoor;
+  String? get rooftop => _rooftop;
+  String? get settingCom => _settingCom;
+  String? get breakfast => _breakfast;
+  String? get lunch => _lunch;
+  String? get dinner => _dinner;
+  String? get late => _late;
+  String? get foodCom => _foodCom;
+  String? get wifi => _wifi;
+  String? get password => _password;
+  String? get wifiCom => _wifiCom;
+  String? get live => _live;
+  String? get dj => _dj;
+  String? get recorded => _recorded;
+  String? get karaoke => _karaoke;
+  String? get entertainmentCom => _entertainmentCom;
+  String? get gambling => _gambling;
+  String? get board => _board;
+  String? get video => _video;
+  String? get pub => _pub;
+  String? get gamesCom => _gamesCom;
+  String? get parking => _parking;
+  String? get parkingCom => _parkingCom;
+  String? get access => _access;
+  String? get accessCom => _accessCom;
 //Policy att =>ibutes
-  String get dressCode => _dressCode;
-  String get dressCodeCom => _dressCodeCom;
-  String get coverCharge => _coverCharge;
-  String get coverChargeCom => _coverChargeCom;
-  String get smoking => _smoking;
-  String get smokingCom => _smokingCom;
-  String get child => _child;
-  String get childCom => _childCom;
+  String? get dressCode => _dressCode;
+  String? get dressCodeCom => _dressCodeCom;
+  String? get coverCharge => _coverCharge;
+  String? get coverChargeCom => _coverChargeCom;
+  String? get smoking => _smoking;
+  String? get smokingCom => _smokingCom;
+  String? get child => _child;
+  String? get childCom => _childCom;
 //Pricing at =>ributes
-  String get fees => _fees;
-  String get feesCom => _feesCom;
-  int get priceGuide => _priceGuide;
-  String get priceCom => _priceCom;
-  String get beerDom => _beerDom;
-  String get beerImp => _beerImp;
-  String get beerDraft => _beerDraft;
-  String get well => _well;
-  String get call => _call;
-  String get cocktail => _cocktail;
-  String get wine => _wine;
-  String get bottle => _bottle;
-  String get bEntree => _bEntree;
-  String get lEntree => _lEntree;
-  String get dEntree => _dEntree;
-  String get lateEntree => _lateEntree;
-  String get beerDomCom => _beerDomCom;
-  String get beerImpCom => _beerImpCom;
-  String get beerDraftCom => _beerDraftCom;
-  String get wellCom => _wellCom;
-  String get callCom => _callCom;
-  String get cocktailCom => _cocktailCom;
-  String get wineCom => _wineCom;
-  String get bottleCom => _bottleCom;
-  String get bEntreeCom => _bEntreeCom;
-  String get lEntreeCom => _lEntreeCom;
-  String get dEntreeCom => _dEntreeCom;
-  String get lateEntreeCom => _lateEntreeCom;
+  String? get fees => _fees;
+  String? get feesCom => _feesCom;
+  String? get priceGuide => _priceGuide;
+  String? get priceCom => _priceCom;
+  String? get beerDom => _beerDom;
+  String? get beerImp => _beerImp;
+  String? get beerDraft => _beerDraft;
+  String? get well => _well;
+  String? get call => _call;
+  String? get cocktail => _cocktail;
+  String? get wine => _wine;
+  String? get bottle => _bottle;
+  String? get bEntree => _bEntree;
+  String? get lEntree => _lEntree;
+  String? get dEntree => _dEntree;
+  String? get lateEntree => _lateEntree;
+  String? get beerDomCom => _beerDomCom;
+  String? get beerImpCom => _beerImpCom;
+  String? get beerDraftCom => _beerDraftCom;
+  String? get wellCom => _wellCom;
+  String? get callCom => _callCom;
+  String? get cocktailCom => _cocktailCom;
+  String? get wineCom => _wineCom;
+  String? get bottleCom => _bottleCom;
+  String? get bEntreeCom => _bEntreeCom;
+  String? get lEntreeCom => _lEntreeCom;
+  String? get dEntreeCom => _dEntreeCom;
+  String? get lateEntreeCom => _lateEntreeCom;
   //Happy Hours Getters
   List<HappyHourSession> get happyHours => _happyHours;
   bool get chBoxHHMonday => _chBoxHHMonday;
@@ -300,6 +304,16 @@ class VenueProvider with ChangeNotifier {
 
   set changePostcode(String value) {
     _venuePostcode = value;
+    notifyListeners();
+  }
+
+  set changeLat(String value) {
+    _lat = value;
+    notifyListeners();
+  }
+
+  set changeLon(String value) {
+    _lon = value;
     notifyListeners();
   }
 
@@ -480,7 +494,7 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set selectedOutoor(String value) {
+  set selectedOutdoor(String value) {
     _outdoor = value;
     notifyListeners();
   }
@@ -652,7 +666,7 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set selectedPrice(int value) {
+  set selectedPrice(String value) {
     _priceGuide = value;
     notifyListeners();
   }
@@ -836,6 +850,8 @@ class VenueProvider with ChangeNotifier {
       _venueArea = venue.venueArea;
       _venueCity = venue.venueCity;
       _venuePostcode = venue.venuePostcode;
+      _lat = venue.lat;
+      _lon = venue.lon;
       _venueDirections = venue.venueDirections;
       _openTime0 = venue.openTime0;
       _closeTime0 = venue.closeTime0;
@@ -851,6 +867,71 @@ class VenueProvider with ChangeNotifier {
       _closeTime5 = venue.closeTime5;
       _openTime6 = venue.openTime6;
       _closeTime6 = venue.closeTime6;
+      //Facilities attributes
+      _indoor = venue.indoor;
+      _outdoor = venue.outdoor;
+      _rooftop = venue.rooftop;
+      _settingCom = venue.settingCom;
+      _breakfast = venue.breakfast;
+      _lunch = venue.lunch;
+      _dinner = venue.dinner;
+      _late = venue.late;
+      _foodCom = venue.foodCom;
+      _wifi = venue.wifi;
+      _password = venue.password;
+      _wifiCom = venue.wifiCom;
+      _live = venue.live;
+      _dj = venue.dj;
+      _recorded = venue.recorded;
+      _karaoke = venue.karaoke;
+      _entertainmentCom = venue.entertainmentCom;
+      _gambling = venue.gambling;
+      _board = venue.board;
+      _video = venue.video;
+      _pub = venue.pub;
+      _gamesCom = venue.gamesCom;
+      _parking = venue.parking;
+      _parkingCom = venue.parkingCom;
+      _access = venue.access;
+      _accessCom = venue.accessCom;
+//Policy attributes
+      _dressCode = venue.dressCode;
+      _dressCodeCom = venue.dressCodeCom;
+      _coverCharge = venue.coverCharge;
+      _coverChargeCom = venue.coverChargeCom;
+      _smoking = venue.smoking;
+      _smokingCom = venue.smokingCom;
+      _child = venue.child;
+      _childCom = venue.childCom;
+//Pricing attributes
+      _fees = venue.fees;
+      _feesCom = venue.feesCom;
+      _priceGuide = venue.priceGuide;
+      _priceCom = venue.priceCom;
+      _beerDom = venue.beerDom;
+      _beerImp = venue.beerImp;
+      _beerDraft = venue.beerDraft;
+      _well = venue.well;
+      _call = venue.call;
+      _cocktail = venue.cocktail;
+      _wine = venue.wine;
+      _bottle = venue.bottle;
+      _bEntree = venue.bEntree;
+      _lEntree = venue.lEntree;
+      _dEntree = venue.dEntree;
+      _lateEntree = venue.lateEntree;
+      _beerDomCom = venue.beerDomCom;
+      _beerImpCom = venue.beerImpCom;
+      _beerDraftCom = venue.beerDraftCom;
+      _wellCom = venue.wellCom;
+      _callCom = venue.callCom;
+      _cocktailCom = venue.cocktailCom;
+      _wineCom = venue.wineCom;
+      _bottleCom = venue.bottleCom;
+      _bEntreeCom = venue.bEntreeCom;
+      _lEntreeCom = venue.lEntreeCom;
+      _dEntreeCom = venue.dEntreeCom;
+      _lateEntreeCom = venue.lateEntreeCom;
       _happyHours = venue.happyHours!;
     } else {
       _venueName;
@@ -863,6 +944,8 @@ class VenueProvider with ChangeNotifier {
       _venueArea = null;
       _venueCity = null;
       _venuePostcode = null;
+      _lat = null;
+      _lon = null;
       _venueDirections = null;
       _openTime0 = "?";
       _closeTime0 = "?";
@@ -878,6 +961,71 @@ class VenueProvider with ChangeNotifier {
       _closeTime5 = "?";
       _openTime6 = "?";
       _closeTime6 = "?";
+      //Facilities attributes
+      _indoor = "No";
+      _outdoor = "No";
+      _rooftop = "No";
+      _settingCom = null;
+      _breakfast = "No";
+      _lunch = "No";
+      _dinner = "No";
+      _late = "No";
+      _foodCom = null;
+      _wifi = "None";
+      _password = null;
+      _wifiCom = null;
+      _live = "No";
+      _dj = "No";
+      _recorded = "No";
+      _karaoke = "No";
+      _entertainmentCom = null;
+      _gambling = "No";
+      _board = "No";
+      _video = "No";
+      _pub = "No";
+      _gamesCom = null;
+      _parking = "None";
+      _parkingCom = null;
+      _access = "Average";
+      _accessCom = null;
+//Policy attributes
+      _dressCode = "None";
+      _dressCodeCom = null;
+      _coverCharge = "Never";
+      _coverChargeCom = null;
+      _smoking = "Permitted";
+      _smokingCom = null;
+      _child = "No";
+      _childCom = null;
+//Pricing attributes
+      _fees = "No";
+      _feesCom = null;
+      _priceGuide = "Average";
+      _priceCom = null;
+      _beerDom = "";
+      _beerImp = "";
+      _beerDraft = "";
+      _well = "";
+      _call = "";
+      _cocktail = "";
+      _wine = "";
+      _bottle = "";
+      _bEntree = "";
+      _lEntree = "";
+      _dEntree = "";
+      _lateEntree = "";
+      _beerDomCom = null;
+      _beerImpCom = null;
+      _beerDraftCom = null;
+      _wellCom = null;
+      _callCom = null;
+      _cocktailCom = null;
+      _wineCom = null;
+      _bottleCom = null;
+      _bEntreeCom = null;
+      _lEntreeCom = null;
+      _dEntreeCom = null;
+      _lateEntreeCom = null;
       _happyHours = [];
     }
     notifyListeners();
@@ -894,6 +1042,8 @@ class VenueProvider with ChangeNotifier {
     _venueArea = null;
     _venueCity = null;
     _venuePostcode = null;
+    _lat = null;
+    _lon = null;
     _venueDirections = null;
     _openTime0 = "?";
     _closeTime0 = "?";
@@ -909,6 +1059,71 @@ class VenueProvider with ChangeNotifier {
     _closeTime5 = "?";
     _openTime6 = "?";
     _closeTime6 = "?";
+    //Facilities attributes
+    _indoor = "No";
+    _outdoor = "No";
+    _rooftop = "No";
+    _settingCom = "";
+    _breakfast = "No";
+    _lunch = "No";
+    _dinner = "No";
+    _late = "No";
+    _foodCom = "";
+    _wifi = "None";
+    _password = "";
+    _wifiCom = "";
+    _live = "No";
+    _dj = "No";
+    _recorded = "No";
+    _karaoke = "No";
+    _entertainmentCom = "";
+    _gambling = "No";
+    _board = "No";
+    _video = "No";
+    _pub = "No";
+    _gamesCom = "";
+    _parking = "No";
+    _parkingCom = "";
+    _access = "No";
+    _accessCom = "";
+//Policy attributes
+    _dressCode = "Strict";
+    _dressCodeCom = "";
+    _coverCharge = "Never";
+    _coverChargeCom = "";
+    _smoking = "Permitted";
+    _smokingCom = "";
+    _child = "No";
+    _childCom = "";
+//Pricing attributes
+    _fees = "No";
+    _feesCom = "";
+    _priceGuide = "Average";
+    _priceCom = "";
+    _beerDom = "";
+    _beerImp = "";
+    _beerDraft = "";
+    _well = "";
+    _call = "";
+    _cocktail = "";
+    _wine = "";
+    _bottle = "";
+    _bEntree = "";
+    _lEntree = "";
+    _dEntree = "";
+    _lateEntree = "";
+    _beerDomCom = "";
+    _beerImpCom = "";
+    _beerDraftCom = "";
+    _wellCom = "";
+    _callCom = "";
+    _cocktailCom = "";
+    _wineCom = "";
+    _bottleCom = "";
+    _bEntreeCom = "";
+    _lEntreeCom = "";
+    _dEntreeCom = "";
+    _lateEntreeCom = "";
     _happyHours = [];
   }
 
@@ -924,6 +1139,8 @@ class VenueProvider with ChangeNotifier {
       venueArea: venueArea,
       venueCity: venueCity,
       venuePostcode: venuePostcode,
+      lat: lat,
+      lon: lon,
       venueDirections: venueDirections,
       openTime0: openTime0,
       closeTime0: closeTime0,
@@ -939,6 +1156,71 @@ class VenueProvider with ChangeNotifier {
       closeTime5: closeTime5,
       openTime6: openTime6,
       closeTime6: closeTime6,
+      //Facilities attributes
+      indoor: indoor,
+      outdoor: outdoor,
+      rooftop: rooftop,
+      settingCom: settingCom,
+      breakfast: breakfast,
+      lunch: lunch,
+      dinner: dinner,
+      late: late,
+      foodCom: foodCom,
+      wifi: wifi,
+      password: password,
+      wifiCom: wifiCom,
+      live: live,
+      dj: dj,
+      recorded: recorded,
+      karaoke: karaoke,
+      entertainmentCom: entertainmentCom,
+      gambling: gambling,
+      board: board,
+      video: video,
+      pub: pub,
+      gamesCom: gamesCom,
+      parking: parking,
+      parkingCom: parkingCom,
+      access: access,
+      accessCom: accessCom,
+//Policy attributes
+      dressCode: dressCode,
+      dressCodeCom: dressCodeCom,
+      coverCharge: coverCharge,
+      coverChargeCom: coverChargeCom,
+      smoking: smoking,
+      smokingCom: smokingCom,
+      child: child,
+      childCom: childCom,
+//Pricing attributes
+      fees: fees,
+      feesCom: feesCom,
+      priceGuide: priceGuide,
+      priceCom: priceCom,
+      beerDom: beerDom,
+      beerImp: beerImp,
+      beerDraft: beerDraft,
+      well: well,
+      call: call,
+      cocktail: cocktail,
+      wine: wine,
+      bottle: bottle,
+      bEntree: bEntree,
+      lEntree: lEntree,
+      dEntree: dEntree,
+      lateEntree: lateEntree,
+      beerDomCom: beerDomCom,
+      beerImpCom: beerImpCom,
+      beerDraftCom: beerDraftCom,
+      wellCom: wellCom,
+      callCom: callCom,
+      cocktailCom: cocktailCom,
+      wineCom: wineCom,
+      bottleCom: bottleCom,
+      bEntreeCom: bEntreeCom,
+      lEntreeCom: lEntreeCom,
+      dEntreeCom: dEntreeCom,
+      lateEntreeCom: lateEntreeCom,
       happyHours: happyHours,
     );
     firestoreService.addVenue(newVenue);
@@ -956,6 +1238,8 @@ class VenueProvider with ChangeNotifier {
       venueArea: venueArea,
       venueCity: venueCity,
       venuePostcode: venuePostcode,
+      lat: lat,
+      lon: lon,
       venueDirections: venueDirections,
       openTime0: openTime0,
       closeTime0: closeTime0,
@@ -971,15 +1255,75 @@ class VenueProvider with ChangeNotifier {
       closeTime5: closeTime5,
       openTime6: openTime6,
       closeTime6: closeTime6,
+      //Facilities attributes
+      indoor: indoor,
+      outdoor: outdoor,
+      rooftop: rooftop,
+      settingCom: settingCom,
+      breakfast: breakfast,
+      lunch: lunch,
+      dinner: dinner,
+      late: late,
+      foodCom: foodCom,
+      wifi: wifi,
+      password: password,
+      wifiCom: wifiCom,
+      live: live,
+      dj: dj,
+      recorded: recorded,
+      karaoke: karaoke,
+      entertainmentCom: entertainmentCom,
+      gambling: gambling,
+      board: board,
+      video: video,
+      pub: pub,
+      gamesCom: gamesCom,
+      parking: parking,
+      parkingCom: parkingCom,
+      access: access,
+      accessCom: accessCom,
+//Policy attributes
+      dressCode: dressCode,
+      dressCodeCom: dressCodeCom,
+      coverCharge: coverCharge,
+      coverChargeCom: coverChargeCom,
+      smoking: smoking,
+      smokingCom: smokingCom,
+      child: child,
+      childCom: childCom,
+//Pricing attributes
+      fees: fees,
+      feesCom: feesCom,
+      priceGuide: priceGuide,
+      priceCom: priceCom,
+      beerDom: beerDom,
+      beerImp: beerImp,
+      beerDraft: beerDraft,
+      well: well,
+      call: call,
+      cocktail: cocktail,
+      wine: wine,
+      bottle: bottle,
+      bEntree: bEntree,
+      lEntree: lEntree,
+      dEntree: dEntree,
+      lateEntree: lateEntree,
+      beerDomCom: beerDomCom,
+      beerImpCom: beerImpCom,
+      beerDraftCom: beerDraftCom,
+      wellCom: wellCom,
+      callCom: callCom,
+      cocktailCom: cocktailCom,
+      wineCom: wineCom,
+      bottleCom: bottleCom,
+      bEntreeCom: bEntreeCom,
+      lEntreeCom: lEntreeCom,
+      dEntreeCom: dEntreeCom,
+      lateEntreeCom: lateEntreeCom,
       happyHours: happyHours,
     );
     firestoreService.updateVenue(currentVenue);
   }
-
-//Opening Times Methods
-  // removeVenue(String venueId) {
-  //   firestoreService.removeVenue(venueId);
-  // }
 
   changeMonday(bool value) {
     chBoxMonday = value;
