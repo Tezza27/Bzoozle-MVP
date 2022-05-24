@@ -62,14 +62,14 @@ class DetailPricing extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.fees!,
+                        child: Text(venueProvider.fees ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.feesCom!,
+                          venueProvider.feesCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -113,14 +113,14 @@ class DetailPricing extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.priceGuide!,
+                        child: Text(venueProvider.priceGuide ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.priceCom!,
+                          venueProvider.priceCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -183,7 +183,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.beerDom!",
+                                      child: Text(
+                                          venueProvider.beerDom != null
+                                              ? "\$$venueProvider.beerDom!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -197,7 +200,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.beerDomCom!,
+                                        child: Text(
+                                            venueProvider.beerDomCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -242,7 +246,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.beerImp!",
+                                      child: Text(
+                                          venueProvider.beerImp != null
+                                              ? "\$$venueProvider.beerImp!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -256,7 +263,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.beerImpCom!,
+                                        child: Text(
+                                            venueProvider.beerImpCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -301,7 +309,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.beerDraft!",
+                                      child: Text(
+                                          venueProvider.beerDraft != null
+                                              ? "\$$venueProvider.beerDraft!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -315,7 +326,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.beerDraftCom!,
+                                        child: Text(
+                                            venueProvider.beerDraftCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -360,7 +372,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.well!",
+                                      child: Text(
+                                          venueProvider.well != null
+                                              ? "\$$venueProvider.well!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -374,7 +389,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.wellCom!,
+                                        child: Text(venueProvider.wellCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -419,7 +434,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.call!",
+                                      child: Text(
+                                          venueProvider.call != null
+                                              ? "\$$venueProvider.call!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -433,7 +451,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.callCom!,
+                                        child: Text(venueProvider.callCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -478,7 +496,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.cocktail!",
+                                      child: Text(
+                                          venueProvider.cocktail != null
+                                              ? "\$$venueProvider.cocktail!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -492,7 +513,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.cocktailCom!,
+                                        child: Text(
+                                            venueProvider.cocktailCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -537,7 +559,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.wine!",
+                                      child: Text(
+                                          venueProvider.wine != null
+                                              ? "\$$venueProvider.wine!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -551,7 +576,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.wineCom!,
+                                        child: Text(venueProvider.wineCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -596,7 +621,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.bottle!",
+                                      child: Text(
+                                          venueProvider.bottle != null
+                                              ? "\$$venueProvider.bottle!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -610,7 +638,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.bottleCom!,
+                                        child: Text(
+                                            venueProvider.bottleCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -660,7 +689,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.bEntree!",
+                                      child: Text(
+                                          venueProvider.bEntree != null
+                                              ? "\$$venueProvider.bEntree!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -674,7 +706,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.bEntreeCom!,
+                                        child: Text(
+                                            venueProvider.bEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -719,7 +752,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.lEntree!",
+                                      child: Text(
+                                          venueProvider.lEntree != null
+                                              ? "\$$venueProvider.lEntree!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -733,7 +769,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.lEntreeCom!,
+                                        child: Text(
+                                            venueProvider.lEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -778,7 +815,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$$venueProvider.dEntree!",
+                                      child: Text(
+                                          venueProvider.dEntree != null
+                                              ? "\$$venueProvider.dEntree!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -792,7 +832,8 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(venueProvider.dEntreeCom!,
+                                        child: Text(
+                                            venueProvider.dEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -838,7 +879,9 @@ class DetailPricing extends StatelessWidget {
                                     Flexible(
                                       flex: 3,
                                       child: Text(
-                                          "\$$venueProvider.lateEntree!",
+                                          venueProvider.lateEntree != null
+                                              ? "\$$venueProvider.lateEntree!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -853,7 +896,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            venueProvider.lateEntreeCom!,
+                                            venueProvider.lateEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),

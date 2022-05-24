@@ -1,3 +1,4 @@
+import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,10 @@ AlertDialog verifyPanel(
         child: const Text("Validate"),
       ),
       TextButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () {
+          Navigator.pop(context);
+          Navigator.pushNamed(context, NewVenueScreen.routeName);
+        },
         child: const Text("Update"),
       ),
       TextButton(

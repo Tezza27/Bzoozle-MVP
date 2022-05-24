@@ -119,7 +119,7 @@ class VenueProvider with ChangeNotifier {
   String? _dEntreeCom = "";
   String? _lateEntreeCom = "";
   //Happy hour attributes
-  List<HappyHourSession> _happyHours = [];
+  List<HappyHourSession>? _happyHours = [];
   bool _chBoxHHMonday = false;
   bool _chBoxHHTuesday = false;
   bool _chBoxHHWednesday = false;
@@ -127,6 +127,7 @@ class VenueProvider with ChangeNotifier {
   bool _chBoxHHFriday = false;
   bool _chBoxHHSaturday = false;
   bool _chBoxHHSunday = false;
+  String? _hhOffer = "";
 
   //Getters
   String get venueName => _venueName;
@@ -241,7 +242,7 @@ class VenueProvider with ChangeNotifier {
   String? get dEntreeCom => _dEntreeCom;
   String? get lateEntreeCom => _lateEntreeCom;
   //Happy Hours Getters
-  List<HappyHourSession> get happyHours => _happyHours;
+  List<HappyHourSession>? get happyHours => _happyHours;
   bool get chBoxHHMonday => _chBoxHHMonday;
   bool get chBoxHHTuesday => _chBoxHHTuesday;
   bool get chBoxHHWednesday => _chBoxHHWednesday;
@@ -249,6 +250,7 @@ class VenueProvider with ChangeNotifier {
   bool get chBoxHHFriday => _chBoxHHFriday;
   bool get chBoxHHSaturday => _chBoxHHSaturday;
   bool get chBoxHHSunday => _chBoxHHSunday;
+  String? get hhOffer => _hhOffer;
   Stream<QuerySnapshot<Object?>> get streamVenuesList =>
       firestoreService.getVenues();
 
@@ -797,7 +799,7 @@ class VenueProvider with ChangeNotifier {
   }
 
 //Happy Hours Setters
-  set happyHours(List<HappyHourSession> value) {
+  set happyHours(List<HappyHourSession>? value) {
     _happyHours = value;
   }
 
@@ -833,6 +835,11 @@ class VenueProvider with ChangeNotifier {
 
   set chBoxHHSunday(bool value) {
     _chBoxHHSunday = value;
+    notifyListeners();
+  }
+
+  set changeHhOffer(String value) {
+    _hhOffer = value;
     notifyListeners();
   }
 
@@ -932,7 +939,8 @@ class VenueProvider with ChangeNotifier {
       _lEntreeCom = venue.lEntreeCom;
       _dEntreeCom = venue.dEntreeCom;
       _lateEntreeCom = venue.lateEntreeCom;
-      _happyHours = venue.happyHours!;
+      _happyHours = venue.happyHours;
+      _hhOffer = venue.hhOffer;
     } else {
       _venueName;
       _venueType = null;
@@ -1026,6 +1034,7 @@ class VenueProvider with ChangeNotifier {
       _lEntreeCom = null;
       _dEntreeCom = null;
       _lateEntreeCom = null;
+      _hhOffer = null;
       _happyHours = [];
     }
     notifyListeners();
@@ -1124,6 +1133,7 @@ class VenueProvider with ChangeNotifier {
     _lEntreeCom = "";
     _dEntreeCom = "";
     _lateEntreeCom = "";
+    _hhOffer = "";
     _happyHours = [];
   }
 
@@ -1221,6 +1231,7 @@ class VenueProvider with ChangeNotifier {
       lEntreeCom: lEntreeCom,
       dEntreeCom: dEntreeCom,
       lateEntreeCom: lateEntreeCom,
+      hhOffer: hhOffer,
       happyHours: happyHours,
     );
     firestoreService.addVenue(newVenue);
@@ -1320,6 +1331,7 @@ class VenueProvider with ChangeNotifier {
       lEntreeCom: lEntreeCom,
       dEntreeCom: dEntreeCom,
       lateEntreeCom: lateEntreeCom,
+      hhOffer: hhOffer,
       happyHours: happyHours,
     );
     firestoreService.updateVenue(currentVenue);
@@ -1622,14 +1634,14 @@ class VenueProvider with ChangeNotifier {
     }
     selectedOpenTime = "00:00";
     selectedCloseTime = "00:00";
-    happyHours.sort((a, b) => ("${a.day}${a.startTime}")
+    happyHours?.sort((a, b) => ("${a.day}${a.startTime}")
         .toString()
         .compareTo(("${b.day}${b.startTime}").toString()));
     notifyListeners();
   }
 
   addHHSession(HappyHourSession session) {
-    happyHours.add(
+    happyHours?.add(
       HappyHourSession(
         day: session.day,
         startTime: session.startTime,

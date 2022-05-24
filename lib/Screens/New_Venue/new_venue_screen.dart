@@ -1,9 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/new_scroll_button_list.dart';
-import 'package:bzoozle/Screens/Venue_Listing/venue_listing_screen.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +16,6 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       //backgroundColor: themeProvider.getTheme.primaryColor,
@@ -58,7 +53,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                   ),
                 ),
               ),
-              NewScrollButtonList(),
+              const NewScrollButtonList(),
               const NewContent(),
             ],
           ),
@@ -73,19 +68,16 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        venueProvider.unloadVenue();
-                        pageNumberProvider.changePageNumber(0);
+                        Navigator.pop(context);
                       },
-                      child: Text("Cancel"),
+                      child: const Text("Cancel"),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         venueProvider.addVenue();
-                        venueProvider.unloadVenue();
-                        pageNumberProvider.changePageNumber(0);
-                        Navigator.pushNamed(context, ListingScreen.routeName);
+                        Navigator.pop(context);
                       },
-                      child: Text("Save"),
+                      child: const Text("Save"),
                     ),
                   ],
                 ),

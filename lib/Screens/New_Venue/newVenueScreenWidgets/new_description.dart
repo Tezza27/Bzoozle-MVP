@@ -24,6 +24,9 @@ class _NewDescriptionState extends State<NewDescription> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    venueNameController?.text = venueProvider.venueName;
+    venueDescriptionController?.text = venueProvider.venueDescription!;
+
     return SingleChildScrollView(
       child: Center(
         child: Padding(

@@ -1,6 +1,7 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/happy_hour_card.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,12 +17,17 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    TextEditingController? hhOfferController;
+    hhOfferController?.text = venueProvider.hhOffer.toString();
     String openMessage1 = venueProvider.venueName.isEmpty
         ? "This venue"
         : venueProvider.venueName;
-    String openMessage2 = venueProvider.happyHours.isEmpty
-        ? "has no happy hours that we know of.  If you know different, please add them here:"
-        : "ordinarily holds these happy hours weekly:";
+    String openMessage2;
+    venueProvider.happyHours != null
+        ? openMessage2 = "ordinarily holds these happy hours weekly:"
+        : openMessage2 =
+            "has no happy hours that we know of.  If you know different, please add them here:";
 
     return GestureDetector(
       onTap: () {
@@ -44,19 +50,33 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                 ),
               ),
             ),
-            venueProvider.happyHours.isEmpty
+            venueProvider.happyHours != null
                 ? const SizedBox(
                     height: 100.0,
                   )
                 : SizedBox(
                     height: 350.0,
                     child: ListView.builder(
-                        itemCount: venueProvider.happyHours.length,
+                        itemCount: venueProvider.happyHours?.length,
                         itemBuilder: (context, index) {
                           return happyHourCard(
-                              context, venueProvider.happyHours[index]);
+                              context, venueProvider.happyHours![index]);
                         }),
                   ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              child: TextFormField(
+                controller: hhOfferController,
+                minLines: 5,
+                maxLines: null,
+                onFieldSubmitted: (String value) =>
+                    venueProvider.changeHhOffer = value,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Happy Hour Offers'),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Center(
@@ -68,9 +88,9 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                       Navigator.pushNamed(
                           context, AddHHSessionScreen.routeName);
                     },
-                    child: const Text(
+                    child: Text(
                       "Add Session",
-                      style: TextStyle(color: Colors.orange),
+                      style: themeProvider.getTheme.textTheme.bodyText1,
                     ),
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor,

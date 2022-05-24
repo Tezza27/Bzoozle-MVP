@@ -60,14 +60,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.dressCode!,
+                        child: Text(venueProvider.dressCode ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.dressCodeCom!,
+                          venueProvider.dressCodeCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -111,14 +111,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.coverCharge!,
+                        child: Text(venueProvider.coverCharge ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.coverChargeCom!,
+                          venueProvider.coverChargeCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -162,14 +162,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.smoking!,
+                        child: Text(venueProvider.smoking ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.smokingCom!,
+                          venueProvider.smokingCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -213,14 +213,14 @@ class DetailPolicies extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.child!,
+                        child: Text(venueProvider.child ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.childCom!,
+                          venueProvider.childCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,

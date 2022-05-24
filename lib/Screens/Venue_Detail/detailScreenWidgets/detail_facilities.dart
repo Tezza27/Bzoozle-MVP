@@ -78,7 +78,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.indoor!,
+                                    venueProvider.indoor ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -95,7 +95,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.outdoor!,
+                                    venueProvider.outdoor ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -112,7 +112,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.rooftop!,
+                                    venueProvider.rooftop ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -126,7 +126,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.settingCom!,
+                          venueProvider.settingCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -183,7 +183,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.breakfast!,
+                                    venueProvider.breakfast ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -200,7 +200,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.lunch!,
+                                    venueProvider.lunch ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -217,7 +217,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.dinner!,
+                                    venueProvider.dinner ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -234,7 +234,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.late!,
+                                    venueProvider.late ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -248,7 +248,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.feesCom!,
+                          venueProvider.foodCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -292,7 +292,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.wifi!,
+                        child: Text(venueProvider.wifi ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
@@ -304,7 +304,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.wifiCom!,
+                          venueProvider.wifiCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -361,7 +361,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.live!,
+                                    venueProvider.live ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -378,7 +378,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.dj!,
+                                    venueProvider.dj ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -395,7 +395,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.recorded!,
+                                    venueProvider.recorded ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -412,7 +412,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.karaoke!,
+                                    venueProvider.karaoke ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -426,7 +426,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.entertainmentCom!,
+                          venueProvider.entertainmentCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -483,7 +483,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.gambling!,
+                                    venueProvider.gambling ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -500,7 +500,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.board!,
+                                    venueProvider.board ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -517,7 +517,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.video!,
+                                    venueProvider.video ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -534,7 +534,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                                         .getTheme.textTheme.bodyText1,
                                   ),
                                   Text(
-                                    venueProvider.pub!,
+                                    venueProvider.pub ?? '?',
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText2,
                                   ),
@@ -548,7 +548,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.gamesCom!,
+                          venueProvider.gamesCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -592,14 +592,14 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.parking!,
+                        child: Text(venueProvider.parking ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.parkingCom!,
+                          venueProvider.parkingCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -643,14 +643,14 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.access!,
+                        child: Text(venueProvider.access ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          venueProvider.accessCom!,
+                          venueProvider.accessCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,

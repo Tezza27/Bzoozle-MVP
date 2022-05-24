@@ -39,7 +39,7 @@ class _ListingScreenState extends State<ListingScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24.0),
-                    child: Text('BZOOZLE',
+                    child: Text('BZOOZLE LAS VEGAS',
                         style: themeProvider.getTheme.textTheme.headline1!
                             .copyWith(
                                 color: themeProvider.getTheme.splashColor)),
