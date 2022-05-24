@@ -173,7 +173,7 @@ class Venue {
       this.access = "No",
       this.accessCom = "",
 //Policy attributes
-      this.dressCode = "Strict",
+      this.dressCode = "None",
       this.dressCodeCom = "",
       this.coverCharge = "Never",
       this.coverChargeCom = "",

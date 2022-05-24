@@ -103,9 +103,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Are additional fees charged?",
-                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            Flexible(
+                              child: Text(
+                                "Are additional fees charged?",
+                                style:
+                                    themeProvider.getTheme.textTheme.bodyText1,
+                              ),
                             ),
                             DropdownButton<String>(
                               value: venueProvider.fees,
@@ -168,6 +171,7 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                       ),
+                      //TODO Hook up radiogroup to venueProvider
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Column(

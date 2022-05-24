@@ -76,7 +76,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                                   .map<DropdownMenuItem<String>>(
                                       (String value) {
                                 return DropdownMenuItem<String>(
-                                  value: venueProvider.dressCode,
+                                  value: value,
                                   child: Text(value),
                                 );
                               }).toList(),
@@ -129,7 +129,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             DropdownButton<String>(
                               value: venueProvider.coverCharge,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30,
+                              iconSize: 30, //this inicrease the size
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
@@ -193,7 +193,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             DropdownButton<String>(
                               value: venueProvider.smoking,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30,
+                              iconSize: 30, //this inicrease the size
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
@@ -203,7 +203,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                               items: smokingList.map<DropdownMenuItem<String>>(
                                   (String value) {
                                 return DropdownMenuItem<String>(
-                                  value: venueProvider.smoking,
+                                  value: value,
                                   child: Text(value),
                                 );
                               }).toList(),
@@ -256,7 +256,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             DropdownButton<String>(
                               value: venueProvider.child,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30,
+                              iconSize: 30, //this inicrease the size
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),

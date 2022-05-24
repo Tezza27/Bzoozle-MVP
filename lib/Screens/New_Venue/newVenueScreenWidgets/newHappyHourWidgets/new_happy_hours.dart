@@ -34,55 +34,52 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
         FocusScope.of(context).unfocus();
       },
       child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                  top: 8.0, bottom: 16.0, left: 16.0, right: 16.0),
+                  top: 8.0, bottom: 4.0, left: 16.0, right: 16.0),
               child: SizedBox(
-                height: 30,
+                height: 40,
                 child: Text(
                   "$openMessage1 $openMessage2",
-                  style: const TextStyle(color: Colors.black),
+                  style: themeProvider.getTheme.textTheme.bodyText1,
                 ),
               ),
             ),
-            venueProvider.happyHours != null
-                ? const SizedBox(
-                    height: 100.0,
-                  )
-                : SizedBox(
-                    height: 350.0,
-                    child: ListView.builder(
-                        itemCount: venueProvider.happyHours?.length,
-                        itemBuilder: (context, index) {
-                          return happyHourCard(
-                              context, venueProvider.happyHours![index]);
-                        }),
+            //TODO Add HH session edit and delete capabilities
+            ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: venueProvider.happyHours?.length,
+                itemBuilder: (context, index) {
+                  return happyHourCard(
+                      context, venueProvider.happyHours![index]);
+                }),
+            venueProvider.happyHours!.isEmpty
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 8.0),
+                    child: TextFormField(
+                      controller: hhOfferController,
+                      minLines: 5,
+                      maxLines: null,
+                      onFieldSubmitted: (String value) =>
+                          venueProvider.changeHhOffer = value,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Happy Hour Offers'),
+                    ),
                   ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-              child: TextFormField(
-                controller: hhOfferController,
-                minLines: 5,
-                maxLines: null,
-                onFieldSubmitted: (String value) =>
-                    venueProvider.changeHhOffer = value,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Happy Hour Offers'),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Center(
                 child: SizedBox(
                   height: 40.0,
-                  width: 100.0,
+                  width: 120.0,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(
@@ -99,6 +96,9 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                   ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 300.0,
             ),
           ],
         ),

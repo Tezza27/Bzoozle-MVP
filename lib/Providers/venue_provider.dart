@@ -1096,7 +1096,7 @@ class VenueProvider with ChangeNotifier {
     _access = "No";
     _accessCom = "";
 //Policy attributes
-    _dressCode = "Strict";
+    _dressCode = "None";
     _dressCodeCom = "";
     _coverCharge = "Never";
     _coverChargeCom = "";

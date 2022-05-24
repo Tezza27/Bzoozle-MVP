@@ -54,6 +54,7 @@ class _NewDescriptionState extends State<NewDescription> {
                     top: 8.0, bottom: 0.0, left: 28.0, right: 28.0),
                 child: DropdownButton<String>(
                   isExpanded: true,
+                  style: themeProvider.getTheme.textTheme.bodyText1,
                   hint: const Text("Select Venue Type"),
                   items: venueTypeList.map((venueType) {
                     return DropdownMenuItem(
@@ -71,6 +72,7 @@ class _NewDescriptionState extends State<NewDescription> {
                     top: 8.0, bottom: 0.0, left: 28.0, right: 28.0),
                 child: DropdownButton<String>(
                   isExpanded: true,
+                  style: themeProvider.getTheme.textTheme.bodyText1,
                   hint: const Text("Select Venue Theme"),
                   items: venueThemeList.map((venueTheme) {
                     return DropdownMenuItem(
@@ -92,25 +94,6 @@ class _NewDescriptionState extends State<NewDescription> {
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Venue Description'),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Expanded(child: Container()),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("Cancel"),
-                    ),
-                  ),
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          pageNumberProvider.changePageNumber(1);
-                        },
-                        child: const Text("Locaction >")),
-                  ),
-                ],
               ),
               const SizedBox(
                 height: 300.0,

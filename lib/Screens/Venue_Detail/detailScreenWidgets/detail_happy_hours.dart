@@ -35,9 +35,6 @@ class DetailHappyHours extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 16.0,
-          ),
           venueProvider.happyHours != null
               ? ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -57,14 +54,25 @@ class DetailHappyHours extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-          SizedBox(
-            height: 100.0,
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
             child: Text(
-              "Placeholder text for test purposes",
+              "What's on Offer?",
               style: themeProvider.getTheme.textTheme.headline1,
               textAlign: TextAlign.center,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
+            child: Text(
+              venueProvider.hhOffer ?? '?',
+              style: themeProvider.getTheme.textTheme.headline1,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: 300.0),
         ],
       ),
     );
