@@ -171,7 +171,7 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                       ),
-                      //TODO Hook up radiogroup to venueProvider
+                      //TODO Hook up radiogroup to venueProvider and price guide details page
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Column(

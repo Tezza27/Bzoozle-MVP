@@ -56,14 +56,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "MONDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -88,7 +88,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -112,14 +112,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "TUESDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -144,7 +144,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -168,14 +168,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "WEDNESDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -200,7 +200,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -224,14 +224,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "THURSDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -256,7 +256,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -280,14 +280,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "FRIDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -312,7 +312,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -336,14 +336,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "SATURDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -368,7 +368,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),
@@ -392,14 +392,14 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                               }),
                         ),
                         Expanded(
-                          flex: 12,
+                          flex: 9,
                           child: Text(
                             "SUNDAY",
                             style: themeProvider.getTheme.textTheme.headline4,
                           ),
                         ),
                         const Spacer(
-                          flex: 2,
+                          flex: 1,
                         ),
                         Expanded(
                           flex: 4,
@@ -424,7 +424,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Spacer(flex: 2),
+                        const Spacer(flex: 1),
                       ],
                     ),
                   ),

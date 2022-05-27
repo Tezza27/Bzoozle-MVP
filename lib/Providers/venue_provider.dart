@@ -12,6 +12,7 @@ class VenueProvider with ChangeNotifier {
   String? _venueTheme;
   String? _venueDescription;
   String? _venueDoorNumber;
+  String? _unitNumber;
   String? _venueStreet;
   String? _venueHostBuilding;
   String? _venueArea;
@@ -135,6 +136,7 @@ class VenueProvider with ChangeNotifier {
   String? get venueTheme => _venueTheme;
   String? get venueDescription => _venueDescription;
   String? get venueDoorNumber => _venueDoorNumber;
+  String? get unitNumber => _unitNumber;
   String? get venueStreet => _venueStreet;
   String? get venueHostBuilding => _venueHostBuilding;
   String? get venueArea => _venueArea;
@@ -280,17 +282,18 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  set changeUnitNumber(String value) {
+    _unitNumber = value;
+    notifyListeners();
+  }
+
   set changeStreet(String value) {
     _venueStreet = value;
     notifyListeners();
   }
 
   set changeHostBuilding(String value) {
-    if (value == "N/A") {
-      _venueHostBuilding;
-    } else {
-      _venueHostBuilding = value;
-    }
+    _venueHostBuilding = value;
     notifyListeners();
   }
 
@@ -852,6 +855,7 @@ class VenueProvider with ChangeNotifier {
       _venueTheme = venue.venueTheme;
       _venueDescription = venue.venueDescription;
       _venueDoorNumber = venue.venueDoorNumber;
+      _unitNumber = venue.unitNumber;
       _venueStreet = venue.venueStreet;
       _venueHostBuilding = venue.venueHostBuilding;
       _venueArea = venue.venueArea;
@@ -947,6 +951,7 @@ class VenueProvider with ChangeNotifier {
       _venueTheme = null;
       _venueDescription = null;
       _venueDoorNumber = null;
+      _unitNumber = null;
       _venueStreet = null;
       _venueHostBuilding = null;
       _venueArea = null;
@@ -1046,6 +1051,7 @@ class VenueProvider with ChangeNotifier {
     _venueTheme = null;
     _venueDescription = null;
     _venueDoorNumber = null;
+    _unitNumber = null;
     _venueStreet = null;
     _venueHostBuilding = null;
     _venueArea = null;
@@ -1143,12 +1149,13 @@ class VenueProvider with ChangeNotifier {
       venueDescription: venueDescription,
       venueType: venueType,
       venueTheme: venueTheme,
-      venueDoorNumber: venueDoorNumber,
-      venueStreet: venueStreet,
+      venueDoorNumber: venueHostBuilding != "N/A" ? null : venueDoorNumber,
+      unitNumber: venueHostBuilding != "N/A" ? unitNumber : null,
+      venueStreet: venueHostBuilding != "N/A" ? null : venueStreet,
       venueHostBuilding: venueHostBuilding != "N/A" ? venueHostBuilding : null,
-      venueArea: venueArea,
-      venueCity: venueCity,
-      venuePostcode: venuePostcode,
+      venueArea: venueHostBuilding != "N/A" ? null : venueArea,
+      venueCity: venueHostBuilding != "N/A" ? null : venueCity,
+      venuePostcode: venueHostBuilding != "N/A" ? null : venuePostcode,
       lat: lat,
       lon: lon,
       venueDirections: venueDirections,
@@ -1243,12 +1250,13 @@ class VenueProvider with ChangeNotifier {
       venueDescription: venueDescription,
       venueType: venueType,
       venueTheme: venueTheme,
-      venueDoorNumber: venueDoorNumber,
-      venueStreet: venueStreet,
+      venueDoorNumber: venueHostBuilding != "N/A" ? null : venueDoorNumber,
+      unitNumber: venueHostBuilding != "N/A" ? unitNumber : null,
+      venueStreet: venueHostBuilding != "N/A" ? null : venueStreet,
       venueHostBuilding: venueHostBuilding != "N/A" ? venueHostBuilding : null,
-      venueArea: venueArea,
-      venueCity: venueCity,
-      venuePostcode: venuePostcode,
+      venueArea: venueHostBuilding != "N/A" ? null : venueArea,
+      venueCity: venueHostBuilding != "N/A" ? null : venueCity,
+      venuePostcode: venueHostBuilding != "N/A" ? null : venuePostcode,
       lat: lat,
       lon: lon,
       venueDirections: venueDirections,
@@ -1646,8 +1654,12 @@ class VenueProvider with ChangeNotifier {
         day: session.day,
         startTime: session.startTime,
         duration: session.duration,
-        //offerSet: session.offerSet,
       ),
     );
+  }
+
+  deleteHHSession(int? hHIndex) {
+    happyHours?.removeAt(hHIndex!);
+    notifyListeners();
   }
 }

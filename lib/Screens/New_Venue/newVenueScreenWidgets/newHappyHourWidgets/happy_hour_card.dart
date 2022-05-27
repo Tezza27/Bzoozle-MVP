@@ -1,9 +1,14 @@
 import 'package:bzoozle/Lists/week_days.dart';
 import 'package:bzoozle/Models/happy_hour_session.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
+  final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+  final venueProvider = Provider.of<VenueProvider>(context);
   DateTime now = DateTime.now();
   DateTime _startTime = DateTime(
       now.year,
@@ -21,17 +26,17 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
     child: Card(
       color: Theme.of(context).primaryColor,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 2.0),
         child: SizedBox(
           height: 40.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                flex: 6,
+                flex: 8,
                 child: Text(
                   dayHH,
-                  style: TextStyle(color: Theme.of(context).splashColor),
+                  style: themeProvider.getTheme.textTheme.headline4,
                 ),
               ),
               const Spacer(
@@ -41,14 +46,14 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                 flex: 4,
                 child: Text(
                   startTimeHH,
-                  style: TextStyle(color: Theme.of(context).splashColor),
+                  style: themeProvider.getTheme.textTheme.headline4,
                   textAlign: TextAlign.center,
                 ),
               ),
               const Spacer(flex: 1),
               Text(
                 " - ",
-                style: TextStyle(color: Theme.of(context).splashColor),
+                style: themeProvider.getTheme.textTheme.headline4,
                 textAlign: TextAlign.center,
               ),
               const Spacer(flex: 1),
@@ -56,11 +61,23 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                 flex: 4,
                 child: Text(
                   endTimeHH,
-                  style: TextStyle(color: Theme.of(context).splashColor),
+                  style: themeProvider.getTheme.textTheme.headline4,
                   textAlign: TextAlign.center,
                 ),
               ),
-              const Spacer(flex: 2),
+              IconButton(
+                icon: const Icon(Icons.delete),
+                iconSize: 24,
+                color: themeProvider.getTheme.splashColor,
+                tooltip: 'Delete this session',
+                onPressed: () {
+                  int? myIndex = venueProvider.happyHours?.indexWhere(
+                      (happyHourSession) => happyHourSession == happyHour);
+                  venueProvider.deleteHHSession(venueProvider.happyHours
+                      ?.indexWhere(
+                          (happyHourSession) => happyHourSession == happyHour));
+                },
+              ),
             ],
           ),
         ),

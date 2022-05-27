@@ -1,7 +1,6 @@
 import 'package:bzoozle/Lists/areas.dart';
 import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Models/venue.dart';
-import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +15,8 @@ class NewLocation extends StatefulWidget {
 
 class _NewLocationState extends State<NewLocation> {
   TextEditingController? doorNumberController;
+  TextEditingController? unitNumberController;
   TextEditingController? streetController;
-  String? dropdownHostValue;
-  String? dropdownAreaValue;
-  String? dropdownCityValue;
-
   TextEditingController? postcodeController;
   TextEditingController? latController;
   TextEditingController? lonController;
@@ -30,7 +26,15 @@ class _NewLocationState extends State<NewLocation> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+    doorNumberController?.text = venueProvider.venueDoorNumber!;
+    unitNumberController?.text = venueProvider.unitNumber!;
+    streetController?.text = venueProvider.venueStreet!;
+    postcodeController?.text = venueProvider.venuePostcode!;
+    latController?.text = venueProvider.lat!;
+    lonController?.text = venueProvider.lon!;
+    directionsController?.text = venueProvider.venueDirections!;
+    int hostIndex = hostList
+        .indexWhere((host) => host.hostName == venueProvider.venueHostBuilding);
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -38,7 +42,10 @@ class _NewLocationState extends State<NewLocation> {
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -52,97 +59,189 @@ class _NewLocationState extends State<NewLocation> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 8.0, bottom: 16.0, left: 28.0, right: 28.0),
+                      top: 8.0, bottom: 0.0, left: 8.0, right: 8.0),
+                  child: Text(
+                    "Select the Casino or Mall that the venue is located in, or N/A if it is independent:",
+                    style: themeProvider.getTheme.textTheme.bodyText1,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 0.0, bottom: 16.0, left: 28.0, right: 28.0),
                   child: DropdownButton<String>(
                     isExpanded: true,
-                    hint: const Text("Select Host Building"),
+                    hint: const Text("Select Host Casino/Mall"),
                     style: themeProvider.getTheme.textTheme.bodyText1,
-                    items: hostBuildingList.map((hostBuilding) {
+                    value: venueProvider.venueHostBuilding,
+                    items: hostNameList.map((hostBuilding) {
                       return DropdownMenuItem(
-                          value: hostBuilding, child: Text(hostBuilding));
+                          value: hostBuilding, child: Text(hostBuilding!));
                     }).toList(),
                     onChanged: (String? value) {
                       venueProvider.changeHostBuilding = value!;
-                      dropdownHostValue = venueProvider.venueHostBuilding;
                     },
-                    value: dropdownHostValue,
                   ),
                 ),
-                //TODO automate host building address completion on selection
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: TextField(
-                        textInputAction: TextInputAction.go,
-                        controller: doorNumberController,
-                        onChanged: (String value) =>
-                            venueProvider.changeDoorNumber = value,
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(), labelText: '#'),
+                venueProvider.venueHostBuilding != null &&
+                        venueProvider.venueHostBuilding != "N/A"
+                    ? Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                flex: 3,
+                                child: TextField(
+                                  textInputAction: TextInputAction.go,
+                                  controller: unitNumberController,
+                                  onSubmitted: (String value) =>
+                                      venueProvider.changeUnitNumber = value,
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      labelText: 'Unit #'),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 8,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      hostList[hostIndex].addressNumber! +
+                                          " " +
+                                          hostList[hostIndex].street!,
+                                      style: themeProvider
+                                          .getTheme.textTheme.bodyText1,
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0,
+                                bottom: 16.0,
+                                left: 28.0,
+                                right: 28.0),
+                            child: Text(
+                              hostList[hostIndex].area!,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0,
+                                bottom: 16.0,
+                                left: 28.0,
+                                right: 28.0),
+                            child: Text(
+                              hostList[hostIndex].city!,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, bottom: 8.0, left: 0.0, right: 0.0),
+                            child: Text(
+                              hostList[hostIndex].zip!,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                flex: 3,
+                                child: TextField(
+                                  textInputAction: TextInputAction.go,
+                                  controller: doorNumberController,
+                                  onSubmitted: (String value) =>
+                                      venueProvider.changeDoorNumber = value,
+                                  decoration: const InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      labelText: '#'),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 8,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: TextField(
+                                    textInputAction: TextInputAction.go,
+                                    controller: streetController,
+                                    onSubmitted: (String value) =>
+                                        venueProvider.changeStreet = value,
+                                    decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: 'Street'),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0,
+                                bottom: 16.0,
+                                left: 28.0,
+                                right: 28.0),
+                            child: DropdownButton<String>(
+                              isExpanded: true,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              hint: const Text("Select Area"),
+                              items: areaList.map((area) {
+                                return DropdownMenuItem(
+                                    value: area, child: Text(area));
+                              }).toList(),
+                              onChanged: (String? value) {
+                                venueProvider.changeArea = value!;
+                              },
+                              value: venueProvider.venueArea,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0,
+                                bottom: 16.0,
+                                left: 28.0,
+                                right: 28.0),
+                            child: DropdownButton<String>(
+                              isExpanded: true,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              hint: const Text("Select City"),
+                              items: cityList.map((city) {
+                                return DropdownMenuItem(
+                                    value: city, child: Text(city));
+                              }).toList(),
+                              onChanged: (String? value) {
+                                venueProvider.changeCity = value!;
+                              },
+                              value: venueProvider.venueCity,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, bottom: 8.0, left: 0.0, right: 0.0),
+                            child: TextField(
+                              textInputAction: TextInputAction.go,
+                              controller: postcodeController,
+                              onChanged: (String value) =>
+                                  venueProvider.changePostcode = value,
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Zip/Postcode'),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Flexible(
-                      flex: 8,
-                      child: TextField(
-                        textInputAction: TextInputAction.go,
-                        controller: streetController,
-                        onChanged: (String value) =>
-                            venueProvider.changeStreet = value,
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(), labelText: 'Street'),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8.0, bottom: 16.0, left: 28.0, right: 28.0),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                    hint: const Text("Select Area"),
-                    items: areaList.map((area) {
-                      return DropdownMenuItem(value: area, child: Text(area));
-                    }).toList(),
-                    onChanged: (String? value) {
-                      venueProvider.changeArea = value!;
-                      dropdownAreaValue = venueProvider.venueArea;
-                    },
-                    value: dropdownAreaValue,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8.0, bottom: 16.0, left: 28.0, right: 28.0),
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                    hint: const Text("Select City"),
-                    items: cityList.map((city) {
-                      return DropdownMenuItem(value: city, child: Text(city));
-                    }).toList(),
-                    onChanged: (String? value) {
-                      venueProvider.changeCity = value!;
-                      dropdownCityValue = venueProvider.venueCity;
-                    },
-                    value: dropdownCityValue,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8.0, bottom: 8.0, left: 0.0, right: 0.0),
-                  child: TextField(
-                    textInputAction: TextInputAction.go,
-                    controller: postcodeController,
-                    onChanged: (String value) =>
-                        venueProvider.changePostcode = value,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Zip/Postcode'),
-                  ),
-                ),
+
                 //TODO make lon and lat only visible to admin accounts
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -174,6 +273,14 @@ class _NewLocationState extends State<NewLocation> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 8.0, bottom: 4.0, left: 8.0, right: 8.0),
+                  child: Text(
+                    "Can you provide some helpful directions using nearby obvious landmarks?:",
+                    style: themeProvider.getTheme.textTheme.bodyText1,
                   ),
                 ),
                 TextFormField(

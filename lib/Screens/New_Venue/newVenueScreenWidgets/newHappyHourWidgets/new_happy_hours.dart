@@ -24,7 +24,7 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
         ? "This venue"
         : venueProvider.venueName;
     String openMessage2;
-    venueProvider.happyHours != null
+    venueProvider.happyHours!.isNotEmpty
         ? openMessage2 = "ordinarily holds these happy hours weekly:"
         : openMessage2 =
             "has no happy hours that we know of.  If you know different, please add them here:";
@@ -37,15 +37,20 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 40.0,
+              width: double.infinity,
+              child: Center(
+                child: Text("HAPPY HOURS",
+                    style: themeProvider.getTheme.textTheme.headline1),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 8.0, bottom: 4.0, left: 16.0, right: 16.0),
-              child: SizedBox(
-                height: 40,
-                child: Text(
-                  "$openMessage1 $openMessage2",
-                  style: themeProvider.getTheme.textTheme.bodyText1,
-                ),
+                  top: 8.0, bottom: 0.0, left: 16.0, right: 16.0),
+              child: Text(
+                "$openMessage1 $openMessage2",
+                style: themeProvider.getTheme.textTheme.bodyText1,
               ),
             ),
             //TODO Add HH session edit and delete capabilities
@@ -98,7 +103,7 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
               ),
             ),
             const SizedBox(
-              height: 300.0,
+              height: 500.0,
             ),
           ],
         ),

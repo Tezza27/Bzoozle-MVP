@@ -1,5 +1,4 @@
 import 'package:bzoozle/Lists/venue_type_lists.dart';
-import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,6 @@ class _NewDescriptionState extends State<NewDescription> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     venueNameController?.text = venueProvider.venueName;
     venueDescriptionController?.text = venueProvider.venueDescription!;
@@ -45,7 +43,7 @@ class _NewDescriptionState extends State<NewDescription> {
               TextField(
                 textInputAction: TextInputAction.go,
                 controller: venueNameController,
-                onChanged: (String value) => venueProvider.changeName = value,
+                onSubmitted: (String value) => venueProvider.changeName = value,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Venue Name'),
               ),
@@ -62,9 +60,8 @@ class _NewDescriptionState extends State<NewDescription> {
                   }).toList(),
                   onChanged: (String? value) {
                     venueProvider.changeType = value!;
-                    dropdownTypeValue = venueProvider.venueType;
                   },
-                  value: dropdownTypeValue,
+                  value: venueProvider.venueType,
                 ),
               ),
               Padding(
@@ -80,9 +77,8 @@ class _NewDescriptionState extends State<NewDescription> {
                   }).toList(),
                   onChanged: (String? value) {
                     venueProvider.changeTheme = value!;
-                    dropdownThemeValue = venueProvider.venueTheme;
                   },
-                  value: dropdownThemeValue,
+                  value: venueProvider.venueTheme,
                 ),
               ),
               TextFormField(
@@ -96,9 +92,9 @@ class _NewDescriptionState extends State<NewDescription> {
                     labelText: 'Venue Description'),
               ),
               const SizedBox(
-                height: 300.0,
+                height: 500.0,
                 width: double.infinity,
-              )
+              ),
             ],
           ),
         ),

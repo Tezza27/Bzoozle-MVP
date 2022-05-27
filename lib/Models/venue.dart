@@ -22,6 +22,7 @@ class Venue {
   final String? venueTheme;
   final String? venueDescription;
   final String? venueDoorNumber;
+  final String? unitNumber;
   final String? venueStreet;
   final String? venueHostBuilding;
   final String? venueArea;
@@ -123,6 +124,7 @@ class Venue {
       this.venueDescription =
           "Bzoozle has never been here.  Can help by sharing a description?",
       this.venueDoorNumber,
+      this.unitNumber,
       this.venueStreet,
       this.venueHostBuilding = "",
       this.venueArea,
@@ -237,6 +239,7 @@ Venue _venueFromJson(Map<String, dynamic> json) {
       venueTheme: json['venueTheme'],
       venueDescription: json['venueDescription'],
       venueDoorNumber: json['venueDoorNumber'],
+      unitNumber: json['unitNumber'],
       venueStreet: json['venueStreet'],
       venueHostBuilding: json['venueHostBuilding'],
       venueArea: json['venueArea'],
@@ -346,6 +349,7 @@ Map<String, dynamic> _venueToJson(Venue instance) => <String, dynamic>{
       'venueTheme': instance.venueTheme,
       'venueDescription': instance.venueDescription,
       'venueDoornumber': instance.venueDoorNumber,
+      'unitnumber': instance.unitNumber,
       'venueStreet': instance.venueStreet,
       'venueHostBuilding': instance.venueHostBuilding,
       'venueArea': instance.venueArea,

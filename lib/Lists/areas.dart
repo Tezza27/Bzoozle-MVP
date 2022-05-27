@@ -13,5 +13,6 @@ List<String> areaList = [
 List<String> cityList = [
   "Henderson",
   "Las Vegas",
+  "North Las Vegas",
   "Summerlin",
 ];

@@ -39,15 +39,19 @@ class DetailLocation extends StatelessWidget {
                   ),
                 ],
               ),
-              venueProvider.venueHostBuilding == null
+              venueProvider.venueHostBuilding == "N/A" ||
+                      venueProvider.venueHostBuilding == null
                   ? Container()
                   : Text(
-                      venueProvider.venueHostBuilding!,
+                      hostAddressBuilder(
+                        unitNumber: venueProvider.unitNumber,
+                        hostName: venueProvider.venueHostBuilding,
+                      ),
                       style: themeProvider.getTheme.textTheme.bodyText1,
                     ),
               Text(
                 addressBuilder(
-                    unitNumber: venueProvider.venueDoorNumber,
+                    doorNumber: venueProvider.venueDoorNumber,
                     streetName: venueProvider.venueStreet),
                 style: themeProvider.getTheme.textTheme.bodyText1,
               ),
@@ -108,9 +112,17 @@ class DetailLocation extends StatelessWidget {
     );
   }
 
-  String addressBuilder({String? unitNumber, String? streetName}) {
-    unitNumber == null ? unitNumber = "" : unitNumber = unitNumber;
+  String addressBuilder({String? doorNumber, String? streetName}) {
+    doorNumber == null ? doorNumber = "" : doorNumber = doorNumber;
     streetName == null ? streetName = "" : streetName = streetName;
-    return unitNumber + " " + streetName;
+    return doorNumber + " " + streetName;
+  }
+
+  String hostAddressBuilder({String? unitNumber, String? hostName}) {
+    String stringToReturn;
+    unitNumber != null && unitNumber != ""
+        ? stringToReturn = "Unit: " + unitNumber + " " + hostName!
+        : stringToReturn = hostName!;
+    return stringToReturn;
   }
 }

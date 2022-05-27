@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/new_edit_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/new_happy_hours.dart';
@@ -42,6 +43,8 @@ class _MyAppState extends State<MyApp> {
             create: (context) => VenueProvider()),
         ChangeNotifierProvider<PageNumberProvider>(
             create: (context) => PageNumberProvider()),
+        ChangeNotifierProvider<NewEditProvider>(
+            create: (context) => NewEditProvider()),
         ChangeNotifierProvider<ThemeProvider>(
             create: (context) => ThemeProvider(isDarkMode: true)),
       ],
