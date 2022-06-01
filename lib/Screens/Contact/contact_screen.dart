@@ -18,7 +18,6 @@ class _ContactScreenState extends State<ContactScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeProvider.getTheme.primaryColor,
         title: Text("CONTACT BZOOZLE",
             style: themeProvider.getTheme.textTheme.headline2),
         centerTitle: true,

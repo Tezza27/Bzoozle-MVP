@@ -71,8 +71,6 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
                 color: themeProvider.getTheme.splashColor,
                 tooltip: 'Delete this session',
                 onPressed: () {
-                  int? myIndex = venueProvider.happyHours?.indexWhere(
-                      (happyHourSession) => happyHourSession == happyHour);
                   venueProvider.deleteHHSession(venueProvider.happyHours
                       ?.indexWhere(
                           (happyHourSession) => happyHourSession == happyHour));

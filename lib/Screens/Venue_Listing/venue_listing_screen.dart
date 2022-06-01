@@ -1,9 +1,11 @@
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Contact/contact_screen.dart';
 import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
+import 'package:bzoozle/Screens/Sign_In/auth_screen.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/list_card.dart';
-import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/sort_filter_form.dart';
+import 'package:bzoozle/Screens/user_account_screen.dart';
 import 'package:bzoozle/Settings/color_experiments.dart';
 import 'package:bzoozle/Settings/color_pallet.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -25,6 +27,7 @@ class _ListingScreenState extends State<ListingScreen> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
       drawer: Drawer(
         backgroundColor: themeProvider.getTheme.splashColor,
@@ -39,11 +42,13 @@ class _ListingScreenState extends State<ListingScreen> {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 24.0),
-                    child: Text('BZOOZLE',
-                        style: themeProvider.getTheme.textTheme.headline1!
-                            .copyWith(
-                                color: themeProvider.getTheme.splashColor)),
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      'BZOOZLE\nLAS VEGAS',
+                      style: themeProvider.getTheme.textTheme.headline2!
+                          .copyWith(color: themeProvider.getTheme.splashColor),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(
@@ -51,7 +56,9 @@ class _ListingScreenState extends State<ListingScreen> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      themeProvider.swapTheme();
+                      setState(() {
+                        themeProvider.swapTheme();
+                      });
                     },
                   ),
                 ],
@@ -62,10 +69,8 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
-                Navigator.pushNamed(context, ListingScreen.routeName);
+                Navigator.pushNamed(context, UserAccountScreen.routeName);
               },
             ),
             ListTile(
@@ -73,8 +78,6 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
                 Navigator.pushNamed(context, ListingScreen.routeName);
               },
@@ -84,10 +87,8 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
-                Navigator.pushNamed(context, ListingScreen.routeName);
+                Navigator.pushNamed(context, AuthScreen.routeName);
               },
             ),
             ListTile(
@@ -95,8 +96,6 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
                 Navigator.pushNamed(context, NewVenueScreen.routeName);
               },
@@ -106,8 +105,6 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
                 Navigator.pushNamed(context, ContactScreen.routeName);
               },
@@ -117,9 +114,6 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
-                // Navigator.pop(context);
                 Navigator.pop(context);
                 Navigator.pushNamed(context, ColorExperimentScreen.routeName);
               },
@@ -129,22 +123,31 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
                 Navigator.pop(context);
                 Navigator.pushNamed(context, ColorPalletScreen.routeName);
               },
             ),
             const SizedBox(
-              height: 80.0,
+              height: 60.0,
             ),
             ListTile(
-              title: Text('Close',
+              title: Text('Close Menu',
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pop(context);
+              },
+            ),
+            const SizedBox(
+              height: 00.0,
+            ),
+            ListTile(
+              title: Text('Log Out',
+                  style: themeProvider.getTheme.textTheme.bodyText1!
+                      .copyWith(color: themeProvider.getTheme.primaryColor)),
+              onTap: () {
+                userProvider.signOutUser();
+                //FirebaseAuth.instance.signOut();
                 Navigator.pop(context);
               },
             ),
@@ -164,7 +167,7 @@ class _ListingScreenState extends State<ListingScreen> {
               color: themeProvider.getTheme.splashColor,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, SortFilterScreen.routeName);
+              //TODO add sort & filter function
             },
           ),
         ],

@@ -222,7 +222,7 @@ class Venue {
     return newVenue;
   }
 
-  //A factory constructor to create a Vneue from Json
+  //A factory constructor to create a Venue from Json
   factory Venue.fromJson(Map<String, dynamic> json) => _venueFromJson(json);
 
   //Converts this venue into a map of key/value pairs

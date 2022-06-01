@@ -2,7 +2,7 @@ import 'package:bzoozle/Models/venue.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService {
-  // A reference to top level collection is called venues
+  // A reference to top level collection called venues
   final CollectionReference collection =
       FirebaseFirestore.instance.collection('venues');
 

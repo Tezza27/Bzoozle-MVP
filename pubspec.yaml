@@ -24,7 +24,9 @@ dependencies:
   cloud_firestore: ^3.1.10
   cupertino_icons: ^1.0.3
   date_format: ^2.0.2
+  file_picker: ^4.6.0
   firebase_analytics: ^9.1.2
+  firebase_auth: ^3.3.19
   firebase_core: ^1.13.1
   firebase_database: ^9.0.8
   firebase_storage: ^10.2.9
@@ -37,6 +39,7 @@ dependencies:
   intl: ^0.17.0
   keyboard_actions: ^3.4.2
   neon: ^0.1.0
+  path_provider: ^2.0.10
   permission_handler: ^8.1.1
   provider: ^5.0.0
   shared_preferences: ^2.0.13
