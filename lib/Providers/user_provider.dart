@@ -10,6 +10,7 @@ class UserProvider with ChangeNotifier {
   String _firstName = "";
   String _surName = "";
   File? _userImage;
+  String _imageUrl = "";
   String _dOB = "";
   String _country = "";
   String _region = "";
@@ -23,6 +24,7 @@ class UserProvider with ChangeNotifier {
   String get firstName => _firstName;
   String get surName => _surName;
   File? get userImage => _userImage;
+  String get imageUrl => _imageUrl;
   String get dOB => _dOB;
   String get country => _country;
   String get region => _region;
@@ -51,14 +53,14 @@ class UserProvider with ChangeNotifier {
           email: email, password: password);
 
       if (_authResult.user != null) {
-        loadUser(firstName, surName, userImage, dOB, country, region, city,
-            email, cat, dark);
+        loadUser(firstName, surName, "", dOB, country, region, city, email, cat,
+            dark);
         final ref = FirebaseStorage.instance
             .ref()
             .child('userImages')
             .child(_authResult.user!.uid + '.jpg');
         await ref.putFile(userImage!);
-        final url = await ref.getDownloadURL();
+        final imageUrl = await ref.getDownloadURL();
 
         FirebaseFirestore.instance
             .collection('users')
@@ -66,7 +68,7 @@ class UserProvider with ChangeNotifier {
             .set({
           'firstName': firstName,
           'surName': surName,
-          'userImage': url,
+          'imageUrl': imageUrl,
           'dOB': dOB,
           'country': country,
           'region': region,
@@ -97,7 +99,7 @@ class UserProvider with ChangeNotifier {
           loadUser(
               data?['firstName'],
               data?['surName'],
-              data?['userImage'],
+              data?['imageUrl'],
               data?['dOB'],
               data?['country'],
               data?['region'],
@@ -119,7 +121,7 @@ class UserProvider with ChangeNotifier {
     bool returnValue = false;
     try {
       await _auth.signOut();
-      loadUser("", "", null, "", "", "", "", "", "", false);
+      loadUser("", "", "", "", "", "", "", "", "", false);
     } catch (e) {
       print(e);
     }
@@ -129,7 +131,7 @@ class UserProvider with ChangeNotifier {
   loadUser(
     String firstName,
     String surName,
-    File? userImage,
+    String imageUrl,
     String dOB,
     String country,
     String region,
@@ -140,7 +142,7 @@ class UserProvider with ChangeNotifier {
   ) {
     changeFirstName(firstName);
     changeSurname(surName);
-    changeUserImage(userImage);
+    changeImageUrl(imageUrl);
     changeDob(dOB);
     changeCountry(country);
     changeRegion(region);
@@ -164,6 +166,10 @@ class UserProvider with ChangeNotifier {
   changeUserImage(File? value) {
     _userImage = value;
     notifyListeners();
+  }
+
+  changeImageUrl(String value) {
+    _imageUrl = value;
   }
 
   changeDob(String value) {

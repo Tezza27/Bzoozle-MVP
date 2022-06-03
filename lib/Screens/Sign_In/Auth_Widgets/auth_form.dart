@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Screens/Sign_In/Auth_Widgets/user_image_picker.dart';
 import 'package:bzoozle/Themes/theme_constants.dart';
@@ -71,10 +69,7 @@ class _AuthFormState extends State<AuthForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                if (!_isLogin)
-                  UserImagePicker(
-                    imagePickFn: (File _pickedImage) {},
-                  ),
+                if (!_isLogin) const UserImagePicker(),
                 if (!_isLogin)
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
@@ -267,6 +262,7 @@ class _AuthFormState extends State<AuthForm> {
                                     _isLogin ? "Log in" : "Create account"),
                                 onPressed: () {
                                   if (!_isLogin) {
+                                    bool _valid = true;
                                     userProvider.signUpUser(
                                         firstNameController.text.trim(),
                                         surNameController.text.trim(),
@@ -280,8 +276,10 @@ class _AuthFormState extends State<AuthForm> {
                                         "C",
                                         false);
                                   } else {
-                                    _logInUser(emailController.text,
-                                        passwordController.text, context);
+                                    _logInUser(
+                                        emailController.text.trim(),
+                                        passwordController.text.trim(),
+                                        context);
                                   }
                                 }),
                           ),

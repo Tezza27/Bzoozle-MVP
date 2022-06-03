@@ -27,6 +27,17 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
+            CircleAvatar(
+              radius: 60,
+              backgroundColor: themeProvider.getTheme.primaryColor,
+              child: CircleAvatar(
+                radius: 58,
+                backgroundImage: userProvider.imageUrl != ""
+                    ? NetworkImage(userProvider.imageUrl)
+                    : const AssetImage('assets/images/portrait_placeholder.png')
+                        as ImageProvider,
+              ),
+            ),
             Row(
               children: [
                 Text(userProvider.firstName,

@@ -75,8 +75,8 @@ class _UserImagePickerState extends State<UserImagePicker> {
       ),
     );
     if (_imageSource != null) {
-      final pickedImageFile =
-          await _imagePicker.pickImage(source: _imageSource);
+      final pickedImageFile = await _imagePicker.pickImage(
+          source: _imageSource, imageQuality: 70, maxWidth: 150);
       setState(() {
         _pickedImage = File(pickedImageFile!.path);
       });
