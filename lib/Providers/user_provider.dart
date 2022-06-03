@@ -1,12 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserProvider with ChangeNotifier {
   final String _uid = "";
   String _firstName = "";
   String _surName = "";
-  // final String? userImage;
+  File? _userImage;
   String _dOB = "";
   String _country = "";
   String _region = "";
@@ -19,6 +22,7 @@ class UserProvider with ChangeNotifier {
   String get uid => _uid;
   String get firstName => _firstName;
   String get surName => _surName;
+  File? get userImage => _userImage;
   String get dOB => _dOB;
   String get country => _country;
   String get region => _region;
@@ -32,6 +36,7 @@ class UserProvider with ChangeNotifier {
   Future<bool> signUpUser(
       String firstName,
       String surName,
+      File? userImage,
       String dOB,
       String country,
       String region,
@@ -46,14 +51,22 @@ class UserProvider with ChangeNotifier {
           email: email, password: password);
 
       if (_authResult.user != null) {
-        loadUser(
-            firstName, surName, dOB, country, region, city, email, cat, dark);
+        loadUser(firstName, surName, userImage, dOB, country, region, city,
+            email, cat, dark);
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child('userImages')
+            .child(_authResult.user!.uid + '.jpg');
+        await ref.putFile(userImage!);
+        final url = await ref.getDownloadURL();
+
         FirebaseFirestore.instance
             .collection('users')
             .doc(_authResult.user?.uid)
             .set({
           'firstName': firstName,
           'surName': surName,
+          'userImage': url,
           'dOB': dOB,
           'country': country,
           'region': region,
@@ -84,6 +97,7 @@ class UserProvider with ChangeNotifier {
           loadUser(
               data?['firstName'],
               data?['surName'],
+              data?['userImage'],
               data?['dOB'],
               data?['country'],
               data?['region'],
@@ -105,7 +119,7 @@ class UserProvider with ChangeNotifier {
     bool returnValue = false;
     try {
       await _auth.signOut();
-      loadUser("", "", "", "", "", "", "", "", false);
+      loadUser("", "", null, "", "", "", "", "", "", false);
     } catch (e) {
       print(e);
     }
@@ -115,6 +129,7 @@ class UserProvider with ChangeNotifier {
   loadUser(
     String firstName,
     String surName,
+    File? userImage,
     String dOB,
     String country,
     String region,
@@ -125,6 +140,7 @@ class UserProvider with ChangeNotifier {
   ) {
     changeFirstName(firstName);
     changeSurname(surName);
+    changeUserImage(userImage);
     changeDob(dOB);
     changeCountry(country);
     changeRegion(region);
@@ -142,6 +158,11 @@ class UserProvider with ChangeNotifier {
 
   changeSurname(String value) {
     _surName = value;
+    notifyListeners();
+  }
+
+  changeUserImage(File? value) {
+    _userImage = value;
     notifyListeners();
   }
 

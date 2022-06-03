@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:bzoozle/Providers/user_provider.dart';
+import 'package:bzoozle/Screens/Sign_In/Auth_Widgets/user_image_picker.dart';
+import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class AuthForm extends StatefulWidget {
@@ -24,34 +29,6 @@ class _AuthFormState extends State<AuthForm> {
   TextEditingController confirmPasswordController = TextEditingController();
   bool _isLogin = true;
   bool _isLoading = false;
-
-  void _signUpUser(String email, String password, BuildContext context) async {
-    UserProvider _currentUser =
-        Provider.of<UserProvider>(context, listen: false);
-    try {
-      setState(() {
-        _isLoading = true;
-      });
-      if (await _currentUser.signUpUser(
-          firstNameController.text.trim(),
-          surNameController.text.trim(),
-          dOBController.text.trim(),
-          countryController.text.trim(),
-          regionController.text.trim(),
-          cityController.text.trim(),
-          emailController.text.trim(),
-          passwordController.text.trim(),
-          "C",
-          false)) {
-        //Navigator.pop(context);
-      }
-      setState(() {
-        _isLoading = false;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
 
   void _logInUser(String email, String password, BuildContext context) async {
     UserProvider _currentUser =
@@ -82,6 +59,7 @@ class _AuthFormState extends State<AuthForm> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
+
     return Center(
         child: Card(
       margin: const EdgeInsets.all(20.0),
@@ -93,6 +71,10 @@ class _AuthFormState extends State<AuthForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                if (!_isLogin)
+                  UserImagePicker(
+                    imagePickFn: (File _pickedImage) {},
+                  ),
                 if (!_isLogin)
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
@@ -141,17 +123,20 @@ class _AuthFormState extends State<AuthForm> {
                   Padding(
                     padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
                     child: TextFormField(
+                      onTap: () {
+                        getDoB(context);
+                      },
                       controller: dOBController,
                       key: const ValueKey('dob'),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "Please enter your date of birth";
+                          return "Please select your date of birth";
                         }
                         return null;
                       },
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.none,
                       decoration: const InputDecoration(
-                        labelText: "Date of birth",
+                        labelText: "Date of Birth",
                       ),
                       style: themeProvider.getTheme.textTheme.bodyText1,
                       onSaved: (value) {
@@ -259,38 +244,14 @@ class _AuthFormState extends State<AuthForm> {
                     },
                     keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
-                      labelText: "Password",
+                      labelText: "Password (min 7 characters)",
                     ),
                     style: themeProvider.getTheme.textTheme.bodyText1,
-                    obscureText: true,
                     onSaved: (value) {
                       passwordController.text = value!;
                     },
                   ),
                 ),
-                if (!_isLogin)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
-                    child: TextFormField(
-                      controller: confirmPasswordController,
-                      key: const ValueKey('confirmpassword'),
-                      validator: (value) {
-                        if (value!.isEmpty || value.length < 7) {
-                          return "Password must be at least 7 characters long";
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        labelText: "Confirm Password",
-                      ),
-                      style: themeProvider.getTheme.textTheme.bodyText1,
-                      obscureText: true,
-                      onSaved: (value) {
-                        confirmPasswordController.text = value!;
-                      },
-                    ),
-                  ),
                 const SizedBox(
                   height: 12.0,
                 ),
@@ -306,18 +267,18 @@ class _AuthFormState extends State<AuthForm> {
                                     _isLogin ? "Log in" : "Create account"),
                                 onPressed: () {
                                   if (!_isLogin) {
-                                    passwordController.text ==
-                                            confirmPasswordController.text
-                                        ? _signUpUser(emailController.text,
-                                            passwordController.text, context)
-                                        : ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                  "Passwords do not match"),
-                                              duration: Duration(seconds: 2),
-                                            ),
-                                          );
+                                    userProvider.signUpUser(
+                                        firstNameController.text.trim(),
+                                        surNameController.text.trim(),
+                                        userProvider.userImage,
+                                        dOBController.text.trim(),
+                                        countryController.text.trim(),
+                                        regionController.text.trim(),
+                                        cityController.text.trim(),
+                                        emailController.text.trim(),
+                                        passwordController.text.trim(),
+                                        "C",
+                                        false);
                                   } else {
                                     _logInUser(emailController.text,
                                         passwordController.text, context);
@@ -348,5 +309,36 @@ class _AuthFormState extends State<AuthForm> {
         ),
       ),
     ));
+  }
+
+  Future getDoB(BuildContext context) async {
+    //final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final dOB = await showDatePicker(
+        context: context,
+        firstDate: DateTime(DateTime.now().year - 100),
+        lastDate: DateTime.now(),
+        initialDate: DateTime(DateTime.now().year - 21),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: orange1,
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: Colors.black,
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        });
+    if (dOB == null) {
+      return;
+    } else {
+      setState(() {
+        dOBController.text = DateFormat('dd MMM yyyy').format(dOB);
+      });
+    }
   }
 }

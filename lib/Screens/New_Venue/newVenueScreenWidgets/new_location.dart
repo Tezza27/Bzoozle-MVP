@@ -1,6 +1,7 @@
 import 'package:bzoozle/Lists/areas.dart';
 import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _NewLocationState extends State<NewLocation> {
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context);
     doorNumberController?.text = venueProvider.venueDoorNumber!;
     unitNumberController?.text = venueProvider.unitNumber!;
     streetController?.text = venueProvider.venueStreet!;
@@ -241,40 +243,39 @@ class _NewLocationState extends State<NewLocation> {
                           ),
                         ],
                       ),
-
-                //TODO make lon and lat only visible to admin accounts
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: TextField(
-                          textInputAction: TextInputAction.go,
-                          controller: latController,
-                          onChanged: (String value) =>
-                              venueProvider.changeLat = value,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Latitude'),
+                if (userProvider.cat == "A")
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          child: TextField(
+                            textInputAction: TextInputAction.go,
+                            controller: latController,
+                            onChanged: (String value) =>
+                                venueProvider.changeLat = value,
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Latitude'),
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 16.0,
-                      ),
-                      Flexible(
-                        child: TextField(
-                          textInputAction: TextInputAction.go,
-                          controller: lonController,
-                          onChanged: (String value) =>
-                              venueProvider.changeLat = value,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Longitude'),
+                        const SizedBox(
+                          width: 16.0,
                         ),
-                      ),
-                    ],
+                        Flexible(
+                          child: TextField(
+                            textInputAction: TextInputAction.go,
+                            controller: lonController,
+                            onChanged: (String value) =>
+                                venueProvider.changeLat = value,
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: 'Longitude'),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(
                       top: 8.0, bottom: 4.0, left: 8.0, right: 8.0),

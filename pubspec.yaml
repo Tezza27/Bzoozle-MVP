@@ -24,6 +24,7 @@ dependencies:
   cloud_firestore: ^3.1.10
   cupertino_icons: ^1.0.3
   date_format: ^2.0.2
+  date_time_picker: ^2.1.0
   file_picker: ^4.6.0
   firebase_analytics: ^9.1.2
   firebase_auth: ^3.3.19

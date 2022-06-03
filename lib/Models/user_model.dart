@@ -1,8 +1,10 @@
+import 'dart:io';
+
 class UserModel {
   final String uID;
   final String firstName;
   final String surName;
-  // final String? userImage;
+  final File userImage;
   final String dOB;
   final String country;
   final String region;
@@ -16,7 +18,7 @@ class UserModel {
       {required this.uID,
       required this.firstName,
       required this.surName,
-      // this.userImage,
+      required this.userImage,
       required this.dOB,
       required this.country,
       required this.region,

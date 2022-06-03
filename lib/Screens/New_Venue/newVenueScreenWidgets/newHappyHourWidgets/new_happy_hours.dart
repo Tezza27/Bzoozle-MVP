@@ -53,7 +53,6 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                 style: themeProvider.getTheme.textTheme.bodyText1,
               ),
             ),
-            //TODO Add HH session edit and delete capabilities
             ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,

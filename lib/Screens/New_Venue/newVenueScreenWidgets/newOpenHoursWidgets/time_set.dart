@@ -1,4 +1,6 @@
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_constants.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,188 +16,188 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    // bool _chBox24Open = setOpeningTimesProvider.chBox24Open;
-    // bool _chBox24Closed = setOpeningTimesProvider.chBox24Closed;
-    // bool? _chBoxNoOpen = setOpeningTimesProvider.chBoxNoOpen;
-    // bool? _chBoxNoClose = setOpeningTimesProvider.chBoxNoClose;
-    // String _originalOpenTime = setOpeningTimesProvider.originalOpenTime;
-    // String _originalCloseTime = setOpeningTimesProvider.originalCloseTime;
-    // String _selectedOpenTime = _originalOpenTime;
-    // String _selectedCloseTime = _originalCloseTime;
-
-    // setOpeningTimesProvider.selectedOpenTime = setOpeningTimesProvider.originalOpenTime;
-    // setOpeningTimesProvider.selectedCloseTime = setOpeningTimesProvider.originalCloseTime;
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: themeProvider.getTheme.primaryColor,
       appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Text("Set Opening Time"),
+          backgroundColor: themeProvider.getTheme.primaryColor,
+          title: Text("Set Opening Time",
+              style: themeProvider.getTheme.textTheme.headline4),
           centerTitle: true),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        color: Colors.orange[800],
+        color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
+          padding: const EdgeInsets.only(top: 32.0, left: 8.0, right: 8.0),
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(venueProvider.timeSetMessage),
-              Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Checkbox(
-                              value: venueProvider.chBox24Open,
-                              checkColor: Colors.black,
-                              // checkColor: Theme.of(context).splashColor,
-                              // fillColor: Colors.white,
-                              onChanged: (bool? newValue) {
-                                venueProvider.change24Open(newValue!);
-                              }),
-                          const Text("Open all day",
-                              style: TextStyle(color: Colors.black))
-                        ],
-                      ),
-                      Column(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Opening Time",
-                            style: TextStyle(color: Colors.black),
-                            textAlign: TextAlign.center,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 16.0, bottom: 0.0),
-                            child: SizedBox(
-                              height: 40.0,
-                              width: 140.0,
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.white)),
-                                onPressed: () async {
-                                  if (venueProvider.selectedOpenTime !=
-                                          "Open" &&
-                                      venueProvider.selectedOpenTime !=
-                                          "Closed") {
-                                    venueProvider.changeSelectedOpenTime(
-                                        await _show(
-                                            startTime: venueProvider
-                                                .selectedOpenTime));
-                                  }
-                                },
-                                child: Center(
-                                    child: Text(
-                                  venueProvider.selectedOpenTime,
-                                  style: const TextStyle(
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold),
-                                )),
+              Text(venueProvider.timeSetMessage,
+                  style: themeProvider.getTheme.textTheme.bodyText1),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 32.0, left: 0.0, right: 0.0),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Checkbox(
+                                value: venueProvider.chBox24Open,
+                                checkColor: themeProvider.getTheme.primaryColor,
+                                activeColor: themeProvider.getTheme.splashColor,
+                                // checkColor: Theme.of(context).splashColor,
+                                // fillColor: Colors.white,
+                                onChanged: (bool? newValue) {
+                                  venueProvider.change24Open(newValue!);
+                                }),
+                            Text("Open all day",
+                                style:
+                                    themeProvider.getTheme.textTheme.bodyText1)
+                          ],
+                        ),
+                        Column(
+                          //crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Opening Time",
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              textAlign: TextAlign.center,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16.0, bottom: 0.0),
+                              child: SizedBox(
+                                height: 40.0,
+                                width: 140.0,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.white)),
+                                  onPressed: () async {
+                                    if (venueProvider.selectedOpenTime !=
+                                            "Open" &&
+                                        venueProvider.selectedOpenTime !=
+                                            "Closed") {
+                                      venueProvider.changeSelectedOpenTime(
+                                          await _show(
+                                              startTime: venueProvider
+                                                  .selectedOpenTime));
+                                    }
+                                  },
+                                  child: Center(
+                                      child: Text(
+                                    venueProvider.selectedOpenTime,
+                                    style: const TextStyle(
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Checkbox(
-                              value: venueProvider.chBoxNoOpen,
-                              checkColor: Colors.black,
-                              // checkColor: Theme.of(context).splashColor,
-                              // fillColor: Colors.white,
-                              onChanged: (bool? newValue) {
-                                venueProvider.changeNoOpen(newValue!);
-                              }),
-                          const Text("No Opening Time",
-                              style: TextStyle(color: Colors.black))
-                        ],
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Checkbox(
-                              value: venueProvider.chBox24Closed,
-                              checkColor: Colors.black,
-                              // checkColor: Theme.of(context).splashColor,
-                              // fillColor: Colors.white,
-                              onChanged: (bool? newValue) {
-                                venueProvider.change24Closed(newValue!);
-                              }),
-                          const Text("Closed all day",
-                              style: TextStyle(color: Colors.black))
-                        ],
-                      ),
-                      Column(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Closing Time",
-                            style: TextStyle(color: Colors.black),
-                            textAlign: TextAlign.center,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 16.0, bottom: 0.0),
-                            child: SizedBox(
-                              height: 40.0,
-                              width: 140.0,
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.white)),
-                                onPressed: () async {
-                                  if (venueProvider.selectedCloseTime !=
-                                          "Open" &&
-                                      venueProvider.selectedCloseTime !=
-                                          "Closed") {
-                                    venueProvider.changeSelectedCloseTime(
-                                        await _show(
-                                            startTime: venueProvider
-                                                .selectedCloseTime));
-                                  }
-                                },
-                                child: Center(
-                                    child: Text(
-                                  venueProvider.selectedCloseTime,
-                                  //setOpeningTimesProvider.selectedCloseTime!,
-                                  style: const TextStyle(
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold),
-                                )),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Checkbox(
+                                value: venueProvider.chBoxNoOpen,
+                                checkColor: themeProvider.getTheme.primaryColor,
+                                activeColor: themeProvider.getTheme.splashColor,
+                                onChanged: (bool? newValue) {
+                                  venueProvider.changeNoOpen(newValue!);
+                                }),
+                            Text("No Opening Time",
+                                style:
+                                    themeProvider.getTheme.textTheme.bodyText1)
+                          ],
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Checkbox(
+                                value: venueProvider.chBox24Closed,
+                                checkColor: themeProvider.getTheme.primaryColor,
+                                activeColor: themeProvider.getTheme.splashColor,
+                                onChanged: (bool? newValue) {
+                                  venueProvider.change24Closed(newValue!);
+                                }),
+                            Text("Closed all day",
+                                style:
+                                    themeProvider.getTheme.textTheme.bodyText1)
+                          ],
+                        ),
+                        Column(
+                          //crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Closing Time",
+                              style: themeProvider.getTheme.textTheme.bodyText1,
+                              textAlign: TextAlign.center,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 16.0, bottom: 0.0),
+                              child: SizedBox(
+                                height: 40.0,
+                                width: 140.0,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.white)),
+                                  onPressed: () async {
+                                    if (venueProvider.selectedCloseTime !=
+                                            "Open" &&
+                                        venueProvider.selectedCloseTime !=
+                                            "Closed") {
+                                      venueProvider.changeSelectedCloseTime(
+                                          await _show(
+                                              startTime: venueProvider
+                                                  .selectedCloseTime));
+                                    }
+                                  },
+                                  child: Center(
+                                      child: Text(
+                                    venueProvider.selectedCloseTime,
+                                    //setOpeningTimesProvider.selectedCloseTime!,
+                                    style: const TextStyle(
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Checkbox(
-                              value: venueProvider.chBoxNoClose,
-                              checkColor: Colors.black,
-                              // checkColor: Theme.of(context).splashColor,
-                              // fillColor: Colors.white,
-                              onChanged: (bool? newValue) {
-                                venueProvider.changeNoClose(newValue!);
-                              }),
-                          const Text("No Closing Time",
-                              style: TextStyle(color: Colors.black))
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Checkbox(
+                                value: venueProvider.chBoxNoClose,
+                                checkColor: themeProvider.getTheme.primaryColor,
+                                activeColor: themeProvider.getTheme.splashColor,
+                                onChanged: (bool? newValue) {
+                                  venueProvider.changeNoClose(newValue!);
+                                }),
+                            Text("No Closing Time",
+                                style:
+                                    themeProvider.getTheme.textTheme.bodyText1)
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
@@ -209,9 +211,9 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Text(
+                        child: Text(
                           "Cancel",
-                          style: TextStyle(color: Colors.orange),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: Theme.of(context).primaryColor,
@@ -227,9 +229,9 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                           venueProvider.finishTimeSetting();
                           Navigator.pop(context);
                         },
-                        child: const Text(
+                        child: Text(
                           "Finish",
-                          style: TextStyle(color: Colors.orange),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: Theme.of(context).primaryColor,
@@ -253,7 +255,24 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
         : TimeOfDay(
             hour: int.parse(startTime.split(":")[0]),
             minute: int.parse(startTime.split(":")[1]));
-    result = await showTimePicker(context: context, initialTime: result);
+    result = await showTimePicker(
+        context: context,
+        initialTime: result,
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: orange1,
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: Colors.black,
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        });
     if (result != null) {
       return result.format(context);
     } else {
