@@ -35,20 +35,22 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                     style: themeProvider.getTheme.textTheme.headline3,
                   ),
                   centerTitle: true,
-                  background: DecoratedBox(
-                    position: DecorationPosition.foreground,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: <Color>[
-                            themeProvider.getTheme.primaryColor,
-                            Colors.transparent,
-                          ]),
-                    ),
-                    child: Image.asset(
-                      'assets/images/piano_bar_harrahs.png',
-                      fit: BoxFit.cover,
+                  background: InkWell(
+                    onTap: () {
+                      venueProvider.uploadVenueImage();
+                    },
+                    child: DecoratedBox(
+                      position: DecorationPosition.foreground,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
+                            colors: <Color>[
+                              themeProvider.getTheme.primaryColor,
+                              Colors.transparent,
+                            ]),
+                      ),
+                      child: fetchImage(),
                     ),
                   ),
                 ),
@@ -87,5 +89,20 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
         ],
       ),
     );
+  }
+
+  fetchImage() {
+    final venueProvider = Provider.of<VenueProvider>(context);
+    if (venueProvider.venueImage != "" && venueProvider.venueImage != null) {
+      return Image(
+          image: NetworkImage(venueProvider.venueImage!), fit: BoxFit.cover);
+    } else if (venueProvider.imageFile != null) {
+      return Image(
+          image: FileImage(venueProvider.imageFile!), fit: BoxFit.cover);
+    } else {
+      return const Image(
+          image: AssetImage('assets/images/temp_venue_image.png'),
+          fit: BoxFit.cover);
+    }
   }
 }

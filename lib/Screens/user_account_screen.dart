@@ -33,7 +33,9 @@ class _UserAccountScreenState extends State<UserAccountScreen> {
               child: CircleAvatar(
                 radius: 58,
                 backgroundImage: userProvider.imageUrl != ""
-                    ? NetworkImage(userProvider.imageUrl)
+                    ? NetworkImage(
+                        userProvider.imageUrl,
+                      )
                     : const AssetImage('assets/images/portrait_placeholder.png')
                         as ImageProvider,
               ),

@@ -81,7 +81,6 @@ class _UserImagePickerState extends State<UserImagePicker> {
         _pickedImage = File(pickedImageFile!.path);
       });
       userProvider.changeUserImage(File(pickedImageFile!.path));
-      //widget.imagePickFn(File(pickedImageFile.path));
     }
   }
 
@@ -101,7 +100,9 @@ class _UserImagePickerState extends State<UserImagePicker> {
             child: CircleAvatar(
               radius: 58,
               backgroundImage: _pickedImage != null
-                  ? FileImage(_pickedImage!)
+                  ? FileImage(
+                      _pickedImage!,
+                    )
                   : const AssetImage('assets/images/portrait_placeholder.png')
                       as ImageProvider,
             ),

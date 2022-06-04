@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 
 class VenueProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
@@ -21,6 +24,7 @@ class VenueProvider with ChangeNotifier {
   String? _lat;
   String? _lon;
   String? _venueDirections;
+  String? _venueImage;
   //Opening Hours Attributes
   bool _chBoxMonday = false;
   bool _chBoxTuesday = false;
@@ -129,6 +133,7 @@ class VenueProvider with ChangeNotifier {
   bool _chBoxHHSaturday = false;
   bool _chBoxHHSunday = false;
   String? _hhOffer = "";
+  File? imageFile;
 
   //Getters
   String get venueName => _venueName;
@@ -145,6 +150,7 @@ class VenueProvider with ChangeNotifier {
   String? get lat => _lat;
   String? get lon => _lon;
   String? get venueDirections => _venueDirections;
+  String? get venueImage => _venueImage;
   //Opening TImes Getters
   bool get chBoxMonday => _chBoxMonday;
   bool get chBoxTuesday => _chBoxTuesday;
@@ -324,6 +330,11 @@ class VenueProvider with ChangeNotifier {
 
   set changeDirections(String value) {
     _venueDirections = value;
+    notifyListeners();
+  }
+
+  set changeVenueImage(String value) {
+    _venueImage = value;
     notifyListeners();
   }
 
@@ -848,6 +859,13 @@ class VenueProvider with ChangeNotifier {
 
   //Methods
 
+  uploadVenueImage() async {
+    final pickedFile = await ImagePicker().pickImage(
+        source: ImageSource.gallery, maxHeight: 200, imageQuality: 70);
+    imageFile = File(pickedFile!.path);
+    notifyListeners();
+  }
+
   loadVenue(Venue? venue) {
     if (venue != null) {
       _venueName = venue.venueName;
@@ -864,6 +882,7 @@ class VenueProvider with ChangeNotifier {
       _lat = venue.lat;
       _lon = venue.lon;
       _venueDirections = venue.venueDirections;
+      _venueImage = venue.venueImage;
       _openTime0 = venue.openTime0;
       _closeTime0 = venue.closeTime0;
       _openTime1 = venue.openTime1;
@@ -960,6 +979,7 @@ class VenueProvider with ChangeNotifier {
       _lat = null;
       _lon = null;
       _venueDirections = null;
+      _venueImage = null;
       _openTime0 = "?";
       _closeTime0 = "?";
       _openTime1 = "?";
@@ -1060,6 +1080,7 @@ class VenueProvider with ChangeNotifier {
     _lat = null;
     _lon = null;
     _venueDirections = null;
+    _venueImage = null;
     _openTime0 = "?";
     _closeTime0 = "?";
     _openTime1 = "?";
@@ -1159,6 +1180,7 @@ class VenueProvider with ChangeNotifier {
       lat: lat,
       lon: lon,
       venueDirections: venueDirections,
+      venueImage: venueImage,
       openTime0: openTime0,
       closeTime0: closeTime0,
       openTime1: openTime1,
@@ -1260,6 +1282,7 @@ class VenueProvider with ChangeNotifier {
       lat: lat,
       lon: lon,
       venueDirections: venueDirections,
+      venueImage: venueImage,
       openTime0: openTime0,
       closeTime0: closeTime0,
       openTime1: openTime1,

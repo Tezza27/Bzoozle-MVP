@@ -31,6 +31,7 @@ class Venue {
   final String? lat;
   final String? lon;
   final String? venueDirections;
+  final String? venueImage;
   final String? openTime0;
   final String? closeTime0;
   final String? openTime1;
@@ -133,6 +134,7 @@ class Venue {
       this.lat,
       this.lon,
       this.venueDirections,
+      this.venueImage,
       this.openTime0 = "?",
       this.closeTime0 = "?",
       this.openTime1 = "?",
@@ -248,6 +250,7 @@ Venue _venueFromJson(Map<String, dynamic> json) {
       lat: json['lat'],
       lon: json['lon'],
       venueDirections: json['venueDirections'],
+      venueImage: json['venueImage'],
       openTime0: json['openTime0'],
       closeTime0: json['closeTime0'],
       openTime1: json['openTime1'],
@@ -358,6 +361,7 @@ Map<String, dynamic> _venueToJson(Venue instance) => <String, dynamic>{
       'lat': instance.lat,
       'lon': instance.lon,
       'venueDirections': instance.venueDirections,
+      'venueImage': instance.venueImage,
       'openTime0': instance.openTime0,
       'closeTime0': instance.closeTime0,
       'openTime1': instance.openTime1,
