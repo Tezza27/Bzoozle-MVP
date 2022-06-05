@@ -85,7 +85,7 @@ class Venue {
 //Pricing attributes
   final String? fees;
   final String? feesCom;
-  final String? priceGuide;
+  final int? priceGuide;
   final String? priceCom;
   final String? beerDom;
   final String? beerImp;
@@ -188,7 +188,7 @@ class Venue {
 //Pricing attributes
       this.fees = "No",
       this.feesCom = "",
-      this.priceGuide = "Average",
+      this.priceGuide = 2,
       this.priceCom = "",
       this.beerDom = "",
       this.beerImp = "",

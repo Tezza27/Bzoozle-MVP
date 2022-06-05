@@ -171,7 +171,6 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                       ),
-                      //TODO Hook up radiogroup to venueProvider and price guide details page
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Column(
@@ -181,10 +180,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 0,
-                                groupValue: venueProvider,
+                                groupValue: venueProvider.priceGuide,
                                 activeColor: orange1,
-                                onChanged: (value) =>
-                                    setState(() => pricePoint = 0),
+                                onChanged: (value) => setState(() {
+                                  pricePoint = 0;
+                                  venueProvider.changePriceGuide(pricePoint);
+                                }),
                                 title: Text(
                                   "\$",
                                   style: themeProvider
@@ -202,10 +203,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 1,
-                                groupValue: pricePoint,
+                                groupValue: venueProvider.priceGuide,
                                 activeColor: orange1,
-                                onChanged: (value) =>
-                                    setState(() => pricePoint = 1),
+                                onChanged: (value) => setState(() {
+                                  pricePoint = 1;
+                                  venueProvider.changePriceGuide(pricePoint);
+                                }),
                                 title: Text(
                                   "\$\$",
                                   style: themeProvider
@@ -223,10 +226,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 2,
-                                groupValue: pricePoint,
+                                groupValue: venueProvider.priceGuide,
                                 activeColor: orange1,
-                                onChanged: (value) =>
-                                    setState(() => pricePoint = 2),
+                                onChanged: (value) => setState(() {
+                                  pricePoint = 2;
+                                  venueProvider.changePriceGuide(pricePoint);
+                                }),
                                 title: Text(
                                   "\$\$\$",
                                   style: themeProvider
@@ -244,10 +249,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 3,
-                                groupValue: pricePoint,
+                                groupValue: venueProvider.priceGuide,
                                 activeColor: orange1,
-                                onChanged: (value) =>
-                                    setState(() => pricePoint = 3),
+                                onChanged: (value) => setState(() {
+                                  pricePoint = 3;
+                                  venueProvider.changePriceGuide(pricePoint);
+                                }),
                                 title: Text(
                                   "\$\$\$\$",
                                   style: themeProvider
@@ -265,10 +272,12 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                               child: RadioListTile(
                                 dense: true,
                                 value: 4,
-                                groupValue: pricePoint,
+                                groupValue: venueProvider.priceGuide,
                                 activeColor: orange1,
-                                onChanged: (value) =>
-                                    setState(() => pricePoint = 4),
+                                onChanged: (value) => setState(() {
+                                  pricePoint = 4;
+                                  venueProvider.changePriceGuide(pricePoint);
+                                }),
                                 title: Text(
                                   "\$\$\$\$\$",
                                   style: themeProvider
@@ -317,7 +326,8 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 8.0),
                         child: Text(
                             "Please enter the prices, including tax but excluding tips or other fees or charges, for the lowest priced item available outside of happy hour at this venue for each of the categories below",
                             style: themeProvider.getTheme.textTheme.bodyText1),

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bzoozle/Lists/yes_no_list.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -112,10 +113,63 @@ class DetailPricing extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text(venueProvider.priceGuide ?? '?',
-                            style: themeProvider.getTheme.textTheme.bodyText1),
-                      ),
+                          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                          child: venueProvider.priceGuide != null
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    RichText(
+                                      text: TextSpan(
+                                        text: '\$',
+                                        style: themeProvider
+                                            .getTheme.textTheme.subtitle1,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 1
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 2
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 3
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 4
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 20),
+                                    Text(priceList[venueProvider.priceGuide!],
+                                        style: themeProvider
+                                            .getTheme.textTheme.bodyText1),
+                                  ],
+                                )
+                              : Container()),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),

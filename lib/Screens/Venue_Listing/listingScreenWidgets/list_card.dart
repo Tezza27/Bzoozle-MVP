@@ -8,7 +8,7 @@ import 'package:bzoozle/Models/venue.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 
-Widget listCard(BuildContext context, Venue venue) {
+Widget listCard(BuildContext context, String iD, Venue venue) {
   final venueProvider = Provider.of<VenueProvider>(context);
   final pageNumberProvider = Provider.of<PageNumberProvider>(context);
   final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
@@ -17,16 +17,14 @@ Widget listCard(BuildContext context, Venue venue) {
     padding: const EdgeInsets.all(8.0),
     child: Card(
       color: themeProvider.getTheme.cardColor,
-      shape: RoundedRectangleBorder(
-          // side: const BorderSide(color: Colors.orange, width: 2),
-          borderRadius: BorderRadius.circular(10.0)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       child: InkWell(
         splashColor: themeProvider.getTheme.splashColor,
         onTap: () {
           pageNumberProvider.changePageNumber(0);
           Navigator.pushNamed(context, VenueDetailScreen.routeName,
               arguments: venue);
-          venueProvider.loadVenue(venue);
+          venueProvider.loadVenue(iD, venue);
         },
         child: Column(
           children: <Widget>[
@@ -135,10 +133,44 @@ Widget listCard(BuildContext context, Venue venue) {
                     style: themeProvider.getTheme.textTheme.bodyText1,
                   ),
                   const Spacer(),
-                  Text(
-                    "\$\$\$\$\$",
-                    style: themeProvider.getTheme.textTheme.bodyText1,
-                  ),
+                  venueProvider.priceGuide != null
+                      ? RichText(
+                          text: TextSpan(
+                            text: '\$',
+                            style: themeProvider.getTheme.textTheme.subtitle1,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: '\$',
+                                style: venueProvider.priceGuide! >= 1
+                                    ? themeProvider.getTheme.textTheme.subtitle1
+                                    : themeProvider
+                                        .getTheme.textTheme.subtitle2,
+                              ),
+                              TextSpan(
+                                text: '\$',
+                                style: venueProvider.priceGuide! >= 2
+                                    ? themeProvider.getTheme.textTheme.subtitle1
+                                    : themeProvider
+                                        .getTheme.textTheme.subtitle2,
+                              ),
+                              TextSpan(
+                                text: '\$',
+                                style: venueProvider.priceGuide! >= 3
+                                    ? themeProvider.getTheme.textTheme.subtitle1
+                                    : themeProvider
+                                        .getTheme.textTheme.subtitle2,
+                              ),
+                              TextSpan(
+                                text: '\$',
+                                style: venueProvider.priceGuide! >= 4
+                                    ? themeProvider.getTheme.textTheme.subtitle1
+                                    : themeProvider
+                                        .getTheme.textTheme.subtitle2,
+                              ),
+                            ],
+                          ),
+                        )
+                      : const Text(""),
                 ],
               ),
             ),

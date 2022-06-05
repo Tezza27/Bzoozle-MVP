@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 
 class VenueProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
+  String? _venueID;
   String _venueName = "";
   String? _venueType;
   String? _venueTheme;
@@ -97,7 +98,7 @@ class VenueProvider with ChangeNotifier {
 //Pricing attributes
   String? _fees = "No";
   String? _feesCom = "";
-  String? _priceGuide = "Average";
+  int? _priceGuide = 2;
   String? _priceCom = "";
   String? _beerDom = "";
   String? _beerImp = "";
@@ -136,6 +137,7 @@ class VenueProvider with ChangeNotifier {
   File? imageFile;
 
   //Getters
+  String? get venueID => _venueID;
   String get venueName => _venueName;
   String? get venueType => _venueType;
   String? get venueTheme => _venueTheme;
@@ -223,7 +225,7 @@ class VenueProvider with ChangeNotifier {
 //Pricing at =>ributes
   String? get fees => _fees;
   String? get feesCom => _feesCom;
-  String? get priceGuide => _priceGuide;
+  int? get priceGuide => _priceGuide;
   String? get priceCom => _priceCom;
   String? get beerDom => _beerDom;
   String? get beerImp => _beerImp;
@@ -682,7 +684,7 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set selectedPrice(String value) {
+  changePriceGuide(int value) {
     _priceGuide = value;
     notifyListeners();
   }
@@ -866,8 +868,9 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  loadVenue(Venue? venue) {
+  loadVenue(String iD, Venue? venue) {
     if (venue != null) {
+      _venueID = iD;
       _venueName = venue.venueName;
       _venueType = venue.venueType;
       _venueTheme = venue.venueTheme;
@@ -965,6 +968,7 @@ class VenueProvider with ChangeNotifier {
       _happyHours = venue.happyHours;
       _hhOffer = venue.hhOffer;
     } else {
+      _venueID = null;
       _venueName;
       _venueType = null;
       _venueTheme = null;
@@ -1033,7 +1037,7 @@ class VenueProvider with ChangeNotifier {
 //Pricing attributes
       _fees = "No";
       _feesCom = null;
-      _priceGuide = "Average";
+      _priceGuide = 2;
       _priceCom = null;
       _beerDom = "";
       _beerImp = "";
@@ -1134,7 +1138,7 @@ class VenueProvider with ChangeNotifier {
 //Pricing attributes
     _fees = "No";
     _feesCom = "";
-    _priceGuide = "Average";
+    _priceGuide = 2;
     _priceCom = "";
     _beerDom = "";
     _beerImp = "";
@@ -1262,6 +1266,7 @@ class VenueProvider with ChangeNotifier {
       lateEntreeCom: lateEntreeCom,
       hhOffer: hhOffer,
       happyHours: happyHours,
+      //
     );
     firestoreService.addVenue(newVenue);
   }

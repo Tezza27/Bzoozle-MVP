@@ -7,10 +7,14 @@ Color orangeWhite = const Color.fromARGB(255, 250, 217, 169);
 Color white2 = const Color.fromARGB(255, 255, 255, 255);
 Color white3 = const Color.fromARGB(255, 255, 255, 255);
 Color orange1 = const Color.fromARGB(255, 255, 127, 0);
+Color orangeCream = const Color.fromARGB(255, 254, 158, 62);
+Color lightGrey = const Color.fromARGB(255, 215, 211, 206);
+Color darkGrey = const Color.fromARGB(255, 103, 103, 103);
 
 ThemeData lightTheme = ThemeData.light().copyWith(
   primaryColor: orange1,
   splashColor: black1,
+  scaffoldBackgroundColor: orangeCream,
   cardColor: white2,
   // elevatedButtonTheme: ElevatedButtonThemeData(
   //     style: ElevatedButton.styleFrom(
@@ -59,16 +63,18 @@ ThemeData lightTheme = ThemeData.light().copyWith(
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
-    //   subtitle1: TextStyle(
-    //       fontSize: 14.0,
-    //       fontFamily: 'Roboto',
-    //       fontWeight: FontWeight.normal,
-    //       fontStyle: FontStyle.normal),
-    //   subtitle2: TextStyle(
-    //       fontSize: 14.0,
-    //       fontFamily: 'Roboto',
-    //       fontWeight: FontWeight.normal,
-    //       fontStyle: FontStyle.normal),
+    subtitle1: const TextStyle(
+        color: Colors.black,
+        fontSize: 18.0,
+        fontFamily: 'PaytoneOne',
+        fontWeight: FontWeight.normal,
+        fontStyle: FontStyle.normal),
+    subtitle2: TextStyle(
+        color: lightGrey,
+        fontSize: 18.0,
+        fontFamily: 'PaytoneOne',
+        fontWeight: FontWeight.normal,
+        fontStyle: FontStyle.normal),
     bodyText1: const TextStyle(
         color: Colors.black,
         fontSize: 16.0,
@@ -172,16 +178,18 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
         fontFamily: 'Roboto',
         fontWeight: FontWeight.normal,
         fontStyle: FontStyle.normal),
-    //   subtitle1: TextStyle(
-    //       fontSize: 14.0,
-    //       fontFamily: 'Roboto',
-    //       fontWeight: FontWeight.normal,
-    //       fontStyle: FontStyle.normal),
-    //   subtitle2: TextStyle(
-    //       fontSize: 14.0,
-    //       fontFamily: 'Roboto',
-    //       fontWeight: FontWeight.normal,
-    //       fontStyle: FontStyle.normal),
+    subtitle1: TextStyle(
+        color: orangeWhite,
+        fontSize: 18.0,
+        fontFamily: 'PaytoneOne',
+        fontWeight: FontWeight.normal,
+        fontStyle: FontStyle.normal),
+    subtitle2: TextStyle(
+        color: darkGrey,
+        fontSize: 18.0,
+        fontFamily: 'PaytoneOne',
+        fontWeight: FontWeight.normal,
+        fontStyle: FontStyle.normal),
     bodyText1: TextStyle(
         color: orangeWhite,
         fontSize: 16.0,

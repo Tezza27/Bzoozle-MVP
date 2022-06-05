@@ -16,7 +16,6 @@ class _NewDescriptionState extends State<NewDescription> {
   TextEditingController? venueDescriptionController;
   String? dropdownTypeValue;
   String? dropdownThemeValue;
-  String? dropdownHostValue;
 
   @override
   Widget build(BuildContext context) {
@@ -44,52 +43,90 @@ class _NewDescriptionState extends State<NewDescription> {
                 textInputAction: TextInputAction.go,
                 controller: venueNameController,
                 onSubmitted: (String value) => venueProvider.changeName = value,
+                style: themeProvider.getTheme.textTheme.bodyText1,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Venue Name'),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 8.0, bottom: 0.0, left: 28.0, right: 28.0),
-                child: DropdownButton<String>(
-                  isExpanded: true,
-                  style: themeProvider.getTheme.textTheme.bodyText1,
-                  hint: const Text("Select Venue Type"),
-                  items: venueTypeList.map((venueType) {
-                    return DropdownMenuItem(
-                        value: venueType, child: Text(venueType));
-                  }).toList(),
-                  onChanged: (String? value) {
-                    venueProvider.changeType = value!;
-                  },
-                  value: venueProvider.venueType,
+                    top: 8.0, bottom: 0.0, left: 8.0, right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      flex: 4,
+                      child: Text(
+                        "Venue Type:",
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 6,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                        hint: const Text("Select Venue Type"),
+                        items: venueTypeList.map((venueType) {
+                          return DropdownMenuItem(
+                              value: venueType, child: Text(venueType));
+                        }).toList(),
+                        onChanged: (String? value) {
+                          venueProvider.changeType = value!;
+                        },
+                        value: venueProvider.venueType,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 8.0, bottom: 0.0, left: 28.0, right: 28.0),
-                child: DropdownButton<String>(
-                  isExpanded: true,
-                  style: themeProvider.getTheme.textTheme.bodyText1,
-                  hint: const Text("Select Venue Theme"),
-                  items: venueThemeList.map((venueTheme) {
-                    return DropdownMenuItem(
-                        value: venueTheme, child: Text(venueTheme));
-                  }).toList(),
-                  onChanged: (String? value) {
-                    venueProvider.changeTheme = value!;
-                  },
-                  value: venueProvider.venueTheme,
+                    top: 8.0, bottom: 0.0, left: 8.0, right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      flex: 4,
+                      child: Text(
+                        "Venue Theme:",
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 6,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                        hint: const Text("Select Venue Theme"),
+                        items: venueThemeList.map((venueTheme) {
+                          return DropdownMenuItem(
+                              value: venueTheme, child: Text(venueTheme));
+                        }).toList(),
+                        onChanged: (String? value) {
+                          venueProvider.changeTheme = value!;
+                        },
+                        value: venueProvider.venueTheme,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              TextFormField(
-                controller: venueDescriptionController,
-                minLines: 5,
-                maxLines: null,
-                onChanged: (String value) =>
-                    venueProvider.changeDescription = value,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Venue Description'),
+              Align(
+                alignment: Alignment.topLeft,
+                child: TextField(
+                  controller: venueDescriptionController,
+                  keyboardType: TextInputType.multiline,
+                  minLines: 5,
+                  maxLines: null,
+                  textAlign: TextAlign.start,
+                  textAlignVertical: TextAlignVertical.top,
+                  style: themeProvider.getTheme.textTheme.bodyText1,
+                  onChanged: (String value) =>
+                      venueProvider.changeDescription = value,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Venue Description'),
+                ),
               ),
               const SizedBox(
                 height: 500.0,

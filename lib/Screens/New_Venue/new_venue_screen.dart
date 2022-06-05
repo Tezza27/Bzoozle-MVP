@@ -76,7 +76,12 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        venueProvider.addVenue();
+                        if (venueProvider.venueID != "" &&
+                            venueProvider.venueID != null) {
+                          venueProvider.updateVenue(venueProvider.venueID!);
+                        } else {
+                          venueProvider.addVenue();
+                        }
                         Navigator.pop(context);
                       },
                       child: const Text("Save"),

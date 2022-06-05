@@ -29,7 +29,7 @@ class _ColorPalletScreenState extends State<ColorPalletScreen> {
                     width: 100,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 243, 20, 197),
+                        color: Color.fromARGB(255, 255, 127, 0),
                       ),
                     ),
                   ),
@@ -38,7 +38,7 @@ class _ColorPalletScreenState extends State<ColorPalletScreen> {
                     width: 100,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 0, 0, 255),
+                        color: Color.fromARGB(255, 254, 158, 62),
                       ),
                     ),
                   ),

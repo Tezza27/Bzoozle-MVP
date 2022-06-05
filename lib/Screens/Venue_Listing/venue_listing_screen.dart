@@ -4,6 +4,7 @@ import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Contact/contact_screen.dart';
 import 'package:bzoozle/Screens/New_Venue/new_venue_screen.dart';
 import 'package:bzoozle/Screens/Sign_In/auth_screen.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/sort_filter_form.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/list_card.dart';
 import 'package:bzoozle/Screens/user_account_screen.dart';
 import 'package:bzoozle/Settings/color_experiments.dart';
@@ -29,6 +30,7 @@ class _ListingScreenState extends State<ListingScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     return Scaffold(
+      backgroundColor: themeProvider.getTheme.scaffoldBackgroundColor,
       drawer: Drawer(
         backgroundColor: themeProvider.getTheme.splashColor,
         child: ListView(
@@ -168,6 +170,7 @@ class _ListingScreenState extends State<ListingScreen> {
             ),
             onPressed: () {
               //TODO add sort & filter function
+              Navigator.pushNamed(context, SortFilterScreen.routeName);
             },
           ),
         ],
@@ -211,7 +214,8 @@ class _ListingScreenState extends State<ListingScreen> {
                           Venue venueObject =
                               Venue.fromSnapshot(venueRawData.docs[index]);
 
-                          return listCard(context, venueObject);
+                          return listCard(context, venueRawData.docs[index].id,
+                              venueObject);
                         })
                     : const Center(child: Text('No data available'));
             }
