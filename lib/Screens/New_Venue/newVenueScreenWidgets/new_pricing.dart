@@ -134,14 +134,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: feesController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.feesCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeFeesCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -296,14 +297,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: feesController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.priceCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changePriceCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -359,13 +361,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: beerDomesticPriceController,
+                                initialValue: venueProvider.beerDom,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeBeerDom = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -380,14 +383,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: beerDomesticController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.beerDomCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeBeerDomCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -416,13 +420,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: beerImportPriceController,
+                                initialValue: venueProvider.beerImp,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeBeerImp = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -437,14 +442,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: beerImportController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.beerImpCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeBeerImpCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -473,13 +479,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: beerDraftPriceController,
+                                initialValue: venueProvider.beerDraft,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeBeerDraft = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -494,14 +501,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: beerDraftController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.beerDraftCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeBeerDraftCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -530,13 +538,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: wellDrinkPriceController,
+                                initialValue: venueProvider.well,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeWell = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -551,14 +560,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: wellDrinkController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.wellCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeWellCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -587,13 +597,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: callDrinkPriceController,
+                                initialValue: venueProvider.call,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeCall = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -608,14 +619,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: callDrinkController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.callCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeCallCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -644,13 +656,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: cocktailPriceController,
+                                initialValue: venueProvider.cocktail,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeCocktail = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -665,14 +678,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: cocktailController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.cocktailCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeCocktailCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -701,13 +715,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: winePriceController,
+                                initialValue: venueProvider.wine,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeWine = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -722,14 +737,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: wineController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.wineCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeWineCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -758,13 +774,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: bottleServicePriceController,
+                                initialValue: venueProvider.bottle,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeBottle = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -779,14 +796,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: bottleServiceController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.bottleCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeBottleCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -823,13 +841,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: breakfastEntreePriceController,
+                                initialValue: venueProvider.bEntree,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeBEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -844,14 +863,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: breakfastEntreeController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.bEntreeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeBEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -880,13 +900,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: lunchEntreePriceController,
+                                initialValue: venueProvider.lEntree,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeLEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -901,14 +922,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: lunchEntreeController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.lEntreeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeLEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -937,13 +959,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: dinnerEntreePriceController,
+                                initialValue: venueProvider.dEntree,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeDEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -958,14 +981,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: dinnerEntreeController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.dEntreeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeDEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -994,13 +1018,14 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                             ),
                             SizedBox(
                               width: 80.0,
-                              child: TextField(
+                              child: TextFormField(
                                 textInputAction: TextInputAction.go,
                                 controller: lateEntreePriceController,
+                                initialValue: venueProvider.lEntree,
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                                 textAlignVertical: TextAlignVertical.top,
-                                onSubmitted: (String value) =>
+                                onChanged: (String value) =>
                                     venueProvider.changeLateEntree = value,
                                 decoration: const InputDecoration(
                                     border: OutlineInputBorder(),
@@ -1015,14 +1040,15 @@ class _NewPricingScreenState extends State<NewPricingScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: lateEntreeController,
                           minLines: 1,
                           maxLines: 10,
+                          initialValue: venueProvider.lEntreeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeLateEntreeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),

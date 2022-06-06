@@ -96,6 +96,8 @@ class _NewLocationState extends State<NewLocation> {
                                 child: TextField(
                                   textInputAction: TextInputAction.go,
                                   controller: unitNumberController,
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
                                   onSubmitted: (String value) =>
                                       venueProvider.changeUnitNumber = value,
                                   decoration: const InputDecoration(
@@ -161,10 +163,13 @@ class _NewLocationState extends State<NewLocation> {
                             children: [
                               Flexible(
                                 flex: 3,
-                                child: TextField(
+                                child: TextFormField(
                                   textInputAction: TextInputAction.go,
                                   controller: doorNumberController,
-                                  onSubmitted: (String value) =>
+                                  initialValue: venueProvider.venueDoorNumber,
+                                  style: themeProvider
+                                      .getTheme.textTheme.bodyText1,
+                                  onChanged: (String value) =>
                                       venueProvider.changeDoorNumber = value,
                                   decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
@@ -175,10 +180,13 @@ class _NewLocationState extends State<NewLocation> {
                                 flex: 8,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: TextField(
+                                  child: TextFormField(
                                     textInputAction: TextInputAction.go,
                                     controller: streetController,
-                                    onSubmitted: (String value) =>
+                                    initialValue: venueProvider.venueStreet,
+                                    style: themeProvider
+                                        .getTheme.textTheme.bodyText1,
+                                    onChanged: (String value) =>
                                         venueProvider.changeStreet = value,
                                     decoration: const InputDecoration(
                                         border: OutlineInputBorder(),
@@ -231,14 +239,16 @@ class _NewLocationState extends State<NewLocation> {
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 8.0, bottom: 8.0, left: 0.0, right: 0.0),
-                            child: TextField(
+                            child: TextFormField(
                               textInputAction: TextInputAction.go,
                               controller: postcodeController,
+                              initialValue: venueProvider.venuePostcode,
+                              style: themeProvider.getTheme.textTheme.bodyText1,
                               onChanged: (String value) =>
                                   venueProvider.changePostcode = value,
                               decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
-                                  labelText: 'Zip/Postcode'),
+                                  labelText: 'Zip'),
                             ),
                           ),
                         ],
@@ -249,9 +259,11 @@ class _NewLocationState extends State<NewLocation> {
                     child: Row(
                       children: [
                         Flexible(
-                          child: TextField(
+                          child: TextFormField(
                             textInputAction: TextInputAction.go,
                             controller: latController,
+                            initialValue: venueProvider.lat,
+                            style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String value) =>
                                 venueProvider.changeLat = value,
                             decoration: const InputDecoration(
@@ -263,9 +275,11 @@ class _NewLocationState extends State<NewLocation> {
                           width: 16.0,
                         ),
                         Flexible(
-                          child: TextField(
+                          child: TextFormField(
                             textInputAction: TextInputAction.go,
                             controller: lonController,
+                            initialValue: venueProvider.lon,
+                            style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String value) =>
                                 venueProvider.changeLat = value,
                             decoration: const InputDecoration(
@@ -286,6 +300,8 @@ class _NewLocationState extends State<NewLocation> {
                 ),
                 TextFormField(
                   controller: directionsController,
+                  initialValue: venueProvider.venueDirections,
+                  style: themeProvider.getTheme.textTheme.bodyText1,
                   minLines: 5,
                   maxLines: null,
                   onChanged: (String value) =>

@@ -39,10 +39,11 @@ class _NewDescriptionState extends State<NewDescription> {
                       style: themeProvider.getTheme.textTheme.headline1),
                 ),
               ),
-              TextField(
+              TextFormField(
                 textInputAction: TextInputAction.go,
                 controller: venueNameController,
-                onSubmitted: (String value) => venueProvider.changeName = value,
+                initialValue: venueProvider.venueName,
+                onChanged: (String value) => venueProvider.changeName = value,
                 style: themeProvider.getTheme.textTheme.bodyText1,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), labelText: 'Venue Name'),
@@ -113,11 +114,12 @@ class _NewDescriptionState extends State<NewDescription> {
               ),
               Align(
                 alignment: Alignment.topLeft,
-                child: TextField(
+                child: TextFormField(
                   controller: venueDescriptionController,
                   keyboardType: TextInputType.multiline,
                   minLines: 5,
                   maxLines: null,
+                  initialValue: venueProvider.venueDescription,
                   textAlign: TextAlign.start,
                   textAlignVertical: TextAlignVertical.top,
                   style: themeProvider.getTheme.textTheme.bodyText1,

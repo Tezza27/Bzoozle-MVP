@@ -65,7 +65,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             DropdownButton<String>(
                               value: venueProvider.dressCode,
                               icon: const Icon(Icons.arrow_drop_down),
-                              iconSize: 30, //this inicrease the size
+                              iconSize: 30,
                               elevation: 16,
                               style: themeProvider.getTheme.textTheme.bodyText1,
                               underline: Container(),
@@ -87,14 +87,15 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: dressCodeController,
+                          initialValue: venueProvider.dressCodeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeDressCodeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -151,14 +152,15 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: coverChargeController,
+                          initialValue: venueProvider.coverChargeCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeCoverChargeCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -214,14 +216,15 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: smokingController,
+                          initialValue: venueProvider.smokingCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeSmokingCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -277,14 +280,15 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 16.0, bottom: 8.0, left: 8.0, right: 8.0),
-                        child: TextField(
+                        child: TextFormField(
                           textInputAction: TextInputAction.go,
                           controller: childController,
+                          initialValue: venueProvider.childCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           minLines: 1,
                           maxLines: 10,
                           textAlignVertical: TextAlignVertical.top,
-                          onSubmitted: (String value) =>
+                          onChanged: (String value) =>
                               venueProvider.changeChildCom = value,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
