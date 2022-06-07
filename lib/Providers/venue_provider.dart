@@ -4,6 +4,7 @@ import 'package:bzoozle/Models/happy_hour_session.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Services/firestore_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
@@ -213,7 +214,7 @@ class VenueProvider with ChangeNotifier {
   String? get parkingCom => _parkingCom;
   String? get access => _access;
   String? get accessCom => _accessCom;
-//Policy att =>ibutes
+//Policy attributes
   String? get dressCode => _dressCode;
   String? get dressCodeCom => _dressCodeCom;
   String? get coverCharge => _coverCharge;
@@ -222,7 +223,7 @@ class VenueProvider with ChangeNotifier {
   String? get smokingCom => _smokingCom;
   String? get child => _child;
   String? get childCom => _childCom;
-//Pricing at =>ributes
+//Pricing attributes
   String? get fees => _fees;
   String? get feesCom => _feesCom;
   int? get priceGuide => _priceGuide;
@@ -861,11 +862,41 @@ class VenueProvider with ChangeNotifier {
 
   //Methods
 
-  uploadVenueImage() async {
+  uploadGalleryImage() async {
     final pickedFile = await ImagePicker().pickImage(
         source: ImageSource.gallery, maxHeight: 200, imageQuality: 70);
     imageFile = File(pickedFile!.path);
     notifyListeners();
+  }
+
+  imageToFirebase() async {
+    if (imageFile != null) {
+//Delete existing image
+      try {
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child('venueImages')
+            .child(_venueID! + '.jpg');
+
+        await ref.delete();
+      } catch (e) {
+        print(e);
+      }
+//upload new image
+      try {
+        final ref = FirebaseStorage.instance
+            .ref()
+            .child('venueImages')
+            .child(_venueID! + '.jpg');
+        await ref.putFile(imageFile!);
+        final imageUrl = await ref.getDownloadURL();
+        changeVenueImage = imageUrl;
+      } catch (e) {
+        print(e);
+      }
+
+      imageFile = null;
+    }
   }
 
   loadVenue(String iD, Venue? venue) {
@@ -1266,12 +1297,13 @@ class VenueProvider with ChangeNotifier {
       lateEntreeCom: lateEntreeCom,
       hhOffer: hhOffer,
       happyHours: happyHours,
-      //
     );
     firestoreService.addVenue(newVenue);
+    imageToFirebase();
   }
 
-  updateVenue(String venueId) {
+  updateVenue(String venueId) async {
+    await imageToFirebase();
     var currentVenue = Venue(
       venueName: venueName,
       venueDescription: venueDescription,
@@ -1370,7 +1402,7 @@ class VenueProvider with ChangeNotifier {
       hhOffer: hhOffer,
       happyHours: happyHours,
     );
-    firestoreService.updateVenue(currentVenue);
+    firestoreService.updateVenue(currentVenue, venueId);
   }
 
   changeMonday(bool value) {

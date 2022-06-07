@@ -17,6 +17,7 @@ class OpenHours {
 
 //The Venue Class with its fields
 class Venue {
+  final String? venueId;
   final String venueName;
   final String? venueType;
   final String? venueTheme;
@@ -119,7 +120,8 @@ class Venue {
 
 //Constructor for the Venue class
   Venue(
-      {required this.venueName,
+      {this.venueId,
+      required this.venueName,
       this.venueType,
       this.venueTheme,
       this.venueDescription =
@@ -352,7 +354,7 @@ Map<String, dynamic> _venueToJson(Venue instance) => <String, dynamic>{
       'venueTheme': instance.venueTheme,
       'venueDescription': instance.venueDescription,
       'venueDoornumber': instance.venueDoorNumber,
-      'unitnumber': instance.unitNumber,
+      'unitNumber': instance.unitNumber,
       'venueStreet': instance.venueStreet,
       'venueHostBuilding': instance.venueHostBuilding,
       'venueArea': instance.venueArea,

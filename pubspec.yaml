@@ -46,6 +46,7 @@ dependencies:
   provider: ^5.0.0
   shared_preferences: ^2.0.13
   sliver_tools: ^0.2.5
+  timer_builder: ^2.0.0
   uuid: ^3.0.4
 
 dev_dependencies:

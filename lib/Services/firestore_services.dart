@@ -12,13 +12,19 @@ class FirestoreService {
   }
 
   // Add a new venue. This returns a Future if you want to wait for the result. Note that add will automatically create a new document id for the venue.
-  Future<DocumentReference> addVenue(Venue venue) {
-    return collection.add(venue.toJson());
+  Future<DocumentReference> addVenue(Venue venue) async {
+    var docRef = await collection.add(venue.toJson());
+    //venueProvider.venueId = docRef.documentID;
+    return docRef;
   }
 
   // 4
-  updateVenue(Venue venue) async {
-    await collection.doc(venue.reference!.id).update(venue.toJson());
+  updateVenue(Venue venue, String venueId) async {
+    try {
+      await collection.doc(venueId).update(venue.toJson());
+    } catch (e) {
+      print(e);
+    }
   }
 
   // // Delete venue

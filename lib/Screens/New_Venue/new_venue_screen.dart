@@ -31,13 +31,15 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 expandedHeight: 200.0,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    "Add New Venue",
+                    venueProvider.venueName != ""
+                        ? "Edit ${venueProvider.venueName}"
+                        : "Add New Venue",
                     style: themeProvider.getTheme.textTheme.headline3,
                   ),
                   centerTitle: true,
                   background: InkWell(
                     onTap: () {
-                      venueProvider.uploadVenueImage();
+                      venueProvider.uploadGalleryImage();
                     },
                     child: DecoratedBox(
                       position: DecorationPosition.foreground,

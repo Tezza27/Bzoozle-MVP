@@ -69,10 +69,12 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                         horizontal: 8.0, vertical: 8.0),
                     child: TextFormField(
                       controller: hhOfferController,
+                      initialValue: venueProvider.hhOffer,
+                      style: themeProvider.getTheme.textTheme.bodyText1,
                       minLines: 5,
                       maxLines: null,
-                      onFieldSubmitted: (String value) =>
-                          venueProvider.changeHhOffer = value,
+                      onChanged: (String value) =>
+                          venueProvider.changeHhOffer = value.trim(),
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Happy Hour Offers'),

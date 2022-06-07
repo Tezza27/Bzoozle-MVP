@@ -214,8 +214,9 @@ class _ListingScreenState extends State<ListingScreen> {
                           Venue venueObject =
                               Venue.fromSnapshot(venueRawData.docs[index]);
 
-                          return listCard(context, venueRawData.docs[index].id,
-                              venueObject);
+                          return ListCard(
+                              iD: venueRawData.docs[index].id,
+                              venue: venueObject);
                         })
                     : const Center(child: Text('No data available'));
             }

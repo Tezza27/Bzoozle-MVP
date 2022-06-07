@@ -1,4 +1,5 @@
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
   Widget build(BuildContext context) {
     final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -43,10 +45,15 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
                         Colors.transparent,
                       ]),
                 ),
-                child: Image.asset(
-                  'assets/images/piano_bar_harrahs.png',
-                  fit: BoxFit.cover,
-                ),
+                child: (venueProvider.venueImage != "" &&
+                        venueProvider.venueImage != null)
+                    ? Image(
+                        image: NetworkImage(venueProvider.venueImage!),
+                        fit: BoxFit.cover)
+                    : Image.asset(
+                        'assets/images/temp_venue_image.png',
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
           ),
