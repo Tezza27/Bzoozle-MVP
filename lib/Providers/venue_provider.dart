@@ -1646,7 +1646,7 @@ class VenueProvider with ChangeNotifier {
         int.parse(selectedCloseTime.split(":")[1]));
     if (chBoxHHMonday) {
       addHHSession(HappyHourSession(
-          day: "0",
+          day: "1",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1654,7 +1654,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHTuesday) {
       addHHSession(HappyHourSession(
-          day: "1",
+          day: "2",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1662,7 +1662,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHWednesday) {
       addHHSession(HappyHourSession(
-          day: "2",
+          day: "3",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1670,7 +1670,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHThursday) {
       addHHSession(HappyHourSession(
-          day: "3",
+          day: "4",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1678,7 +1678,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHFriday) {
       addHHSession(HappyHourSession(
-          day: "4",
+          day: "5",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1686,7 +1686,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHSaturday) {
       addHHSession(HappyHourSession(
-          day: "5",
+          day: "6",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));
@@ -1694,7 +1694,7 @@ class VenueProvider with ChangeNotifier {
     }
     if (chBoxHHSunday) {
       addHHSession(HappyHourSession(
-          day: "6",
+          day: "7",
           startTime: selectedOpenTime,
           duration:
               (_calculatedEndTime.difference(_calculatedStartTime).inMinutes)));

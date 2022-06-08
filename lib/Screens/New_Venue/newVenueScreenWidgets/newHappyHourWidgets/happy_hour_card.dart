@@ -19,7 +19,7 @@ Widget happyHourCard(BuildContext context, HappyHourSession happyHour) {
   DateTime _endTime = _startTime.add(Duration(minutes: happyHour.duration));
   String startTimeHH = DateFormat('HH:mm').format(_startTime);
   String endTimeHH = DateFormat('HH:mm').format(_endTime);
-  String dayHH = weekDays[int.parse(happyHour.day)];
+  String dayHH = weekDays[int.parse(happyHour.day) - 1];
   return Padding(
     padding:
         const EdgeInsets.only(top: 2.0, bottom: 2.0, left: 8.0, right: 8.0),

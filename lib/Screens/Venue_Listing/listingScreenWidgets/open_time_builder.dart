@@ -1,4 +1,6 @@
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +16,7 @@ class OpenTimeStatus extends StatefulWidget {
 class _OpenTimeStatusState extends State<OpenTimeStatus> {
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
     DateTime startTime = getStartEndTimes(widget.venue, true);
     DateTime endTime = getStartEndTimes(widget.venue, false);
@@ -24,11 +26,14 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
       final starting = now.compareTo(startTime) >= 0;
       final ending = now.compareTo(endTime) >= 0;
       //not quite working - instead of closed at it should be opens tomorrow at.
-      return Text(starting
-          ? ending
-              ? "Closed at ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')} today"
-              : "Open now 'til ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}"
-          : "Today ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}");
+      return Text(
+        starting
+            ? ending
+                ? "Closed at ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')} today"
+                : "Open now 'til ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}"
+            : "Open today: ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}",
+        style: themeProvider.getTheme.textTheme.bodyText1,
+      );
     });
   }
 
@@ -48,7 +53,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime6!.split(":")[0]),
                 minutes: int.parse(venue.closeTime6!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -81,7 +85,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime0!.split(":")[0]),
                 minutes: int.parse(venue.closeTime0!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -113,7 +116,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime1!.split(":")[0]),
                 minutes: int.parse(venue.closeTime1!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -145,7 +147,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime2!.split(":")[0]),
                 minutes: int.parse(venue.closeTime2!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -177,7 +178,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime3!.split(":")[0]),
                 minutes: int.parse(venue.closeTime3!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -209,7 +209,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime4!.split(":")[0]),
                 minutes: int.parse(venue.closeTime4!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)
@@ -241,7 +240,6 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
                 hours: int.parse(venue.closeTime5!.split(":")[0]),
                 minutes: int.parse(venue.closeTime5!.split(":")[1])));
         if (closeYesterday.isBefore(openYesterday)) {
-          openYesterday = DateTime(now.year, now.month, now.day, 0, 0, 0);
           closeYesterday = closeYesterday.add(const Duration(days: 1));
         }
         DateTime? openToday = DateTime(now.year, now.month, now.day, 0, 0, 0)

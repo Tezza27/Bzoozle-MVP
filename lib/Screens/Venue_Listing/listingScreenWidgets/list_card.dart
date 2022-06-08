@@ -2,7 +2,8 @@ import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
-import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/time_builder.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/hh_time_builder.dart';
+import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/open_time_builder.dart';
 import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/venue_detail_screen.dart';
@@ -217,11 +218,11 @@ class _ListCardState extends State<ListCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    // TODO calculate next HH
-                    Text(
-                      "Next HH: " "Today 21:00-23:00",
-                      style: themeProvider.getTheme.textTheme.bodyText1,
-                    ),
+                    (widget.venue.happyHours != null &&
+                            widget.venue.happyHours!.isNotEmpty)
+                        ? HHTimeStatus(venue: widget.venue)
+                        : Text("No Happy Hours",
+                            style: themeProvider.getTheme.textTheme.bodyText1),
                     const Spacer(),
                     Row(
                       children: [
