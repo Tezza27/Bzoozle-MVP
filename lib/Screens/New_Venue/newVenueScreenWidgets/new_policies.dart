@@ -1,4 +1,5 @@
 import 'package:bzoozle/Lists/yes_no_list.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,8 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
+
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     TextEditingController? dressCodeController;
@@ -78,6 +81,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedDressCode = newValue!;
+                                  confirmProvider.changeDressCodeUpdate();
                                 },
                                 items: dressCodeList
                                     .map<DropdownMenuItem<String>>(
@@ -103,8 +107,10 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeDressCodeCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeDressCodeCom = value.trim();
+                              confirmProvider.changeDressCodeUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -147,6 +153,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedCoverCharge = newValue!;
+                                  confirmProvider.changeCoverChargeUpdate();
                                 },
                                 items: coverChargeList
                                     .map<DropdownMenuItem<String>>(
@@ -172,8 +179,10 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) => venueProvider
-                                .changeCoverChargeCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeCoverChargeCom = value.trim();
+                              confirmProvider.changeCoverChargeUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -216,6 +225,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedSmoking = newValue!;
+                                  confirmProvider.changeSmokingUpdate();
                                 },
                                 items: smokingList
                                     .map<DropdownMenuItem<String>>(
@@ -241,8 +251,10 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeSmokingCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeSmokingCom = value.trim();
+                              confirmProvider.changeCoverChargeUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -285,6 +297,7 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedChild = newValue!;
+                                  confirmProvider.changeChildUpdate();
                                 },
                                 items: childList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -309,8 +322,10 @@ class _NewPoliciesScreenState extends State<NewPoliciesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeChildCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeChildCom = value.trim();
+                              confirmProvider.changeChildUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),

@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -16,6 +17,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
@@ -227,6 +229,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           venueProvider.finishTimeSetting();
+                          confirmProvider.changeOpenHoursUpdate();
                           Navigator.pop(context);
                         },
                         child: Text(

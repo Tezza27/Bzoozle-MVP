@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/new_edit_provider.dart';
 import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
@@ -53,6 +54,8 @@ class _MyAppState extends State<MyApp> {
             create: (context) => ThemeProvider(isDarkMode: true)),
         ChangeNotifierProvider<UserProvider>(
             create: (context) => UserProvider()),
+        ChangeNotifierProvider<ConfirmationProvider>(
+            create: (context) => ConfirmationProvider()),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(

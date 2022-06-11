@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Screens/Sign_In/Auth_Widgets/user_image_picker.dart';
 import 'package:bzoozle/Themes/theme_constants.dart';
@@ -29,14 +30,19 @@ class _AuthFormState extends State<AuthForm> {
   bool _isLoading = false;
 
   void _logInUser(String email, String password, BuildContext context) async {
-    UserProvider _currentUser =
+    UserProvider userProvider =
         Provider.of<UserProvider>(context, listen: false);
+    ConfirmationProvider confirmProvider =
+        Provider.of<ConfirmationProvider>(context, listen: false);
     try {
       setState(() {
         _isLoading = true;
       });
-      if (await _currentUser.loginUser(email, password)) {
-        //Navigator.pop(context);
+      if (await userProvider.loginUser(email, password)) {
+        await confirmProvider.changeCurrentUser(
+            "${userProvider.firstName} ${userProvider.surName}",
+            "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
+            userProvider.imageUrl);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -57,6 +63,7 @@ class _AuthFormState extends State<AuthForm> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final userProvider = Provider.of<UserProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
 
     return Center(
         child: Card(
@@ -263,23 +270,32 @@ class _AuthFormState extends State<AuthForm> {
                                 onPressed: () {
                                   if (!_isLogin) {
                                     bool _valid = true;
-                                    userProvider.signUpUser(
-                                        firstNameController.text.trim(),
-                                        surNameController.text.trim(),
-                                        userProvider.userImage,
-                                        dOBController.text.trim(),
-                                        countryController.text.trim(),
-                                        regionController.text.trim(),
-                                        cityController.text.trim(),
-                                        emailController.text.trim(),
-                                        passwordController.text.trim(),
-                                        "C",
-                                        false);
+                                    userProvider
+                                        .signUpUser(
+                                            firstNameController.text.trim(),
+                                            surNameController.text.trim(),
+                                            userProvider.userImage,
+                                            dOBController.text.trim(),
+                                            countryController.text.trim(),
+                                            regionController.text.trim(),
+                                            cityController.text.trim(),
+                                            emailController.text.trim(),
+                                            passwordController.text.trim(),
+                                            "C",
+                                            false)
+                                        .then(confirmProvider.changeCurrentUser(
+                                            "${userProvider.firstName} ${userProvider.surName}",
+                                            "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
+                                            userProvider.imageUrl));
                                   } else {
                                     _logInUser(
                                         emailController.text.trim(),
                                         passwordController.text.trim(),
                                         context);
+                                    confirmProvider.changeCurrentUser(
+                                        "${userProvider.firstName} ${userProvider.surName}",
+                                        "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
+                                        userProvider.imageUrl);
                                   }
                                 }),
                           ),

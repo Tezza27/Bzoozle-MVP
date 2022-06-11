@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/new_scroll_button_list.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -16,6 +17,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmationProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       //backgroundColor: themeProvider.getTheme.primaryColor,
@@ -81,8 +83,10 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                         if (venueProvider.venueID != "" &&
                             venueProvider.venueID != null) {
                           venueProvider.updateVenue(venueProvider.venueID!);
+                          confirmationProvider.updateConfirmation();
                         } else {
                           venueProvider.addVenue();
+                          confirmationProvider.updateConfirmation();
                         }
                         Navigator.pop(context);
                       },

@@ -1,6 +1,7 @@
 import 'package:bzoozle/Lists/areas.dart';
 import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/user_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -28,6 +29,7 @@ class _NewLocationState extends State<NewLocation> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final userProvider = Provider.of<UserProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     doorNumberController?.text = venueProvider.venueDoorNumber!;
     unitNumberController?.text = venueProvider.unitNumber!;
     streetController?.text = venueProvider.venueStreet!;
@@ -81,6 +83,7 @@ class _NewLocationState extends State<NewLocation> {
                     }).toList(),
                     onChanged: (String? value) {
                       venueProvider.changeHostBuilding = value!;
+                      confirmProvider.changeLocationUpdate();
                     },
                   ),
                 ),
@@ -99,8 +102,11 @@ class _NewLocationState extends State<NewLocation> {
                                   initialValue: venueProvider.unitNumber,
                                   style: themeProvider
                                       .getTheme.textTheme.bodyText1,
-                                  onChanged: (String value) => venueProvider
-                                      .changeUnitNumber = value.trim(),
+                                  onChanged: (String value) {
+                                    venueProvider.changeUnitNumber =
+                                        value.trim();
+                                    confirmProvider.changeLocationUpdate();
+                                  },
                                   decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       labelText: 'Unit #'),
@@ -170,8 +176,11 @@ class _NewLocationState extends State<NewLocation> {
                                   initialValue: venueProvider.venueDoorNumber,
                                   style: themeProvider
                                       .getTheme.textTheme.bodyText1,
-                                  onChanged: (String value) => venueProvider
-                                      .changeDoorNumber = value.trim(),
+                                  onChanged: (String value) {
+                                    venueProvider.changeDoorNumber =
+                                        value.trim();
+                                    confirmProvider.changeLocationUpdate();
+                                  },
                                   decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       labelText: '#'),
@@ -187,8 +196,10 @@ class _NewLocationState extends State<NewLocation> {
                                     initialValue: venueProvider.venueStreet,
                                     style: themeProvider
                                         .getTheme.textTheme.bodyText1,
-                                    onChanged: (String value) => venueProvider
-                                        .changeStreet = value.trim(),
+                                    onChanged: (String value) {
+                                      venueProvider.changeStreet = value.trim();
+                                      confirmProvider.changeLocationUpdate();
+                                    },
                                     decoration: const InputDecoration(
                                         border: OutlineInputBorder(),
                                         labelText: 'Street'),
@@ -213,6 +224,7 @@ class _NewLocationState extends State<NewLocation> {
                               }).toList(),
                               onChanged: (String? value) {
                                 venueProvider.changeArea = value!;
+                                confirmProvider.changeLocationUpdate();
                               },
                               value: venueProvider.venueArea,
                             ),
@@ -233,6 +245,7 @@ class _NewLocationState extends State<NewLocation> {
                               }).toList(),
                               onChanged: (String? value) {
                                 venueProvider.changeCity = value!;
+                                confirmProvider.changeLocationUpdate();
                               },
                               value: venueProvider.venueCity,
                             ),
@@ -245,8 +258,10 @@ class _NewLocationState extends State<NewLocation> {
                               controller: postcodeController,
                               initialValue: venueProvider.venuePostcode,
                               style: themeProvider.getTheme.textTheme.bodyText1,
-                              onChanged: (String value) =>
-                                  venueProvider.changePostcode = value.trim(),
+                              onChanged: (String value) {
+                                venueProvider.changePostcode = value.trim();
+                                confirmProvider.changeLocationUpdate();
+                              },
                               decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Zip'),
@@ -281,8 +296,10 @@ class _NewLocationState extends State<NewLocation> {
                             controller: lonController,
                             initialValue: venueProvider.lon,
                             style: themeProvider.getTheme.textTheme.bodyText1,
-                            onChanged: (String value) =>
-                                venueProvider.changeLat = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeLat = value.trim();
+                              confirmProvider.changeLocationUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Longitude'),
@@ -306,8 +323,10 @@ class _NewLocationState extends State<NewLocation> {
                   style: themeProvider.getTheme.textTheme.bodyText1,
                   minLines: 5,
                   maxLines: null,
-                  onChanged: (String value) =>
-                      venueProvider.changeDirections = value.trim(),
+                  onChanged: (String value) {
+                    venueProvider.changeDirections = value.trim();
+                    confirmProvider.changeLocationUpdate();
+                  },
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: 'Directions'),
                 ),

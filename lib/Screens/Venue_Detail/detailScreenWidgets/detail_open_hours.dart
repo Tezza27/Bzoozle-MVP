@@ -1,5 +1,7 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/times_card_widgets/open_times_card.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class DetailOpenHours extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
@@ -34,9 +37,18 @@ class DetailOpenHours extends StatelessWidget {
                     top: 7.0,
                     right: 8.0,
                     child: circularAvatarInk(
-                        context: context,
-                        titleText: "Opening Hours",
-                        venueName: venueProvider.venueName),
+                      context: context,
+                      titleText: "Opening Hours",
+                      venueName: venueProvider.venueName,
+                      imageUrl: confirmProvider.openHoursCImage != null
+                          ? confirmProvider.openHoursCImage!
+                          : confirmProvider.openHoursUImage != null
+                              ? confirmProvider.openHoursUImage!
+                              : "",
+                      backColor: colorIndicator(
+                          updateDateText: confirmProvider.openHoursUDate,
+                          confirmDateText: confirmProvider.openHoursCDate),
+                    ),
                   ),
                 ],
               ),

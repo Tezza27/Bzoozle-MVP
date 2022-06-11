@@ -1,4 +1,5 @@
 import 'package:bzoozle/Lists/yes_no_list.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
     TextEditingController? settingController;
@@ -84,6 +86,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedIndoor = newValue!;
+                                confirmProvider.changeSettingUpdate();
                               },
                               items: settingList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -116,6 +119,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedOutdoor = newValue!;
+                                confirmProvider.changeSettingUpdate();
                               },
                               items: settingList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -148,6 +152,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedRooftop = newValue!;
+                                confirmProvider.changeSettingUpdate();
                               },
                               items: settingList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -172,8 +177,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           initialValue: venueProvider.settingCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onChanged: (String value) =>
-                              venueProvider.changeSettingCom = value.trim(),
+                          onChanged: (String value) {
+                            venueProvider.changeSettingCom = value.trim();
+                            confirmProvider.changeSettingUpdate();
+                          },
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -213,6 +220,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedBreakfast = newValue!;
+                                confirmProvider.changeFoodUpdate();
                               },
                               items: foodList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -245,6 +253,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedLunch = newValue!;
+                                confirmProvider.changeFoodUpdate();
                               },
                               items: foodList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -277,6 +286,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedDinner = newValue!;
+                                confirmProvider.changeFoodUpdate();
                               },
                               items: foodList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -309,6 +319,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                               underline: Container(),
                               onChanged: (String? newValue) {
                                 venueProvider.selectedLate = newValue!;
+                                confirmProvider.changeFoodUpdate();
                               },
                               items: foodList.map<DropdownMenuItem<String>>(
                                   (String value) {
@@ -333,8 +344,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                           initialValue: venueProvider.foodCom,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlignVertical: TextAlignVertical.top,
-                          onChanged: (String value) =>
-                              venueProvider.changeFoodCom = value.trim(),
+                          onChanged: (String value) {
+                            venueProvider.changeFoodCom = value.trim();
+                            confirmProvider.changeFoodUpdate();
+                          },
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Comments'),
@@ -377,6 +390,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedWifi = newValue!;
+                                  confirmProvider.changeWifiUpdate();
                                 },
                                 items: wifiList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -399,8 +413,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             initialValue: venueProvider.password,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             maxLines: 1,
-                            onChanged: (String value) =>
-                                venueProvider.changePassword = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changePassword = value.trim();
+                              confirmProvider.changeWifiUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Password'),
@@ -418,8 +434,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeWifiCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeWifiCom = value.trim();
+                              confirmProvider.changeWifiUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -463,6 +481,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedLive = newValue!;
+                                  confirmProvider.changeEntertainmentUpdate();
                                 },
                                 items: entertainmentList
                                     .map<DropdownMenuItem<String>>(
@@ -498,6 +517,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedDj = newValue!;
+                                  confirmProvider.changeEntertainmentUpdate();
                                 },
                                 items: entertainmentList
                                     .map<DropdownMenuItem<String>>(
@@ -533,6 +553,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedRecorded = newValue!;
+                                  confirmProvider.changeEntertainmentUpdate();
                                 },
                                 items: entertainmentList
                                     .map<DropdownMenuItem<String>>(
@@ -568,6 +589,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedKaraoke = newValue!;
+                                  confirmProvider.changeEntertainmentUpdate();
                                 },
                                 items: entertainmentList
                                     .map<DropdownMenuItem<String>>(
@@ -593,8 +615,11 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) => venueProvider
-                                .changeEntertainmentCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeEntertainmentCom =
+                                  value.trim();
+                              confirmProvider.changeEntertainmentUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -638,6 +663,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedGambling = newValue!;
+                                  confirmProvider.changeGamesUpdate();
                                 },
                                 items: gamesList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -672,6 +698,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedBoard = newValue!;
+                                  confirmProvider.changeGamesUpdate();
                                 },
                                 items: gamesList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -706,6 +733,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedVideo = newValue!;
+                                  confirmProvider.changeGamesUpdate();
                                 },
                                 items: gamesList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -740,6 +768,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedPub = newValue!;
+                                  confirmProvider.changeGamesUpdate();
                                 },
                                 items: gamesList.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -764,8 +793,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeGamesCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeGamesCom = value.trim();
+                              confirmProvider.changeGamesUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -809,6 +840,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedParking = newValue!;
+                                  confirmProvider.changeParkingUpdate();
                                 },
                                 items: parkingList
                                     .map<DropdownMenuItem<String>>(
@@ -834,8 +866,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeParkingCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeParkingCom = value.trim();
+                              confirmProvider.changeParkingUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),
@@ -881,6 +915,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                                 underline: Container(),
                                 onChanged: (String? newValue) {
                                   venueProvider.selectedAccess = newValue!;
+                                  confirmProvider.changeAccessUpdate();
                                 },
                                 items: accessibilityList
                                     .map<DropdownMenuItem<String>>(
@@ -906,8 +941,10 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             minLines: 1,
                             maxLines: 10,
                             textAlignVertical: TextAlignVertical.top,
-                            onChanged: (String value) =>
-                                venueProvider.changeAccessCom = value.trim(),
+                            onChanged: (String value) {
+                              venueProvider.changeAccessCom = value.trim();
+                              confirmProvider.changeAccessUpdate();
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Comments'),

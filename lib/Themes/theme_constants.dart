@@ -10,6 +10,9 @@ Color orange1 = const Color.fromARGB(255, 255, 127, 0);
 Color orangeCream = const Color.fromARGB(255, 254, 158, 62);
 Color lightGrey = const Color.fromARGB(255, 215, 211, 206);
 Color darkGrey = const Color.fromARGB(255, 103, 103, 103);
+Color freshGreen = const Color.fromARGB(255, 45, 201, 55);
+Color ageingAmber = const Color.fromARGB(255, 255, 173, 0);
+Color warningRed = const Color.fromARGB(255, 225, 6, 0);
 
 ThemeData lightTheme = ThemeData.light().copyWith(
   primaryColor: orange1,

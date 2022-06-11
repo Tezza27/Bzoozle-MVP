@@ -1,5 +1,7 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +17,7 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
@@ -59,7 +62,17 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             child: circularAvatarInk(
                                 context: context,
                                 titleText: "Setting",
-                                venueName: venueProvider.venueName),
+                                venueName: venueProvider.venueName,
+                                imageUrl: confirmProvider.settingCImage != null
+                                    ? confirmProvider.settingCImage!
+                                    : confirmProvider.settingUImage != null
+                                        ? confirmProvider.settingUImage!
+                                        : "",
+                                backColor: colorIndicator(
+                                    updateDateText:
+                                        confirmProvider.settingUDate,
+                                    confirmDateText:
+                                        confirmProvider.settingCDate)),
                           ),
                         ],
                       ),
@@ -164,7 +177,16 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             child: circularAvatarInk(
                                 context: context,
                                 titleText: "Food",
-                                venueName: venueProvider.venueName),
+                                venueName: venueProvider.venueName,
+                                imageUrl: confirmProvider.foodCImage != null
+                                    ? confirmProvider.foodCImage!
+                                    : confirmProvider.foodUImage != null
+                                        ? confirmProvider.foodUImage!
+                                        : "",
+                                backColor: colorIndicator(
+                                    updateDateText: confirmProvider.foodUDate,
+                                    confirmDateText:
+                                        confirmProvider.foodCDate)),
                           ),
                         ],
                       ),
@@ -284,9 +306,18 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Wifi",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Wifi",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.wifiCImage != null
+                                  ? confirmProvider.wifiCImage!
+                                  : confirmProvider.wifiUImage != null
+                                      ? confirmProvider.wifiUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.wifiUDate,
+                                  confirmDateText: confirmProvider.wifiCDate),
+                            ),
                           ),
                         ],
                       ),
@@ -340,9 +371,21 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Entertainment",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Entertainment",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.entertainmentCImage !=
+                                      null
+                                  ? confirmProvider.entertainmentCImage!
+                                  : confirmProvider.entertainmentUImage != null
+                                      ? confirmProvider.entertainmentUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText:
+                                      confirmProvider.entertainmentUDate,
+                                  confirmDateText:
+                                      confirmProvider.entertainmentCDate),
+                            ),
                           ),
                         ],
                       ),
@@ -462,9 +505,18 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Games",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Games",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.gamesCImage != null
+                                  ? confirmProvider.gamesCImage!
+                                  : confirmProvider.gamesUImage != null
+                                      ? confirmProvider.gamesUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.gamesUDate,
+                                  confirmDateText: confirmProvider.gamesCDate),
+                            ),
                           ),
                         ],
                       ),
@@ -584,9 +636,19 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Onsite Parking",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Onsite Parking",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.parkingCImage != null
+                                  ? confirmProvider.parkingCImage!
+                                  : confirmProvider.parkingUImage != null
+                                      ? confirmProvider.parkingUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.parkingUDate,
+                                  confirmDateText:
+                                      confirmProvider.parkingCDate),
+                            ),
                           ),
                         ],
                       ),
@@ -635,9 +697,18 @@ class _DetailFacilitiesState extends State<DetailFacilities> {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Accessibility",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Accessibility",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.accessCImage != null
+                                  ? confirmProvider.accessCImage!
+                                  : confirmProvider.accessUImage != null
+                                      ? confirmProvider.accessUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.accessUDate,
+                                  confirmDateText: confirmProvider.accessCDate),
+                            ),
                           ),
                         ],
                       ),

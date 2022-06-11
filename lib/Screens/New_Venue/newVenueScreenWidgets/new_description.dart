@@ -1,4 +1,5 @@
 import 'package:bzoozle/Lists/venue_type_lists.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _NewDescriptionState extends State<NewDescription> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     venueNameController?.text = venueProvider.venueName;
     venueDescriptionController?.text = venueProvider.venueDescription!;
@@ -48,8 +50,10 @@ class _NewDescriptionState extends State<NewDescription> {
                   keyboardType: TextInputType.text,
                   controller: venueNameController,
                   initialValue: venueProvider.venueName,
-                  onChanged: (String value) =>
-                      venueProvider.changeName = value.trim(),
+                  onChanged: (String value) {
+                    venueProvider.changeName = value.trim();
+                    confirmProvider.changeDescriptionUpdate();
+                  },
                   style: themeProvider.getTheme.textTheme.bodyText1,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(), labelText: 'Venue Name'),
@@ -79,6 +83,7 @@ class _NewDescriptionState extends State<NewDescription> {
                           }).toList(),
                           onChanged: (String? value) {
                             venueProvider.changeType = value!;
+                            confirmProvider.changeDescriptionUpdate();
                           },
                           value: venueProvider.venueType,
                         ),
@@ -111,6 +116,7 @@ class _NewDescriptionState extends State<NewDescription> {
                           }).toList(),
                           onChanged: (String? value) {
                             venueProvider.changeTheme = value!;
+                            confirmProvider.changeDescriptionUpdate();
                           },
                           value: venueProvider.venueTheme,
                         ),
@@ -129,8 +135,10 @@ class _NewDescriptionState extends State<NewDescription> {
                     textAlign: TextAlign.start,
                     textAlignVertical: TextAlignVertical.top,
                     style: themeProvider.getTheme.textTheme.bodyText1,
-                    onChanged: (String value) =>
-                        venueProvider.changeDescription = value.trim(),
+                    onChanged: (String value) {
+                      venueProvider.changeDescription = value.trim();
+                      confirmProvider.changeDescriptionUpdate();
+                    },
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Venue Description'),

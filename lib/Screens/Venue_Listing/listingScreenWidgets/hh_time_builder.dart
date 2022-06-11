@@ -33,7 +33,7 @@ class _HHTimeStatusState extends State<HHTimeStatus> {
             ? ending
                 ? "Ended at ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')} today"
                 : "It's happy hour now 'til ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}"
-            : "Next happy hour: ${startTime.weekday == now.weekday ? "Today" : weekDays[startTime.weekday - 1]} ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}",
+            : "Happy hour: ${startTime.weekday == now.weekday ? "Today" : weekDays[startTime.weekday - 1]} ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}",
         style: themeProvider.getTheme.textTheme.bodyText1,
       );
     });

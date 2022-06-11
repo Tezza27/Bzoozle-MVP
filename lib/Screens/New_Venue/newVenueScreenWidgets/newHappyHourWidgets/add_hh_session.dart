@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
 
     return Scaffold(
@@ -267,6 +269,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           venueProvider.saveHHSession();
+                          confirmProvider.changeHappyHourUpdate();
                           Navigator.pop(context);
                         },
                         child: Text(

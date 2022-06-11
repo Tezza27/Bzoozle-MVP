@@ -41,7 +41,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
     DateTime now = DateTime.now();
     DateTime returnDate;
     switch (now.weekday) {
-      case 0:
+      case 1:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,
@@ -73,7 +73,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
         }
 
         break;
-      case 1:
+      case 2:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,
@@ -104,7 +104,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
           returnDate = startFlag ? openToday : closeToday;
         }
         break;
-      case 2:
+      case 3:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,
@@ -135,7 +135,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
           returnDate = startFlag ? openToday : closeToday;
         }
         break;
-      case 3:
+      case 4:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,
@@ -166,7 +166,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
           returnDate = startFlag ? openToday : closeToday;
         }
         break;
-      case 4:
+      case 5:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,
@@ -197,7 +197,7 @@ class _OpenTimeStatusState extends State<OpenTimeStatus> {
           returnDate = startFlag ? openToday : closeToday;
         }
         break;
-      case 5:
+      case 6:
         DateTime? openYesterday =
             DateTime(now.year, now.month, now.day, 0, 0, 0).add(Duration(
                 days: -1,

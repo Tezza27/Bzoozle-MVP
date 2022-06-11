@@ -1,5 +1,7 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/times_card_widgets/hh_times_card.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class DetailHappyHours extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return SingleChildScrollView(
       child: Column(
@@ -29,9 +32,18 @@ class DetailHappyHours extends StatelessWidget {
                 top: 7.0,
                 right: 8.0,
                 child: circularAvatarInk(
-                    context: context,
-                    titleText: "Happy Hours",
-                    venueName: venueProvider.venueName),
+                  context: context,
+                  titleText: "Happy Hours",
+                  venueName: venueProvider.venueName,
+                  imageUrl: confirmProvider.happyHourCImage != null
+                      ? confirmProvider.happyHourCImage!
+                      : confirmProvider.happyHourUImage != null
+                          ? confirmProvider.happyHourUImage!
+                          : "",
+                  backColor: colorIndicator(
+                      updateDateText: confirmProvider.happyHourUDate,
+                      confirmDateText: confirmProvider.happyHourCDate),
+                ),
               ),
             ],
           ),
@@ -68,7 +80,7 @@ class DetailHappyHours extends StatelessWidget {
                 top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
             child: Text(
               venueProvider.hhOffer ?? '?',
-              style: themeProvider.getTheme.textTheme.headline1,
+              style: themeProvider.getTheme.textTheme.bodyText1,
               textAlign: TextAlign.center,
             ),
           ),

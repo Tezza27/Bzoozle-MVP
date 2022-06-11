@@ -1,5 +1,6 @@
 import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Models/venue.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/page_number_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/hh_time_builder.dart';
@@ -27,6 +28,8 @@ class _ListCardState extends State<ListCard> {
     final venueProvider = Provider.of<VenueProvider>(context);
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final confirmProvider =
+        Provider.of<ConfirmationProvider>(context, listen: false);
     bool favourite = false;
     int hostIndex = widget.venue.venueHostBuilding != null
         ? hostList.indexWhere(
@@ -45,6 +48,7 @@ class _ListCardState extends State<ListCard> {
             Navigator.pushNamed(context, VenueDetailScreen.routeName,
                 arguments: widget.venue);
             venueProvider.loadVenue(widget.iD, widget.venue);
+            confirmProvider.changeCurrentVenue(widget.iD);
           },
           child: Column(
             children: <Widget>[

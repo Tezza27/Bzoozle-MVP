@@ -1,3 +1,4 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/happy_hour_card.dart';
@@ -17,6 +18,7 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context);
     TextEditingController? hhOfferController;
     hhOfferController?.text = venueProvider.hhOffer.toString();
@@ -73,8 +75,10 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                       style: themeProvider.getTheme.textTheme.bodyText1,
                       minLines: 5,
                       maxLines: null,
-                      onChanged: (String value) =>
-                          venueProvider.changeHhOffer = value.trim(),
+                      onChanged: (String value) {
+                        venueProvider.changeHhOffer = value.trim();
+                        confirmProvider.changeHappyHourUpdate();
+                      },
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: 'Happy Hour Offers'),
