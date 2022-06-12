@@ -490,6 +490,10 @@ class ConfirmationProvider with ChangeNotifier {
     _descriptionUName = _currentUserName;
     _descriptionULocation = _currentUserLocation;
     _descriptionUImage = _currentUserImage;
+    _descriptionCDate = null;
+    _descriptionCName = null;
+    _descriptionCLocation = null;
+    _descriptionCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -508,6 +512,10 @@ class ConfirmationProvider with ChangeNotifier {
     _locationUName = _currentUserName;
     _locationULocation = _currentUserLocation;
     _locationUImage = _currentUserImage;
+    _locationCDate = null;
+    _locationCName = null;
+    _locationCLocation = null;
+    _locationCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -526,6 +534,10 @@ class ConfirmationProvider with ChangeNotifier {
     _openHoursUName = _currentUserName;
     _openHoursULocation = _currentUserLocation;
     _openHoursUImage = _currentUserImage;
+    _openHoursCDate = null;
+    _openHoursCName = null;
+    _openHoursCLocation = null;
+    _openHoursCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -544,6 +556,10 @@ class ConfirmationProvider with ChangeNotifier {
     _settingUName = _currentUserName;
     _settingULocation = _currentUserLocation;
     _settingUImage = _currentUserImage;
+    _settingCDate = null;
+    _settingCName = null;
+    _settingCLocation = null;
+    _settingCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -562,6 +578,10 @@ class ConfirmationProvider with ChangeNotifier {
     _foodUName = _currentUserName;
     _foodULocation = _currentUserLocation;
     _foodUImage = _currentUserImage;
+    _foodCDate = null;
+    _foodCName = null;
+    _foodCLocation = null;
+    _foodCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -580,6 +600,10 @@ class ConfirmationProvider with ChangeNotifier {
     _wifiUName = _currentUserName;
     _wifiULocation = _currentUserLocation;
     _wifiUImage = _currentUserImage;
+    _wifiCDate = null;
+    _wifiCName = null;
+    _wifiCLocation = null;
+    _wifiCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -598,6 +622,10 @@ class ConfirmationProvider with ChangeNotifier {
     _entertainmentUName = _currentUserName;
     _entertainmentULocation = _currentUserLocation;
     _entertainmentUImage = _currentUserImage;
+    _entertainmentCDate = null;
+    _entertainmentCName = null;
+    _entertainmentCLocation = null;
+    _entertainmentCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -616,6 +644,10 @@ class ConfirmationProvider with ChangeNotifier {
     _gamesUName = _currentUserName;
     _gamesULocation = _currentUserLocation;
     _gamesUImage = _currentUserImage;
+    _gamesCDate = null;
+    _gamesCName = null;
+    _gamesCLocation = null;
+    _gamesCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -634,6 +666,10 @@ class ConfirmationProvider with ChangeNotifier {
     _parkingUName = _currentUserName;
     _parkingULocation = _currentUserLocation;
     _parkingUImage = _currentUserImage;
+    _parkingCDate = null;
+    _parkingCName = null;
+    _parkingCLocation = null;
+    _parkingCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -652,6 +688,10 @@ class ConfirmationProvider with ChangeNotifier {
     _accessUName = _currentUserName;
     _accessULocation = _currentUserLocation;
     _accessUImage = _currentUserImage;
+    _accessCDate = null;
+    _accessCName = null;
+    _accessCLocation = null;
+    _accessCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -670,6 +710,10 @@ class ConfirmationProvider with ChangeNotifier {
     _dressCodeUName = _currentUserName;
     _dressCodeULocation = _currentUserLocation;
     _dressCodeUImage = _currentUserImage;
+    _dressCodeCDate = null;
+    _dressCodeCName = null;
+    _dressCodeCLocation = null;
+    _dressCodeCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -688,6 +732,10 @@ class ConfirmationProvider with ChangeNotifier {
     _coverChargeUName = _currentUserName;
     _coverChargeULocation = _currentUserLocation;
     _coverChargeUImage = _currentUserImage;
+    _coverChargeCDate = null;
+    _coverChargeCName = null;
+    _coverChargeCLocation = null;
+    _coverChargeCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -706,6 +754,10 @@ class ConfirmationProvider with ChangeNotifier {
     _smokingUName = _currentUserName;
     _smokingULocation = _currentUserLocation;
     _smokingUImage = _currentUserImage;
+    _smokingCDate = null;
+    _smokingCName = null;
+    _smokingCLocation = null;
+    _smokingCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -724,6 +776,10 @@ class ConfirmationProvider with ChangeNotifier {
     _childUName = _currentUserName;
     _childULocation = _currentUserLocation;
     _childUImage = _currentUserImage;
+    _childCDate = null;
+    _childCName = null;
+    _childCLocation = null;
+    _childCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -742,6 +798,10 @@ class ConfirmationProvider with ChangeNotifier {
     _happyHourUName = _currentUserName;
     _happyHourULocation = _currentUserLocation;
     _happyHourUImage = _currentUserImage;
+    _happyHourCDate = null;
+    _happyHourCName = null;
+    _happyHourCLocation = null;
+    _happyHourCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -760,6 +820,10 @@ class ConfirmationProvider with ChangeNotifier {
     _feesUName = _currentUserName;
     _feesULocation = _currentUserLocation;
     _feesUImage = _currentUserImage;
+    _feesCDate = null;
+    _feesCName = null;
+    _feesCLocation = null;
+    _feesCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -778,6 +842,10 @@ class ConfirmationProvider with ChangeNotifier {
     _priceUName = _currentUserName;
     _priceULocation = _currentUserLocation;
     _priceUImage = _currentUserImage;
+    _priceCDate = null;
+    _priceCName = null;
+    _priceCLocation = null;
+    _priceCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -796,6 +864,10 @@ class ConfirmationProvider with ChangeNotifier {
     _beerDomUName = _currentUserName;
     _beerDomULocation = _currentUserLocation;
     _beerDomUImage = _currentUserImage;
+    _beerDomCDate = null;
+    _beerDomCName = null;
+    _beerDomCLocation = null;
+    _beerDomCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -814,6 +886,10 @@ class ConfirmationProvider with ChangeNotifier {
     _beerImpUName = _currentUserName;
     _beerImpULocation = _currentUserLocation;
     _beerImpUImage = _currentUserImage;
+    _beerImpCDate = null;
+    _beerImpCName = null;
+    _beerImpCLocation = null;
+    _beerImpCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -832,6 +908,10 @@ class ConfirmationProvider with ChangeNotifier {
     _beerDraftUName = _currentUserName;
     _beerDraftULocation = _currentUserLocation;
     _beerDraftUImage = _currentUserImage;
+    _beerDraftCDate = null;
+    _beerDraftCName = null;
+    _beerDraftCLocation = null;
+    _beerDraftCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -850,6 +930,10 @@ class ConfirmationProvider with ChangeNotifier {
     _wellUName = _currentUserName;
     _wellULocation = _currentUserLocation;
     _wellUImage = _currentUserImage;
+    _wellCDate = null;
+    _wellCName = null;
+    _wellCLocation = null;
+    _wellCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -868,6 +952,10 @@ class ConfirmationProvider with ChangeNotifier {
     _callUName = _currentUserName;
     _callULocation = _currentUserLocation;
     _callUImage = _currentUserImage;
+    _callCDate = null;
+    _callCName = null;
+    _callCLocation = null;
+    _callCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -886,6 +974,10 @@ class ConfirmationProvider with ChangeNotifier {
     _cocktailUName = _currentUserName;
     _cocktailULocation = _currentUserLocation;
     _cocktailUImage = _currentUserImage;
+    _cocktailCDate = null;
+    _cocktailCName = null;
+    _cocktailCLocation = null;
+    _cocktailCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -904,6 +996,10 @@ class ConfirmationProvider with ChangeNotifier {
     _wineUName = _currentUserName;
     _wineULocation = _currentUserLocation;
     _wineUImage = _currentUserImage;
+    _wineCDate = null;
+    _wineCName = null;
+    _wineCLocation = null;
+    _wineCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -922,6 +1018,10 @@ class ConfirmationProvider with ChangeNotifier {
     _bottleUName = _currentUserName;
     _bottleULocation = _currentUserLocation;
     _bottleUImage = _currentUserImage;
+    _bottleCDate = null;
+    _bottleCName = null;
+    _bottleCLocation = null;
+    _bottleCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -940,6 +1040,10 @@ class ConfirmationProvider with ChangeNotifier {
     _breakfastUName = _currentUserName;
     _breakfastULocation = _currentUserLocation;
     _breakfastUImage = _currentUserImage;
+    _breakfastCDate = null;
+    _breakfastCName = null;
+    _breakfastCLocation = null;
+    _breakfastCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -958,6 +1062,10 @@ class ConfirmationProvider with ChangeNotifier {
     _lunchUName = _currentUserName;
     _lunchULocation = _currentUserLocation;
     _lunchUImage = _currentUserImage;
+    _lunchCDate = null;
+    _lunchCName = null;
+    _lunchCLocation = null;
+    _lunchCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -976,6 +1084,10 @@ class ConfirmationProvider with ChangeNotifier {
     _dinnerUName = _currentUserName;
     _dinnerULocation = _currentUserLocation;
     _dinnerUImage = _currentUserImage;
+    _dinnerCDate = null;
+    _dinnerCName = null;
+    _dinnerCLocation = null;
+    _dinnerCImage = null;
     _changes = true;
     notifyListeners();
   }
@@ -994,6 +1106,10 @@ class ConfirmationProvider with ChangeNotifier {
     _lateUName = _currentUserName;
     _lateULocation = _currentUserLocation;
     _lateUImage = _currentUserImage;
+    _lateCDate = null;
+    _lateCName = null;
+    _lateCLocation = null;
+    _lateCImage = null;
     _changes = true;
     notifyListeners();
   }
