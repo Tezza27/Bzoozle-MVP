@@ -253,6 +253,7 @@ class VenueProvider with ChangeNotifier {
   String? get dEntreeCom => _dEntreeCom;
   String? get lateEntreeCom => _lateEntreeCom;
   //Happy Hours Getters
+  // ignore: unnecessary_getters_setters
   List<HappyHourSession>? get happyHours => _happyHours;
   bool get chBoxHHMonday => _chBoxHHMonday;
   bool get chBoxHHTuesday => _chBoxHHTuesday;
@@ -1199,7 +1200,7 @@ class VenueProvider with ChangeNotifier {
     _happyHours = [];
   }
 
-  addVenue() {
+  addVenue() async {
     var newVenue = Venue(
       venueName: venueName,
       venueDescription: venueDescription,
@@ -1298,7 +1299,9 @@ class VenueProvider with ChangeNotifier {
       hhOffer: hhOffer,
       happyHours: happyHours,
     );
-    firestoreService.addVenue(newVenue);
+    DocumentReference<Object?> newDocumentRef =
+        await firestoreService.addVenue(newVenue);
+    _venueID = newDocumentRef.id;
     imageToFirebase();
   }
 
