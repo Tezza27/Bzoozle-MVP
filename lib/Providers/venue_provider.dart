@@ -23,8 +23,8 @@ class VenueProvider with ChangeNotifier {
   String? _venueArea;
   String? _venueCity;
   String? _venuePostcode;
-  String? _lat;
-  String? _lon;
+  double? _lat;
+  double? _lon;
   String? _venueDirections;
   String? _venueImage;
   //Opening Hours Attributes
@@ -150,8 +150,8 @@ class VenueProvider with ChangeNotifier {
   String? get venueArea => _venueArea;
   String? get venueCity => _venueCity;
   String? get venuePostcode => _venuePostcode;
-  String? get lat => _lat;
-  String? get lon => _lon;
+  double? get lat => _lat;
+  double? get lon => _lon;
   String? get venueDirections => _venueDirections;
   String? get venueImage => _venueImage;
   //Opening TImes Getters
@@ -322,12 +322,12 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  set changeLat(String value) {
+  set changeLat(double? value) {
     _lat = value;
     notifyListeners();
   }
 
-  set changeLon(String value) {
+  set changeLon(double? value) {
     _lon = value;
     notifyListeners();
   }

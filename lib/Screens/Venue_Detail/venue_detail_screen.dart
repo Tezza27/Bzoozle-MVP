@@ -1,4 +1,3 @@
-import 'package:bzoozle/Models/venue.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/detail_scroll_button_list.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
@@ -16,7 +15,7 @@ class VenueDetailScreen extends StatefulWidget {
 class _VenueDetailScreenState extends State<VenueDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
+    //final selectedVenue = ModalRoute.of(context)!.settings.arguments as Venue;
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     final venueProvider = Provider.of<VenueProvider>(context);
     return Scaffold(
@@ -30,7 +29,7 @@ class _VenueDetailScreenState extends State<VenueDetailScreen> {
             expandedHeight: 200.0,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                selectedVenue.venueName,
+                venueProvider.venueName,
                 style: themeProvider.getTheme.textTheme.headline3,
               ),
               centerTitle: true,

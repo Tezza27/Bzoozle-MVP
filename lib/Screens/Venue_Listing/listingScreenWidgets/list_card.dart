@@ -43,12 +43,14 @@ class _ListCardState extends State<ListCard> {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         child: InkWell(
           splashColor: themeProvider.getTheme.splashColor,
-          onTap: () {
-            pageNumberProvider.changePageNumber(0);
-            Navigator.pushNamed(context, VenueDetailScreen.routeName,
-                arguments: widget.venue);
+          onTap: () async {
+            await confirmProvider.changeCurrentVenue(widget.iD);
             venueProvider.loadVenue(widget.iD, widget.venue);
-            confirmProvider.changeCurrentVenue(widget.iD);
+            pageNumberProvider.changePageNumber(0);
+            Navigator.pushNamed(
+              context,
+              VenueDetailScreen.routeName,
+            );
           },
           child: Column(
             children: <Widget>[
@@ -168,7 +170,6 @@ class _ListCardState extends State<ListCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    // TODO calculate today's opening times
                     OpenTimeStatus(venue: widget.venue),
                     const Spacer(),
                     widget.venue.priceGuide != null

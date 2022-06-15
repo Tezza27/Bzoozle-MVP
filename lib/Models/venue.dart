@@ -29,8 +29,8 @@ class Venue {
   final String? venueArea;
   final String? venueCity;
   final String? venuePostcode;
-  final String? lat;
-  final String? lon;
+  final double? lat;
+  final double? lon;
   final String? venueDirections;
   final String? venueImage;
   final String? openTime0;

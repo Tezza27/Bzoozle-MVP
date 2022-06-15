@@ -34,8 +34,8 @@ class _NewLocationState extends State<NewLocation> {
     unitNumberController?.text = venueProvider.unitNumber!;
     streetController?.text = venueProvider.venueStreet!;
     postcodeController?.text = venueProvider.venuePostcode!;
-    latController?.text = venueProvider.lat!;
-    lonController?.text = venueProvider.lon!;
+    latController?.text = venueProvider.lat!.toString();
+    lonController?.text = venueProvider.lon!.toString();
     directionsController?.text = venueProvider.venueDirections!;
     int hostIndex = hostList
         .indexWhere((host) => host.hostName == venueProvider.venueHostBuilding);
@@ -278,10 +278,10 @@ class _NewLocationState extends State<NewLocation> {
                           child: TextFormField(
                             textInputAction: TextInputAction.go,
                             controller: latController,
-                            initialValue: venueProvider.lat,
+                            initialValue: venueProvider.lat.toString(),
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String value) =>
-                                venueProvider.changeLat = value.trim(),
+                                venueProvider.changeLat = double.parse(value.trim()),
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Latitude'),
@@ -294,10 +294,10 @@ class _NewLocationState extends State<NewLocation> {
                           child: TextFormField(
                             textInputAction: TextInputAction.go,
                             controller: lonController,
-                            initialValue: venueProvider.lon,
+                            initialValue: venueProvider.lon.toString(),
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String value) {
-                              venueProvider.changeLat = value.trim();
+                              venueProvider.changeLat = double.parse(value.trim());
                               confirmProvider.changeLocationUpdate();
                             },
                             decoration: const InputDecoration(
