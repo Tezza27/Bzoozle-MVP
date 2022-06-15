@@ -28,19 +28,6 @@ class _DetailRantsRavesState extends State<DetailRantsRaves> {
                 style: themeProvider.getTheme.textTheme.headline1),
           ),
         ),
-        // Neon(
-        //   text: "RANTS & RAVES",
-        //   color: Colors.lightBlue,
-        //   fontSize: 30, //mySize,
-        //   font: NeonFont.Monoton,
-        //   flickeringText: true,
-        //   flickeringLetters: null,
-        //   blurRadius: 8000.0,
-        //   glowing: true,
-        //   //glowingDuration: const Duration(seconds: 2),
-        //   //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-        // ),
-
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
           child: Row(

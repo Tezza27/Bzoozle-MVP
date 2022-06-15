@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bzoozle/Lists/yes_no_list.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +15,7 @@ class DetailPricing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
@@ -54,22 +58,31 @@ class DetailPricing extends StatelessWidget {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Additional Fees",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Additional Fees",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.feesCImage != null
+                                  ? confirmProvider.feesCImage!
+                                  : confirmProvider.feesUImage != null
+                                      ? confirmProvider.feesUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.feesUDate,
+                                  confirmDateText: confirmProvider.feesCDate),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("Yes",
+                        child: Text(venueProvider.fees ?? '?',
                             style: themeProvider.getTheme.textTheme.bodyText1),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the additional fees situation",
+                          venueProvider.feesCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -105,22 +118,84 @@ class DetailPricing extends StatelessWidget {
                             top: 4.0,
                             right: 4.0,
                             child: circularAvatarInk(
-                                context: context,
-                                titleText: "Price Guide",
-                                venueName: venueProvider.venueName),
+                              context: context,
+                              titleText: "Price Guide",
+                              venueName: venueProvider.venueName,
+                              imageUrl: confirmProvider.priceCImage != null
+                                  ? confirmProvider.priceCImage!
+                                  : confirmProvider.priceUImage != null
+                                      ? confirmProvider.priceUImage!
+                                      : "",
+                              backColor: colorIndicator(
+                                  updateDateText: confirmProvider.priceUDate,
+                                  confirmDateText: confirmProvider.priceCDate),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                        child: Text("\$\$\$\$\$" " " "Megabucks",
-                            style: themeProvider.getTheme.textTheme.bodyText1),
-                      ),
+                          padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                          child: venueProvider.priceGuide != null
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    RichText(
+                                      text: TextSpan(
+                                        text: '\$',
+                                        style: themeProvider
+                                            .getTheme.textTheme.subtitle1,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 1
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 2
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 3
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                          TextSpan(
+                                            text: '\$',
+                                            style:
+                                                venueProvider.priceGuide! >= 4
+                                                    ? themeProvider.getTheme
+                                                        .textTheme.subtitle1
+                                                    : themeProvider.getTheme
+                                                        .textTheme.subtitle2,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 20),
+                                    Text(priceList[venueProvider.priceGuide!],
+                                        style: themeProvider
+                                            .getTheme.textTheme.bodyText1),
+                                  ],
+                                )
+                              : Container()),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8.0, vertical: 8.0),
                         child: Text(
-                          "This is a comments box to expand upon the price situation",
+                          venueProvider.priceCom ?? '',
                           maxLines: 10,
                           softWrap: true,
                           style: themeProvider.getTheme.textTheme.bodyText1,
@@ -183,7 +258,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$10.00",
+                                      child: Text(
+                                          venueProvider.beerDom != null
+                                              ? "\$$venueProvider.beerDom!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -198,7 +276,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.beerDomCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -206,9 +284,24 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Beer - Domestic Bottle",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Beer - Domestic Bottle",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .beerDomCImage !=
+                                                  null
+                                              ? confirmProvider.beerDomCImage!
+                                              : confirmProvider.beerDomUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .beerDomUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.beerDomUDate,
+                                              confirmDateText:
+                                                  confirmProvider.beerDomCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -243,7 +336,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$11.00",
+                                      child: Text(
+                                          venueProvider.beerImp != null
+                                              ? "\$$venueProvider.beerImp!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -258,7 +354,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.beerImpCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -266,9 +362,24 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Beer - Import Bottle",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Beer - Import Bottle",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .beerImpCImage !=
+                                                  null
+                                              ? confirmProvider.beerImpCImage!
+                                              : confirmProvider.beerImpUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .beerImpUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.beerImpUDate,
+                                              confirmDateText:
+                                                  confirmProvider.beerImpCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -303,7 +414,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$8.00",
+                                      child: Text(
+                                          venueProvider.beerDraft != null
+                                              ? "\$$venueProvider.beerDraft!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -318,7 +432,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.beerDraftCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -326,9 +440,25 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Beer - Draft",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Beer - Draft",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .beerDraftCImage !=
+                                                  null
+                                              ? confirmProvider.beerDraftCImage!
+                                              : confirmProvider
+                                                          .beerDraftUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .beerDraftUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText: confirmProvider
+                                                  .beerDraftUDate,
+                                              confirmDateText: confirmProvider
+                                                  .beerDraftCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -363,7 +493,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$12.00",
+                                      child: Text(
+                                          venueProvider.well != null
+                                              ? "\$$venueProvider.well!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -377,8 +510,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                            "Free text to give brands available at that price",
+                                        child: Text(venueProvider.wellCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -386,9 +518,23 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Well drink with mixer",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Well drink with mixer",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .wellCImage !=
+                                                  null
+                                              ? confirmProvider.wellCImage!
+                                              : confirmProvider.wellUImage !=
+                                                      null
+                                                  ? confirmProvider.wellUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.wellUDate,
+                                              confirmDateText:
+                                                  confirmProvider.wellCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -423,7 +569,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$16.00",
+                                      child: Text(
+                                          venueProvider.call != null
+                                              ? "\$$venueProvider.call!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -437,8 +586,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                            "Free text to give brands available at that price",
+                                        child: Text(venueProvider.callCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -446,9 +594,23 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Call drink with mixer",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Call drink with mixer",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .callCImage !=
+                                                  null
+                                              ? confirmProvider.callCImage!
+                                              : confirmProvider.callUImage !=
+                                                      null
+                                                  ? confirmProvider.callUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.callUDate,
+                                              confirmDateText:
+                                                  confirmProvider.callCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -483,7 +645,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$18.00",
+                                      child: Text(
+                                          venueProvider.cocktail != null
+                                              ? "\$$venueProvider.cocktail!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -498,7 +663,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.cocktailCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -506,9 +671,25 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Cocktail",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Cocktail",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .cocktailCImage !=
+                                                  null
+                                              ? confirmProvider.cocktailCImage!
+                                              : confirmProvider
+                                                          .cocktailUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .cocktailUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.cocktailUDate,
+                                              confirmDateText: confirmProvider
+                                                  .cocktailCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -543,7 +724,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$14.00",
+                                      child: Text(
+                                          venueProvider.wine != null
+                                              ? "\$$venueProvider.wine!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -557,8 +741,7 @@ class DetailPricing extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        child: Text(
-                                            "Free text to give brands available at that price",
+                                        child: Text(venueProvider.wineCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -566,9 +749,23 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Wine (small glass)",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Wine (small glass)",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .wineCImage !=
+                                                  null
+                                              ? confirmProvider.wineCImage!
+                                              : confirmProvider.wineUImage !=
+                                                      null
+                                                  ? confirmProvider.wineUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.wineUDate,
+                                              confirmDateText:
+                                                  confirmProvider.wineCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -603,7 +800,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$250.00",
+                                      child: Text(
+                                          venueProvider.bottle != null
+                                              ? "\$$venueProvider.bottle!"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -618,7 +818,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.bottleCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -626,9 +826,24 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Bottle Service (1 ltr)",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Bottle Service (1 ltr)",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .bottleCImage !=
+                                                  null
+                                              ? confirmProvider.bottleCImage!
+                                              : confirmProvider.bottleUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .bottleUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.bottleUDate,
+                                              confirmDateText:
+                                                  confirmProvider.bottleCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -668,7 +883,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$10.99",
+                                      child: Text(
+                                          venueProvider.bEntree != null
+                                              ? "\$${venueProvider.bEntree!}"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -683,7 +901,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.bEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -691,9 +909,25 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Breakfast Entree",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Breakfast Entree",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .breakfastCImage !=
+                                                  null
+                                              ? confirmProvider.breakfastCImage!
+                                              : confirmProvider
+                                                          .breakfastUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .breakfastUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText: confirmProvider
+                                                  .breakfastUDate,
+                                              confirmDateText: confirmProvider
+                                                  .breakfastCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -728,7 +962,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$14.99",
+                                      child: Text(
+                                          venueProvider.lEntree != null
+                                              ? "\$${venueProvider.lEntree!}"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -743,7 +980,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.lEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -751,9 +988,23 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Lunch Entree",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Lunch Entree",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .lunchCImage !=
+                                                  null
+                                              ? confirmProvider.lunchCImage!
+                                              : confirmProvider.lunchUImage !=
+                                                      null
+                                                  ? confirmProvider.lunchUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.lunchUDate,
+                                              confirmDateText:
+                                                  confirmProvider.lunchCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -788,7 +1039,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$18.99",
+                                      child: Text(
+                                          venueProvider.dEntree != null
+                                              ? "\$${venueProvider.dEntree!}"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -803,7 +1057,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.dEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -811,9 +1065,24 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Dinner Entree",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Dinner Entree",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .dinnerCImage !=
+                                                  null
+                                              ? confirmProvider.dinnerCImage!
+                                              : confirmProvider.dinnerUImage !=
+                                                      null
+                                                  ? confirmProvider
+                                                      .dinnerUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.dinnerUDate,
+                                              confirmDateText:
+                                                  confirmProvider.dinnerCDate),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -848,7 +1117,10 @@ class DetailPricing extends StatelessWidget {
                                     ),
                                     Flexible(
                                       flex: 3,
-                                      child: Text("\$12.99",
+                                      child: Text(
+                                          venueProvider.lateEntree != null
+                                              ? "\$${venueProvider.lateEntree!}"
+                                              : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
                                               .copyWith(
@@ -863,7 +1135,7 @@ class DetailPricing extends StatelessWidget {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            "Free text to give brands available at that price",
+                                            venueProvider.lateEntreeCom ?? '',
                                             style: themeProvider
                                                 .getTheme.textTheme.bodyText2),
                                       ),
@@ -871,9 +1143,23 @@ class DetailPricing extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: circularAvatarInk(
-                                            context: context,
-                                            titleText: "Late Entree",
-                                            venueName: venueProvider.venueName),
+                                          context: context,
+                                          titleText: "Late Entree",
+                                          venueName: venueProvider.venueName,
+                                          imageUrl: confirmProvider
+                                                      .lateCImage !=
+                                                  null
+                                              ? confirmProvider.lateCImage!
+                                              : confirmProvider.lateUImage !=
+                                                      null
+                                                  ? confirmProvider.lateUImage!
+                                                  : "",
+                                          backColor: colorIndicator(
+                                              updateDateText:
+                                                  confirmProvider.lateUDate,
+                                              confirmDateText:
+                                                  confirmProvider.lateCDate),
+                                        ),
                                       ),
                                     ],
                                   ),

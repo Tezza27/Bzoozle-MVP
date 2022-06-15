@@ -1,5 +1,8 @@
+import 'package:bzoozle/Lists/host_buildings_list.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +13,10 @@ class DetailLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    int hostIndex = hostList
+        .indexWhere((host) => host.hostName == venueProvider.venueHostBuilding);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
       child: Padding(
@@ -33,32 +39,72 @@ class DetailLocation extends StatelessWidget {
                     top: 7.0,
                     right: 0.0,
                     child: circularAvatarInk(
-                        context: context,
-                        titleText: "Location",
-                        venueName: venueProvider.venueName),
+                      context: context,
+                      titleText: "Location",
+                      venueName: venueProvider.venueName,
+                      imageUrl: confirmProvider.locationCImage != null
+                          ? confirmProvider.locationCImage!
+                          : confirmProvider.locationUImage != null
+                              ? confirmProvider.locationUImage!
+                              : "",
+                      backColor: colorIndicator(
+                          updateDateText: confirmProvider.locationUDate,
+                          confirmDateText: confirmProvider.locationCDate),
+                    ),
                   ),
                 ],
               ),
-              venueProvider.venueHostBuilding == null
-                  ? Container()
-                  : Text(
-                      venueProvider.venueHostBuilding!,
-                      style: themeProvider.getTheme.textTheme.bodyText1,
+              venueProvider.venueHostBuilding == "N/A" ||
+                      venueProvider.venueHostBuilding == null
+                  ? Column(children: <Widget>[
+                      Text(
+                        addressBuilder(
+                            doorNumber: venueProvider.venueDoorNumber,
+                            streetName: venueProvider.venueStreet),
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                      Text(
+                        venueProvider.venueCity!,
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                      Text(
+                        venueProvider.venuePostcode!,
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Text(
+                        venueProvider.venueArea!,
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                      ),
+                    ])
+                  : Column(
+                      children: <Widget>[
+                        Text(
+                          hostAddressBuilder(
+                            unitNumber: venueProvider.unitNumber,
+                            hostName: venueProvider.venueHostBuilding,
+                          ),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                        Text(
+                          hostList[hostIndex].city!,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                        Text(
+                          hostList[hostIndex].zip!,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Text(
+                          hostList[hostIndex].area!,
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                      ],
                     ),
-              Text(
-                addressBuilder(
-                    unitNumber: venueProvider.venueDoorNumber,
-                    streetName: venueProvider.venueStreet),
-                style: themeProvider.getTheme.textTheme.bodyText1,
-              ),
-              Text(
-                venueProvider.venueCity!,
-                style: themeProvider.getTheme.textTheme.bodyText1,
-              ),
-              Text(
-                venueProvider.venuePostcode!,
-                style: themeProvider.getTheme.textTheme.bodyText1,
-              ),
               const SizedBox(
                 height: 30.0,
               ),
@@ -108,9 +154,17 @@ class DetailLocation extends StatelessWidget {
     );
   }
 
-  String addressBuilder({String? unitNumber, String? streetName}) {
-    unitNumber == null ? unitNumber = "" : unitNumber = unitNumber;
+  String addressBuilder({String? doorNumber, String? streetName}) {
+    doorNumber == null ? doorNumber = "" : doorNumber = doorNumber;
     streetName == null ? streetName = "" : streetName = streetName;
-    return unitNumber + " " + streetName;
+    return doorNumber + " " + streetName;
+  }
+
+  String hostAddressBuilder({String? unitNumber, String? hostName}) {
+    String stringToReturn;
+    unitNumber != null && unitNumber != ""
+        ? stringToReturn = "Unit: " + unitNumber + " " + hostName!
+        : stringToReturn = hostName!;
+    return stringToReturn;
   }
 }

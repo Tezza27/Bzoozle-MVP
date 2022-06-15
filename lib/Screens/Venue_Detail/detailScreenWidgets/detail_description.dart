@@ -1,5 +1,7 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/circular_avatar.dart';
+import 'package:bzoozle/Screens/Venue_Detail/detailScreenWidgets/Common_Widgets/color_indicator.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +12,7 @@ class DetailDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     //final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     return SingleChildScrollView(
@@ -35,7 +38,15 @@ class DetailDescription extends StatelessWidget {
                     child: circularAvatarInk(
                         context: context,
                         titleText: "Description",
-                        venueName: venueProvider.venueName),
+                        venueName: venueProvider.venueName,
+                        imageUrl: confirmProvider.descriptionCImage != null
+                            ? confirmProvider.descriptionCImage!
+                            : confirmProvider.descriptionUImage != null
+                                ? confirmProvider.descriptionUImage!
+                                : "",
+                        backColor: colorIndicator(
+                            updateDateText: confirmProvider.descriptionUDate,
+                            confirmDateText: confirmProvider.descriptionCDate)),
                   ),
                 ],
               ),

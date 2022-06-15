@@ -1,4 +1,6 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,23 +16,27 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: const Text("Add Happy Hour Sessions"),
+          backgroundColor: themeProvider.getTheme.primaryColor,
+          title: Text("Add Happy Hour Sessions",
+              style: themeProvider.getTheme.textTheme.headline4),
           centerTitle: true),
-      body: Container(
+      body: SizedBox(
         width: MediaQuery.of(context).size.width,
-        color: Colors.orange[800],
         child: Padding(
           padding: const EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const Center(
+              Center(
                   child: Text(
-                      "Set the start and end times for the happy hour sessions")),
+                "Set the start and end times for the happy hour sessions",
+                style: themeProvider.getTheme.textTheme.bodyText1,
+              )),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
                 child: Row(
@@ -39,9 +45,9 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                     Column(
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "Start Time",
-                          style: TextStyle(color: Colors.black),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlign: TextAlign.center,
                         ),
                         Padding(
@@ -62,9 +68,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                               child: Center(
                                   child: Text(
                                 venueProvider.selectedOpenTime,
-                                style: const TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
+                                style:
+                                    themeProvider.getTheme.textTheme.headline4,
                               )),
                             ),
                           ),
@@ -75,9 +80,9 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                     Column(
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Text(
+                        Text(
                           "End Time",
-                          style: TextStyle(color: Colors.black),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                           textAlign: TextAlign.center,
                         ),
                         Padding(
@@ -98,9 +103,8 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                               child: Center(
                                   child: Text(
                                 venueProvider.selectedCloseTime,
-                                style: const TextStyle(
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold),
+                                style:
+                                    themeProvider.getTheme.textTheme.headline4,
                               )),
                             ),
                           ),
@@ -110,114 +114,125 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                   ],
                 ),
               ),
-              Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHMonday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHMonday(newValue!);
-                          }),
-                      const Text("Monday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHTuesday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHTuesday(newValue!);
-                          }),
-                      const Text("Tuesday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHWednesday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHWednesday(newValue!);
-                          }),
-                      const Text("Wednesday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHThursday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHThursday(newValue!);
-                          }),
-                      const Text("Thursday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHFriday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHFriday(newValue!);
-                          }),
-                      const Text("Friday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHSaturday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHSaturday(newValue!);
-                          }),
-                      const Text("Saturday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Checkbox(
-                          value: venueProvider.chBoxHHSunday,
-                          checkColor: Colors.black,
-                          // checkColor: Theme.of(context).splashColor,
-                          // fillColor: Colors.white,
-                          onChanged: (bool? newValue) {
-                            venueProvider.changeHHSunday(newValue!);
-                          }),
-                      const Text("Sunday",
-                          style: TextStyle(color: Colors.black))
-                    ],
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 100),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHMonday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHMonday(newValue!);
+                            }),
+                        Text(
+                          "Monday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHTuesday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHTuesday(newValue!);
+                            }),
+                        Text(
+                          "Tuesday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHWednesday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHWednesday(newValue!);
+                            }),
+                        Text(
+                          "Wednesday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHThursday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHThursday(newValue!);
+                            }),
+                        Text(
+                          "Thursday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHFriday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHFriday(newValue!);
+                            }),
+                        Text(
+                          "Friday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHSaturday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHSaturday(newValue!);
+                            }),
+                        Text(
+                          "Saturday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Checkbox(
+                            value: venueProvider.chBoxHHSunday,
+                            checkColor: themeProvider.getTheme.primaryColor,
+                            activeColor: themeProvider.getTheme.splashColor,
+                            onChanged: (bool? newValue) {
+                              venueProvider.changeHHSunday(newValue!);
+                            }),
+                        Text(
+                          "Sunday",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
@@ -226,7 +241,7 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                   children: <Widget>[
                     SizedBox(
                       height: 40.0,
-                      width: 100.0,
+                      width: 140.0,
                       child: ElevatedButton(
                         onPressed: () {
                           venueProvider.changeHHMonday(false);
@@ -238,9 +253,9 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                           venueProvider.changeHHSunday(false);
                           Navigator.pop(context);
                         },
-                        child: const Text(
+                        child: Text(
                           "Cancel",
-                          style: TextStyle(color: Colors.orange),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: Theme.of(context).primaryColor,
@@ -250,15 +265,16 @@ class _AddHHSessionScreenState extends State<AddHHSessionScreen> {
                     ),
                     SizedBox(
                       height: 40.0,
-                      width: 100.0,
+                      width: 140.0,
                       child: ElevatedButton(
                         onPressed: () {
                           venueProvider.saveHHSession();
+                          confirmProvider.changeHappyHourUpdate();
                           Navigator.pop(context);
                         },
-                        child: const Text(
+                        child: Text(
                           "Save Sessions",
-                          style: TextStyle(color: Colors.orange),
+                          style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: Theme.of(context).primaryColor,

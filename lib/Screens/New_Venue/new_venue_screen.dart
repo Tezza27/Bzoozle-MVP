@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:bzoozle/Providers/page_number_provider.dart';
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/new_scroll_button_list.dart';
-import 'package:bzoozle/Screens/Venue_Listing/venue_listing_screen.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +17,7 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    final pageNumberProvider = Provider.of<PageNumberProvider>(context);
+    final confirmationProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       //backgroundColor: themeProvider.getTheme.primaryColor,
@@ -36,29 +33,33 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                 expandedHeight: 200.0,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    "Add New Venue",
+                    venueProvider.venueName != ""
+                        ? "Edit ${venueProvider.venueName}"
+                        : "Add New Venue",
                     style: themeProvider.getTheme.textTheme.headline3,
                   ),
                   centerTitle: true,
-                  background: DecoratedBox(
-                    position: DecorationPosition.foreground,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.center,
-                          colors: <Color>[
-                            themeProvider.getTheme.primaryColor,
-                            Colors.transparent,
-                          ]),
-                    ),
-                    child: Image.asset(
-                      'assets/images/piano_bar_harrahs.png',
-                      fit: BoxFit.cover,
+                  background: InkWell(
+                    onTap: () {
+                      venueProvider.uploadGalleryImage();
+                    },
+                    child: DecoratedBox(
+                      position: DecorationPosition.foreground,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center,
+                            colors: <Color>[
+                              themeProvider.getTheme.primaryColor,
+                              Colors.transparent,
+                            ]),
+                      ),
+                      child: fetchImage(),
                     ),
                   ),
                 ),
               ),
-              NewScrollButtonList(),
+              const NewScrollButtonList(),
               const NewContent(),
             ],
           ),
@@ -73,19 +74,23 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                   children: <Widget>[
                     ElevatedButton(
                       onPressed: () {
-                        venueProvider.unloadVenue();
-                        pageNumberProvider.changePageNumber(0);
+                        Navigator.pop(context);
                       },
-                      child: Text("Cancel"),
+                      child: const Text("Cancel"),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        venueProvider.addVenue();
-                        venueProvider.unloadVenue();
-                        pageNumberProvider.changePageNumber(0);
-                        Navigator.pushNamed(context, ListingScreen.routeName);
+                        if (venueProvider.venueID != "" &&
+                            venueProvider.venueID != null) {
+                          venueProvider.updateVenue(venueProvider.venueID!);
+                          confirmationProvider.updateConfirmation();
+                        } else {
+                          venueProvider.addVenue();
+                          confirmationProvider.updateConfirmation();
+                        }
+                        Navigator.pop(context);
                       },
-                      child: Text("Save"),
+                      child: const Text("Save"),
                     ),
                   ],
                 ),
@@ -95,5 +100,20 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
         ],
       ),
     );
+  }
+
+  fetchImage() {
+    final venueProvider = Provider.of<VenueProvider>(context);
+    if (venueProvider.venueImage != "" && venueProvider.venueImage != null) {
+      return Image(
+          image: NetworkImage(venueProvider.venueImage!), fit: BoxFit.cover);
+    } else if (venueProvider.imageFile != null) {
+      return Image(
+          image: FileImage(venueProvider.imageFile!), fit: BoxFit.cover);
+    } else {
+      return const Image(
+          image: AssetImage('assets/images/temp_venue_image.png'),
+          fit: BoxFit.cover);
+    }
   }
 }

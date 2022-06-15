@@ -1,6 +1,8 @@
+import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/add_hh_session.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/newHappyHourWidgets/happy_hour_card.dart';
+import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,61 +18,86 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
+    final confirmProvider = Provider.of<ConfirmationProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    TextEditingController? hhOfferController;
+    hhOfferController?.text = venueProvider.hhOffer.toString();
     String openMessage1 = venueProvider.venueName.isEmpty
         ? "This venue"
         : venueProvider.venueName;
-    String openMessage2 = venueProvider.happyHours.isEmpty
-        ? "has no happy hours that we know of.  If you know different, please add them here:"
-        : "ordinarily holds these happy hours weekly:";
+    String openMessage2;
+    venueProvider.happyHours!.isNotEmpty
+        ? openMessage2 = "ordinarily holds these happy hours weekly:"
+        : openMessage2 =
+            "has no happy hours that we know of.  If you know different, please add them here:";
 
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
       },
       child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 8.0, bottom: 16.0, left: 16.0, right: 16.0),
-              child: SizedBox(
-                height: 30,
-                child: Text(
-                  "$openMessage1 $openMessage2",
-                  style: const TextStyle(color: Colors.black),
-                ),
+            SizedBox(
+              height: 40.0,
+              width: double.infinity,
+              child: Center(
+                child: Text("HAPPY HOURS",
+                    style: themeProvider.getTheme.textTheme.headline1),
               ),
             ),
-            venueProvider.happyHours.isEmpty
-                ? const SizedBox(
-                    height: 100.0,
-                  )
-                : SizedBox(
-                    height: 350.0,
-                    child: ListView.builder(
-                        itemCount: venueProvider.happyHours.length,
-                        itemBuilder: (context, index) {
-                          return happyHourCard(
-                              context, venueProvider.happyHours[index]);
-                        }),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 8.0, bottom: 0.0, left: 16.0, right: 16.0),
+              child: Text(
+                "$openMessage1 $openMessage2",
+                style: themeProvider.getTheme.textTheme.bodyText1,
+              ),
+            ),
+            ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: venueProvider.happyHours?.length,
+                itemBuilder: (context, index) {
+                  return happyHourCard(
+                      context, venueProvider.happyHours![index]);
+                }),
+            venueProvider.happyHours!.isEmpty
+                ? Container()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 8.0),
+                    child: TextFormField(
+                      controller: hhOfferController,
+                      initialValue: venueProvider.hhOffer,
+                      style: themeProvider.getTheme.textTheme.bodyText1,
+                      minLines: 5,
+                      maxLines: null,
+                      onChanged: (String value) {
+                        venueProvider.changeHhOffer = value.trim();
+                        confirmProvider.changeHappyHourUpdate();
+                      },
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Happy Hour Offers'),
+                    ),
                   ),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Center(
                 child: SizedBox(
                   height: 40.0,
-                  width: 100.0,
+                  width: 120.0,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(
                           context, AddHHSessionScreen.routeName);
                     },
-                    child: const Text(
+                    child: Text(
                       "Add Session",
-                      style: TextStyle(color: Colors.orange),
+                      style: themeProvider.getTheme.textTheme.bodyText1,
                     ),
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor,
@@ -79,6 +106,9 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                   ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 500.0,
             ),
           ],
         ),
