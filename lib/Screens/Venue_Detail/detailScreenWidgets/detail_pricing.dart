@@ -220,7 +220,8 @@ class DetailPricing extends StatelessWidget {
                             style: themeProvider.getTheme.textTheme.headline2),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        padding: const EdgeInsets.only(
+                            top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
                         child: Center(
                           child: Text(
                               "These are the current lowest prices available, outside of happy hours, within each product type (including tax but excluding tips and any other fees):",
@@ -260,7 +261,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.beerDom != null
-                                              ? "\$$venueProvider.beerDom!"
+                                              ? "\$${venueProvider.beerDom!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -338,7 +339,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.beerImp != null
-                                              ? "\$$venueProvider.beerImp!"
+                                              ? "\$${venueProvider.beerImp!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -416,7 +417,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.beerDraft != null
-                                              ? "\$$venueProvider.beerDraft!"
+                                              ? "\$${venueProvider.beerDraft!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -495,7 +496,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.well != null
-                                              ? "\$$venueProvider.well!"
+                                              ? "\$${venueProvider.well!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -571,7 +572,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.call != null
-                                              ? "\$$venueProvider.call!"
+                                              ? "\$${venueProvider.call!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -647,7 +648,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.cocktail != null
-                                              ? "\$$venueProvider.cocktail!"
+                                              ? "\$${venueProvider.cocktail!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -726,7 +727,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.wine != null
-                                              ? "\$$venueProvider.wine!"
+                                              ? "\$${venueProvider.wine!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!
@@ -802,7 +803,7 @@ class DetailPricing extends StatelessWidget {
                                       flex: 3,
                                       child: Text(
                                           venueProvider.bottle != null
-                                              ? "\$$venueProvider.bottle!"
+                                              ? "\$${venueProvider.bottle!}"
                                               : '?',
                                           style: themeProvider
                                               .getTheme.textTheme.bodyText1!

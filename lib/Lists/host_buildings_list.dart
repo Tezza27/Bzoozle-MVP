@@ -666,6 +666,14 @@ List<Host> hostList = [
       city: "Las Vegas",
       zip: "89145"),
   Host(
+      hostName: "The Shoppes at Mandalay Place",
+      unitNumber: "",
+      addressNumber: "3930",
+      street: "S Las Vegas Blvd",
+      area: "The Strip",
+      city: "Las Vegas",
+      zip: "89119"),
+  Host(
       hostName: "Tivoli Village",
       unitNumber: "",
       addressNumber: "400",

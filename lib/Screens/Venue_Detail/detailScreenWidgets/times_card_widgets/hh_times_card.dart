@@ -40,7 +40,7 @@ Widget hhTimesCard(BuildContext context, HappyHourSession happyHour) {
             Expanded(
               flex: 10,
               child: Text(
-                weekDays[int.parse(happyHour.day)].toUpperCase(),
+                weekDays[int.parse(happyHour.day) - 1].toUpperCase(),
                 style: themeProvider.getTheme.textTheme.headline4,
               ),
             ),

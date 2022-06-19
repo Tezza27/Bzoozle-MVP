@@ -100,7 +100,7 @@ class DetailLocation extends StatelessWidget {
                           height: 20.0,
                         ),
                         Text(
-                          hostList[hostIndex].area!,
+                          "Area: ${hostList[hostIndex].area!}",
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                       ],

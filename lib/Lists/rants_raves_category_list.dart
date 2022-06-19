@@ -1,11 +1,12 @@
 List<String> categoryRantsRavesWriterList = [
   "Crowd",
-  "Dangers & Annoyances",
   "Drinks",
   "Entertainment",
   "Facilities",
   "Food",
+  "Happy hour",
   "Policies",
+  "Safety & Security",
   "Service",
   "Everything Else",
 ];

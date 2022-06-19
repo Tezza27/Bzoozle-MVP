@@ -1,6 +1,7 @@
 import 'package:bzoozle/Providers/confirmation_provider.dart';
 import 'package:bzoozle/Providers/venue_provider.dart';
 import 'package:bzoozle/Screens/New_Venue/newVenueScreenWidgets/new_scroll_button_list.dart';
+import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +15,43 @@ class NewVenueScreen extends StatefulWidget {
 }
 
 class _NewVenueScreenState extends State<NewVenueScreen> {
+  void _saveVenue({required BuildContext context}) async {
+    final ConfirmationProvider confirmProvider =
+        Provider.of<ConfirmationProvider>(context, listen: false);
+    final venueProvider = Provider.of<VenueProvider>(context, listen: false);
+
+    if (venueProvider.venueID != "" && venueProvider.venueID != null) {
+      try {
+        setState(() {
+          venueProvider.changeIsLoading(true);
+        });
+        await venueProvider.updateVenue(venueProvider.venueID!);
+        await confirmProvider.updateConfirmation();
+        setState(() {
+          venueProvider.changeIsLoading(false);
+        });
+      } catch (e) {
+        print(e);
+      }
+    } else {
+      try {
+        setState(() {
+          venueProvider.changeIsLoading(true);
+        });
+        await venueProvider.addVenue();
+        await confirmProvider.updateConfirmation();
+        setState(() {
+          venueProvider.changeIsLoading(false);
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final venueProvider = Provider.of<VenueProvider>(context);
-    final confirmationProvider = Provider.of<ConfirmationProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       //backgroundColor: themeProvider.getTheme.primaryColor,
@@ -54,7 +88,11 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                               Colors.transparent,
                             ]),
                       ),
-                      child: fetchImage(),
+                      child: venueProvider.isloading
+                          ? CircularProgressIndicator(
+                              color: orange1,
+                            )
+                          : fetchImage(),
                     ),
                   ),
                 ),
@@ -79,15 +117,8 @@ class _NewVenueScreenState extends State<NewVenueScreen> {
                       child: const Text("Cancel"),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        if (venueProvider.venueID != "" &&
-                            venueProvider.venueID != null) {
-                          venueProvider.updateVenue(venueProvider.venueID!);
-                          confirmationProvider.updateConfirmation();
-                        } else {
-                          venueProvider.addVenue();
-                          confirmationProvider.updateConfirmation();
-                        }
+                      onPressed: () async {
+                        _saveVenue(context: context);
                         Navigator.pop(context);
                       },
                       child: const Text("Save"),

@@ -136,6 +136,7 @@ class VenueProvider with ChangeNotifier {
   bool _chBoxHHSunday = false;
   String? _hhOffer = "";
   File? imageFile;
+  bool _isLoading = false;
 
   //Getters
   String? get venueID => _venueID;
@@ -265,6 +266,7 @@ class VenueProvider with ChangeNotifier {
   String? get hhOffer => _hhOffer;
   Stream<QuerySnapshot<Object?>> get streamVenuesList =>
       firestoreService.getVenues();
+  bool get isloading => _isLoading;
 
   //Setters
   set changeName(String value) {
@@ -858,6 +860,11 @@ class VenueProvider with ChangeNotifier {
 
   set changeHhOffer(String value) {
     _hhOffer = value;
+    notifyListeners();
+  }
+
+changeIsLoading(bool value) {
+    _isLoading = value;
     notifyListeners();
   }
 

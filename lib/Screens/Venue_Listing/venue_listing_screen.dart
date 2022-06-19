@@ -98,6 +98,7 @@ class _ListingScreenState extends State<ListingScreen> {
                   style: themeProvider.getTheme.textTheme.bodyText1!
                       .copyWith(color: themeProvider.getTheme.primaryColor)),
               onTap: () {
+                venueProvider.unloadVenue();
                 Navigator.pop(context);
                 Navigator.pushNamed(context, NewVenueScreen.routeName);
               },

@@ -26,7 +26,7 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
         ? "This venue"
         : venueProvider.venueName;
     String openMessage2;
-    venueProvider.happyHours!.isNotEmpty
+    venueProvider.happyHours != null
         ? openMessage2 = "ordinarily holds these happy hours weekly:"
         : openMessage2 =
             "has no happy hours that we know of.  If you know different, please add them here:";

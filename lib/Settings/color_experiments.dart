@@ -303,43 +303,45 @@ class _ColorExperimentScreenState extends State<ColorExperimentScreen> {
               SizedBox(
                 height: 300,
                 width: double.infinity,
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  fit: StackFit.expand,
-                  clipBehavior: Clip.hardEdge,
-                  children: <Widget>[
-                    Neon(
-                      text: myText,
-                      color: Colors.deepOrange,
-                      fontSize: 60, //mySize,
-                      font: NeonFont.Monoton,
-                      flickeringText: true,
-                      flickeringLetters: null,
-                      blurRadius: 8000.0,
-                      glowing: true,
-                      //glowingDuration: const Duration(seconds: 0),
-                      //textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Positioned(
-                      top: 170.0,
-                      left: 50.0,
-                      child: Transform.rotate(
-                        angle: -math.pi / 24,
-                        child: Neon(
-                          text: "Las Vegas",
-                          color: Colors.lightBlue,
-                          fontSize: 60, //mySize,
-                          font: NeonFont.LasEnter,
-                          flickeringText: true,
-                          flickeringLetters: null,
-                          blurRadius: 10000.0,
-                          glowing: true,
-                          //glowingDuration: const Duration(seconds: 0),
-                          //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                child: Center(
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    fit: StackFit.expand,
+                    clipBehavior: Clip.hardEdge,
+                    children: <Widget>[
+                      Neon(
+                        text: myText,
+                        color: Colors.deepOrange,
+                        fontSize: 60, //mySize,
+                        font: NeonFont.Monoton,
+                        flickeringText: true,
+                        flickeringLetters: null,
+                        blurRadius: 8000.0,
+                        glowing: true,
+                        //glowingDuration: const Duration(seconds: 0),
+                        //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Positioned(
+                        top: 170.0,
+                        left: 50.0,
+                        child: Transform.rotate(
+                          angle: -math.pi / 24,
+                          child: Neon(
+                            text: "Las Vegas",
+                            color: Colors.lightBlue,
+                            fontSize: 60, //mySize,
+                            font: NeonFont.LasEnter,
+                            flickeringText: true,
+                            flickeringLetters: null,
+                            blurRadius: 10000.0,
+                            glowing: true,
+                            //glowingDuration: const Duration(seconds: 0),
+                            //textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(

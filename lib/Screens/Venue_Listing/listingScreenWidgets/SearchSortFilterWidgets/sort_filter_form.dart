@@ -1,4 +1,5 @@
 import 'package:bzoozle/Lists/areas.dart';
+import 'package:bzoozle/Lists/host_buildings_list.dart';
 import 'package:bzoozle/Lists/venue_type_lists.dart';
 import 'package:bzoozle/Lists/yes_no_list.dart';
 import 'package:bzoozle/Models/filterchip_model.dart';
@@ -146,6 +147,8 @@ class _SortFilterScreenState extends State<SortFilterScreen> {
     childFriendlyChipList = childFriendlyChipList.isNotEmpty
         ? childFriendlyChipList
         : compileChipList(categoryList: childList);
+    TextEditingController? venueNameController;
+    TextEditingController? hostController;
 
     return Scaffold(
       appBar: AppBar(
@@ -163,13 +166,41 @@ class _SortFilterScreenState extends State<SortFilterScreen> {
           right: 8.0,
         ),
         children: [
-          const Text("Venue Count"),
-          const Text("Saved search dropdown"),
-          const Text("Currently open switch"),
-          const Text("Search by venue name"),
-          const Text("Sort by dropdown"),
-          const Text("Host building dropdown"),
-          const Text("Happy Hour list"),
+          //const Text("Venue Count"),
+          //const Text("Saved search dropdown"),
+          //const Text("Currently open switch"),
+
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
+            child: TextFormField(
+              textInputAction: TextInputAction.go,
+              keyboardType: TextInputType.text,
+              controller: venueNameController,
+              onChanged: (String value) {},
+              style: themeProvider.getTheme.textTheme.bodyText1,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Search by Venue Name'),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 8.0, bottom: 8.0, left: 28.0, right: 28.0),
+            child: DropdownButton<String>(
+              isExpanded: true,
+              hint: const Text("Select Host Casino/Mall"),
+              style: themeProvider.getTheme.textTheme.bodyText1,
+              items: hostNameList.map((hostBuilding) {
+                return DropdownMenuItem(
+                    value: hostBuilding, child: Text(hostBuilding!));
+              }).toList(),
+              onChanged: (String? value) {},
+            ),
+          ),
+          // const Text("Happy Hour list"),
+          // const Text("Sort by dropdown"),
           Padding(
             padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
             child: Card(
@@ -1322,12 +1353,20 @@ class _SortFilterScreenState extends State<SortFilterScreen> {
             height: 30.0,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(onPressed: () {}, child: const Text("Cancel")),
               ElevatedButton(
-                  onPressed: () {}, child: const Text("Save Search")),
-              ElevatedButton(onPressed: () {}, child: const Text("Let's Go!")),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Cancel")),
+              // ElevatedButton(
+              //     onPressed: () {}, child: const Text("Save Search")),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Let's Go!")),
             ],
           ),
           const SizedBox(
@@ -1521,11 +1560,11 @@ class _SortFilterScreenState extends State<SortFilterScreen> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
-              child: Text('X',
-                  style: themeProvider.getTheme.textTheme.headline5!.copyWith(
-                      color: myChip.isSelected
-                          ? themeProvider.getTheme.primaryColor
-                          : themeProvider.getTheme.splashColor)),
+              child: Text(
+                'X',
+                style: themeProvider.getTheme.textTheme.headline5!
+                    .copyWith(color: themeProvider.getTheme.splashColor),
+              ),
             ),
           )),
       backgroundColor: themeProvider.getTheme.splashColor,

@@ -23,14 +23,30 @@ class ListCard extends StatefulWidget {
 }
 
 class _ListCardState extends State<ListCard> {
+  void _loadVenue({BuildContext? context, String? iD, Venue? venue}) async {
+    ConfirmationProvider confirmProvider =
+        Provider.of<ConfirmationProvider>(context!, listen: false);
+    final venueProvider = Provider.of<VenueProvider>(context, listen: false);
+
+    try {
+      setState(() {
+        confirmProvider.changeIsLoading(true);
+      });
+      await confirmProvider.changeCurrentVenue(iD!);
+      await venueProvider.loadVenue(iD, venue);
+      setState(() {
+        confirmProvider.changeIsLoading(false);
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final venueProvider = Provider.of<VenueProvider>(context);
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    final confirmProvider =
-        Provider.of<ConfirmationProvider>(context, listen: false);
-    bool favourite = false;
+    bool isFavourite = false;
     int hostIndex = widget.venue.venueHostBuilding != null
         ? hostList.indexWhere(
             (host) => host.hostName == widget.venue.venueHostBuilding)
@@ -44,10 +60,11 @@ class _ListCardState extends State<ListCard> {
         child: InkWell(
           splashColor: themeProvider.getTheme.splashColor,
           onTap: () async {
-            await confirmProvider.changeCurrentVenue(widget.iD);
-            venueProvider.loadVenue(widget.iD, widget.venue);
+            _loadVenue(context: context, iD: widget.iD, venue: widget.venue);
+            // await confirmProvider.changeCurrentVenue(widget.iD);
+            // venueProvider.loadVenue(widget.iD, widget.venue);
             pageNumberProvider.changePageNumber(0);
-            Navigator.pushNamed(
+            await Navigator.pushNamed(
               context,
               VenueDetailScreen.routeName,
             );
@@ -113,12 +130,8 @@ class _ListCardState extends State<ListCard> {
                     right: 0.0,
                     child: GlowButton(
                       onPressed: () {
-                        favourite
-                            ? setState(() => favourite = false)
-                            : setState(() => favourite = true);
-                      }
-
-                      //TODO save/remove venue ID to/from favorites list in phone memory
+                        setState(() => isFavourite == !isFavourite);
+                      } //TODO save/remove venue ID to/from favorites list in phone memory
                       ,
                       color: const Color.fromARGB(75, 0, 0, 0),
                       splashColor: orange1,
@@ -126,7 +139,7 @@ class _ListCardState extends State<ListCard> {
                       width: 60.0,
                       borderRadius: BorderRadius.circular(45),
                       child: GlowIcon(
-                        favourite
+                        (isFavourite == true)
                             ? Icons.favorite
                             : Icons
                                 .favorite_border, //TODO change icon if venue ID is on favorites list in phone memory

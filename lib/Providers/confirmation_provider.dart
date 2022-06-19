@@ -244,6 +244,7 @@ class ConfirmationProvider with ChangeNotifier {
   String? _currentUserLocation;
   String? _currentUserImage;
   bool _changes = false;
+  bool _isLoading = false;
 
 //getters
   String? get descriptionUDate => _descriptionUDate;
@@ -483,6 +484,7 @@ class ConfirmationProvider with ChangeNotifier {
   String? get currentUserLocation => _currentUserLocation;
   String? get currentUserImage => _currentUserImage;
   bool get changes => _changes;
+  bool get isLoading => _isLoading;
 
 //setters
   changeDescriptionUpdate() {
@@ -1136,7 +1138,12 @@ class ConfirmationProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  updateConfirmation() async {
+  changeIsLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
+  Future updateConfirmation() async {
     var currentConfirmation = Confirmation(
       venueId: currentVenue,
       descriptionUDate: descriptionUDate,
@@ -1383,6 +1390,7 @@ class ConfirmationProvider with ChangeNotifier {
   }
 
   fetchConfirmations() async {
+    changeIsLoading(true);
     var collection = FirebaseFirestore.instance.collection('confirmations');
     var docSnapshot = await collection.doc(currentVenue).get();
     if (docSnapshot.exists) {
@@ -1853,12 +1861,9 @@ class ConfirmationProvider with ChangeNotifier {
       _lateCName = null;
       _lateCLocation = null;
       _lateCImage = null;
-      _currentVenue = null;
-      _currentUserName = null;
-      _currentUserLocation = null;
-      _currentUserImage = null;
       _changes = false;
     }
+    changeIsLoading(false);
   }
 }
 

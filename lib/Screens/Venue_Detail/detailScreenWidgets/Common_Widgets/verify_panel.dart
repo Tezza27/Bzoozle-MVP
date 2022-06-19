@@ -17,8 +17,6 @@ AlertDialog verifyPanel(
   String? updateNameText;
   String? updateLocationText;
   String? updateImageUrl;
-  Color backColor;
-  Function confirmFunction;
   switch (itemName) {
     case "Description":
       confirmDateText = confirmProvider.descriptionCDate ?? "";
@@ -30,7 +28,6 @@ AlertDialog verifyPanel(
       updateLocationText = confirmProvider.descriptionULocation;
       updateImageUrl = confirmProvider.descriptionUImage;
 
-      //  confirmFunction = confirmProvider.changeDescriptionConfirm;
       break;
     case "Location":
       confirmDateText = confirmProvider.locationCDate ?? "";
@@ -41,7 +38,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.locationUName;
       updateLocationText = confirmProvider.locationULocation;
       updateImageUrl = confirmProvider.locationUImage;
-      //  confirmFunction = confirmProvider.changeLocationConfirm;
+
       break;
     case "Opening Hours":
       confirmDateText = confirmProvider.openHoursCDate ?? "";
@@ -52,7 +49,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.openHoursUName;
       updateLocationText = confirmProvider.openHoursULocation;
       updateImageUrl = confirmProvider.openHoursUImage;
-      //  confirmFunction = confirmProvider.changeOpenHoursConfirm;
+
       break;
     case "Setting":
       confirmDateText = confirmProvider.settingCDate ?? "";
@@ -63,7 +60,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.settingUName;
       updateLocationText = confirmProvider.settingULocation;
       updateImageUrl = confirmProvider.settingUImage;
-      //  confirmFunction = confirmProvider.changeSettingConfirm;
+
       break;
     case "Food":
       confirmDateText = confirmProvider.foodCDate ?? "";
@@ -74,7 +71,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.foodUName;
       updateLocationText = confirmProvider.foodULocation;
       updateImageUrl = confirmProvider.foodUImage;
-      //  confirmFunction = confirmProvider.changeFoodConfirm;
+
       break;
     case "Wifi":
       confirmDateText = confirmProvider.wifiCDate ?? "";
@@ -85,7 +82,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.wifiUName;
       updateLocationText = confirmProvider.wifiULocation;
       updateImageUrl = confirmProvider.wifiUImage;
-      //  confirmFunction = confirmProvider.changeWifiConfirm;
+
       break;
     case "Entertainment":
       confirmDateText = confirmProvider.entertainmentCDate ?? "";
@@ -96,7 +93,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.entertainmentUName;
       updateLocationText = confirmProvider.entertainmentULocation;
       updateImageUrl = confirmProvider.entertainmentUImage;
-      //  confirmFunction = confirmProvider.changeEntertainmentConfirm;
+
       break;
     case "Games":
       confirmDateText = confirmProvider.gamesCDate ?? "";
@@ -107,7 +104,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.gamesUName;
       updateLocationText = confirmProvider.gamesULocation;
       updateImageUrl = confirmProvider.gamesUImage;
-      //  confirmFunction = confirmProvider.changeGamesConfirm;
+
       break;
     case "Parking":
       confirmDateText = confirmProvider.parkingCDate ?? "";
@@ -118,7 +115,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.parkingUName;
       updateLocationText = confirmProvider.parkingULocation;
       updateImageUrl = confirmProvider.parkingUImage;
-      //  confirmFunction = confirmProvider.changeParkingConfirm;
+
       break;
     case "Accessibility":
       confirmDateText = confirmProvider.accessCDate ?? "";
@@ -129,7 +126,7 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.accessUName;
       updateLocationText = confirmProvider.accessULocation;
       updateImageUrl = confirmProvider.accessUImage;
-      //  confirmFunction = confirmProvider.changeAccessConfirm;
+
       break;
     case "Dress Code":
       confirmDateText = confirmProvider.dressCodeCDate ?? "";
@@ -140,7 +137,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.dressCodeUName;
       updateLocationText = confirmProvider.dressCodeULocation;
       updateImageUrl = confirmProvider.dressCodeUImage;
-      //  confirmFunction = confirmProvider.changeDressCodeConfirm;
       break;
     case "Cover Charge":
       confirmDateText = confirmProvider.coverChargeCDate ?? "";
@@ -151,7 +147,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.coverChargeUName;
       updateLocationText = confirmProvider.coverChargeULocation;
       updateImageUrl = confirmProvider.coverChargeUImage;
-      //  confirmFunction = confirmProvider.changeCoverChargeConfirm;
       break;
     case "Smoking":
       confirmDateText = confirmProvider.smokingCDate ?? "";
@@ -162,7 +157,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.smokingUName;
       updateLocationText = confirmProvider.smokingULocation;
       updateImageUrl = confirmProvider.smokingUImage;
-      //  confirmFunction = confirmProvider.changeSmokingConfirm;
       break;
     case "Child Friendly":
       confirmDateText = confirmProvider.childCDate ?? "";
@@ -173,7 +167,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.childUName;
       updateLocationText = confirmProvider.childULocation;
       updateImageUrl = confirmProvider.childUImage;
-      //  confirmFunction = confirmProvider.changeChildConfirm;
       break;
     case "Happy Hours":
       confirmDateText = confirmProvider.happyHourCDate ?? "";
@@ -184,7 +177,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.happyHourUName;
       updateLocationText = confirmProvider.happyHourULocation;
       updateImageUrl = confirmProvider.happyHourUImage;
-      //  confirmFunction = confirmProvider.changeHappyHourConfirm;
       break;
     case "Additional Fees":
       confirmDateText = confirmProvider.feesCDate ?? "";
@@ -195,7 +187,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.feesUName;
       updateLocationText = confirmProvider.feesULocation;
       updateImageUrl = confirmProvider.feesUImage;
-      //  confirmFunction = confirmProvider.changeFeesConfirm;
       break;
     case "Price Guide":
       confirmDateText = confirmProvider.priceCDate ?? "";
@@ -206,7 +197,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.priceUName;
       updateLocationText = confirmProvider.priceULocation;
       updateImageUrl = confirmProvider.priceUImage;
-      //  confirmFunction = confirmProvider.changePriceConfirm;
       break;
     case "Beer - Domestic Bottle":
       confirmDateText = confirmProvider.beerDomCDate ?? "";
@@ -217,7 +207,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.beerDomUName;
       updateLocationText = confirmProvider.beerDomULocation;
       updateImageUrl = confirmProvider.beerDomUImage;
-      //  confirmFunction = confirmProvider.changeBeerDomConfirm;
       break;
     case "Beer - Imported Bottle":
       confirmDateText = confirmProvider.beerImpCDate ?? "";
@@ -228,7 +217,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.beerImpUName;
       updateLocationText = confirmProvider.beerImpULocation;
       updateImageUrl = confirmProvider.beerImpUImage;
-      //  confirmFunction = confirmProvider.changeBeerImpConfirm;
       break;
     case "Beer - Draft":
       confirmDateText = confirmProvider.beerDraftCDate ?? "";
@@ -239,7 +227,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.beerDraftUName;
       updateLocationText = confirmProvider.beerDraftULocation;
       updateImageUrl = confirmProvider.beerDraftUImage;
-      //  confirmFunction = confirmProvider.changeBeerDraftConfirm;
       break;
     case "Well drink with mixer":
       confirmDateText = confirmProvider.wellCDate ?? "";
@@ -250,7 +237,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.wellUName;
       updateLocationText = confirmProvider.wellULocation;
       updateImageUrl = confirmProvider.wellUImage;
-      //  confirmFunction = confirmProvider.changeWellConfirm;
       break;
     case "Call drink with mixer":
       confirmDateText = confirmProvider.callCDate ?? "";
@@ -261,7 +247,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.callUName;
       updateLocationText = confirmProvider.callULocation;
       updateImageUrl = confirmProvider.callUImage;
-      //  confirmFunction = confirmProvider.changeWellConfirm;
       break;
     case "Cocktail":
       confirmDateText = confirmProvider.cocktailCDate ?? "";
@@ -272,7 +257,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.cocktailUName;
       updateLocationText = confirmProvider.cocktailULocation;
       updateImageUrl = confirmProvider.cocktailUImage;
-      //  confirmFunction = confirmProvider.changeCocktailConfirm;
       break;
     case "Wine (small glass)":
       confirmDateText = confirmProvider.wineCDate ?? "";
@@ -283,7 +267,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.wineUName;
       updateLocationText = confirmProvider.wineULocation;
       updateImageUrl = confirmProvider.wineUImage;
-      //  confirmFunction = confirmProvider.changeWineConfirm;
       break;
     case "Bottle Service (1 ltr)":
       confirmDateText = confirmProvider.bottleCDate ?? "";
@@ -294,7 +277,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.bottleUName;
       updateLocationText = confirmProvider.bottleULocation;
       updateImageUrl = confirmProvider.bottleUImage;
-      //  confirmFunction = confirmProvider.changeBottleConfirm;
       break;
     case "Breakfast Entree":
       confirmDateText = confirmProvider.breakfastCDate ?? "";
@@ -305,7 +287,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.breakfastUName;
       updateLocationText = confirmProvider.breakfastULocation;
       updateImageUrl = confirmProvider.breakfastUImage;
-      //  confirmFunction = confirmProvider.changeBreakfastConfirm;
       break;
     case "Lunch Entree":
       confirmDateText = confirmProvider.lunchCDate ?? "";
@@ -316,7 +297,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.lunchUName;
       updateLocationText = confirmProvider.lunchULocation;
       updateImageUrl = confirmProvider.lunchUImage;
-      //  confirmFunction = confirmProvider.changeLunchConfirm;
       break;
     case "Dinner Entree":
       confirmDateText = confirmProvider.dinnerCDate ?? "";
@@ -327,7 +307,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.dinnerUName;
       updateLocationText = confirmProvider.dinnerULocation;
       updateImageUrl = confirmProvider.dinnerUImage;
-      //  confirmFunction = confirmProvider.changeDinnerConfirm;
       break;
     case "Late Entree":
       confirmDateText = confirmProvider.lateCDate ?? "";
@@ -338,7 +317,6 @@ AlertDialog verifyPanel(
       updateNameText = confirmProvider.lateUName;
       updateLocationText = confirmProvider.lateULocation;
       updateImageUrl = confirmProvider.lateUImage;
-      //  confirmFunction = confirmProvider.changeLateConfirm;
       break;
   }
 

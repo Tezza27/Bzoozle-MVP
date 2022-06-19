@@ -280,8 +280,12 @@ class _NewLocationState extends State<NewLocation> {
                             controller: latController,
                             initialValue: venueProvider.lat.toString(),
                             style: themeProvider.getTheme.textTheme.bodyText1,
-                            onChanged: (String value) =>
-                                venueProvider.changeLat = double.parse(value.trim()),
+                            onChanged: (String? value) {
+                              if (value != "" && value != null) {
+                                venueProvider.changeLat =
+                                    double.parse(value.trim());
+                              }
+                            },
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 labelText: 'Latitude'),
@@ -296,8 +300,11 @@ class _NewLocationState extends State<NewLocation> {
                             controller: lonController,
                             initialValue: venueProvider.lon.toString(),
                             style: themeProvider.getTheme.textTheme.bodyText1,
-                            onChanged: (String value) {
-                              venueProvider.changeLat = double.parse(value.trim());
+                            onChanged: (String? value) {
+                              if (value != "" && value != null) {
+                                venueProvider.changeLon =
+                                    double.parse(value.trim());
+                              }
                               confirmProvider.changeLocationUpdate();
                             },
                             decoration: const InputDecoration(
