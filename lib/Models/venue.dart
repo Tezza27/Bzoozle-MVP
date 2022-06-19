@@ -174,9 +174,9 @@ class Venue {
       this.video = "No",
       this.pub = "No",
       this.gamesCom = "",
-      this.parking = "No",
+      this.parking = "None",
       this.parkingCom = "",
-      this.access = "No",
+      this.access = "Average",
       this.accessCom = "",
 //Policy attributes
       this.dressCode = "None",

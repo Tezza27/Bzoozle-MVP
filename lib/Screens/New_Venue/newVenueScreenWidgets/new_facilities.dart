@@ -825,7 +825,7 @@ class _NewFacilitiesScreenState extends State<NewFacilitiesScreen> {
                             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Onsite parking?",
+                                "Onsite Parking?",
                                 style:
                                     themeProvider.getTheme.textTheme.bodyText1,
                               ),

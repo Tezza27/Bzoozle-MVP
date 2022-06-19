@@ -863,7 +863,7 @@ class VenueProvider with ChangeNotifier {
     notifyListeners();
   }
 
-changeIsLoading(bool value) {
+  changeIsLoading(bool value) {
     _isLoading = value;
     notifyListeners();
   }
@@ -1161,7 +1161,7 @@ changeIsLoading(bool value) {
     _video = "No";
     _pub = "No";
     _gamesCom = "";
-    _parking = "No";
+    _parking = "None";
     _parkingCom = "";
     _access = "No";
     _accessCom = "";

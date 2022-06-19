@@ -366,43 +366,49 @@ class _AuthFormState extends State<AuthForm> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 4.0, bottom: 24.0),
+                                        top: 24.0, bottom: 36.0),
                                     child: ElevatedButton(
-                                        child: Text(_isLogin
+                                      child: Text(
+                                        _isLogin
                                             ? "Log in"
-                                            : "Create my account"),
-                                        onPressed: () async {
-                                          if (!_isLogin) {
-                                            bool _valid = true;
-                                            userProvider
-                                                .signUpUser(
-                                                    firstNameController.text
-                                                        .trim(),
-                                                    surNameController.text
-                                                        .trim(),
-                                                    userProvider.userImage,
-                                                    dOBController.text.trim(),
-                                                    countryController.text
-                                                        .trim(),
-                                                    regionController.text
-                                                        .trim(),
-                                                    cityController.text.trim(),
-                                                    emailController.text.trim(),
-                                                    passwordController.text
-                                                        .trim(),
-                                                    "C",
-                                                    false)
-                                                .then(confirmProvider.changeCurrentUser(
-                                                    "${userProvider.firstName} ${userProvider.surName}",
-                                                    "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
-                                                    userProvider.imageUrl));
-                                          } else {
-                                            _logInUser(
-                                                emailController.text.trim(),
-                                                passwordController.text.trim(),
-                                                context);
-                                          }
-                                        }),
+                                            : "Create my account",
+                                        style: themeProvider
+                                            .getTheme.textTheme.bodyText1
+                                            ?.copyWith(color: black1),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        primary: orange1,
+                                      ),
+                                      onPressed: () async {
+                                        if (!_isLogin) {
+                                          bool _valid = true;
+                                          userProvider
+                                              .signUpUser(
+                                                  firstNameController.text
+                                                      .trim(),
+                                                  surNameController.text.trim(),
+                                                  userProvider.userImage,
+                                                  dOBController.text.trim(),
+                                                  countryController.text.trim(),
+                                                  regionController.text.trim(),
+                                                  cityController.text.trim(),
+                                                  emailController.text.trim(),
+                                                  passwordController.text
+                                                      .trim(),
+                                                  "C",
+                                                  false)
+                                              .then(confirmProvider.changeCurrentUser(
+                                                  "${userProvider.firstName} ${userProvider.surName}",
+                                                  "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
+                                                  userProvider.imageUrl));
+                                        } else {
+                                          _logInUser(
+                                              emailController.text.trim(),
+                                              passwordController.text.trim(),
+                                              context);
+                                        }
+                                      },
+                                    ),
                                   ),
                                   if (_isLogin)
                                     TextButton(

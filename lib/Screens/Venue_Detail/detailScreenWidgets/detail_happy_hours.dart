@@ -47,43 +47,51 @@ class DetailHappyHours extends StatelessWidget {
               ),
             ],
           ),
-          venueProvider.happyHours != null
-              ? ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: venueProvider.happyHours?.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return hhTimesCard(
-                        context, venueProvider.happyHours![index]);
-                  },
+          (venueProvider.happyHours != null &&
+                  venueProvider.happyHours!.isNotEmpty)
+              ? Column(
+                  children: [
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: venueProvider.happyHours?.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return hhTimesCard(
+                            context, venueProvider.happyHours![index]);
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
+                      child: Text(
+                        "What's on Offer?",
+                        style: themeProvider.getTheme.textTheme.headline1,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
+                      child: Text(
+                        venueProvider.hhOffer ?? '?',
+                        style: themeProvider.getTheme.textTheme.bodyText1,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 )
-              : SizedBox(
-                  height: 100.0,
-                  child: Text(
-                    "no happy hours that we know about at the moment",
-                    style: themeProvider.getTheme.textTheme.headline1,
-                    textAlign: TextAlign.center,
+              : Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 24.0),
+                    child: Text(
+                      "No happy hours that we know about at the moment",
+                      style: themeProvider.getTheme.textTheme.headline2,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
-            child: Text(
-              "What's on Offer?",
-              style: themeProvider.getTheme.textTheme.headline1,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 8.0, bottom: 8.0, left: 8.0, right: 8.0),
-            child: Text(
-              venueProvider.hhOffer ?? '?',
-              style: themeProvider.getTheme.textTheme.bodyText1,
-              textAlign: TextAlign.center,
-            ),
-          ),
           const SizedBox(height: 300.0),
         ],
       ),
