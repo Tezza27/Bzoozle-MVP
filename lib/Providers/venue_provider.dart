@@ -1019,8 +1019,8 @@ class VenueProvider with ChangeNotifier {
       _venueArea = null;
       _venueCity = null;
       _venuePostcode = null;
-      _lat = null;
-      _lon = null;
+      _lat = 0;
+      _lon = 0;
       _venueDirections = null;
       _venueImage = null;
       _openTime0 = "?";
@@ -1109,7 +1109,7 @@ class VenueProvider with ChangeNotifier {
   }
 
   unloadVenue() {
-    _venueName;
+    _venueName = "";
     _venueType = null;
     _venueTheme = null;
     _venueDescription = null;
@@ -1120,8 +1120,8 @@ class VenueProvider with ChangeNotifier {
     _venueArea = null;
     _venueCity = null;
     _venuePostcode = null;
-    _lat = null;
-    _lon = null;
+    _lat = 0;
+    _lon = 0;
     _venueDirections = null;
     _venueImage = null;
     _openTime0 = "?";
@@ -1163,7 +1163,7 @@ class VenueProvider with ChangeNotifier {
     _gamesCom = "";
     _parking = "None";
     _parkingCom = "";
-    _access = "No";
+    _access = "Average";
     _accessCom = "";
 //Policy attributes
     _dressCode = "None";

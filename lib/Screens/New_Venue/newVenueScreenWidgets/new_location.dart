@@ -279,6 +279,7 @@ class _NewLocationState extends State<NewLocation> {
                             textInputAction: TextInputAction.go,
                             controller: latController,
                             initialValue: venueProvider.lat.toString(),
+                            keyboardType: TextInputType.number,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String? value) {
                               if (value != "" && value != null) {
@@ -299,6 +300,7 @@ class _NewLocationState extends State<NewLocation> {
                             textInputAction: TextInputAction.go,
                             controller: lonController,
                             initialValue: venueProvider.lon.toString(),
+                            keyboardType: TextInputType.number,
                             style: themeProvider.getTheme.textTheme.bodyText1,
                             onChanged: (String? value) {
                               if (value != "" && value != null) {

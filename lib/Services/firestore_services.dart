@@ -8,7 +8,7 @@ class FirestoreService {
 
   // Use the snapshots method to get a stream of snapshots. This listens for updates automatically.
   Stream<QuerySnapshot> getVenues() {
-    return collection.snapshots();
+    return collection.orderBy('venueName', descending: false).snapshots();
   }
 
   // Add a new venue. This returns a Future if you want to wait for the result. Note that add will automatically create a new document id for the venue.

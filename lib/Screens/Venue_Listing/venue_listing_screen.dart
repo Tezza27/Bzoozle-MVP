@@ -46,7 +46,7 @@ class _ListingScreenState extends State<ListingScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      'BZOOZLE\nLAS VEGAS',
+                      'BZOOZLE LAS VEGAS',
                       style: themeProvider.getTheme.textTheme.headline2!
                           .copyWith(color: themeProvider.getTheme.splashColor),
                       textAlign: TextAlign.center,
