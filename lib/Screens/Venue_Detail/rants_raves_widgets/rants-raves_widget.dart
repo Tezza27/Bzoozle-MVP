@@ -60,8 +60,7 @@ class RantsRavesCard extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              child: SizedBox(
-                //height: 100.0,
+              child: Expanded(
                 child: Card(
                   color: Colors.white,
                   child: Padding(

@@ -89,6 +89,10 @@ class DetailLocation extends StatelessWidget {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         Text(
+                          "${hostList[hostIndex].addressNumber!} ${hostList[hostIndex].street!}",
+                          style: themeProvider.getTheme.textTheme.bodyText1,
+                        ),
+                        Text(
                           hostList[hostIndex].city!,
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
