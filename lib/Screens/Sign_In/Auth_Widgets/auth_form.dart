@@ -341,6 +341,7 @@ class _AuthFormState extends State<AuthForm> {
                           child: TextFormField(
                             controller: passwordController,
                             key: const ValueKey('password'),
+                            obscureText: true,
                             validator: (value) {
                               if (value!.isEmpty || value.length < 7) {
                                 return "Password must be at least 7 characters long";
@@ -382,25 +383,22 @@ class _AuthFormState extends State<AuthForm> {
                                       onPressed: () async {
                                         if (!_isLogin) {
                                           bool _valid = true;
-                                          userProvider
-                                              .signUpUser(
-                                                  firstNameController.text
-                                                      .trim(),
-                                                  surNameController.text.trim(),
-                                                  userProvider.userImage,
-                                                  dOBController.text.trim(),
-                                                  countryController.text.trim(),
-                                                  regionController.text.trim(),
-                                                  cityController.text.trim(),
-                                                  emailController.text.trim(),
-                                                  passwordController.text
-                                                      .trim(),
-                                                  "C",
-                                                  false)
-                                              .then(confirmProvider.changeCurrentUser(
-                                                  "${userProvider.firstName} ${userProvider.surName}",
-                                                  "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
-                                                  userProvider.imageUrl));
+                                          await userProvider.signUpUser(
+                                              firstNameController.text.trim(),
+                                              surNameController.text.trim(),
+                                              userProvider.userImage,
+                                              dOBController.text.trim(),
+                                              countryController.text.trim(),
+                                              regionController.text.trim(),
+                                              cityController.text.trim(),
+                                              emailController.text.trim(),
+                                              passwordController.text.trim(),
+                                              "C",
+                                              false);
+                                          confirmProvider.changeCurrentUser(
+                                              "${userProvider.firstName} ${userProvider.surName}",
+                                              "${userProvider.city}, ${userProvider.region}, ${userProvider.country}",
+                                              userProvider.imageUrl);
                                         } else {
                                           _logInUser(
                                               emailController.text.trim(),
