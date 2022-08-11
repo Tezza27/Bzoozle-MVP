@@ -8,6 +8,7 @@ import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/open_time_bui
 import 'package:bzoozle/Themes/theme_constants.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:bzoozle/Screens/Venue_Detail/venue_detail_screen.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_glow/flutter_glow.dart';
@@ -23,6 +24,7 @@ class ListCard extends StatefulWidget {
 }
 
 class _ListCardState extends State<ListCard> {
+  // String? _imageUrl;
   void _loadVenue({BuildContext? context, String? iD, Venue? venue}) async {
     ConfirmationProvider confirmProvider =
         Provider.of<ConfirmationProvider>(context!, listen: false);
@@ -42,6 +44,25 @@ class _ListCardState extends State<ListCard> {
     }
   }
 
+  // @override
+  // void initState() {
+  //   final myCacheManager = MyCacheManager();
+
+  //   // Image path from Firebase Storage
+  //   var imagePath = '$venueImagePath${widget.iD}.jpg';
+
+  //   // This will try to find image in the cache first
+  //   // If it can't find anything, it will download it from Firabase storage
+  //   myCacheManager.cacheImage(imagePath).then((String imageUrl) {
+  //     setState(() {
+  //       // Get image url
+  //       _imageUrl = imageUrl;
+  //     });
+  //   });
+
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     final pageNumberProvider = Provider.of<PageNumberProvider>(context);
@@ -51,6 +72,16 @@ class _ListCardState extends State<ListCard> {
         ? hostList.indexWhere(
             (host) => host.hostName == widget.venue.venueHostBuilding)
         : 0;
+    // final imageRef = FirebaseStorage.instance.refFromURL(venueImagePath + widget.iD + "jpg");
+
+    Future<Widget> _getImage(BuildContext context, String imageName) async {
+      Image image = Image.asset('assets/images/photo_coming_soon.png');
+      await FireStorageService.loadImage(context, imageName).then((value) {
+        image = Image.network(value.toString(), fit: BoxFit.cover);
+      });
+      return image;
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
@@ -90,18 +121,81 @@ class _ListCardState extends State<ListCard> {
                               Colors.transparent,
                             ]),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: (widget.venue.venueImage != "" &&
-                                widget.venue.venueImage != null)
-                            ? Image(
-                                image: NetworkImage(widget.venue.venueImage!),
-                                fit: BoxFit.cover)
-                            : Image.asset(
+                      child: FutureBuilder(
+                          future: _getImage(context, widget.iD + '.jpg'),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                    ConnectionState.done &&
+                                snapshot.hasData) {
+                              return ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10),
+                                ),
+                                child: snapshot.data as Image,
+                              );
+                            }
+                            // if (snapshot.connectionState ==
+                            //     ConnectionState.waiting) {
+                            //   return ClipRRect(
+                            //     borderRadius: const BorderRadius.only(
+                            //       topLeft: Radius.circular(10),
+                            //       topRight: Radius.circular(10),
+                            //     ),
+                            //     child: CircularProgressIndicator(
+                            //       color: orange1,
+                            //     ),
+                            //   );
+                            // }
+                            return ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10),
+                              ),
+                              child: Image.asset(
                                 'assets/images/photo_coming_soon.png',
                                 fit: BoxFit.cover,
                               ),
-                      ),
+                            );
+                          }),
+                      // CachedNetworkImage(
+                      //     imageUrl: widget.iD,
+                      //     placeholder: (context, url) =>
+                      //         const CircularProgressIndicator(),
+                      //     errorWidget: (context, url, error) =>
+                      //         const Icon(Icons.error),
+                      //     fit: BoxFit.cover),
+
+                      //  _imageUrl != null
+                      //     ? CachedNetworkImage(
+                      //         imageUrl: _imageUrl!,
+                      //         placeholder: (context, url) =>
+                      //             const CircularProgressIndicator(),
+                      //         errorWidget: (context, url, error) =>
+                      //             const Icon(Icons.error),
+                      //       )
+                      //     : const CircularProgressIndicator(),
+
+                      // FutureBuilder(
+                      //     future: FirebaseStorage.instance
+                      //         .ref()
+                      //         .child("venueImages/" + widget.iD + ".jpg")
+                      //         .getDownloadURL(),
+                      //     builder: (context, snapshot) {
+                      //       if (snapshot.connectionState ==
+                      //               ConnectionState.done &&
+                      //           snapshot.hasData) {
+                      //         return Image(
+                      //             image:
+                      //                 NetworkImage(snapshot.data.toString()),
+                      //             fit: BoxFit.cover);
+                      //       } else {
+                      //         return Image.asset(
+                      //           'assets/images/photo_coming_soon.png',
+                      //           fit: BoxFit.cover,
+                      //         );
+                      //       }
+                      //     }),
                     ),
                   ),
                   Positioned(
@@ -269,5 +363,15 @@ class _ListCardState extends State<ListCard> {
         ),
       ),
     );
+  }
+}
+
+class FireStorageService extends ChangeNotifier {
+  FireStorageService();
+  static Future<dynamic> loadImage(BuildContext context, String image) async {
+    return await FirebaseStorage.instance
+        .ref()
+        .child('venueImages/' + image)
+        .getDownloadURL();
   }
 }
