@@ -25,15 +25,23 @@ class _HHTimeStatusState extends State<HHTimeStatus> {
 
     return TimerBuilder.scheduled([startTime!, endTime!], builder: (context) {
       final now = DateTime.now();
-      final starting = now.compareTo(startTime) >= 0;
-      final ending = now.compareTo(endTime) >= 0;
-      //not quite working - instead of closed at it should be opens tomorrow at.
+      final starting = now.isBefore(startTime);
+      final ending = now.isBefore(endTime);
+      final String hHMessage;
+
+      if (ending) {
+        if (starting) {
+          hHMessage =
+              "Happy hour: ${startTime.weekday == now.weekday ? "Today" : weekDays[startTime.weekday - 1].substring(0, 3)} ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}";
+        } else {
+          hHMessage =
+              "It's happy hour now 'til ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}";
+        }
+      } else {
+        hHMessage = "ERROR";
+      }
       return Text(
-        starting
-            ? ending
-                ? "Ended at ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')} today"
-                : "It's happy hour now 'til ${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}"
-            : "Happy hour: ${startTime.weekday == now.weekday ? "Today" : weekDays[startTime.weekday - 1]} ${startTime.hour.toString().padLeft(2, '0')}:${startTime.minute.toString().padLeft(2, '0')}-${endTime.hour.toString().padLeft(2, '0')}:${endTime.minute.toString().padLeft(2, '0')}",
+        hHMessage,
         style: themeProvider.getTheme.textTheme.bodyText1,
       );
     });
@@ -46,6 +54,7 @@ class _HHTimeStatusState extends State<HHTimeStatus> {
     for (HappyHourSession happyHourSession in happyHourList!) {
       int dayAdd = 0;
       int sessionWeekday = int.parse(happyHourSession.day);
+
       DateTime sessionStartTime =
           DateTime(now.year, now.month, now.day, 0, 0, 0).add(
         Duration(
@@ -54,53 +63,50 @@ class _HHTimeStatusState extends State<HHTimeStatus> {
           minutes: int.parse(happyHourSession.startTime.split(":")[1]),
         ),
       );
-      DateTime sessionEndTime =
-          DateTime(now.year, now.month, now.day, 0, 0, 0).add(
-        Duration(
-          days: 0,
-          hours: int.parse(happyHourSession.startTime.split(":")[0]),
-          minutes: int.parse(happyHourSession.startTime.split(":")[1]) +
-              happyHourSession.duration,
-        ),
+      DateTime sessionEndTime = sessionStartTime.add(
+        Duration(minutes: happyHourSession.duration),
       );
 
-      if (sessionWeekday == now.weekday) {
-        if (sessionEndTime.isAfter(now)) {
-          dayAdd = 0;
-        } else {
+      if (sessionWeekday > now.weekday) {
+        dayAdd = sessionWeekday - now.weekday;
+      } else if (sessionWeekday == now.weekday) {
+        if (sessionEndTime.isBefore(now)) {
           dayAdd = 7;
+        } else {
+          dayAdd = 0;
         }
-      } else if (sessionWeekday < now.weekday) {
+      } else {
         if (now.weekday - sessionWeekday > 1) {
           dayAdd = 7 - now.weekday + sessionWeekday;
         } else {
-          if (sessionEndTime.day == now.day && now.isBefore(sessionEndTime)) {
-            dayAdd = -1;
+          if (sessionStartTime.day != sessionEndTime.day &&
+              now.isBefore(sessionEndTime.add(const Duration(days: -1)))) {
+            dayAdd = 0;
           } else {
             dayAdd = 6;
           }
         }
-      } else {
-        dayAdd = sessionWeekday - now.weekday;
       }
-      happyHourDatesList.add(HHSessionDateTimes(
-          startDateTime: DateTime(now.year, now.month, now.day, 0, 0, 0).add(
-            Duration(
-              days: dayAdd,
-              hours: int.parse(happyHourSession.startTime.split(":")[0]),
-              minutes: int.parse(happyHourSession.startTime.split(":")[1]),
-            ),
-          ),
-          endDateTime: DateTime(now.year, now.month, now.day, 0, 0, 0).add(
-            Duration(
-              days: dayAdd,
-              hours: int.parse(happyHourSession.startTime.split(":")[0]),
-              minutes: int.parse(happyHourSession.startTime.split(":")[1]) +
-                  happyHourSession.duration,
-            ),
-          )));
+
+      sessionStartTime = sessionStartTime.add(Duration(days: dayAdd));
+      sessionEndTime =
+          sessionStartTime.add(Duration(minutes: happyHourSession.duration));
+
+      happyHourDatesList.add(
+        HHSessionDateTimes(
+            startDateTime: sessionStartTime, endDateTime: sessionEndTime),
+      );
     }
     happyHourDatesList.sort((a, b) => a.endDateTime!.compareTo(b.endDateTime!));
+    for (int i = 0; i <= happyHourDatesList.length - 1; i++) {
+      print("Happy Hour Session " +
+          i.toString() +
+          ": " +
+          happyHourDatesList[i].startDateTime.toString() +
+          '-' +
+          happyHourDatesList[i].endDateTime.toString());
+    }
+    //
 
     return startFlag
         ? happyHourDatesList[0].startDateTime
