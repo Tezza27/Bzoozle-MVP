@@ -7,8 +7,7 @@ import 'package:bzoozle/Screens/Sign_In/auth_screen.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/SearchSortFilterWidgets/sort_filter_form.dart';
 import 'package:bzoozle/Screens/Venue_Listing/listingScreenWidgets/list_card.dart';
 import 'package:bzoozle/Screens/user_account_screen.dart';
-import 'package:bzoozle/Settings/color_experiments.dart';
-import 'package:bzoozle/Settings/color_pallet.dart';
+import 'package:bzoozle/Themes/fizz_background.dart';
 import 'package:bzoozle/Themes/theme_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,6 @@ class _ListingScreenState extends State<ListingScreen> {
       drawer: Drawer(
         backgroundColor: themeProvider.getTheme.splashColor,
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -112,26 +110,26 @@ class _ListingScreenState extends State<ListingScreen> {
                 Navigator.pushNamed(context, ContactScreen.routeName);
               },
             ),
-            ListTile(
-              title: Text('Colour Experiment',
-                  style: themeProvider.getTheme.textTheme.bodyText1!
-                      .copyWith(color: themeProvider.getTheme.primaryColor)),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, ColorExperimentScreen.routeName);
-              },
-            ),
-            ListTile(
-              title: Text('Colour pallet',
-                  style: themeProvider.getTheme.textTheme.bodyText1!
-                      .copyWith(color: themeProvider.getTheme.primaryColor)),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, ColorPalletScreen.routeName);
-              },
-            ),
+            // ListTile(
+            //   title: Text('Colour Experiment',
+            //       style: themeProvider.getTheme.textTheme.bodyText1!
+            //           .copyWith(color: themeProvider.getTheme.primaryColor)),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //     Navigator.pushNamed(context, ColorExperimentScreen.routeName);
+            //   },
+            // ),
+            // ListTile(
+            //   title: Text('Colour pallet',
+            //       style: themeProvider.getTheme.textTheme.bodyText1!
+            //           .copyWith(color: themeProvider.getTheme.primaryColor)),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //     Navigator.pushNamed(context, ColorPalletScreen.routeName);
+            //   },
+            // ),
             const SizedBox(
-              height: 60.0,
+              height: 120.0,
             ),
             ListTile(
               title: Text('Close Menu',
@@ -176,62 +174,65 @@ class _ListingScreenState extends State<ListingScreen> {
           ),
         ],
       ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: venueProvider.streamVenuesList,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var venueRawData = snapshot.data;
+      body: Stack(children: <Widget>[
+        const FizzBackground(),
+        StreamBuilder<QuerySnapshot>(
+          stream: venueProvider.streamVenuesList,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              var venueRawData = snapshot.data;
 
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-                return Center(
-                    child: Column(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Text("No Connection - ${snapshot.connectionState}"),
-                  ],
-                ));
-              case ConnectionState.waiting:
-                return Center(
-                    child: Column(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Text("No Connection - ${snapshot.connectionState}"),
-                  ],
-                ));
-              case ConnectionState.done:
-                return Center(
-                    child: Column(
-                  children: [
-                    const CircularProgressIndicator(),
-                    Text("No Connection - ${snapshot.connectionState}"),
-                  ],
-                ));
-              default:
-                return venueRawData!.size > 0
-                    ? ListView.builder(
-                        itemCount: venueRawData.size,
-                        itemBuilder: (context, index) {
-                          Venue venueObject =
-                              Venue.fromSnapshot(venueRawData.docs[index]);
+              switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                  return Center(
+                      child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      Text("No Connection - ${snapshot.connectionState}"),
+                    ],
+                  ));
+                case ConnectionState.waiting:
+                  return Center(
+                      child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      Text("No Connection - ${snapshot.connectionState}"),
+                    ],
+                  ));
+                case ConnectionState.done:
+                  return Center(
+                      child: Column(
+                    children: [
+                      const CircularProgressIndicator(),
+                      Text("No Connection - ${snapshot.connectionState}"),
+                    ],
+                  ));
+                default:
+                  return venueRawData!.size > 0
+                      ? ListView.builder(
+                          itemCount: venueRawData.size,
+                          itemBuilder: (context, index) {
+                            Venue venueObject =
+                                Venue.fromSnapshot(venueRawData.docs[index]);
 
-                          return ListCard(
-                              iD: venueRawData.docs[index].id,
-                              venue: venueObject);
-                        })
-                    : const Center(child: Text('No data available'));
+                            return ListCard(
+                                iD: venueRawData.docs[index].id,
+                                venue: venueObject);
+                          })
+                      : const Center(child: Text('No data available'));
+              }
+            } else {
+              return Center(
+                  child: Column(
+                children: [
+                  const CircularProgressIndicator(),
+                  Text("No Connection - ${snapshot.connectionState}"),
+                ],
+              ));
             }
-          } else {
-            return Center(
-                child: Column(
-              children: [
-                const CircularProgressIndicator(),
-                Text("No Connection - ${snapshot.connectionState}"),
-              ],
-            ));
-          }
-        },
-      ),
+          },
+        ),
+      ]),
     );
   }
 }
