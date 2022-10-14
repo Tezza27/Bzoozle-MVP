@@ -218,7 +218,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context).primaryColor,
+                          backgroundColor: Theme.of(context).primaryColor,
                           padding: const EdgeInsets.all(8.0),
                         ),
                       ),
@@ -237,7 +237,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
                           style: themeProvider.getTheme.textTheme.bodyText1,
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context).primaryColor,
+                          backgroundColor: Theme.of(context).primaryColor,
                           padding: const EdgeInsets.all(8.0),
                         ),
                       ),
@@ -269,7 +269,7 @@ class _TimeSetScreenState extends State<TimeSetScreen> {
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                 ),
               ),
             ),

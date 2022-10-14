@@ -58,7 +58,7 @@ class _ContactScreenState extends State<ContactScreen> {
                     child: DropdownButton<String>(
                       value: currentValue,
                       icon: const Icon(Icons.arrow_drop_down),
-                      iconSize: 30, //this inicrease the size
+                      iconSize: 30, //this increases the size
                       elevation: 16,
                       style: const TextStyle(color: Colors.black),
 
@@ -121,7 +121,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   children: <Widget>[
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
+                        backgroundColor: Colors.black,
                         side: const BorderSide(width: 1, color: Colors.black),
                         elevation: 5,
                         shape: RoundedRectangleBorder(
@@ -136,7 +136,7 @@ class _ContactScreenState extends State<ContactScreen> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
+                        backgroundColor: Colors.black,
                         side: const BorderSide(width: 1, color: Colors.black),
                         elevation: 5,
                         shape: RoundedRectangleBorder(

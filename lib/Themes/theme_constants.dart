@@ -52,7 +52,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
-    // Used for headers on the lising cards
+    // Used for headers on the listing cards
     headline5: const TextStyle(
         color: Colors.black,
         fontSize: 13.0,
@@ -93,8 +93,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      primary: black1,
-      onPrimary: orange1,
+      backgroundColor: black1,
+      foregroundColor: orange1,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -167,7 +167,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
         fontFamily: 'Roboto',
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.normal),
-    // Used for headers on the lising cards
+    // Used for headers on the listing cards
     headline5: TextStyle(
         color: orangeWhite,
         fontSize: 13.0,
@@ -208,8 +208,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      primary: orange1,
-      onPrimary: black1,
+      backgroundColor: orange1,
+      foregroundColor: black1,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(

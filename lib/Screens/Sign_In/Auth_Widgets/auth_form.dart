@@ -378,7 +378,7 @@ class _AuthFormState extends State<AuthForm> {
                                             ?.copyWith(color: black1),
                                       ),
                                       style: ElevatedButton.styleFrom(
-                                        primary: orange1,
+                                        backgroundColor: orange1,
                                       ),
                                       onPressed: () async {
                                         if (!_isLogin) {
@@ -466,7 +466,7 @@ class _AuthFormState extends State<AuthForm> {
               ),
               textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
-                  primary: Colors.black,
+                  backgroundColor: Colors.black,
                 ),
               ),
             ),

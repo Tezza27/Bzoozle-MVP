@@ -45,7 +45,7 @@ Widget newScrollButton(
     constraints: const BoxConstraints.tightFor(width: 120, height: 20),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: pageNumberProvider.pageNumber == index
+        backgroundColor: pageNumberProvider.pageNumber == index
             ? themeProvider.getTheme.primaryColor
             : themeProvider.getTheme.splashColor,
         side: BorderSide(width: 1, color: themeProvider.getTheme.primaryColor),

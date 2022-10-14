@@ -100,7 +100,7 @@ class _NewHappyHoursScreenState extends State<NewHappyHoursScreen> {
                       style: themeProvider.getTheme.textTheme.bodyText1,
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).primaryColor,
+                      backgroundColor: Theme.of(context).primaryColor,
                       padding: const EdgeInsets.all(8.0),
                     ),
                   ),

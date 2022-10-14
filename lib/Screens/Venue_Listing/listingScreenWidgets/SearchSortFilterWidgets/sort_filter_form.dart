@@ -148,6 +148,7 @@ class _SortFilterScreenState extends State<SortFilterScreen> {
         ? childFriendlyChipList
         : compileChipList(categoryList: childList);
     TextEditingController? venueNameController;
+    // ignore: unused_local_variable
     TextEditingController? hostController;
 
     return Scaffold(

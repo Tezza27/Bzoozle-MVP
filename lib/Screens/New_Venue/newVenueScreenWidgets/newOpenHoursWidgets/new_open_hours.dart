@@ -457,7 +457,7 @@ class _NewOpenHoursScreenState extends State<NewOpenHoursScreen> {
                           style: themeProvider.getTheme.textTheme.headline4,
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: themeProvider.getTheme.primaryColor,
+                          backgroundColor: themeProvider.getTheme.primaryColor,
                           padding: const EdgeInsets.all(8.0),
                         ),
                       ),
